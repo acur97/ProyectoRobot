@@ -9,6 +9,7 @@ public class enumTest : MonoBehaviour
     /*Public variables*/
     public enum jugadores {Jugador1, Jugador2, Jugador3, Jugador4}
     public jugadores jug;
+
     public float speed = 5f;
     public float gravity = 9.81f;
     public float groundDistance = 0.2f;
@@ -37,12 +38,12 @@ public class enumTest : MonoBehaviour
     private string vertical;
 
 
-    /*Shooter*/
-    private string shooter1 = "Fire1";
-    private string shooter2 = "Fire2";
-    private string shooter3 = "Fire3";
-    private string shooter4 = "Fire4";
-    private string shooter;
+    ///*Shooter*/
+    //private string shooter1 = "Fire1";
+    //private string shooter2 = "Fire2";
+    //private string shooter3 = "Fire3";
+    //private string shooter4 = "Fire4";
+    //private string shooter;
 
 
     /*PowerUP Dash*/
@@ -75,7 +76,7 @@ public class enumTest : MonoBehaviour
             horizontal = horizontal1;
             vertical = vertical1;
             power = power1;
-            shooter = shooter1;
+
 
             
         }
@@ -85,7 +86,7 @@ public class enumTest : MonoBehaviour
             horizontal = horizontal2;
             vertical = vertical2;
             power = power2;
-            shooter = shooter2;
+ 
         }
 
         if (jugadores.Jugador3 == jug)
@@ -93,7 +94,7 @@ public class enumTest : MonoBehaviour
             horizontal = horizontal3;
             vertical = vertical3;
             power = power3;
-            shooter = shooter3;
+
         }
 
         if (jugadores.Jugador4 == jug)
@@ -101,7 +102,7 @@ public class enumTest : MonoBehaviour
             horizontal = horizontal3;
             vertical = vertical3;
             power = power4;
-            shooter = shooter3;
+
         }
     }
 
@@ -128,7 +129,6 @@ public class enumTest : MonoBehaviour
             _velocity += Vector3.Scale(transform.forward, dashdistance * new Vector3((Mathf.Log(1f / (Time.deltaTime * Drag.x + 1)) / -Time.deltaTime), 0, (Mathf.Log(1f / (Time.deltaTime * Drag.z + 1)) / -Time.deltaTime)));
 
         }
-
 
 
         _velocity.y += gravity * Time.deltaTime;

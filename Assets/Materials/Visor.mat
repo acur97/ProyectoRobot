@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerPrueba 1
+  m_Name: Visor
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 2
@@ -64,5 +64,5 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0.2251691, g: 0.6380539, b: 0.8679245, a: 1}
-    - _EmissionColor: {r: 1.0592737, g: 0.18856181, b: 0.35493988, a: 1}
+    - _EmissionColor: {r: 0.2668327, g: 0.18502079, b: 0.20065366, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}

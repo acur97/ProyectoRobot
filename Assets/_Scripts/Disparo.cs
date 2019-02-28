@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Disparo : MonoBehaviour
 {
+
+
+    public enum jugadores {Jugador1, Jugador2, Jugador3, Jugador4}
+    public jugadores jug;
+
+
     public int cantidadBalas;
     private int numeroBalas;
     public float tiempoRecarga;
@@ -12,16 +18,52 @@ public class Disparo : MonoBehaviour
     public Transform padre;
     public Transform puntoDisparo;
 
+
+    /*Private Variables*/
     private float count;
+
+    /*Shooter*/
+ 
+    private string shooter;
 
     private void Awake()
     {
+        
+
+        if (jugadores.Jugador1 == jug)
+        {
+
+            shooter = "Fire1";
+         
+     
+        }
+
+        if (jugadores.Jugador2 == jug)
+        {
+
+            shooter = "Fire2";
+         
+        }
+
+        if (jugadores.Jugador3 == jug)
+        {
+
+            shooter  = "Fire3";
+         
+        }
+
+        if (jugadores.Jugador4 == jug)
+        {
+
+            shooter  = "Fire4";
+        }
+
         numeroBalas = cantidadBalas;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButtonDown(shooter))
         {
             if (numeroBalas > 0)
             {
