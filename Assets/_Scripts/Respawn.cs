@@ -6,17 +6,22 @@ public class Respawn : MonoBehaviour
 {
 
     public GameObject respawn;
+    public GameObject player;
 
 
 
     private void OnTriggerEnter(Collider ColliderBullet)
     {
-     
-        if(ColliderBullet.transform.tag == "Player")
+
+        if (ColliderBullet.tag == "Player")
         {
-            this.transform.position = respawn.transform.position;
+            player.transform.position = respawn.transform.position;
         }
+       
+
            
     }
+
+    
 
 }

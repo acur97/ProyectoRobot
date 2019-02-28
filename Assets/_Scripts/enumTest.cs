@@ -16,6 +16,8 @@ public class enumTest : MonoBehaviour
     public float dashdistance = 5f;
     public LayerMask Ground;
     public Vector3 Drag;
+    public Transform respawn;
+
 
 
 
@@ -68,6 +70,8 @@ public class enumTest : MonoBehaviour
 
 
 
+    
+
     private void Awake()
     {
         if (jugadores.Jugador1 == jug)
@@ -106,6 +110,8 @@ public class enumTest : MonoBehaviour
         }
     }
 
+
+/*Move and Power Dash of player */
     private void Update()
     {
 
@@ -140,4 +146,20 @@ public class enumTest : MonoBehaviour
 
         _controller.Move(_velocity * Time.deltaTime);
     }
+
+    /*Dead Player*/
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Bala")
+        {
+
+            transform.position = respawn.position;
+            Destroy(collision.gameObject);
+
+        }
+    }
+
+
+
 }
