@@ -123,12 +123,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91afb10241fdb394ab9a78552837c7c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jug: 0
+  controller: {fileID: 0}
   cantidadBalas: 5
   tiempoRecarga: 2
   bala: {fileID: 5749715018209033547, guid: b21e12addf2e1e345b82a529a58f3c23, type: 3}
   padre: {fileID: 0}
   puntoDisparo: {fileID: 2297639995931880869}
+  shooter: 
 --- !u!1 &2297639995801861747
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,8 +339,8 @@ GameObject:
   - component: {fileID: 2297639997027122726}
   - component: {fileID: 2297639997027122727}
   - component: {fileID: 2297639997027122724}
-  - component: {fileID: 2297639997027122720}
   - component: {fileID: 2297639997027122721}
+  - component: {fileID: 2297639997027122720}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Untagged
@@ -408,6 +409,25 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &2297639997027122721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2297639997027122746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e7c2828ff888ad43b2c983193faa911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  disparo: {fileID: 2297639995654413873}
+  jug: 0
+  speed: 5
+  gravity: -29.81
+  dashdistance: 5
+  Drag: {x: 8, y: 0, z: 8}
 --- !u!143 &2297639997027122720
 CharacterController:
   m_ObjectHideFlags: 0
@@ -426,21 +446,3 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2297639997027122721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2297639997027122746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e7c2828ff888ad43b2c983193faa911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jug: 0
-  speed: 5
-  gravity: -29.81
-  dashdistance: 5
-  Drag: {x: 8, y: 0, z: 8}
-  respawn: {fileID: 0}

@@ -16,6 +16,7 @@ public class InGameController : MonoBehaviour
     public bool comenzar;
     [Space]
     public int puntajePorPersona = 100;
+    public int puntajeAutoGolpe = 50;
     public Text puntaje1;
     public Text puntaje2;
     public Text puntaje3;
@@ -30,7 +31,7 @@ public class InGameController : MonoBehaviour
     private Image[] StartImgs;
     public GameObject FinalCanvas;
     public PostProcessVolume post;
-    public CinemachineVirtualCamera Vcamera;    
+    public CinemachineVirtualCamera Vcamera;
 
     private float mili;
     private int segundos;
@@ -96,11 +97,13 @@ public class InGameController : MonoBehaviour
             PausaCanvas.SetActive(true);
             depth.focusDistance.value = 0.1f;
             StartBlack.color = new Color32(0, 0, 0, 128);
+            comenzar = false;
         }
     }
 
     public void Reanudar()
     {
+        comenzar = true;
         Time.timeScale = 1;
         PlayCanvas.SetActive(true);
         PausaCanvas.SetActive(false);
@@ -117,6 +120,8 @@ public class InGameController : MonoBehaviour
     {
         PlayCanvas.SetActive(false);
         FinalCanvas.SetActive(true);
+        depth.focusDistance.value = 0.1f;
+        StartBlack.color = new Color32(0, 0, 0, 128);
     }
 
     public void Salir()
@@ -124,24 +129,56 @@ public class InGameController : MonoBehaviour
         Application.Quit();
     }
 
-    public void SubirPuntos1()
+    public void SubirPuntos1(bool autogolpe)
     {
-        puntuacion1 += puntajePorPersona;
+        RecibeImpacto();
+        if (autogolpe)
+        {
+            puntuacion1 -= puntajeAutoGolpe;
+        }
+        else
+        {
+            puntuacion1 += puntajePorPersona;
+        }
         puntaje1.text = puntuacion1.ToString();
     }
-    public void SubirPuntos2()
+    public void SubirPuntos2(bool autogolpe)
     {
-        puntuacion2 += puntajePorPersona;
+        RecibeImpacto();
+        if (autogolpe)
+        {
+            puntuacion2 -= puntajeAutoGolpe;
+        }
+        else
+        {
+            puntuacion2 += puntajePorPersona;
+        }
         puntaje2.text = puntuacion2.ToString();
     }
-    public void SubirPuntos3()
+    public void SubirPuntos3(bool autogolpe)
     {
-        puntuacion3 += puntajePorPersona;
+        RecibeImpacto();
+        if (autogolpe)
+        {
+            puntuacion3 -= puntajeAutoGolpe;
+        }
+        else
+        {
+            puntuacion3 += puntajePorPersona;
+        }
         puntaje3.text = puntuacion3.ToString();
     }
-    public void SubirPuntos4()
+    public void SubirPuntos4(bool autogolpe)
     {
-        puntuacion4 += puntajePorPersona;
+        RecibeImpacto();
+        if (autogolpe)
+        {
+            puntuacion4 -= puntajeAutoGolpe;
+        }
+        else
+        {
+            puntuacion4 += puntajePorPersona;
+        }
         puntaje4.text = puntuacion4.ToString();
     }
 
@@ -153,19 +190,24 @@ public class InGameController : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            Pausar();
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Pausar();
         }
 
-        if (impactChromatic >= 0.05f)
-        {
-            impactChromatic -= 0.01f;
-            chromatic.intensity.value = impactChromatic;
-        }
-
         if (comenzar)
         {
+            if (impactChromatic >= 0.05f)
+            {
+                impactChromatic -= 0.01f;
+                chromatic.intensity.value = impactChromatic;
+            }
+
             mili += Time.unscaledDeltaTime;
             if (mili >= 1)
             {
@@ -187,6 +229,7 @@ public class InGameController : MonoBehaviour
             {
                 timer.text = "0:00";
                 Debug.Log("Fin");
+                FinalizarJuego();
                 comenzar = false;
             }
 
@@ -218,6 +261,7 @@ public class InGameController : MonoBehaviour
         }
         speed1 = v_end;
         depth.focusDistance.value = speed1;
+        StartCanvas.SetActive(false);
     }
     public IEnumerator ChangeSpeed2(float v_start, float v_end, float duration)
     {
