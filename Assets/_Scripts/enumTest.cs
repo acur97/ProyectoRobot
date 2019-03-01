@@ -124,7 +124,7 @@ public class enumTest : MonoBehaviour
         if (collision.gameObject.tag == "Bala")
         {
             Bala bal = collision.gameObject.GetComponent<Bala>();
-            Destroy(collision.gameObject);
+            bal.Morir(false);
             if (bal.dueno == 1)
             {
                 if (jugadores.Jugador1 == jug)

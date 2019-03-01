@@ -17,6 +17,17 @@ public class Bala : MonoBehaviour
     public float variacion = 1;
     [Space]
     public ConstantForce force;
+    public Rigidbody rb;
+    public SphereCollider coll;
+    public GameObject hit;
+    public GameObject muzzle;
+    public GameObject shoot;
+    public AudioSource source;
+    [Space]
+    public AudioClip Adisparo;
+    public AudioClip AdisparoLuego;
+    public AudioClip AchocaPared;
+    public AudioClip AchocaRobot;
     [Space]
     public int dueno;
 
@@ -28,6 +39,11 @@ public class Bala : MonoBehaviour
     private void OnEnable()
     {
         StartCoroutine(EsperaArranque());
+        hit.SetActive(false);
+        muzzle.SetActive(false);
+        shoot.SetActive(true);
+        source.clip = Adisparo;
+        source.Play();
     }
 
     private void Update()
@@ -73,8 +89,12 @@ public class Bala : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(tiempoEspera);
         arranque = true;
+        muzzle.SetActive(true);
+        source.Stop();
+        source.clip = AdisparoLuego;
+        source.Play();
         yield return new WaitForSecondsRealtime(tiempoMuerte - tiempoEspera);
-        Destroy(gameObject);
+        Morir(true);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -83,7 +103,8 @@ public class Bala : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Objetos"))
             {
-                Destroy(gameObject);
+                //Destroy(gameObject);
+                Morir(true);
             }
         }
         if (balaT.BasicaRebota == tipoDeBala)
@@ -91,8 +112,35 @@ public class Bala : MonoBehaviour
             contadorChoques += 1;
             if (contadorChoques == choques && collision.gameObject.CompareTag("Objetos"))
             {
-                Destroy(gameObject);
+                //Destroy(gameObject);
+                Morir(true);
             }
         }
+    }
+
+    public void Morir(bool conObjetos)
+    {
+        source.Stop();
+        if (conObjetos)
+        {
+            source.clip = AchocaPared;
+        }
+        else
+        {
+            source.clip = AchocaRobot;
+        }
+        source.Play();
+        rb.isKinematic = true;
+        coll.enabled = false;
+        muzzle.SetActive(false);
+        shoot.SetActive(false);
+        hit.SetActive(true);
+        StartCoroutine(EsperaMorir());
+    }
+
+    IEnumerator EsperaMorir()
+    {
+        yield return new WaitForSecondsRealtime(1);
+        Destroy(gameObject);
     }
 }
