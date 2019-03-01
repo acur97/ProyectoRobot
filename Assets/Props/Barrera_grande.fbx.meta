@@ -11,7 +11,22 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: pCube2
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Blin_metal
+    second: {fileID: 2100000, guid: b016502d9e5f2a4469ca9133497e1bfd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambertazul
+    second: {fileID: 2100000, guid: b17ea24084fcf9742bd6e3fc0003bd59, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: todo
+    second: {fileID: 2100000, guid: f49dd033d060ecc4f8dc4a89a15c9978, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

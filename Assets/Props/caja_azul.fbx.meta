@@ -34,7 +34,27 @@ ModelImporter:
     2300000: persp2
     3300000: persp2
     4300000: persp2
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Blin_metal
+    second: {fileID: 2100000, guid: 166052378df089b4796f7c4e39cde331, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn1
+    second: {fileID: 2100000, guid: d949b9a4037f781459a7fa314d842337, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinngris
+    second: {fileID: 2100000, guid: a857d5141ec18f442abb1ba9380299e4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: todo
+    second: {fileID: 2100000, guid: 73453486b63028a4794991578b0fca64, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
