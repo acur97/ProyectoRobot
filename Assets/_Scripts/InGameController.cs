@@ -32,6 +32,15 @@ public class InGameController : MonoBehaviour
     public GameObject FinalCanvas;
     public PostProcessVolume post;
     public CinemachineVirtualCamera Vcamera;
+    public AudioSource source1;
+    public AudioSource source2;
+    [Space]
+    public AudioClip Aintroduccion;
+    public AudioClip A321;
+    public AudioClip Afaltan30;
+    public AudioClip Afaltan10;
+    public AudioClip Afaltan5;
+    public AudioClip AalarmaFin;
 
     private float mili;
     private int segundos;

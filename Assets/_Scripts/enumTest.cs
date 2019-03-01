@@ -14,6 +14,10 @@ public class enumTest : MonoBehaviour
     public float gravity = 9.81f;
     public float dashdistance = 5f;
     public Vector3 Drag;
+    /*[Space]
+    public AudioSource source;
+    [Space]
+    public AudioClip */
     
     /*Horizontal Movement*/
     private string horizontal1 = "Horizontal1";

@@ -13,6 +13,10 @@ public class Disparo : MonoBehaviour
     public GameObject bala;
     public Transform padre;
     public Transform puntoDisparo;
+    public AudioSource source;
+    [Space]
+    public AudioClip AceroBalas;
+    public AudioClip Arecarga;
     
     /*Private Variables*/
     private float count;
@@ -60,6 +64,12 @@ public class Disparo : MonoBehaviour
                         bali.dueno = 4;
                     }
                 }
+                else
+                {
+                    source.Stop();
+                    source.clip = AceroBalas;
+                    source.Play();
+                }
             }
 
             if (count >= tiempoRecarga)
@@ -69,6 +79,9 @@ public class Disparo : MonoBehaviour
                 if (numeroBalas < cantidadBalas)
                 {
                     numeroBalas += 1;
+                    source.Stop();
+                    source.clip = Arecarga;
+                    source.Play();
                 }
             }
 
