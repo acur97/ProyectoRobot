@@ -1,0 +1,169 @@
+fileFormatVersion: 2
+guid: d0c73dc172409404399331f611cbf24b
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: pCube31
+    100002: pCube32
+    100004: pCube33
+    100006: pCube34
+    100008: pCylinder49
+    100010: //RootNode
+    100012: polySurface22
+    100014: polySurface22 1
+    100016: polySurface23
+    100018: polySurface24
+    100020: polySurface25
+    100022: polySurface26
+    100024: polySurface27
+    100026: polySurface28
+    100028: polySurface29
+    100030: polySurface30
+    100032: polySurface31
+    100034: polySurface32
+    100036: polySurface33
+    100038: pPlane4
+    100040: transform78
+    100042: transform79
+    100044: transform80
+    100046: transform81
+    100048: transform82
+    100050: transform83
+    100052: transform84
+    100054: transform85
+    100056: transform86
+    100058: transform87
+    100060: transform88
+    100062: transform89
+    100064: transform90
+    100066: transform91
+    100068: transform92
+    100070: transform93
+    100072: transform94
+    400000: pCube31
+    400002: pCube32
+    400004: pCube33
+    400006: pCube34
+    400008: pCylinder49
+    400010: //RootNode
+    400012: polySurface22
+    400014: polySurface22 1
+    400016: polySurface23
+    400018: polySurface24
+    400020: polySurface25
+    400022: polySurface26
+    400024: polySurface27
+    400026: polySurface28
+    400028: polySurface29
+    400030: polySurface30
+    400032: polySurface31
+    400034: polySurface32
+    400036: polySurface33
+    400038: pPlane4
+    400040: transform78
+    400042: transform79
+    400044: transform80
+    400046: transform81
+    400048: transform82
+    400050: transform83
+    400052: transform84
+    400054: transform85
+    400056: transform86
+    400058: transform87
+    400060: transform88
+    400062: transform89
+    400064: transform90
+    400066: transform91
+    400068: transform92
+    400070: transform93
+    400072: transform94
+    2100000: lambert1
+    2300000: polySurface33
+    3300000: polySurface33
+    4300000: polySurface33
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
