@@ -96,7 +96,7 @@ MonoBehaviour:
   muzzle: {fileID: 1081574410482010274}
   shoot: {fileID: 4309554776034029867}
   source: {fileID: 3100421078811677874}
-  Adisparo: {fileID: 8300000, guid: 45f9d741c7ff2334ca44efbc58d92a9b, type: 3}
+  Adisparo: {fileID: 8300000, guid: cbc591c24423a01458ee586b70cc0231, type: 3}
   AdisparoLuego: {fileID: 8300000, guid: bfce3139ddecde1489d293b551cf2067, type: 3}
   AchocaPared: {fileID: 8300000, guid: e52fdf5b0c5ccd140b41bcb0752ea43b, type: 3}
   AchocaRobot: {fileID: 8300000, guid: d5acb02abefdd2f4b980aff3de218318, type: 3}

@@ -41,6 +41,14 @@ public class InGameController : MonoBehaviour
     public AudioClip Afaltan10;
     public AudioClip Afaltan5;
     public AudioClip AalarmaFin;
+    [Space]
+    public GameObject naveRobot;
+    public GameObject jugador1;
+    public GameObject jugador2;
+    public GameObject jugador3;
+    public GameObject jugador4;
+    public CinemachineTargetGroup camGroup;
+    private CinemachineTargetGroup.Target finalizador;
 
     private float mili;
     private int segundos;
@@ -56,12 +64,15 @@ public class InGameController : MonoBehaviour
     private float speed3;
 
     private int puntuacion1;
+    private int vaGanando;
     private int puntuacion2;
     private int puntuacion3;
     private int puntuacion4;
 
     private void Awake()
     {
+        naveRobot.SetActive(false);
+        comenzar = false;
         StartImgs = StartCanvas.GetComponentsInChildren<Image>();
 
         puntaje1.text = 0.ToString();
@@ -95,6 +106,24 @@ public class InGameController : MonoBehaviour
         StartCoroutine(ChangeSpeed1(0.1f, 35, tiempoBlurStart));
         StartCoroutine(ChangeSpeed2(128, 0, tiempoBlurStart));
         StartCoroutine(ChangeSpeed3(255, 0, tiempoBlurStart));
+
+        StartCoroutine(ComenzarAudios());
+    }
+
+    IEnumerator ComenzarAudios()
+    {
+        yield return new WaitForSecondsRealtime(tiempoBlurStart);
+        naveRobot.SetActive(true);
+        yield return new WaitForSecondsRealtime(tiempoBlurStart);
+        source1.clip = Aintroduccion;
+        source1.Play();
+        yield return new WaitForSecondsRealtime(0.3f);
+        source2.clip = A321;
+        source2.Play();
+        yield return new WaitForSecondsRealtime(3.2f);
+        comenzar = true;
+        yield return new WaitForSecondsRealtime(8);
+        naveRobot.SetActive(false);
     }
 
     public void Pausar()
@@ -129,8 +158,62 @@ public class InGameController : MonoBehaviour
     {
         PlayCanvas.SetActive(false);
         FinalCanvas.SetActive(true);
-        depth.focusDistance.value = 0.1f;
+        //depth.focusDistance.value = 0.1f;
         StartBlack.color = new Color32(0, 0, 0, 128);
+
+        //camGroup.m_Targets = new CinemachineTargetGroup.Target[1];
+        if (vaGanando == 1)
+        {
+            finalizador.target = jugador1.transform;
+            finalizador.weight = 1;
+            finalizador.radius = 1;
+
+            jugador1.GetComponent<enumTest>().Bailar();
+
+            camGroup.m_Targets.SetValue(finalizador, 0);
+            camGroup.m_Targets.SetValue(finalizador, 1);
+            camGroup.m_Targets.SetValue(finalizador, 2);
+            camGroup.m_Targets.SetValue(finalizador, 3);
+        }
+        if (vaGanando == 2)
+        {
+            finalizador.target = jugador2.transform;
+            finalizador.weight = 1;
+            finalizador.radius = 1;
+
+            jugador2.GetComponent<enumTest>().Bailar();
+
+            camGroup.m_Targets.SetValue(finalizador, 0);
+            camGroup.m_Targets.SetValue(finalizador, 1);
+            camGroup.m_Targets.SetValue(finalizador, 2);
+            camGroup.m_Targets.SetValue(finalizador, 3);
+        }
+        if (vaGanando == 3)
+        {
+            finalizador.target = jugador3.transform;
+            finalizador.weight = 1;
+            finalizador.radius = 1;
+
+            jugador3.GetComponent<enumTest>().Bailar();
+
+            camGroup.m_Targets.SetValue(finalizador, 0);
+            camGroup.m_Targets.SetValue(finalizador, 1);
+            camGroup.m_Targets.SetValue(finalizador, 2);
+            camGroup.m_Targets.SetValue(finalizador, 3);
+        }
+        if (vaGanando == 4)
+        {
+            finalizador.target = jugador4.transform;
+            finalizador.weight = 1;
+            finalizador.radius = 1;
+
+            jugador4.GetComponent<enumTest>().Bailar();
+
+            camGroup.m_Targets.SetValue(finalizador, 0);
+            camGroup.m_Targets.SetValue(finalizador, 1);
+            camGroup.m_Targets.SetValue(finalizador, 2);
+            camGroup.m_Targets.SetValue(finalizador, 3);
+        }
     }
 
     public void Salir()
@@ -150,6 +233,11 @@ public class InGameController : MonoBehaviour
             puntuacion1 += puntajePorPersona;
         }
         puntaje1.text = puntuacion1.ToString();
+
+        if (puntuacion1 > puntuacion2 && puntuacion1 > puntuacion3 && puntuacion1 > puntuacion4)
+        {
+            vaGanando = 1;
+        }
     }
     public void SubirPuntos2(bool autogolpe)
     {
@@ -163,6 +251,11 @@ public class InGameController : MonoBehaviour
             puntuacion2 += puntajePorPersona;
         }
         puntaje2.text = puntuacion2.ToString();
+
+        if (puntuacion2 > puntuacion1 && puntuacion2 > puntuacion3 && puntuacion2 > puntuacion4)
+        {
+            vaGanando = 2;
+        }
     }
     public void SubirPuntos3(bool autogolpe)
     {
@@ -176,6 +269,11 @@ public class InGameController : MonoBehaviour
             puntuacion3 += puntajePorPersona;
         }
         puntaje3.text = puntuacion3.ToString();
+
+        if (puntuacion3 > puntuacion1 && puntuacion3 > puntuacion2 && puntuacion3 > puntuacion4)
+        {
+            vaGanando = 3;
+        }
     }
     public void SubirPuntos4(bool autogolpe)
     {
@@ -189,6 +287,11 @@ public class InGameController : MonoBehaviour
             puntuacion4 += puntajePorPersona;
         }
         puntaje4.text = puntuacion4.ToString();
+
+        if (puntuacion4 > puntuacion1 && puntuacion4 > puntuacion2 && puntuacion4 > puntuacion3)
+        {
+            vaGanando = 4;
+        }
     }
 
     public Vector3 DameRespawn()
@@ -237,7 +340,6 @@ public class InGameController : MonoBehaviour
             if (minutos < 0)
             {
                 timer.text = "0:00";
-                Debug.Log("Fin");
                 FinalizarJuego();
                 comenzar = false;
             }

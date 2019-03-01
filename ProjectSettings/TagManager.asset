@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Objetos
   - Bala
+  - CambiarTipoBala1
+  - CambiarTipoBala2
+  - CambiarTipoBala3
   layers:
   - Default
   - TransparentFX

@@ -20,6 +20,7 @@ public class Disparo : MonoBehaviour
     
     /*Private Variables*/
     private float count;
+    public int tipoBala;
 
     /*Shooter*/
     private string shooter1 = "Fire1";
@@ -44,8 +45,19 @@ public class Disparo : MonoBehaviour
                     numeroBalas -= 1;
                     count = 0;
                     GameObject balita = Instantiate(bala, puntoDisparo.position, puntoDisparo.rotation, padre);
-
                     Bala bali = balita.GetComponent<Bala>();
+                    if (tipoBala == 1)
+                    {
+                        bali.tipoDeBala = Bala.balaT.Basica;
+                    }
+                    if (tipoBala == 2)
+                    {
+                        bali.tipoDeBala = Bala.balaT.BasicaRebota;
+                    }
+                    if (tipoBala == 3)
+                    {
+                        bali.tipoDeBala = Bala.balaT.VelVariable;
+                    }
 
                     if (shooter == shooter1)
                     {

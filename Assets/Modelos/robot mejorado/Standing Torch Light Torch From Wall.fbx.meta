@@ -1,0 +1,286 @@
+fileFormatVersion: 2
+guid: 0686ccf1593142b4c98844b5897eb033
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: AntebrazoIz
+    100002: brazoD
+    100004: brazoIz
+    100006: cabeza
+    100008: CanonD
+    100010: espinillaD
+    100012: espinillaIz
+    100014: hombreD
+    100016: hombroIz
+    100018: ManoIz
+    100020: mixamorig:Head
+    100022: mixamorig:HeadTop_End
+    100024: mixamorig:Hips
+    100026: mixamorig:LeftArm
+    100028: mixamorig:LeftFoot
+    100030: mixamorig:LeftForeArm
+    100032: mixamorig:LeftHand
+    100034: mixamorig:LeftHandIndex1
+    100036: mixamorig:LeftHandIndex2
+    100038: mixamorig:LeftHandIndex3
+    100040: mixamorig:LeftHandIndex4
+    100042: mixamorig:LeftLeg
+    100044: mixamorig:LeftShoulder
+    100046: mixamorig:LeftToe_End
+    100048: mixamorig:LeftToeBase
+    100050: mixamorig:LeftUpLeg
+    100052: mixamorig:Neck
+    100054: mixamorig:RightArm
+    100056: mixamorig:RightFoot
+    100058: mixamorig:RightForeArm
+    100060: mixamorig:RightHand
+    100062: mixamorig:RightHandIndex1
+    100064: mixamorig:RightHandIndex2
+    100066: mixamorig:RightHandIndex3
+    100068: mixamorig:RightHandIndex4
+    100070: mixamorig:RightLeg
+    100072: mixamorig:RightShoulder
+    100074: mixamorig:RightToe_End
+    100076: mixamorig:RightToeBase
+    100078: mixamorig:RightUpLeg
+    100080: mixamorig:Spine
+    100082: mixamorig:Spine1
+    100084: mixamorig:Spine2
+    100086: pecho
+    100088: pelvis
+    100090: pelvis1
+    100092: pieD
+    100094: pieIz
+    100096: piernaD
+    100098: piernaIz
+    100100: polySurface23
+    100102: rodillaD
+    100104: rodillaIz
+    100106: //RootNode
+    100108: transform34
+    100110: transform35
+    100112: transform36
+    100114: transform37
+    100116: transform38
+    100118: transform39
+    100120: transform40
+    100122: transform41
+    100124: transform42
+    100126: transform43
+    100128: transform44
+    100130: transform45
+    100132: transform46
+    100134: transform47
+    100136: transform48
+    100138: transform49
+    100140: transform50
+    100142: transform51
+    400000: AntebrazoIz
+    400002: brazoD
+    400004: brazoIz
+    400006: cabeza
+    400008: CanonD
+    400010: espinillaD
+    400012: espinillaIz
+    400014: hombreD
+    400016: hombroIz
+    400018: ManoIz
+    400020: mixamorig:Head
+    400022: mixamorig:HeadTop_End
+    400024: mixamorig:Hips
+    400026: mixamorig:LeftArm
+    400028: mixamorig:LeftFoot
+    400030: mixamorig:LeftForeArm
+    400032: mixamorig:LeftHand
+    400034: mixamorig:LeftHandIndex1
+    400036: mixamorig:LeftHandIndex2
+    400038: mixamorig:LeftHandIndex3
+    400040: mixamorig:LeftHandIndex4
+    400042: mixamorig:LeftLeg
+    400044: mixamorig:LeftShoulder
+    400046: mixamorig:LeftToe_End
+    400048: mixamorig:LeftToeBase
+    400050: mixamorig:LeftUpLeg
+    400052: mixamorig:Neck
+    400054: mixamorig:RightArm
+    400056: mixamorig:RightFoot
+    400058: mixamorig:RightForeArm
+    400060: mixamorig:RightHand
+    400062: mixamorig:RightHandIndex1
+    400064: mixamorig:RightHandIndex2
+    400066: mixamorig:RightHandIndex3
+    400068: mixamorig:RightHandIndex4
+    400070: mixamorig:RightLeg
+    400072: mixamorig:RightShoulder
+    400074: mixamorig:RightToe_End
+    400076: mixamorig:RightToeBase
+    400078: mixamorig:RightUpLeg
+    400080: mixamorig:Spine
+    400082: mixamorig:Spine1
+    400084: mixamorig:Spine2
+    400086: pecho
+    400088: pelvis
+    400090: pelvis1
+    400092: pieD
+    400094: pieIz
+    400096: piernaD
+    400098: piernaIz
+    400100: polySurface23
+    400102: rodillaD
+    400104: rodillaIz
+    400106: //RootNode
+    400108: transform34
+    400110: transform35
+    400112: transform36
+    400114: transform37
+    400116: transform38
+    400118: transform39
+    400120: transform40
+    400122: transform41
+    400124: transform42
+    400126: transform43
+    400128: transform44
+    400130: transform45
+    400132: transform46
+    400134: transform47
+    400136: transform48
+    400138: transform49
+    400140: transform50
+    400142: transform51
+    2100000: morados
+    2100002: blinn2
+    2100004: Azul
+    4300000: pelvis1
+    7400000: mixamo.com
+    9500000: //RootNode
+    13700000: pelvis1
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Azul
+    second: {fileID: 2100000, guid: f26c96b859efaf843a43781a6ca4b5c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn2
+    second: {fileID: 2100000, guid: 3286b7d87d28358449ff8dbda9c9fd4c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: morados
+    second: {fileID: 2100000, guid: 8fb798d76a4568b4eaffd7a676a55308, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: mixamo.com
+      takeName: mixamo.com
+      firstFrame: 0
+      lastFrame: 61
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 1
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

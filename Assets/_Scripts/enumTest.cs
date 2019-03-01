@@ -14,10 +14,16 @@ public class enumTest : MonoBehaviour
     public float gravity = 9.81f;
     public float dashdistance = 5f;
     public Vector3 Drag;
-    /*[Space]
-    public AudioSource source;
+    public float esperaEntreDrag = 5;
     [Space]
-    public AudioClip */
+    public AudioSource source;
+    public Animator anim;
+    public GameObject Rmat;
+    public Disparo disp;
+    public float tiempoRespawnMat = 3;
+
+    private readonly string correr = "corriendo";
+    private readonly string baile = "baile";
     
     /*Horizontal Movement*/
     private string horizontal1 = "Horizontal1";
@@ -51,10 +57,12 @@ public class enumTest : MonoBehaviour
     private Vector3 _velocity;
 
     private Vector3 move;
+    private float dashLimit = 1;
 
     private void Start()
     {
         _controller = GetComponent<CharacterController>();
+        StartCoroutine(Respawn());
     }
 
     private void Awake()
@@ -97,17 +105,30 @@ public class enumTest : MonoBehaviour
     {
         if (controller.comenzar)
         {
+            dashLimit -= esperaEntreDrag;
+
             move = new Vector3(Input.GetAxis(horizontal), 0, Input.GetAxis(vertical));
             _controller.Move(move * Time.deltaTime * speed);
             if (move != Vector3.zero)
             {
                 transform.forward = move;
+                anim.SetBool(correr, true);
+            }
+            else
+            {
+                anim.SetBool(correr, false);
             }
 
             if (Input.GetButtonDown(power))
             {
-                Debug.Log("Dash");
-                _velocity += Vector3.Scale(transform.forward, dashdistance * new Vector3((Mathf.Log(1f / (Time.deltaTime * Drag.x + 1)) / -Time.deltaTime), 0, (Mathf.Log(1f / (Time.deltaTime * Drag.z + 1)) / -Time.deltaTime)));
+                if (dashLimit <= 0)
+                {
+                    dashLimit = esperaEntreDrag;
+                    Debug.Log("Dash");
+                    _velocity += (Vector3.Scale(transform.forward, dashdistance * new Vector3((Mathf.Log(1f / (Time.deltaTime * Drag.x + 2)) / -Time.deltaTime), 0, (Mathf.Log(1f / (Time.deltaTime * Drag.z + 2)) / -Time.deltaTime))) * 2);
+                    source.Stop();
+                    source.Play();
+                }
             }
 
             _velocity.y += gravity * Time.deltaTime;
@@ -181,6 +202,37 @@ public class enumTest : MonoBehaviour
             Drag = new Vector3(0, transform.position.y, 0);
             _controller.Move(pos);
             transform.position = pos;
+            StartCoroutine(Respawn());
         }
+    }
+
+    IEnumerator Respawn()
+    {
+        Rmat.SetActive(true);
+        yield return new WaitForSecondsRealtime(tiempoRespawnMat);
+        Rmat.SetActive(false);
+    }
+
+    public void Bailar()
+    {
+        anim.SetTrigger("baile");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "CambiarTipoBala1")
+        {
+            disp.tipoBala = 1;
+        }
+        if (other.tag == "CambiarTipoBala2")
+        {
+            disp.tipoBala = 2;
+        }
+        if (other.tag == "CambiarTipoBala3")
+        {
+            disp.tipoBala = 3;
+        }
+
+        other.gameObject.GetComponent<RespawnMat>().Apagar();
     }
 }
