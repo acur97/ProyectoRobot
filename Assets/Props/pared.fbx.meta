@@ -289,7 +289,32 @@ ModelImporter:
     2300000: polySurface111
     3300000: polySurface111
     4300000: polySurface111
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: aire
+    second: {fileID: 2100000, guid: 9128500ac10b226429ac5a6ef97fb8e5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: neon
+    second: {fileID: 2100000, guid: ce155070da4819849b11694dcdd5f85e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pared
+    second: {fileID: 2100000, guid: 2c1aff57d9e1de34e94d0df9e0e87eaa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: torres
+    second: {fileID: 2100000, guid: 87630f1c7540fc344ae7d4a9313c0678, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tubos
+    second: {fileID: 2100000, guid: be9ae490682337f408ab6d25e9d5967a, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
