@@ -81,7 +81,22 @@ ModelImporter:
     4300004: pPipe9
     4300006: pPipe10
     4300008: pPipe13
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Blin_metal
+    second: {fileID: 2100000, guid: 9968835abcfbe174aaf9cb56bb8c8dc9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: c720a5469d571a74db50f7f85173d422, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: todo
+    second: {fileID: 2100000, guid: a29d3e8de20138f439dd288f5e8f4426, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
