@@ -256,8 +256,8 @@ GameObject:
   - component: {fileID: 291850583464986181}
   - component: {fileID: 291850583464986180}
   - component: {fileID: 291850583464986183}
-  - component: {fileID: 291850583464986182}
   - component: {fileID: 291850583464986177}
+  - component: {fileID: 291850583464986182}
   m_Layer: 0
   m_Name: 'Player 3 '
   m_TagString: Untagged
@@ -326,6 +326,25 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &291850583464986177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291850583464986176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e7c2828ff888ad43b2c983193faa911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  disparo: {fileID: 291850583987244305}
+  jug: 2
+  speed: 5
+  gravity: -29.81
+  dashdistance: 5
+  Drag: {x: 8, y: 0, z: 8}
 --- !u!143 &291850583464986182
 CharacterController:
   m_ObjectHideFlags: 0
@@ -344,24 +363,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &291850583464986177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 291850583464986176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e7c2828ff888ad43b2c983193faa911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jug: 2
-  speed: 5
-  gravity: -29.81
-  dashdistance: 5
-  Drag: {x: 8, y: 0, z: 8}
-  respawn: {fileID: 0}
 --- !u!1 &291850583475301375
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,9 +439,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91afb10241fdb394ab9a78552837c7c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jug: 2
+  controller: {fileID: 0}
   cantidadBalas: 5
   tiempoRecarga: 2
   bala: {fileID: 5749715018209033547, guid: b21e12addf2e1e345b82a529a58f3c23, type: 3}
   padre: {fileID: 0}
   puntoDisparo: {fileID: 291850583475301372}
+  shooter: 

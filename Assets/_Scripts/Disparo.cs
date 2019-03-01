@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class Disparo : MonoBehaviour
 {
-
-
-    public enum jugadores {Jugador1, Jugador2, Jugador3, Jugador4}
-    public jugadores jug;
-
-
+    public InGameController controller;
+    
     public int cantidadBalas;
     private int numeroBalas;
     public float tiempoRecarga;
@@ -17,72 +13,66 @@ public class Disparo : MonoBehaviour
     public GameObject bala;
     public Transform padre;
     public Transform puntoDisparo;
-
-
+    
     /*Private Variables*/
     private float count;
 
     /*Shooter*/
- 
-    private string shooter;
+    private string shooter1 = "Fire1";
+    private string shooter2 = "Fire2";
+    private string shooter3 = "Fire3";
+    private string shooter4 = "Fire4";
+    public string shooter;
 
     private void Awake()
     {
-        
-
-        if (jugadores.Jugador1 == jug)
-        {
-
-            shooter = "Fire1";
-         
-     
-        }
-
-        if (jugadores.Jugador2 == jug)
-        {
-
-            shooter = "Fire2";
-         
-        }
-
-        if (jugadores.Jugador3 == jug)
-        {
-
-            shooter  = "Fire3";
-         
-        }
-
-        if (jugadores.Jugador4 == jug)
-        {
-
-            shooter  = "Fire4";
-        }
-
         numeroBalas = cantidadBalas;
     }
 
     private void Update()
     {
-        if (Input.GetButtonDown(shooter))
+        if (controller.comenzar)
         {
-            if (numeroBalas > 0)
+            if (Input.GetButtonDown(shooter))
             {
-                numeroBalas -= 1;
+                if (numeroBalas > 0)
+                {
+                    numeroBalas -= 1;
+                    count = 0;
+                    GameObject balita = Instantiate(bala, puntoDisparo.position, puntoDisparo.rotation, padre);
+
+                    Bala bali = balita.GetComponent<Bala>();
+
+                    if (shooter == shooter1)
+                    {
+                        bali.dueno = 1;
+                    }
+                    if (shooter == shooter2)
+                    {
+                        bali.dueno = 2;
+                    }
+                    if (shooter == shooter3)
+                    {
+                        bali.dueno = 3;
+                    }
+                    if (shooter == shooter4)
+                    {
+                        bali.dueno = 4;
+                    }
+                }
+            }
+
+            if (count >= tiempoRecarga)
+            {
                 count = 0;
-                Instantiate(bala, puntoDisparo.position, puntoDisparo.rotation, padre);
+
+                if (numeroBalas < cantidadBalas)
+                {
+                    numeroBalas += 1;
+                }
             }
+
+            count += Time.unscaledDeltaTime;
         }
-
-        if (count >= tiempoRecarga)
-        {
-            count = 0;
-
-            if (numeroBalas < cantidadBalas)
-            {
-                numeroBalas += 1;
-            }
-        }
-
-        count += Time.unscaledDeltaTime;
     }
 }
