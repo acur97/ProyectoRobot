@@ -5,26 +5,17 @@ using UnityEngine;
 public class enumTest : MonoBehaviour
 {
 
-
+    public InGameController controller;
     /*Public variables*/
     public enum jugadores {Jugador1, Jugador2, Jugador3, Jugador4}
     public jugadores jug;
 
     public float speed = 5f;
     public float gravity = 9.81f;
-    public float groundDistance = 0.2f;
     public float dashdistance = 5f;
-    public LayerMask Ground;
     public Vector3 Drag;
-    public Transform respawn;
 
-
-
-
-
-
-
-
+    
     /*Horizontal Movement*/
     private string horizontal1 = "Horizontal1";
     private string horizontal2 = "Horizontal2";
@@ -58,18 +49,13 @@ public class enumTest : MonoBehaviour
 
     private CharacterController _controller;
     private Vector3 _velocity;
-    private bool _isGrounded = true;
-    private Transform _groundChecker;
 
+    private Vector3 move;
 
     private void Start()
     {
         _controller = GetComponent<CharacterController>();
-        _groundChecker = transform.GetChild(0);
     }
-
-
-
     
 
     private void Awake()
@@ -80,9 +66,6 @@ public class enumTest : MonoBehaviour
             horizontal = horizontal1;
             vertical = vertical1;
             power = power1;
-
-
-            
         }
 
         if (jugadores.Jugador2 == jug)
@@ -106,7 +89,6 @@ public class enumTest : MonoBehaviour
             horizontal = horizontal3;
             vertical = vertical3;
             power = power4;
-
         }
     }
 
@@ -114,14 +96,7 @@ public class enumTest : MonoBehaviour
 /*Move and Power Dash of player */
     private void Update()
     {
-
-        _isGrounded = Physics.CheckSphere(_groundChecker.position, groundDistance, Ground, QueryTriggerInteraction.Ignore);
-        if(_isGrounded && _velocity.y < 0)
-        {
-            _velocity.y = 0f;
-        }
-
-        Vector3 move = new Vector3(Input.GetAxis(horizontal), 0, Input.GetAxis(vertical));
+        move = new Vector3(Input.GetAxis(horizontal), 0, Input.GetAxis(vertical));
         _controller.Move(move * Time.deltaTime * speed);
         if (move != Vector3.zero)
         {
@@ -153,13 +128,34 @@ public class enumTest : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bala")
         {
+            Vector3 pos = controller.DameRespawn();
+            pos = new Vector3(pos.x, transform.position.y, pos.z);
+            move = new Vector3(0, transform.position.y, 0);
+            _velocity = new Vector3(0, transform.position.y, 0);
+            Drag = new Vector3(0, transform.position.y, 0);
+            _controller.Move(pos);
+            transform.position = pos;
+            var bala = collision.gameObject.GetComponent<Bala>();
+            bala.controller = controller;
 
-            transform.position = respawn.position;
+            if (jugadores.Jugador1 == jug)
+            {
+                bala.dueno = 1;
+            }
+            if (jugadores.Jugador2 == jug)
+            {
+                bala.dueno = 2;
+            }
+            if (jugadores.Jugador3 == jug)
+            {
+                bala.dueno = 3;
+            }
+            if (jugadores.Jugador4 == jug)
+            {
+                bala.dueno = 4;
+            }
+
             Destroy(collision.gameObject);
-
         }
     }
-
-
-
 }

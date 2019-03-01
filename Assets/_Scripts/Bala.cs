@@ -17,6 +17,9 @@ public class Bala : MonoBehaviour
     public float variacion = 1;
     [Space]
     public ConstantForce force;
+    [Space]
+    public int dueno;
+    public InGameController controller;
 
     private bool arranque;
     private int contadorChoques;
