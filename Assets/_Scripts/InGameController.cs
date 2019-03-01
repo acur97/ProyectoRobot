@@ -158,7 +158,7 @@ public class InGameController : MonoBehaviour
     {
         PlayCanvas.SetActive(false);
         FinalCanvas.SetActive(true);
-        //depth.focusDistance.value = 0.1f;
+        depth.focusDistance.value = 200;
         StartBlack.color = new Color32(0, 0, 0, 128);
 
         //camGroup.m_Targets = new CinemachineTargetGroup.Target[1];
