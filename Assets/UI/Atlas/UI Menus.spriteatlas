@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI Menus
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 2
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 6537e30eb6691814487b8991ee81fe1d, type: 3}
+    totalSpriteSurfaceArea: 4652009
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 5f4f87803876d244996f987c52571e65, type: 3}
+  - {fileID: 21300000, guid: 5e7ad7d0d6429954cb83efadbf4e4349, type: 3}
+  - {fileID: 21300000, guid: 354a9725ba5004c43a0514d67f60d0aa, type: 3}
+  - {fileID: 21300000, guid: abfdcd6801a297f49b3b789b25e34868, type: 3}
+  - {fileID: 21300000, guid: c5c207ccb573afa4a90207afbe9b2b39, type: 3}
+  - {fileID: 21300000, guid: 692c2afd63cc05841977976a35526ea7, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - rigs_banner
+  - victoria_ui
+  - pause_ui
+  - rigs_logo_ui
+  - highscore_ui
+  - start_ui
+  m_Tag: UI Menus
+  m_IsVariant: 0

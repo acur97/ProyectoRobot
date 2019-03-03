@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI In game
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 2
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 366f4955017db0143bdba03ce5fdc84f, type: 3}
+    totalSpriteSurfaceArea: 2010065
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: e30198604c80a1942a26d4737dc8ad5c, type: 3}
+  - {fileID: 21300000, guid: 3b9aed5bf453fe34a8c5ff762a7e11fb, type: 3}
+  - {fileID: 21300000, guid: 100b287b95c33a94fa1a383581136019, type: 3}
+  - {fileID: 21300000, guid: fdbc45db4f9627c4fa667a751ff25b70, type: 3}
+  - {fileID: 21300000, guid: f015f93dee2be4f4fb5f6da4bf5159c0, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - player_3_score_ui
+  - player_1_score_ui
+  - clock_ui
+  - player_2_score_ui
+  - player_4_score_ui
+  m_Tag: UI In game
+  m_IsVariant: 0

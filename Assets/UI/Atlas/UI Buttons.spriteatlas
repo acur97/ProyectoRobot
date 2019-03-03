@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI Buttons
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 2
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 84f004cbeb79b6641b7f5670b54c4f19, type: 3}
+    totalSpriteSurfaceArea: 1489176
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 05b3dad5964e6b94fa739d9d99672583, type: 3}
+  - {fileID: 21300000, guid: 90c994f52acfeb147b094ba700a579e2, type: 3}
+  - {fileID: 21300000, guid: 48d5e236f8f08ee4e8372899fe695a2d, type: 3}
+  - {fileID: 21300000, guid: 6dbb2d46a57996f4e91a36bd4faa70b6, type: 3}
+  - {fileID: 21300000, guid: dc5961b63f7586945b6dc8bb800f8b3b, type: 3}
+  - {fileID: 21300000, guid: c7351127194558d4a84d408e11673ce5, type: 3}
+  - {fileID: 21300000, guid: a16dffc856c16854895fd0a6f17db98c, type: 3}
+  - {fileID: 21300000, guid: 35ea99aaea57ed842a6151139aeca7ec, type: 3}
+  - {fileID: 21300000, guid: a8a91c3b2c4e73448a5e033f412f5ab4, type: 3}
+  - {fileID: 21300000, guid: 7dbb77ee9648dc34ab4002092ed7541c, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - menu_button_press
+  - reanudar_button_press
+  - menu_button_hover
+  - start_ui
+  - salir_button_hover
+  - menu_button_normal
+  - reanudar_button_hover
+  - reanudar_button_normal
+  - salir_button_press
+  - salir_button_normal
+  m_Tag: UI Buttons
+  m_IsVariant: 0

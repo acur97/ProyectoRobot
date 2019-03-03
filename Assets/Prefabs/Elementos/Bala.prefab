@@ -115,7 +115,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!75 &5749715018209033546
 ConstantForce:
@@ -151,7 +151,8 @@ AudioSource:
   m_GameObject: {fileID: 5749715018209033547}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243365958455872280, guid: fa671adb9ba2a6144905e6fd191d9098,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
