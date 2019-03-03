@@ -69,7 +69,6 @@ public class enumTest : MonoBehaviour
     {
         if (jugadores.Jugador1 == jug)
         {
-            //salto = salto1;
             horizontal = horizontal1;
             vertical = vertical1;
             power = power1;
@@ -107,7 +106,7 @@ public class enumTest : MonoBehaviour
         {
             dashLimit -= esperaEntreDrag;
 
-            move = new Vector3(Input.GetAxis(horizontal), 0, Input.GetAxis(vertical));
+            move = new Vector3(Input.GetAxis(vertical), 0, Input.GetAxis(horizontal));
             _controller.Move(move * Time.deltaTime * speed);
             if (move != Vector3.zero)
             {
@@ -131,7 +130,7 @@ public class enumTest : MonoBehaviour
                 }
             }
 
-            _velocity.y += gravity * Time.deltaTime;
+            //_velocity.y += gravity * Time.deltaTime;
 
             _velocity.x /= 1 + Drag.x * Time.deltaTime;
             //_velocity.y /= 1 + Drag.y * Time.deltaTime;
