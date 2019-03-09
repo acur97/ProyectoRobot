@@ -170,7 +170,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: morados
-    second: {fileID: 2100000, guid: 8fb798d76a4568b4eaffd7a676a55308, type: 2}
+    second: {fileID: 2100000, guid: 0062e1793ed1d8a4ea82f3811906b060, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
