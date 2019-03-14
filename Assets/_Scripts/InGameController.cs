@@ -51,7 +51,7 @@ public class InGameController : MonoBehaviour
     public GameObject jugador4;
     public CinemachineTargetGroup camGroup;
     [Space]
-    public AudioClip SonidosVictoria;
+    public AudioClip[] SonidosVictoria;
     private CinemachineTargetGroup.Target finalizador1;
     private CinemachineTargetGroup.Target finalizador2;
     private CinemachineTargetGroup.Target finalizador3;
