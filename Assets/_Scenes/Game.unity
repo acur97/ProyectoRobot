@@ -453,7 +453,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119468386}
-  m_LocalRotation: {x: 0.46207517, y: 0.014004839, z: -0.0072981706, w: 0.88670015}
+  m_LocalRotation: {x: 0.46207517, y: 0.014004854, z: -0.007298177, w: 0.88670015}
   m_LocalPosition: {x: 0, y: 35, z: -25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -862,7 +862,9 @@ MonoBehaviour:
   jugador3: {fileID: 291850583677737798}
   jugador4: {fileID: 3329993002447788273}
   camGroup: {fileID: 692431929}
-  SonidosVictoria: {fileID: 0}
+  SonidosVictoria:
+  - {fileID: 0}
+  eventSystem: {fileID: 712596840}
 --- !u!114 &196267539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2020,7 +2022,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 692431925}
-  m_LocalRotation: {x: 0.46207517, y: 0.014004839, z: -0.0072981706, w: 0.88670015}
+  m_LocalRotation: {x: 0.46207517, y: 0.014004854, z: -0.007298177, w: 0.88670015}
   m_LocalPosition: {x: -0.29797122, y: 49.629982, z: -34.454105}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2240,10 +2242,10 @@ MonoBehaviour:
   m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal1
-  m_VerticalAxis: Vertical1
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
+  m_HorizontalAxis: J1_H
+  m_VerticalAxis: J1_V
+  m_SubmitButton: J1_F
+  m_CancelButton: Pause
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
@@ -11093,6 +11095,10 @@ MonoBehaviour:
   Rmat: {fileID: 2241388564181537482}
   disp: {fileID: 291850584212705303}
   tiempoRespawnMat: 3
+  Horizontal: 
+  Vertical: 
+  Fire: 
+  Power: 
 --- !u!1 &291850584212705301
 GameObject:
   m_ObjectHideFlags: 0
@@ -11151,6 +11157,7 @@ MonoBehaviour:
   Arecarga: {fileID: 8300000, guid: 601c638cf4d7bad4fa46ed648ec77e39, type: 3}
   tipoBala: 0
   shooter: 
+  Njug: 0
 --- !u!1 &305118124918421902
 GameObject:
   m_ObjectHideFlags: 0
@@ -24157,6 +24164,10 @@ MonoBehaviour:
   Rmat: {fileID: 8812327844231987480}
   disp: {fileID: 2297639997290529291}
   tiempoRespawnMat: 3
+  Horizontal: 
+  Vertical: 
+  Fire: 
+  Power: 
 --- !u!4 &2297639995374739996
 Transform:
   m_ObjectHideFlags: 0
@@ -24442,6 +24453,7 @@ MonoBehaviour:
   Arecarga: {fileID: 8300000, guid: 601c638cf4d7bad4fa46ed648ec77e39, type: 3}
   tipoBala: 0
   shooter: 
+  Njug: 0
 --- !u!4 &2297639997290529292
 Transform:
   m_ObjectHideFlags: 0
@@ -26797,6 +26809,7 @@ MonoBehaviour:
   Arecarga: {fileID: 8300000, guid: 601c638cf4d7bad4fa46ed648ec77e39, type: 3}
   tipoBala: 0
   shooter: 
+  Njug: 0
 --- !u!1 &2466534180047145983
 GameObject:
   m_ObjectHideFlags: 0
@@ -26840,6 +26853,10 @@ MonoBehaviour:
   Rmat: {fileID: 3960499633842577415}
   disp: {fileID: 2466534180047145982}
   tiempoRespawnMat: 3
+  Horizontal: 
+  Vertical: 
+  Fire: 
+  Power: 
 --- !u!1 &2466534180127403043
 GameObject:
   m_ObjectHideFlags: 0
@@ -35741,6 +35758,10 @@ MonoBehaviour:
   Rmat: {fileID: 4986646903279589175}
   disp: {fileID: 3329993003657943653}
   tiempoRespawnMat: 3
+  Horizontal: 
+  Vertical: 
+  Fire: 
+  Power: 
 --- !u!1 &3329993002447788273
 GameObject:
   m_ObjectHideFlags: 0
@@ -36142,6 +36163,7 @@ MonoBehaviour:
   Arecarga: {fileID: 8300000, guid: 601c638cf4d7bad4fa46ed648ec77e39, type: 3}
   tipoBala: 0
   shooter: 
+  Njug: 0
 --- !u!4 &3329993003657943674
 Transform:
   m_ObjectHideFlags: 0

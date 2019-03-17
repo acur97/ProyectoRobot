@@ -1,11 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.Input;
 
-public class PlayerController : MonoBehaviour
+public class JugadorController : MonoBehaviour
 {
-    public Controls controls;
     public InGameController controller;
     public Disparo disparo;
     /*Public variables*/
@@ -26,34 +24,6 @@ public class PlayerController : MonoBehaviour
 
     private readonly string correr = "corriendo";
     private readonly string baile = "baile";
-    
-    /*Horizontal Movement*/
-    private string horizontal1 = "Horizontal1";
-    private string horizontal2 = "Horizontal2";
-    private string horizontal3 = "Horizontal3";
-    private string horizontal4 = "Horizontal4";
-    private string horizontal;
-
-    /*Vertical Movement*/
-    private string vertical1 = "Vertical1";
-    private string vertical2 = "Vertical2";
-    private string vertical3 = "Vertical3";
-    private string vertical4 = "Vertical4";
-    private string vertical;
-
-    ///*Shooter*/
-    private string shooter1 = "Fire1";
-    private string shooter2 = "Fire2";
-    private string shooter3 = "Fire3";
-    private string shooter4 = "Fire4";
-    private string shooter;
-
-    /*PowerUP Dash*/
-    private string power1 = "Power1";
-    private string power2 = "Power2";
-    private string power3 = "Power3";
-    private string power4 = "Power4";
-    private string power;
 
     private CharacterController _controller;
     private Vector3 _velocity;
@@ -61,15 +31,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 move;
     private float dashLimit = 1;
 
-    private void OnEnable()
-    {
-        controls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        controls.Disable();
-    }
+    public string Horizontal;
+    public string Vertical;
+    public string Fire;
+    public string Power;
 
     private void Start()
     {
@@ -79,40 +44,23 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        controls.Acciones.Disparo.performed += _disparo => DisparoJugador();
-        controls.Acciones.Poder.performed += _poder => PoderJugador();
-        controls.Acciones.Mover.performed += _mover => MoverJugador(_mover.ReadValue<Vector2>());
-
+        disparo.shooter = Fire;
         if (jugadores.Jugador1 == jug)
         {
-            horizontal = horizontal1;
-            vertical = vertical1;
-            power = power1;
-            shooter = shooter1;
+            disparo.Njug = 1;
         }
         if (jugadores.Jugador2 == jug)
         {
-            horizontal = horizontal2;
-            vertical = vertical2;
-            power = power2;
-            shooter = shooter2;
+            disparo.Njug = 2;
         }
         if (jugadores.Jugador3 == jug)
         {
-            horizontal = horizontal3;
-            vertical = vertical3;
-            power = power3;
-            shooter = shooter3;
+            disparo.Njug = 3;
         }
         if (jugadores.Jugador4 == jug)
         {
-            horizontal = horizontal4;
-            vertical = vertical4;
-            power = power4;
-            shooter = shooter4;
+            disparo.Njug = 4;
         }
-
-        disparo.shooter = shooter;
     }
 
 /*Move and Power Dash of player */
@@ -122,7 +70,7 @@ public class PlayerController : MonoBehaviour
         {
             dashLimit -= esperaEntreDrag;
 
-            move = new Vector3(Input.GetAxis(vertical), 0, Input.GetAxis(horizontal));
+            move = new Vector3(Input.GetAxis(Vertical), 0, Input.GetAxis(Horizontal));
             _controller.Move(move * Time.deltaTime * speed);
             if (move != Vector3.zero)
             {
@@ -134,7 +82,7 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool(correr, false);
             }
 
-            if (Input.GetButtonDown(power))
+            if (Input.GetButtonDown(Power))
             {
                 if (dashLimit <= 0)
                 {
@@ -155,21 +103,6 @@ public class PlayerController : MonoBehaviour
 
             _controller.Move(_velocity * Time.deltaTime);
         }
-    }
-
-    public void MoverJugador(Vector2 direccion)
-    {
-        Debug.Log(direccion);
-    }
-
-    public void DisparoJugador()
-    {
-        Debug.Log("disparo");
-    }
-
-    public void PoderJugador()
-    {
-        Debug.Log("poder");
     }
 
     /*Dead Player*/

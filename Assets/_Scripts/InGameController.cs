@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
 using Cinemachine;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 
 public class InGameController : MonoBehaviour
 {
@@ -55,6 +56,8 @@ public class InGameController : MonoBehaviour
     private CinemachineTargetGroup.Target finalizador1;
     private CinemachineTargetGroup.Target finalizador2;
     private CinemachineTargetGroup.Target finalizador3;
+    [Space]
+    public StandaloneInputModule eventSystem;
 
     private float mili;
     private int segundos;
@@ -77,12 +80,58 @@ public class InGameController : MonoBehaviour
     private int puntuacion3;
     private int puntuacion4;
 
+    public static string P1_H;
+    public static string P1_V;
+    public static string P1_F;
+    public static string P1_P;
+
+    public static string P2_H;
+    public static string P2_V;
+    public static string P2_F;
+    public static string P2_P;
+
+    public static string P3_H;
+    public static string P3_V;
+    public static string P3_F;
+    public static string P3_P;
+
+    public static string P4_H;
+    public static string P4_V;
+    public static string P4_F;
+    public static string P4_P;
+
+    public static int PN;
+
     private void Awake()
     {
         mixer.SetFloat("Volumen_master", 0);
         naveRobot.SetActive(false);
         comenzar = false;
         StartImgs = StartCanvas.GetComponentsInChildren<Image>();
+
+        jugador1.GetComponent<JugadorController>().Horizontal = P1_H;
+        jugador1.GetComponent<JugadorController>().Vertical = P1_V;
+        jugador1.GetComponent<JugadorController>().Fire = P1_F;
+        jugador1.GetComponent<JugadorController>().Power = P1_P;
+
+        jugador2.GetComponent<JugadorController>().Horizontal = P2_H;
+        jugador2.GetComponent<JugadorController>().Vertical = P2_V;
+        jugador2.GetComponent<JugadorController>().Fire = P2_F;
+        jugador2.GetComponent<JugadorController>().Power = P2_P;
+
+        jugador3.GetComponent<JugadorController>().Horizontal = P3_H;
+        jugador3.GetComponent<JugadorController>().Vertical = P3_V;
+        jugador3.GetComponent<JugadorController>().Fire = P3_F;
+        jugador3.GetComponent<JugadorController>().Power = P3_P;
+
+        jugador4.GetComponent<JugadorController>().Horizontal = P4_H;
+        jugador4.GetComponent<JugadorController>().Vertical = P4_V;
+        jugador4.GetComponent<JugadorController>().Fire = P4_F;
+        jugador4.GetComponent<JugadorController>().Power = P4_P;
+
+        eventSystem.horizontalAxis = P1_H;
+        eventSystem.verticalAxis = P1_V;
+        eventSystem.submitButton = P1_F;
 
         puntaje1.text = 0.ToString();
         puntaje2.text = 0.ToString();
@@ -188,7 +237,7 @@ public class InGameController : MonoBehaviour
             finalizador1.weight = 2;
             finalizador1.radius = 2;
 
-            jugador1.GetComponent<enumTest>().Bailar();
+            jugador1.GetComponent<JugadorController>().Bailar();
             jugador2.SetActive(false);
             jugador3.SetActive(false);
             jugador4.SetActive(false);
@@ -204,7 +253,7 @@ public class InGameController : MonoBehaviour
             finalizador1.weight = 2;
             finalizador1.radius = 2;
 
-            jugador2.GetComponent<enumTest>().Bailar();
+            jugador2.GetComponent<JugadorController>().Bailar();
             jugador1.SetActive(false);
             jugador3.SetActive(false);
             jugador4.SetActive(false);
@@ -220,7 +269,7 @@ public class InGameController : MonoBehaviour
             finalizador1.weight = 2;
             finalizador1.radius = 2;
 
-            jugador3.GetComponent<enumTest>().Bailar();
+            jugador3.GetComponent<JugadorController>().Bailar();
             jugador1.SetActive(false);
             jugador2.SetActive(false);
             jugador4.SetActive(false);
@@ -236,7 +285,7 @@ public class InGameController : MonoBehaviour
             finalizador1.weight = 2;
             finalizador1.radius = 2;
 
-            jugador4.GetComponent<enumTest>().Bailar();
+            jugador4.GetComponent<JugadorController>().Bailar();
             jugador1.SetActive(false);
             jugador2.SetActive(false);
             jugador3.SetActive(false);
@@ -255,8 +304,8 @@ public class InGameController : MonoBehaviour
             finalizador2.weight = 1.6f;
             finalizador2.radius = 1.6f;
 
-            jugador1.GetComponent<enumTest>().Bailar();
-            jugador2.GetComponent<enumTest>().Bailar();
+            jugador1.GetComponent<JugadorController>().Bailar();
+            jugador2.GetComponent<JugadorController>().Bailar();
             jugador3.SetActive(false);
             jugador4.SetActive(false);
 
@@ -274,8 +323,8 @@ public class InGameController : MonoBehaviour
             finalizador2.weight = 1.6f;
             finalizador2.radius = 1.6f;
 
-            jugador2.GetComponent<enumTest>().Bailar();
-            jugador3.GetComponent<enumTest>().Bailar();
+            jugador2.GetComponent<JugadorController>().Bailar();
+            jugador3.GetComponent<JugadorController>().Bailar();
             jugador1.SetActive(false);
             jugador4.SetActive(false);
 
@@ -293,8 +342,8 @@ public class InGameController : MonoBehaviour
             finalizador2.weight = 1.6f;
             finalizador2.radius = 1.6f;
 
-            jugador3.GetComponent<enumTest>().Bailar();
-            jugador4.GetComponent<enumTest>().Bailar();
+            jugador3.GetComponent<JugadorController>().Bailar();
+            jugador4.GetComponent<JugadorController>().Bailar();
             jugador1.SetActive(false);
             jugador2.SetActive(false);
 
@@ -312,8 +361,8 @@ public class InGameController : MonoBehaviour
             finalizador2.weight = 1.6f;
             finalizador2.radius = 1.6f;
 
-            jugador1.GetComponent<enumTest>().Bailar();
-            jugador4.GetComponent<enumTest>().Bailar();
+            jugador1.GetComponent<JugadorController>().Bailar();
+            jugador4.GetComponent<JugadorController>().Bailar();
             jugador2.SetActive(false);
             jugador3.SetActive(false);
 
@@ -331,8 +380,8 @@ public class InGameController : MonoBehaviour
             finalizador2.weight = 1.6f;
             finalizador2.radius = 1.6f;
 
-            jugador1.GetComponent<enumTest>().Bailar();
-            jugador3.GetComponent<enumTest>().Bailar();
+            jugador1.GetComponent<JugadorController>().Bailar();
+            jugador3.GetComponent<JugadorController>().Bailar();
             jugador2.SetActive(false);
             jugador4.SetActive(false);
 
@@ -350,8 +399,8 @@ public class InGameController : MonoBehaviour
             finalizador2.weight = 1.6f;
             finalizador2.radius = 1.6f;
 
-            jugador2.GetComponent<enumTest>().Bailar();
-            jugador4.GetComponent<enumTest>().Bailar();
+            jugador2.GetComponent<JugadorController>().Bailar();
+            jugador4.GetComponent<JugadorController>().Bailar();
             jugador1.SetActive(false);
             jugador3.SetActive(false);
 
@@ -372,9 +421,9 @@ public class InGameController : MonoBehaviour
             finalizador3.weight = 1.3f;
             finalizador3.radius = 1.3f;
 
-            jugador1.GetComponent<enumTest>().Bailar();
-            jugador2.GetComponent<enumTest>().Bailar();
-            jugador3.GetComponent<enumTest>().Bailar();
+            jugador1.GetComponent<JugadorController>().Bailar();
+            jugador2.GetComponent<JugadorController>().Bailar();
+            jugador3.GetComponent<JugadorController>().Bailar();
             jugador4.SetActive(false);
 
             camGroup.m_Targets.SetValue(finalizador1, 0);
@@ -394,9 +443,9 @@ public class InGameController : MonoBehaviour
             finalizador3.weight = 1.3f;
             finalizador3.radius = 1.3f;
 
-            jugador1.GetComponent<enumTest>().Bailar();
-            jugador2.GetComponent<enumTest>().Bailar();
-            jugador4.GetComponent<enumTest>().Bailar();
+            jugador1.GetComponent<JugadorController>().Bailar();
+            jugador2.GetComponent<JugadorController>().Bailar();
+            jugador4.GetComponent<JugadorController>().Bailar();
             jugador3.SetActive(false);
 
             camGroup.m_Targets.SetValue(finalizador1, 0);
@@ -416,9 +465,9 @@ public class InGameController : MonoBehaviour
             finalizador3.weight = 1.3f;
             finalizador3.radius = 1.3f;
 
-            jugador3.GetComponent<enumTest>().Bailar();
-            jugador4.GetComponent<enumTest>().Bailar();
-            jugador1.GetComponent<enumTest>().Bailar();
+            jugador3.GetComponent<JugadorController>().Bailar();
+            jugador4.GetComponent<JugadorController>().Bailar();
+            jugador1.GetComponent<JugadorController>().Bailar();
             jugador2.SetActive(false);
 
             camGroup.m_Targets.SetValue(finalizador1, 0);
@@ -438,9 +487,9 @@ public class InGameController : MonoBehaviour
             finalizador3.weight = 1.3f;
             finalizador3.radius = 1.3f;
 
-            jugador2.GetComponent<enumTest>().Bailar();
-            jugador3.GetComponent<enumTest>().Bailar();
-            jugador4.GetComponent<enumTest>().Bailar();
+            jugador2.GetComponent<JugadorController>().Bailar();
+            jugador3.GetComponent<JugadorController>().Bailar();
+            jugador4.GetComponent<JugadorController>().Bailar();
             jugador1.SetActive(false);
 
             camGroup.m_Targets.SetValue(finalizador1, 0);
@@ -460,10 +509,10 @@ public class InGameController : MonoBehaviour
             finalizador3.weight = 1;
             finalizador3.radius = 1;*/
 
-            jugador1.GetComponent<enumTest>().Bailar();
-            jugador2.GetComponent<enumTest>().Bailar();
-            jugador3.GetComponent<enumTest>().Bailar();
-            jugador4.GetComponent<enumTest>().Bailar();
+            jugador1.GetComponent<JugadorController>().Bailar();
+            jugador2.GetComponent<JugadorController>().Bailar();
+            jugador3.GetComponent<JugadorController>().Bailar();
+            jugador4.GetComponent<JugadorController>().Bailar();
 
             /*camGroup.m_Targets.SetValue(finalizador1, 0);
             camGroup.m_Targets.SetValue(finalizador1, 1);
@@ -679,7 +728,7 @@ public class InGameController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Pause"))
         {
             Pausar();
         }

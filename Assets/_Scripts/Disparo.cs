@@ -23,11 +23,8 @@ public class Disparo : MonoBehaviour
     public int tipoBala;
 
     /*Shooter*/
-    private string shooter1 = "Fire1";
-    private string shooter2 = "Fire2";
-    private string shooter3 = "Fire3";
-    private string shooter4 = "Fire4";
     public string shooter;
+    public int Njug;
 
     private void Awake()
     {
@@ -59,19 +56,19 @@ public class Disparo : MonoBehaviour
                         bali.tipoDeBala = Bala.balaT.VelVariable;
                     }
 
-                    if (shooter == shooter1)
+                    if (Njug == 1)
                     {
                         bali.dueno = 1;
                     }
-                    if (shooter == shooter2)
+                    if (Njug == 2)
                     {
                         bali.dueno = 2;
                     }
-                    if (shooter == shooter3)
+                    if (Njug == 3)
                     {
                         bali.dueno = 3;
                     }
-                    if (shooter == shooter4)
+                    if (Njug == 4)
                     {
                         bali.dueno = 4;
                     }
