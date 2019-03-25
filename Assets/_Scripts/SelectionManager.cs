@@ -56,6 +56,11 @@ public class SelectionManager : MonoBehaviour
     public Text P4_selectColorTxt;
     [Space]
     public string[] controlesList;
+    [Space]
+    public RenderTexture rTexture1;
+    public RenderTexture rTexture2;
+    public RenderTexture rTexture3;
+    public RenderTexture rTexture4;
 
     private int contadorNcontrol = 1;
     private bool lleno;
@@ -100,6 +105,18 @@ public class SelectionManager : MonoBehaviour
 
     private void Awake()
     {
+        int valor = Screen.height;
+        int valor2 = (int)(valor * 0.89f);
+
+        rTexture1.width = valor2;
+        rTexture1.height = valor;
+        rTexture2.width = valor2;
+        rTexture2.height = valor;
+        rTexture3.width = valor2;
+        rTexture3.height = valor;
+        rTexture4.width = valor2;
+        rTexture4.height = valor;
+
         P1_canvasSelect.SetActive(true);
         P1_canvasIniciado.SetActive(false);
         P1_selectModeloImg.SetActive(true);
