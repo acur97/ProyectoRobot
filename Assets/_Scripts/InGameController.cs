@@ -129,9 +129,12 @@ public class InGameController : MonoBehaviour
         jugador4.GetComponent<JugadorController>().Fire = P4_F;
         jugador4.GetComponent<JugadorController>().Power = P4_P;
 
-        eventSystem.horizontalAxis = P1_H;
-        eventSystem.verticalAxis = P1_V;
-        eventSystem.submitButton = P1_F;
+        if (P1_H != null)
+        {
+            eventSystem.horizontalAxis = P1_H;
+            eventSystem.verticalAxis = P1_V;
+            eventSystem.submitButton = P1_F;
+        }
 
         puntaje1.text = 0.ToString();
         puntaje2.text = 0.ToString();
@@ -185,7 +188,7 @@ public class InGameController : MonoBehaviour
         source2.Play();
         yield return new WaitForSecondsRealtime(2.2f);
         StartCoroutine(ChangeSpeed1(10, 35, 8));
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSecondsRealtime(1f);
         comenzar = true;
         yield return new WaitForSecondsRealtime(8);
         naveRobot.SetActive(false);

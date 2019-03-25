@@ -6,48 +6,91 @@ using System;
 
 public class SelectionManager : MonoBehaviour
 {
+    [Serializable]
+    public class ops1
+    {
+        public string nombre;
+        public Color colorEmision;
+        public Color32 colorUI;
+    }
+    [Serializable]
+    public class ops2
+    {
+        public string nombre;
+        public GameObject prefab;
+    }
+    [Header("Seleccionables")]
+    public ops1[] opciones1;
+    public ops2[] opciones2;
+    [Space]
     public GameObject P1_canvasSelect;
     public GameObject P1_canvasIniciado;
     public Text P1_nombreControl;
     public GameObject P1_selectModeloImg;
+    public Text P1_selectModeloTxt;
     public GameObject P1_selectColorImg;
+    public Text P1_selectColorTxt;
     [Space]
     public GameObject P2_canvasSelect;
     public GameObject P2_canvasIniciado;
     public Text P2_nombreControl;
     public GameObject P2_selectModeloImg;
+    public Text P2_selectModeloTxt;
     public GameObject P2_selectColorImg;
+    public Text P2_selectColorTxt;
     [Space]
     public GameObject P3_canvasSelect;
     public GameObject P3_canvasIniciado;
     public Text P3_nombreControl;
     public GameObject P3_selectModeloImg;
+    public Text P3_selectModeloTxt;
     public GameObject P3_selectColorImg;
+    public Text P3_selectColorTxt;
     [Space]
     public GameObject P4_canvasSelect;
     public GameObject P4_canvasIniciado;
     public Text P4_nombreControl;
     public GameObject P4_selectModeloImg;
+    public Text P4_selectModeloTxt;
     public GameObject P4_selectColorImg;
+    public Text P4_selectColorTxt;
     [Space]
     public string[] controlesList;
 
     private int contadorNcontrol = 1;
-    private bool puedeComenzar;
     private bool lleno;
 
     private int controlesP1;
     private bool encontradoP1;
     private int selecP1 = 1;
+    private float P1_delay = 0.5f;
+    private int P1_cont1;
+    private int P1_cont2;
+    private bool readyP1;
+
     private int controlesP2;
     private bool encontradoP2;
     private int selecP2 = 1;
+    private float P2_delay = 0.5f;
+    private int P2_cont1;
+    private int P2_cont2;
+    private bool readyP2;
+
     private int controlesP3;
     private bool encontradoP3;
     private int selecP3 = 1;
+    private float P3_delay = 0.5f;
+    private int P3_cont1;
+    private int P3_cont2;
+    private bool readyP3;
+
     private int controlesP4;
     private bool encontradoP4;
     private int selecP4 = 1;
+    private float P4_delay = 0.5f;
+    private int P4_cont1;
+    private int P4_cont2;
+    private bool readyP4;
 
     private string excepcion1;
     private string excepcion2;
@@ -96,6 +139,8 @@ public class SelectionManager : MonoBehaviour
                         Debug.Log("jugador 1 encontrado");
                         P1_canvasSelect.SetActive(false);
                         P1_canvasIniciado.SetActive(true);
+                        P1_selectModeloTxt.text = opciones2[P1_cont1].nombre;
+                        P1_selectColorTxt.text = opciones1[P1_cont2].nombre;
                         excepcion1 = controlesList[i];
 
                         controlesP1 = (Array.IndexOf(controlesList, excepcion1) + 1);
@@ -128,6 +173,8 @@ public class SelectionManager : MonoBehaviour
                         Debug.Log("jugador 2 encontrado");
                         P2_canvasSelect.SetActive(false);
                         P2_canvasIniciado.SetActive(true);
+                        P2_selectModeloTxt.text = opciones2[P2_cont1].nombre;
+                        P2_selectColorTxt.text = opciones1[P2_cont2].nombre;
                         excepcion2 = controlesList[i];
 
                         controlesP2 = (Array.IndexOf(controlesList, excepcion2) + 1);
@@ -137,7 +184,6 @@ public class SelectionManager : MonoBehaviour
                         InGameController.P2_P = "J" + controlesP2 + "_P";
 
                         P2_nombreControl.text = controlesList[i].ToString();
-                        puedeComenzar = true;
                         encontradoP2 = true;
                         contadorNcontrol += 1;
                         countWait = 1;
@@ -164,6 +210,8 @@ public class SelectionManager : MonoBehaviour
                         Debug.Log("jugador 3 encontrado");
                         P3_canvasSelect.SetActive(false);
                         P3_canvasIniciado.SetActive(true);
+                        P3_selectModeloTxt.text = opciones2[P3_cont1].nombre;
+                        P3_selectColorTxt.text = opciones1[P3_cont2].nombre;
                         excepcion3 = controlesList[i];
 
                         controlesP3 = (Array.IndexOf(controlesList, excepcion3) + 1);
@@ -203,6 +251,8 @@ public class SelectionManager : MonoBehaviour
                         Debug.Log("jugador 4 encontrado");
                         P4_canvasSelect.SetActive(false);
                         P4_canvasIniciado.SetActive(true);
+                        P3_selectModeloTxt.text = opciones2[P3_cont1].nombre;
+                        P3_selectColorTxt.text = opciones1[P3_cont2].nombre;
 
                         controlesP4 = (Array.IndexOf(controlesList, controlesList[i]) + 1);
                         InGameController.P4_H = "J" + controlesP4 + "_H";
@@ -226,6 +276,7 @@ public class SelectionManager : MonoBehaviour
 
         if (encontradoP1)
         {
+            P1_delay -= (Time.unscaledDeltaTime * 2);
             if (Input.GetAxisRaw("J" + controlesP1 + "_V") < -0.25f)
             {
                 P1_selectModeloImg.SetActive(true);
@@ -239,31 +290,56 @@ public class SelectionManager : MonoBehaviour
                 selecP1 = 2;
             }
 
-            if (Input.GetAxisRaw("J" + controlesP1 + "_H") > 0.25f)
+            if (Input.GetAxisRaw("J" + controlesP1 + "_H") > 0.25f && P1_delay < 0.25f)
             {
                 if (selecP1 == 1)
                 {
-                    Debug.Log("derecha 1");
+                    P1_delay = 0.5f;
+                    P1_cont1 += 1;
+                    if (P1_cont1 == opciones2.Length)
+                    {
+                        P1_cont1 = 0;
+                    }
+                    P1_selectModeloTxt.text = opciones2[P1_cont1].nombre;
                 }
                 else
                 {
-                    Debug.Log("derecha 2");
+                    P1_delay = 0.5f;
+                    P1_cont2 += 1;
+                    if (P1_cont2 == opciones1.Length)
+                    {
+                        P1_cont2 = 0;
+                    }
+                    P1_selectColorTxt.text = opciones1[P1_cont2].nombre;
                 }
             }
-            if (Input.GetAxisRaw("J" + controlesP1 + "_H") < -0.25f)
+            if (Input.GetAxisRaw("J" + controlesP1 + "_H") < -0.25f && P1_delay < 0.25f)
             {
                 if (selecP1 == 1)
                 {
-                    Debug.Log("izquierda 1");
+                    P1_delay = 0.5f;
+                    P1_cont1 -= 1;
+                    if (P1_cont1 == -1)
+                    {
+                        P1_cont1 = opciones2.Length - 1;
+                    }
+                    P1_selectModeloTxt.text = opciones2[P1_cont1].nombre;
                 }
                 else
                 {
-                    Debug.Log("izquierda 2");
+                    P1_delay = 0.5f;
+                    P1_cont2 -= 1;
+                    if (P1_cont2 == -1)
+                    {
+                        P1_cont2 = opciones1.Length - 1;
+                    }
+                    P1_selectColorTxt.text = opciones1[P1_cont2].nombre;
                 }
             }
         }
         if (encontradoP2)
         {
+            P2_delay -= (Time.unscaledDeltaTime * 2);
             if (Input.GetAxisRaw("J" + controlesP2 + "_V") < -0.25f)
             {
                 P2_selectModeloImg.SetActive(true);
@@ -277,31 +353,56 @@ public class SelectionManager : MonoBehaviour
                 selecP2 = 2;
             }
 
-            if (Input.GetAxisRaw("J" + controlesP2 + "_H") > 0.25f)
+            if (Input.GetAxisRaw("J" + controlesP2 + "_H") > 0.25f && P2_delay < 0.25f)
             {
                 if (selecP2 == 1)
                 {
-                    Debug.Log("derecha 1");
+                    P2_delay = 0.5f;
+                    P2_cont1 += 1;
+                    if (P2_cont1 == opciones2.Length)
+                    {
+                        P2_cont1 = 0;
+                    }
+                    P2_selectModeloTxt.text = opciones2[P2_cont1].nombre;
                 }
                 else
                 {
-                    Debug.Log("derecha 2");
+                    P2_delay = 0.5f;
+                    P2_cont2 += 1;
+                    if (P2_cont2 == opciones1.Length)
+                    {
+                        P2_cont2 = 0;
+                    }
+                    P2_selectColorTxt.text = opciones1[P2_cont2].nombre;
                 }
             }
-            if (Input.GetAxisRaw("J" + controlesP2 + "_H") < -0.25f)
+            if (Input.GetAxisRaw("J" + controlesP2 + "_H") < -0.25f && P2_delay < 0.25f)
             {
                 if (selecP2 == 1)
                 {
-                    Debug.Log("izquierda 1");
+                    P2_delay = 0.5f;
+                    P2_cont1 -= 1;
+                    if (P2_cont1 == -1)
+                    {
+                        P2_cont1 = opciones2.Length - 1;
+                    }
+                    P2_selectModeloTxt.text = opciones2[P2_cont1].nombre;
                 }
                 else
                 {
-                    Debug.Log("izquierda 2");
+                    P2_delay = 0.5f;
+                    P2_cont2 -= 1;
+                    if (P2_cont2 == -1)
+                    {
+                        P2_cont2 = opciones1.Length - 1;
+                    }
+                    P2_selectColorTxt.text = opciones1[P2_cont2].nombre;
                 }
             }
         }
         if (encontradoP3)
         {
+            P3_delay -= (Time.unscaledDeltaTime * 2);
             if (Input.GetAxisRaw("J" + controlesP3 + "_V") < -0.25f)
             {
                 P3_selectModeloImg.SetActive(true);
@@ -315,31 +416,56 @@ public class SelectionManager : MonoBehaviour
                 selecP3 = 2;
             }
 
-            if (Input.GetAxisRaw("J" + controlesP3 + "_H") > 0.25f)
+            if (Input.GetAxisRaw("J" + controlesP3 + "_H") > 0.25f && P3_delay < 0.25f)
             {
                 if (selecP3 == 1)
                 {
-                    Debug.Log("derecha 1");
+                    P3_delay = 0.5f;
+                    P3_cont1 += 1;
+                    if (P3_cont1 == opciones2.Length)
+                    {
+                        P3_cont1 = 0;
+                    }
+                    P3_selectModeloTxt.text = opciones2[P3_cont1].nombre;
                 }
                 else
                 {
-                    Debug.Log("derecha 2");
+                    P3_delay = 0.5f;
+                    P3_cont2 += 1;
+                    if (P3_cont2 == opciones1.Length)
+                    {
+                        P3_cont2 = 0;
+                    }
+                    P3_selectColorTxt.text = opciones1[P3_cont2].nombre;
                 }
             }
-            if (Input.GetAxisRaw("J" + controlesP3 + "_H") < -0.25f)
+            if (Input.GetAxisRaw("J" + controlesP3 + "_H") < -0.25f && P3_delay < 0.25f)
             {
                 if (selecP3 == 1)
                 {
-                    Debug.Log("izquierda 1");
+                    P3_delay = 0.5f;
+                    P3_cont1 -= 1;
+                    if (P3_cont1 == -1)
+                    {
+                        P3_cont1 = opciones2.Length - 1;
+                    }
+                    P3_selectModeloTxt.text = opciones2[P3_cont1].nombre;
                 }
                 else
                 {
-                    Debug.Log("izquierda 2");
+                    P3_delay = 0.5f;
+                    P3_cont2 -= 1;
+                    if (P3_cont2 == -1)
+                    {
+                        P3_cont2 = opciones1.Length - 1;
+                    }
+                    P3_selectColorTxt.text = opciones1[P3_cont2].nombre;
                 }
             }
         }
         if (encontradoP4)
         {
+            P4_delay -= (Time.unscaledDeltaTime * 2);
             if (Input.GetAxisRaw("J" + controlesP4 + "_V") < -0.25f)
             {
                 P4_selectModeloImg.SetActive(true);
@@ -353,26 +479,50 @@ public class SelectionManager : MonoBehaviour
                 selecP4 = 2;
             }
 
-            if (Input.GetAxisRaw("J" + controlesP4 + "_H") > 0.25f)
+            if (Input.GetAxisRaw("J" + controlesP4 + "_H") > 0.25f && P4_delay < 0.25f)
             {
                 if (selecP4 == 1)
                 {
-                    Debug.Log("derecha 1");
+                    P4_delay = 0.5f;
+                    P4_cont1 += 1;
+                    if (P4_cont1 == opciones2.Length)
+                    {
+                        P4_cont1 = 0;
+                    }
+                    P4_selectModeloTxt.text = opciones2[P4_cont1].nombre;
                 }
                 else
                 {
-                    Debug.Log("derecha 2");
+                    P4_delay = 0.5f;
+                    P4_cont2 += 1;
+                    if (P4_cont2 == opciones1.Length)
+                    {
+                        P4_cont2 = 0;
+                    }
+                    P4_selectColorTxt.text = opciones1[P4_cont2].nombre;
                 }
             }
-            if (Input.GetAxisRaw("J" + controlesP4 + "_H") < -0.25f)
+            if (Input.GetAxisRaw("J" + controlesP4 + "_H") < -0.25f && P4_delay < 0.25f)
             {
                 if (selecP4 == 1)
                 {
-                    Debug.Log("izquierda 1");
+                    P4_delay = 0.5f;
+                    P4_cont1 -= 1;
+                    if (P4_cont1 == -1)
+                    {
+                        P4_cont1 = opciones2.Length - 1;
+                    }
+                    P4_selectModeloTxt.text = opciones2[P4_cont1].nombre;
                 }
                 else
                 {
-                    Debug.Log("izquierda 2");
+                    P4_delay = 0.5f;
+                    P4_cont2 -= 1;
+                    if (P4_cont2 == -1)
+                    {
+                        P4_cont2 = opciones1.Length - 1;
+                    }
+                    P4_selectColorTxt.text = opciones1[P4_cont2].nombre;
                 }
             }
         }

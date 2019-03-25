@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571343, b: 0.30692208, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028328, g: 0.22571322, b: 0.30692163, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3440,26 +3440,89 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d35b3e37cbd7a7b42ab8c58340f3d553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  opciones1:
+  - nombre: Rojo
+    colorEmision: {r: 0.75, g: 0.22500001, b: 0.22500001, a: 1}
+    colorUI:
+      serializedVersion: 2
+      rgba: 4279242816
+  - nombre: Naranja
+    colorEmision: {r: 0.7490196, g: 0.4862745, b: 0.22352941, a: 1}
+    colorUI:
+      serializedVersion: 2
+      rgba: 4279251008
+  - nombre: Amarillo
+    colorEmision: {r: 0.7490196, g: 0.7490196, b: 0.22352941, a: 1}
+    colorUI:
+      serializedVersion: 2
+      rgba: 4279255104
+  - nombre: Verde
+    colorEmision: {r: 0.31352943, g: 0.75, b: 0.22500001, a: 1}
+    colorUI:
+      serializedVersion: 2
+      rgba: 4279255320
+  - nombre: Cian
+    colorEmision: {r: 0.22500001, g: 0.66352946, b: 0.75, a: 1}
+    colorUI:
+      serializedVersion: 2
+      rgba: 4282398736
+  - nombre: Blanco
+    colorEmision: {r: 0.75, g: 0.75, b: 0.75, a: 1}
+    colorUI:
+      serializedVersion: 2
+      rgba: 4282400832
+  - nombre: Azul
+    colorEmision: {r: 0.22500001, g: 0.22500001, b: 0.75, a: 1}
+    colorUI:
+      serializedVersion: 2
+      rgba: 4282388496
+  - nombre: Rosado
+    colorEmision: {r: 0.7490196, g: 0.22352941, b: 0.5300652, a: 1}
+    colorUI:
+      serializedVersion: 2
+      rgba: 4281602112
+  - nombre: Morado
+    colorEmision: {r: 0.57500017, g: 0.22500001, b: 0.75, a: 1}
+    colorUI:
+      serializedVersion: 2
+      rgba: 4282388528
+  opciones2:
+  - nombre: Parcero 1
+    prefab: {fileID: 0}
+  - nombre: Parcero 2
+    prefab: {fileID: 0}
+  - nombre: Parcero 3
+    prefab: {fileID: 0}
+  - nombre: Parcero 4
+    prefab: {fileID: 0}
   P1_canvasSelect: {fileID: 1908969573}
   P1_canvasIniciado: {fileID: 209714062}
   P1_nombreControl: {fileID: 1856974881}
   P1_selectModeloImg: {fileID: 1832372468}
+  P1_selectModeloTxt: {fileID: 709819640}
   P1_selectColorImg: {fileID: 394215836}
+  P1_selectColorTxt: {fileID: 234397757}
   P2_canvasSelect: {fileID: 1579877740}
   P2_canvasIniciado: {fileID: 1479514408}
   P2_nombreControl: {fileID: 1919679966}
   P2_selectModeloImg: {fileID: 1707786310}
+  P2_selectModeloTxt: {fileID: 1589132073}
   P2_selectColorImg: {fileID: 1881598683}
+  P2_selectColorTxt: {fileID: 237787466}
   P3_canvasSelect: {fileID: 50927838}
   P3_canvasIniciado: {fileID: 1014027352}
   P3_nombreControl: {fileID: 1775648019}
   P3_selectModeloImg: {fileID: 1209583218}
+  P3_selectModeloTxt: {fileID: 399512398}
   P3_selectColorImg: {fileID: 209216290}
+  P3_selectColorTxt: {fileID: 364236879}
   P4_canvasSelect: {fileID: 792504461}
   P4_canvasIniciado: {fileID: 80880977}
   P4_nombreControl: {fileID: 4787435}
   P4_selectModeloImg: {fileID: 440157734}
+  P4_selectModeloTxt: {fileID: 407399779}
   P4_selectColorImg: {fileID: 372394913}
+  P4_selectColorTxt: {fileID: 470488816}
   controlesList: []
 --- !u!4 &1763550867
 Transform:
@@ -3939,6 +4002,72 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1881598683}
   m_CullTransparentMesh: 0
+--- !u!1 &1881683091
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1881683094}
+  - component: {fileID: 1881683093}
+  - component: {fileID: 1881683092}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1881683092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881683091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Generic_H
+  m_VerticalAxis: Generic_V
+  m_SubmitButton: Generic_F
+  m_CancelButton: Generic_P
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &1881683093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881683091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &1881683094
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881683091}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1908969573
 GameObject:
   m_ObjectHideFlags: 0

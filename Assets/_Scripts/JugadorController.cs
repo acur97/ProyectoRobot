@@ -48,6 +48,14 @@ public class JugadorController : MonoBehaviour
         if (jugadores.Jugador1 == jug)
         {
             disparo.Njug = 1;
+            if (Horizontal == null)
+            {
+                Horizontal = "Generic_H";
+                Vertical = "Generic_V";
+                Fire = "Generic_F";
+                Power = "Generic_P";
+                disparo.shooter = Fire;
+            }
         }
         if (jugadores.Jugador2 == jug)
         {
@@ -68,9 +76,9 @@ public class JugadorController : MonoBehaviour
     {
         if (controller.comenzar)
         {
-            dashLimit -= esperaEntreDrag;
+            dashLimit -= Time.unscaledDeltaTime;
 
-            move = new Vector3(Input.GetAxis(Vertical), 0, Input.GetAxis(Horizontal));
+            move = new Vector3(Input.GetAxis(Horizontal), 0, Input.GetAxis(Vertical));
             _controller.Move(move * Time.deltaTime * speed);
             if (move != Vector3.zero)
             {
@@ -86,11 +94,10 @@ public class JugadorController : MonoBehaviour
             {
                 if (dashLimit <= 0)
                 {
-                    dashLimit = esperaEntreDrag;
-                    Debug.Log("Dash");
                     _velocity += (Vector3.Scale(transform.forward, dashdistance * new Vector3((Mathf.Log(1f / (Time.deltaTime * Drag.x + 2)) / -Time.deltaTime), 0, (Mathf.Log(1f / (Time.deltaTime * Drag.z + 2)) / -Time.deltaTime))) * 2);
                     source.Stop();
                     source.Play();
+                    dashLimit = esperaEntreDrag;
                 }
             }
 
@@ -158,13 +165,11 @@ public class JugadorController : MonoBehaviour
                 }
             }
 
+            _controller.enabled = false;
             Vector3 pos = controller.DameRespawn();
             pos = new Vector3(pos.x, transform.position.y, pos.z);
-            move = new Vector3(0, transform.position.y, 0);
-            _velocity = new Vector3(0, transform.position.y, 0);
-            Drag = new Vector3(0, transform.position.y, 0);
-            _controller.Move(pos);
             transform.position = pos;
+            _controller.enabled = true;
             StartCoroutine(Respawn());
         }
     }
@@ -178,7 +183,7 @@ public class JugadorController : MonoBehaviour
 
     public void Bailar()
     {
-        anim.SetTrigger("baile");
+        anim.SetTrigger(baile);
     }
 
     private void OnTriggerEnter(Collider other)

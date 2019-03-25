@@ -11,7 +11,22 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: polySurface6
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: caucho
+    second: {fileID: 2100000, guid: 6f5d97fa2ef1f5146ba9b95ad9fe99c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: maquina
+    second: {fileID: 2100000, guid: 2710aa54751e8df489d86f644692a238, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: piso
+    second: {fileID: 2100000, guid: bdede225eab61704887e81b07507f8cd, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
