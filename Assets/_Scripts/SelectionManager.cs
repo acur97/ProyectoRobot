@@ -14,10 +14,16 @@ public class SelectionManager : MonoBehaviour
         public Color32 colorUI;
     }
     [Serializable]
-    public class ops2
+    public class ops2_prefabs
     {
         public string nombre;
         public GameObject prefab;
+    }
+    [Serializable]
+    public class ops2
+    {
+        public string nombre;
+        public ops2_prefabs[] prefabs;
     }
     [Header("Seleccionables")]
     public ops1[] opciones1;
@@ -156,7 +162,11 @@ public class SelectionManager : MonoBehaviour
                         Debug.Log("jugador 1 encontrado");
                         P1_canvasSelect.SetActive(false);
                         P1_canvasIniciado.SetActive(true);
-                        P1_selectModeloTxt.text = opciones2[P1_cont1].nombre;
+                        P1_selectModeloTxt.text = opciones2[0].prefabs[P1_cont1].nombre;
+                        opciones2[0].prefabs[0].prefab.SetActive(true);
+                        opciones2[0].prefabs[1].prefab.SetActive(false);
+                        opciones2[0].prefabs[2].prefab.SetActive(false);
+                        opciones2[0].prefabs[3].prefab.SetActive(false);
                         P1_selectColorTxt.text = opciones1[P1_cont2].nombre;
                         excepcion1 = controlesList[i];
 
@@ -190,7 +200,11 @@ public class SelectionManager : MonoBehaviour
                         Debug.Log("jugador 2 encontrado");
                         P2_canvasSelect.SetActive(false);
                         P2_canvasIniciado.SetActive(true);
-                        P2_selectModeloTxt.text = opciones2[P2_cont1].nombre;
+                        P2_selectModeloTxt.text = opciones2[1].prefabs[P2_cont1].nombre;
+                        opciones2[1].prefabs[0].prefab.SetActive(true);
+                        opciones2[1].prefabs[1].prefab.SetActive(false);
+                        opciones2[1].prefabs[2].prefab.SetActive(false);
+                        opciones2[1].prefabs[3].prefab.SetActive(false);
                         P2_selectColorTxt.text = opciones1[P2_cont2].nombre;
                         excepcion2 = controlesList[i];
 
@@ -227,7 +241,11 @@ public class SelectionManager : MonoBehaviour
                         Debug.Log("jugador 3 encontrado");
                         P3_canvasSelect.SetActive(false);
                         P3_canvasIniciado.SetActive(true);
-                        P3_selectModeloTxt.text = opciones2[P3_cont1].nombre;
+                        P3_selectModeloTxt.text = opciones2[2].prefabs[P3_cont1].nombre;
+                        opciones2[2].prefabs[0].prefab.SetActive(true);
+                        opciones2[2].prefabs[1].prefab.SetActive(false);
+                        opciones2[2].prefabs[2].prefab.SetActive(false);
+                        opciones2[2].prefabs[3].prefab.SetActive(false);
                         P3_selectColorTxt.text = opciones1[P3_cont2].nombre;
                         excepcion3 = controlesList[i];
 
@@ -268,7 +286,11 @@ public class SelectionManager : MonoBehaviour
                         Debug.Log("jugador 4 encontrado");
                         P4_canvasSelect.SetActive(false);
                         P4_canvasIniciado.SetActive(true);
-                        P3_selectModeloTxt.text = opciones2[P3_cont1].nombre;
+                        P3_selectModeloTxt.text = opciones2[3].prefabs[P4_cont1].nombre;
+                        opciones2[3].prefabs[0].prefab.SetActive(true);
+                        opciones2[3].prefabs[1].prefab.SetActive(false);
+                        opciones2[3].prefabs[2].prefab.SetActive(false);
+                        opciones2[3].prefabs[3].prefab.SetActive(false);
                         P3_selectColorTxt.text = opciones1[P3_cont2].nombre;
 
                         controlesP4 = (Array.IndexOf(controlesList, controlesList[i]) + 1);
@@ -285,6 +307,8 @@ public class SelectionManager : MonoBehaviour
                 }
             }
         }
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         if (contadorNcontrol == 5)
         {
@@ -317,7 +341,35 @@ public class SelectionManager : MonoBehaviour
                     {
                         P1_cont1 = 0;
                     }
-                    P1_selectModeloTxt.text = opciones2[P1_cont1].nombre;
+                    P1_selectModeloTxt.text = opciones2[0].prefabs[P1_cont1].nombre;
+                    if (P1_cont1 == 0)
+                    {
+                        opciones2[0].prefabs[0].prefab.SetActive(true);
+                        opciones2[0].prefabs[1].prefab.SetActive(false);
+                        opciones2[0].prefabs[2].prefab.SetActive(false);
+                        opciones2[0].prefabs[3].prefab.SetActive(false);
+                    }
+                    if (P1_cont1 == 1)
+                    {
+                        opciones2[0].prefabs[0].prefab.SetActive(false);
+                        opciones2[0].prefabs[1].prefab.SetActive(true);
+                        opciones2[0].prefabs[2].prefab.SetActive(false);
+                        opciones2[0].prefabs[3].prefab.SetActive(false);
+                    }
+                    if (P1_cont1 == 2)
+                    {
+                        opciones2[0].prefabs[0].prefab.SetActive(false);
+                        opciones2[0].prefabs[1].prefab.SetActive(false);
+                        opciones2[0].prefabs[2].prefab.SetActive(true);
+                        opciones2[0].prefabs[3].prefab.SetActive(false);
+                    }
+                    if (P1_cont1 == 3)
+                    {
+                        opciones2[0].prefabs[0].prefab.SetActive(false);
+                        opciones2[0].prefabs[1].prefab.SetActive(false);
+                        opciones2[0].prefabs[2].prefab.SetActive(false);
+                        opciones2[0].prefabs[3].prefab.SetActive(true);
+                    }
                 }
                 else
                 {
@@ -340,7 +392,35 @@ public class SelectionManager : MonoBehaviour
                     {
                         P1_cont1 = opciones2.Length - 1;
                     }
-                    P1_selectModeloTxt.text = opciones2[P1_cont1].nombre;
+                    P1_selectModeloTxt.text = opciones2[0].prefabs[P1_cont1].nombre;
+                    if (P1_cont1 == 0)
+                    {
+                        opciones2[0].prefabs[0].prefab.SetActive(true);
+                        opciones2[0].prefabs[1].prefab.SetActive(false);
+                        opciones2[0].prefabs[2].prefab.SetActive(false);
+                        opciones2[0].prefabs[3].prefab.SetActive(false);
+                    }
+                    if (P1_cont1 == 1)
+                    {
+                        opciones2[0].prefabs[0].prefab.SetActive(false);
+                        opciones2[0].prefabs[1].prefab.SetActive(true);
+                        opciones2[0].prefabs[2].prefab.SetActive(false);
+                        opciones2[0].prefabs[3].prefab.SetActive(false);
+                    }
+                    if (P1_cont1 == 2)
+                    {
+                        opciones2[0].prefabs[0].prefab.SetActive(false);
+                        opciones2[0].prefabs[1].prefab.SetActive(false);
+                        opciones2[0].prefabs[2].prefab.SetActive(true);
+                        opciones2[0].prefabs[3].prefab.SetActive(false);
+                    }
+                    if (P1_cont1 == 3)
+                    {
+                        opciones2[0].prefabs[0].prefab.SetActive(false);
+                        opciones2[0].prefabs[1].prefab.SetActive(false);
+                        opciones2[0].prefabs[2].prefab.SetActive(false);
+                        opciones2[0].prefabs[3].prefab.SetActive(true);
+                    }
                 }
                 else
                 {
@@ -380,7 +460,35 @@ public class SelectionManager : MonoBehaviour
                     {
                         P2_cont1 = 0;
                     }
-                    P2_selectModeloTxt.text = opciones2[P2_cont1].nombre;
+                    P2_selectModeloTxt.text = opciones2[1].prefabs[P2_cont1].nombre;
+                    if (P2_cont1 == 0)
+                    {
+                        opciones2[1].prefabs[0].prefab.SetActive(true);
+                        opciones2[1].prefabs[1].prefab.SetActive(false);
+                        opciones2[1].prefabs[2].prefab.SetActive(false);
+                        opciones2[1].prefabs[3].prefab.SetActive(false);
+                    }
+                    if (P2_cont1 == 1)
+                    {
+                        opciones2[1].prefabs[0].prefab.SetActive(false);
+                        opciones2[1].prefabs[1].prefab.SetActive(true);
+                        opciones2[1].prefabs[2].prefab.SetActive(false);
+                        opciones2[1].prefabs[3].prefab.SetActive(false);
+                    }
+                    if (P2_cont1 == 2)
+                    {
+                        opciones2[1].prefabs[0].prefab.SetActive(false);
+                        opciones2[1].prefabs[1].prefab.SetActive(false);
+                        opciones2[1].prefabs[2].prefab.SetActive(true);
+                        opciones2[1].prefabs[3].prefab.SetActive(false);
+                    }
+                    if (P2_cont1 == 3)
+                    {
+                        opciones2[1].prefabs[0].prefab.SetActive(false);
+                        opciones2[1].prefabs[1].prefab.SetActive(false);
+                        opciones2[1].prefabs[2].prefab.SetActive(false);
+                        opciones2[1].prefabs[3].prefab.SetActive(true);
+                    }
                 }
                 else
                 {
@@ -403,7 +511,35 @@ public class SelectionManager : MonoBehaviour
                     {
                         P2_cont1 = opciones2.Length - 1;
                     }
-                    P2_selectModeloTxt.text = opciones2[P2_cont1].nombre;
+                    P2_selectModeloTxt.text = opciones2[1].prefabs[P2_cont1].nombre;
+                    if (P2_cont1 == 0)
+                    {
+                        opciones2[1].prefabs[0].prefab.SetActive(true);
+                        opciones2[1].prefabs[1].prefab.SetActive(false);
+                        opciones2[1].prefabs[2].prefab.SetActive(false);
+                        opciones2[1].prefabs[3].prefab.SetActive(false);
+                    }
+                    if (P2_cont1 == 1)
+                    {
+                        opciones2[1].prefabs[0].prefab.SetActive(false);
+                        opciones2[1].prefabs[1].prefab.SetActive(true);
+                        opciones2[1].prefabs[2].prefab.SetActive(false);
+                        opciones2[1].prefabs[3].prefab.SetActive(false);
+                    }
+                    if (P2_cont1 == 2)
+                    {
+                        opciones2[1].prefabs[0].prefab.SetActive(false);
+                        opciones2[1].prefabs[1].prefab.SetActive(false);
+                        opciones2[1].prefabs[2].prefab.SetActive(true);
+                        opciones2[1].prefabs[3].prefab.SetActive(false);
+                    }
+                    if (P2_cont1 == 3)
+                    {
+                        opciones2[1].prefabs[0].prefab.SetActive(false);
+                        opciones2[1].prefabs[1].prefab.SetActive(false);
+                        opciones2[1].prefabs[2].prefab.SetActive(false);
+                        opciones2[1].prefabs[3].prefab.SetActive(true);
+                    }
                 }
                 else
                 {
@@ -443,7 +579,35 @@ public class SelectionManager : MonoBehaviour
                     {
                         P3_cont1 = 0;
                     }
-                    P3_selectModeloTxt.text = opciones2[P3_cont1].nombre;
+                    P3_selectModeloTxt.text = opciones2[2].prefabs[P3_cont1].nombre;
+                    if (P3_cont1 == 0)
+                    {
+                        opciones2[2].prefabs[0].prefab.SetActive(true);
+                        opciones2[2].prefabs[1].prefab.SetActive(false);
+                        opciones2[2].prefabs[2].prefab.SetActive(false);
+                        opciones2[2].prefabs[3].prefab.SetActive(false);
+                    }
+                    if (P3_cont1 == 1)
+                    {
+                        opciones2[2].prefabs[0].prefab.SetActive(false);
+                        opciones2[2].prefabs[1].prefab.SetActive(true);
+                        opciones2[2].prefabs[2].prefab.SetActive(false);
+                        opciones2[2].prefabs[3].prefab.SetActive(false);
+                    }
+                    if (P3_cont1 == 2)
+                    {
+                        opciones2[2].prefabs[0].prefab.SetActive(false);
+                        opciones2[2].prefabs[1].prefab.SetActive(false);
+                        opciones2[2].prefabs[2].prefab.SetActive(true);
+                        opciones2[2].prefabs[3].prefab.SetActive(false);
+                    }
+                    if (P3_cont1 == 3)
+                    {
+                        opciones2[2].prefabs[0].prefab.SetActive(false);
+                        opciones2[2].prefabs[1].prefab.SetActive(false);
+                        opciones2[2].prefabs[2].prefab.SetActive(false);
+                        opciones2[2].prefabs[3].prefab.SetActive(true);
+                    }
                 }
                 else
                 {
@@ -466,7 +630,35 @@ public class SelectionManager : MonoBehaviour
                     {
                         P3_cont1 = opciones2.Length - 1;
                     }
-                    P3_selectModeloTxt.text = opciones2[P3_cont1].nombre;
+                    P3_selectModeloTxt.text = opciones2[2].prefabs[P3_cont1].nombre;
+                    if (P3_cont1 == 0)
+                    {
+                        opciones2[2].prefabs[0].prefab.SetActive(true);
+                        opciones2[2].prefabs[1].prefab.SetActive(false);
+                        opciones2[2].prefabs[2].prefab.SetActive(false);
+                        opciones2[2].prefabs[3].prefab.SetActive(false);
+                    }
+                    if (P3_cont1 == 1)
+                    {
+                        opciones2[2].prefabs[0].prefab.SetActive(false);
+                        opciones2[2].prefabs[1].prefab.SetActive(true);
+                        opciones2[2].prefabs[2].prefab.SetActive(false);
+                        opciones2[2].prefabs[3].prefab.SetActive(false);
+                    }
+                    if (P3_cont1 == 2)
+                    {
+                        opciones2[2].prefabs[0].prefab.SetActive(false);
+                        opciones2[2].prefabs[1].prefab.SetActive(false);
+                        opciones2[2].prefabs[2].prefab.SetActive(true);
+                        opciones2[2].prefabs[3].prefab.SetActive(false);
+                    }
+                    if (P3_cont1 == 3)
+                    {
+                        opciones2[2].prefabs[0].prefab.SetActive(false);
+                        opciones2[2].prefabs[1].prefab.SetActive(false);
+                        opciones2[2].prefabs[2].prefab.SetActive(false);
+                        opciones2[2].prefabs[3].prefab.SetActive(true);
+                    }
                 }
                 else
                 {
@@ -506,7 +698,35 @@ public class SelectionManager : MonoBehaviour
                     {
                         P4_cont1 = 0;
                     }
-                    P4_selectModeloTxt.text = opciones2[P4_cont1].nombre;
+                    P4_selectModeloTxt.text = opciones2[3].prefabs[P4_cont1].nombre;
+                    if (P4_cont1 == 0)
+                    {
+                        opciones2[3].prefabs[0].prefab.SetActive(true);
+                        opciones2[3].prefabs[1].prefab.SetActive(false);
+                        opciones2[3].prefabs[2].prefab.SetActive(false);
+                        opciones2[3].prefabs[3].prefab.SetActive(false);
+                    }
+                    if (P4_cont1 == 1)
+                    {
+                        opciones2[3].prefabs[0].prefab.SetActive(false);
+                        opciones2[3].prefabs[1].prefab.SetActive(true);
+                        opciones2[3].prefabs[2].prefab.SetActive(false);
+                        opciones2[3].prefabs[3].prefab.SetActive(false);
+                    }
+                    if (P4_cont1 == 2)
+                    {
+                        opciones2[3].prefabs[0].prefab.SetActive(false);
+                        opciones2[3].prefabs[1].prefab.SetActive(false);
+                        opciones2[3].prefabs[2].prefab.SetActive(true);
+                        opciones2[3].prefabs[3].prefab.SetActive(false);
+                    }
+                    if (P4_cont1 == 3)
+                    {
+                        opciones2[3].prefabs[0].prefab.SetActive(false);
+                        opciones2[3].prefabs[1].prefab.SetActive(false);
+                        opciones2[3].prefabs[2].prefab.SetActive(false);
+                        opciones2[3].prefabs[3].prefab.SetActive(true);
+                    }
                 }
                 else
                 {
@@ -529,7 +749,35 @@ public class SelectionManager : MonoBehaviour
                     {
                         P4_cont1 = opciones2.Length - 1;
                     }
-                    P4_selectModeloTxt.text = opciones2[P4_cont1].nombre;
+                    P4_selectModeloTxt.text = opciones2[3].prefabs[P4_cont1].nombre;
+                    if (P4_cont1 == 0)
+                    {
+                        opciones2[3].prefabs[0].prefab.SetActive(true);
+                        opciones2[3].prefabs[1].prefab.SetActive(false);
+                        opciones2[3].prefabs[2].prefab.SetActive(false);
+                        opciones2[3].prefabs[3].prefab.SetActive(false);
+                    }
+                    if (P4_cont1 == 1)
+                    {
+                        opciones2[3].prefabs[0].prefab.SetActive(false);
+                        opciones2[3].prefabs[1].prefab.SetActive(true);
+                        opciones2[3].prefabs[2].prefab.SetActive(false);
+                        opciones2[3].prefabs[3].prefab.SetActive(false);
+                    }
+                    if (P4_cont1 == 2)
+                    {
+                        opciones2[3].prefabs[0].prefab.SetActive(false);
+                        opciones2[3].prefabs[1].prefab.SetActive(false);
+                        opciones2[3].prefabs[2].prefab.SetActive(true);
+                        opciones2[3].prefabs[3].prefab.SetActive(false);
+                    }
+                    if (P4_cont1 == 3)
+                    {
+                        opciones2[3].prefabs[0].prefab.SetActive(false);
+                        opciones2[3].prefabs[1].prefab.SetActive(false);
+                        opciones2[3].prefabs[2].prefab.SetActive(false);
+                        opciones2[3].prefabs[3].prefab.SetActive(true);
+                    }
                 }
                 else
                 {
