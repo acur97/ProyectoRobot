@@ -2092,6 +2092,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6188773341552742372, guid: 6cad0f354c928394ea076e43d19a06b1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cad0f354c928394ea076e43d19a06b1, type: 3}
 --- !u!4 &556473228 stripped
@@ -4169,6 +4174,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!137 &1562061907 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6188773341549560502, guid: 6cad0f354c928394ea076e43d19a06b1,
+    type: 3}
+  m_PrefabInstance: {fileID: 556473227}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1576531283
 GameObject:
   m_ObjectHideFlags: 0
@@ -5042,58 +5053,60 @@ MonoBehaviour:
     prefabs:
     - nombre: Parcero 1
       prefab: {fileID: 2115828589310654312}
-      rotColor: {fileID: 0}
+      rotColors:
+      - rotMat: {fileID: 1562061907}
+        posMat: 1
     - nombre: Parcero 2
       prefab: {fileID: 417751319}
-      rotColor: {fileID: 0}
+      rotColors: []
     - nombre: Parcero 3
       prefab: {fileID: 692374642}
-      rotColor: {fileID: 0}
+      rotColors: []
     - nombre: Parcero 4
       prefab: {fileID: 1794781924}
-      rotColor: {fileID: 0}
+      rotColors: []
   - nombre: Jugador2
     prefabs:
     - nombre: Parcero 1
       prefab: {fileID: 947430482}
-      rotColor: {fileID: 0}
+      rotColors: []
     - nombre: Parcero 2
       prefab: {fileID: 5332786677853920339}
-      rotColor: {fileID: 0}
+      rotColors: []
     - nombre: Parcero 3
       prefab: {fileID: 787525169}
-      rotColor: {fileID: 0}
+      rotColors: []
     - nombre: Parcero 4
       prefab: {fileID: 1512135395}
-      rotColor: {fileID: 0}
+      rotColors: []
   - nombre: Jugador3
     prefabs:
     - nombre: Parcero 1
       prefab: {fileID: 428287720}
-      rotColor: {fileID: 0}
+      rotColors: []
     - nombre: Parcero 2
       prefab: {fileID: 1584158408}
-      rotColor: {fileID: 0}
+      rotColors: []
     - nombre: Parcero 3
       prefab: {fileID: 768826938604622446}
-      rotColor: {fileID: 0}
+      rotColors: []
     - nombre: Parcero 4
       prefab: {fileID: 766134191}
-      rotColor: {fileID: 0}
+      rotColors: []
   - nombre: Jugador4
     prefabs:
     - nombre: Parcero 1
       prefab: {fileID: 386787326}
-      rotColor: {fileID: 0}
+      rotColors: []
     - nombre: Parcero 2
       prefab: {fileID: 1167160192}
-      rotColor: {fileID: 0}
+      rotColors: []
     - nombre: Parcero 3
       prefab: {fileID: 869157071}
-      rotColor: {fileID: 0}
+      rotColors: []
     - nombre: Parcero 4
       prefab: {fileID: 1599450050665183451}
-      rotColor: {fileID: 0}
+      rotColors: []
   P1_canvasSelect: {fileID: 1908969573}
   P1_canvasIniciado: {fileID: 209714062}
   P1_nombreControl: {fileID: 1856974881}

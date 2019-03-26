@@ -14,11 +14,17 @@ public class SelectionManager : MonoBehaviour
         public Color32 colorUI;
     }
     [Serializable]
+    public class rotColors
+    {
+        public SkinnedMeshRenderer rotMat;
+        public int posMat;
+    }
+    [Serializable]
     public class ops2_prefabs
     {
         public string nombre;
         public GameObject prefab;
-        public SkinnedMeshRenderer[] rotColor;
+        public rotColors[] rotColors;
     }
     [Serializable]
     public class ops2
