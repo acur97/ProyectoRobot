@@ -2035,7 +2035,7 @@ PrefabInstance:
     - target: {fileID: 6188773341552741910, guid: 6cad0f354c928394ea076e43d19a06b1,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6188773341553169398, guid: 6cad0f354c928394ea076e43d19a06b1,
         type: 3}
@@ -2364,7 +2364,7 @@ PrefabInstance:
     - target: {fileID: 6094950219977539354, guid: 9171d7887ae443343bd0198ef9f635b7,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6094950219977630458, guid: 9171d7887ae443343bd0198ef9f635b7,
         type: 3}
@@ -4816,7 +4816,7 @@ PrefabInstance:
     - target: {fileID: 8647147802637760928, guid: e173c38881ddfa544a318449c7a802e6,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8647147802637526400, guid: e173c38881ddfa544a318449c7a802e6,
         type: 3}
@@ -4993,47 +4993,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   opciones1:
   - nombre: Rojo
-    colorEmision: {r: 0.75, g: 0.22500001, b: 0.22500001, a: 1}
+    colorEmision: {fileID: 2100000, guid: 2fc5ff4f10883c04d998103cb517dfff, type: 2}
     colorUI:
       serializedVersion: 2
       rgba: 4279242816
   - nombre: Naranja
-    colorEmision: {r: 0.7490196, g: 0.4862745, b: 0.22352941, a: 1}
+    colorEmision: {fileID: 2100000, guid: fecb586efe5a8aa4d9372f0438f05a52, type: 2}
     colorUI:
       serializedVersion: 2
       rgba: 4279251008
   - nombre: Amarillo
-    colorEmision: {r: 0.7490196, g: 0.7490196, b: 0.22352941, a: 1}
+    colorEmision: {fileID: 2100000, guid: 4004a7481b77917428fcf4900a49d2bb, type: 2}
     colorUI:
       serializedVersion: 2
       rgba: 4279255104
   - nombre: Verde
-    colorEmision: {r: 0.31352943, g: 0.75, b: 0.22500001, a: 1}
+    colorEmision: {fileID: 2100000, guid: 870777267b7d65a48a7054517303aa06, type: 2}
     colorUI:
       serializedVersion: 2
       rgba: 4279255320
   - nombre: Cian
-    colorEmision: {r: 0.22500001, g: 0.66352946, b: 0.75, a: 1}
+    colorEmision: {fileID: 2100000, guid: abdbb13c18bee104ead71c550ae7800d, type: 2}
     colorUI:
       serializedVersion: 2
       rgba: 4282398736
   - nombre: Blanco
-    colorEmision: {r: 0.75, g: 0.75, b: 0.75, a: 1}
+    colorEmision: {fileID: 2100000, guid: 165d43c77e6f8d64184c90723685f8cc, type: 2}
     colorUI:
       serializedVersion: 2
       rgba: 4282400832
   - nombre: Azul
-    colorEmision: {r: 0.22500001, g: 0.22500001, b: 0.75, a: 1}
+    colorEmision: {fileID: 2100000, guid: 151bab61a49033b4290fdf742c645f48, type: 2}
     colorUI:
       serializedVersion: 2
       rgba: 4282388496
   - nombre: Rosado
-    colorEmision: {r: 0.7490196, g: 0.22352941, b: 0.5300652, a: 1}
+    colorEmision: {fileID: 2100000, guid: a061446f22478444ab4ef1291db42d22, type: 2}
     colorUI:
       serializedVersion: 2
       rgba: 4281602112
   - nombre: Morado
-    colorEmision: {r: 0.57500017, g: 0.22500001, b: 0.75, a: 1}
+    colorEmision: {fileID: 2100000, guid: 7d01013ee9edbb0499ea1eee12a36c8f, type: 2}
     colorUI:
       serializedVersion: 2
       rgba: 4282388528
@@ -5042,42 +5042,58 @@ MonoBehaviour:
     prefabs:
     - nombre: Parcero 1
       prefab: {fileID: 2115828589310654312}
+      rotColor: {fileID: 0}
     - nombre: Parcero 2
       prefab: {fileID: 417751319}
+      rotColor: {fileID: 0}
     - nombre: Parcero 3
       prefab: {fileID: 692374642}
+      rotColor: {fileID: 0}
     - nombre: Parcero 4
       prefab: {fileID: 1794781924}
+      rotColor: {fileID: 0}
   - nombre: Jugador2
     prefabs:
     - nombre: Parcero 1
       prefab: {fileID: 947430482}
+      rotColor: {fileID: 0}
     - nombre: Parcero 2
       prefab: {fileID: 5332786677853920339}
+      rotColor: {fileID: 0}
     - nombre: Parcero 3
       prefab: {fileID: 787525169}
+      rotColor: {fileID: 0}
     - nombre: Parcero 4
       prefab: {fileID: 1512135395}
+      rotColor: {fileID: 0}
   - nombre: Jugador3
     prefabs:
     - nombre: Parcero 1
       prefab: {fileID: 428287720}
+      rotColor: {fileID: 0}
     - nombre: Parcero 2
       prefab: {fileID: 1584158408}
+      rotColor: {fileID: 0}
     - nombre: Parcero 3
       prefab: {fileID: 768826938604622446}
+      rotColor: {fileID: 0}
     - nombre: Parcero 4
       prefab: {fileID: 766134191}
+      rotColor: {fileID: 0}
   - nombre: Jugador4
     prefabs:
     - nombre: Parcero 1
       prefab: {fileID: 386787326}
+      rotColor: {fileID: 0}
     - nombre: Parcero 2
       prefab: {fileID: 1167160192}
+      rotColor: {fileID: 0}
     - nombre: Parcero 3
       prefab: {fileID: 869157071}
+      rotColor: {fileID: 0}
     - nombre: Parcero 4
       prefab: {fileID: 1599450050665183451}
+      rotColor: {fileID: 0}
   P1_canvasSelect: {fileID: 1908969573}
   P1_canvasIniciado: {fileID: 209714062}
   P1_nombreControl: {fileID: 1856974881}
@@ -7067,7 +7083,7 @@ PrefabInstance:
     - target: {fileID: 7080806101034071206, guid: a1bcba8866c4f534186a99e1deeb75ce,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7080806101033838918, guid: a1bcba8866c4f534186a99e1deeb75ce,
         type: 3}

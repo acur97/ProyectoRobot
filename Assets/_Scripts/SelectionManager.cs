@@ -10,7 +10,7 @@ public class SelectionManager : MonoBehaviour
     public class ops1
     {
         public string nombre;
-        public Color colorEmision;
+        public Material colorEmision;
         public Color32 colorUI;
     }
     [Serializable]
@@ -18,6 +18,7 @@ public class SelectionManager : MonoBehaviour
     {
         public string nombre;
         public GameObject prefab;
+        public SkinnedMeshRenderer[] rotColor;
     }
     [Serializable]
     public class ops2
@@ -317,477 +318,545 @@ public class SelectionManager : MonoBehaviour
 
         if (encontradoP1)
         {
-            P1_delay -= (Time.unscaledDeltaTime * 2);
-            if (Input.GetAxisRaw("J" + controlesP1 + "_V") < -0.25f)
+            if (!readyP1)
             {
-                P1_selectModeloImg.SetActive(true);
-                P1_selectColorImg.SetActive(false);
-                selecP1 = 1;
-            }
-            if (Input.GetAxisRaw("J" + controlesP1 + "_V") > 0.25f)
-            {
-                P1_selectModeloImg.SetActive(false);
-                P1_selectColorImg.SetActive(true);
-                selecP1 = 2;
-            }
+                P1_delay -= (Time.unscaledDeltaTime * 2);
+                if (Input.GetAxisRaw("J" + controlesP1 + "_V") < -0.25f)
+                {
+                    P1_selectModeloImg.SetActive(true);
+                    P1_selectColorImg.SetActive(false);
+                    selecP1 = 1;
+                }
+                if (Input.GetAxisRaw("J" + controlesP1 + "_V") > 0.25f)
+                {
+                    P1_selectModeloImg.SetActive(false);
+                    P1_selectColorImg.SetActive(true);
+                    selecP1 = 2;
+                }
 
-            if (Input.GetAxisRaw("J" + controlesP1 + "_H") > 0.25f && P1_delay < 0.25f)
-            {
-                if (selecP1 == 1)
+                if (Input.GetAxisRaw("J" + controlesP1 + "_H") > 0.25f && P1_delay < 0.25f)
                 {
-                    P1_delay = 0.5f;
-                    P1_cont1 += 1;
-                    if (P1_cont1 == opciones2.Length)
+                    if (selecP1 == 1)
                     {
-                        P1_cont1 = 0;
+                        P1_delay = 0.5f;
+                        P1_cont1 += 1;
+                        if (P1_cont1 == opciones2.Length)
+                        {
+                            P1_cont1 = 0;
+                        }
+                        P1_selectModeloTxt.text = opciones2[0].prefabs[P1_cont1].nombre;
+                        if (P1_cont1 == 0)
+                        {
+                            opciones2[0].prefabs[0].prefab.SetActive(true);
+                            opciones2[0].prefabs[1].prefab.SetActive(false);
+                            opciones2[0].prefabs[2].prefab.SetActive(false);
+                            opciones2[0].prefabs[3].prefab.SetActive(false);
+                        }
+                        if (P1_cont1 == 1)
+                        {
+                            opciones2[0].prefabs[0].prefab.SetActive(false);
+                            opciones2[0].prefabs[1].prefab.SetActive(true);
+                            opciones2[0].prefabs[2].prefab.SetActive(false);
+                            opciones2[0].prefabs[3].prefab.SetActive(false);
+                        }
+                        if (P1_cont1 == 2)
+                        {
+                            opciones2[0].prefabs[0].prefab.SetActive(false);
+                            opciones2[0].prefabs[1].prefab.SetActive(false);
+                            opciones2[0].prefabs[2].prefab.SetActive(true);
+                            opciones2[0].prefabs[3].prefab.SetActive(false);
+                        }
+                        if (P1_cont1 == 3)
+                        {
+                            opciones2[0].prefabs[0].prefab.SetActive(false);
+                            opciones2[0].prefabs[1].prefab.SetActive(false);
+                            opciones2[0].prefabs[2].prefab.SetActive(false);
+                            opciones2[0].prefabs[3].prefab.SetActive(true);
+                        }
                     }
-                    P1_selectModeloTxt.text = opciones2[0].prefabs[P1_cont1].nombre;
-                    if (P1_cont1 == 0)
+                    else
                     {
-                        opciones2[0].prefabs[0].prefab.SetActive(true);
-                        opciones2[0].prefabs[1].prefab.SetActive(false);
-                        opciones2[0].prefabs[2].prefab.SetActive(false);
-                        opciones2[0].prefabs[3].prefab.SetActive(false);
-                    }
-                    if (P1_cont1 == 1)
-                    {
-                        opciones2[0].prefabs[0].prefab.SetActive(false);
-                        opciones2[0].prefabs[1].prefab.SetActive(true);
-                        opciones2[0].prefabs[2].prefab.SetActive(false);
-                        opciones2[0].prefabs[3].prefab.SetActive(false);
-                    }
-                    if (P1_cont1 == 2)
-                    {
-                        opciones2[0].prefabs[0].prefab.SetActive(false);
-                        opciones2[0].prefabs[1].prefab.SetActive(false);
-                        opciones2[0].prefabs[2].prefab.SetActive(true);
-                        opciones2[0].prefabs[3].prefab.SetActive(false);
-                    }
-                    if (P1_cont1 == 3)
-                    {
-                        opciones2[0].prefabs[0].prefab.SetActive(false);
-                        opciones2[0].prefabs[1].prefab.SetActive(false);
-                        opciones2[0].prefabs[2].prefab.SetActive(false);
-                        opciones2[0].prefabs[3].prefab.SetActive(true);
+                        P1_delay = 0.5f;
+                        P1_cont2 += 1;
+                        if (P1_cont2 == opciones1.Length)
+                        {
+                            P1_cont2 = 0;
+                        }
+                        P1_selectColorTxt.text = opciones1[P1_cont2].nombre;
                     }
                 }
-                else
+                if (Input.GetAxisRaw("J" + controlesP1 + "_H") < -0.25f && P1_delay < 0.25f)
                 {
-                    P1_delay = 0.5f;
-                    P1_cont2 += 1;
-                    if (P1_cont2 == opciones1.Length)
+                    if (selecP1 == 1)
                     {
-                        P1_cont2 = 0;
+                        P1_delay = 0.5f;
+                        P1_cont1 -= 1;
+                        if (P1_cont1 == -1)
+                        {
+                            P1_cont1 = opciones2.Length - 1;
+                        }
+                        P1_selectModeloTxt.text = opciones2[0].prefabs[P1_cont1].nombre;
+                        if (P1_cont1 == 0)
+                        {
+                            opciones2[0].prefabs[0].prefab.SetActive(true);
+                            opciones2[0].prefabs[1].prefab.SetActive(false);
+                            opciones2[0].prefabs[2].prefab.SetActive(false);
+                            opciones2[0].prefabs[3].prefab.SetActive(false);
+                        }
+                        if (P1_cont1 == 1)
+                        {
+                            opciones2[0].prefabs[0].prefab.SetActive(false);
+                            opciones2[0].prefabs[1].prefab.SetActive(true);
+                            opciones2[0].prefabs[2].prefab.SetActive(false);
+                            opciones2[0].prefabs[3].prefab.SetActive(false);
+                        }
+                        if (P1_cont1 == 2)
+                        {
+                            opciones2[0].prefabs[0].prefab.SetActive(false);
+                            opciones2[0].prefabs[1].prefab.SetActive(false);
+                            opciones2[0].prefabs[2].prefab.SetActive(true);
+                            opciones2[0].prefabs[3].prefab.SetActive(false);
+                        }
+                        if (P1_cont1 == 3)
+                        {
+                            opciones2[0].prefabs[0].prefab.SetActive(false);
+                            opciones2[0].prefabs[1].prefab.SetActive(false);
+                            opciones2[0].prefabs[2].prefab.SetActive(false);
+                            opciones2[0].prefabs[3].prefab.SetActive(true);
+                        }
                     }
-                    P1_selectColorTxt.text = opciones1[P1_cont2].nombre;
+                    else
+                    {
+                        P1_delay = 0.5f;
+                        P1_cont2 -= 1;
+                        if (P1_cont2 == -1)
+                        {
+                            P1_cont2 = opciones1.Length - 1;
+                        }
+                        P1_selectColorTxt.text = opciones1[P1_cont2].nombre;
+                    }
+                }
+
+                if (Input.GetButtonDown("J" + controlesP1 + "_F") && P1_delay < 0.25f)
+                {
+                    readyP1 = true;
+                    Debug.Log("Player 1 Ready");
                 }
             }
-            if (Input.GetAxisRaw("J" + controlesP1 + "_H") < -0.25f && P1_delay < 0.25f)
+            else
             {
-                if (selecP1 == 1)
+                if (Input.GetButtonDown("J" + controlesP1 + "_P"))
                 {
-                    P1_delay = 0.5f;
-                    P1_cont1 -= 1;
-                    if (P1_cont1 == -1)
-                    {
-                        P1_cont1 = opciones2.Length - 1;
-                    }
-                    P1_selectModeloTxt.text = opciones2[0].prefabs[P1_cont1].nombre;
-                    if (P1_cont1 == 0)
-                    {
-                        opciones2[0].prefabs[0].prefab.SetActive(true);
-                        opciones2[0].prefabs[1].prefab.SetActive(false);
-                        opciones2[0].prefabs[2].prefab.SetActive(false);
-                        opciones2[0].prefabs[3].prefab.SetActive(false);
-                    }
-                    if (P1_cont1 == 1)
-                    {
-                        opciones2[0].prefabs[0].prefab.SetActive(false);
-                        opciones2[0].prefabs[1].prefab.SetActive(true);
-                        opciones2[0].prefabs[2].prefab.SetActive(false);
-                        opciones2[0].prefabs[3].prefab.SetActive(false);
-                    }
-                    if (P1_cont1 == 2)
-                    {
-                        opciones2[0].prefabs[0].prefab.SetActive(false);
-                        opciones2[0].prefabs[1].prefab.SetActive(false);
-                        opciones2[0].prefabs[2].prefab.SetActive(true);
-                        opciones2[0].prefabs[3].prefab.SetActive(false);
-                    }
-                    if (P1_cont1 == 3)
-                    {
-                        opciones2[0].prefabs[0].prefab.SetActive(false);
-                        opciones2[0].prefabs[1].prefab.SetActive(false);
-                        opciones2[0].prefabs[2].prefab.SetActive(false);
-                        opciones2[0].prefabs[3].prefab.SetActive(true);
-                    }
-                }
-                else
-                {
-                    P1_delay = 0.5f;
-                    P1_cont2 -= 1;
-                    if (P1_cont2 == -1)
-                    {
-                        P1_cont2 = opciones1.Length - 1;
-                    }
-                    P1_selectColorTxt.text = opciones1[P1_cont2].nombre;
+                    readyP1 = false;
+                    Debug.Log("Player 1 NO-Ready");
                 }
             }
         }
         if (encontradoP2)
         {
-            P2_delay -= (Time.unscaledDeltaTime * 2);
-            if (Input.GetAxisRaw("J" + controlesP2 + "_V") < -0.25f)
+            if (!readyP2)
             {
-                P2_selectModeloImg.SetActive(true);
-                P2_selectColorImg.SetActive(false);
-                selecP2 = 1;
-            }
-            if (Input.GetAxisRaw("J" + controlesP2 + "_V") > 0.25f)
-            {
-                P2_selectModeloImg.SetActive(false);
-                P2_selectColorImg.SetActive(true);
-                selecP2 = 2;
-            }
+                P2_delay -= (Time.unscaledDeltaTime * 2);
+                if (Input.GetAxisRaw("J" + controlesP2 + "_V") < -0.25f)
+                {
+                    P2_selectModeloImg.SetActive(true);
+                    P2_selectColorImg.SetActive(false);
+                    selecP2 = 1;
+                }
+                if (Input.GetAxisRaw("J" + controlesP2 + "_V") > 0.25f)
+                {
+                    P2_selectModeloImg.SetActive(false);
+                    P2_selectColorImg.SetActive(true);
+                    selecP2 = 2;
+                }
 
-            if (Input.GetAxisRaw("J" + controlesP2 + "_H") > 0.25f && P2_delay < 0.25f)
-            {
-                if (selecP2 == 1)
+                if (Input.GetAxisRaw("J" + controlesP2 + "_H") > 0.25f && P2_delay < 0.25f)
                 {
-                    P2_delay = 0.5f;
-                    P2_cont1 += 1;
-                    if (P2_cont1 == opciones2.Length)
+                    if (selecP2 == 1)
                     {
-                        P2_cont1 = 0;
+                        P2_delay = 0.5f;
+                        P2_cont1 += 1;
+                        if (P2_cont1 == opciones2.Length)
+                        {
+                            P2_cont1 = 0;
+                        }
+                        P2_selectModeloTxt.text = opciones2[1].prefabs[P2_cont1].nombre;
+                        if (P2_cont1 == 0)
+                        {
+                            opciones2[1].prefabs[0].prefab.SetActive(true);
+                            opciones2[1].prefabs[1].prefab.SetActive(false);
+                            opciones2[1].prefabs[2].prefab.SetActive(false);
+                            opciones2[1].prefabs[3].prefab.SetActive(false);
+                        }
+                        if (P2_cont1 == 1)
+                        {
+                            opciones2[1].prefabs[0].prefab.SetActive(false);
+                            opciones2[1].prefabs[1].prefab.SetActive(true);
+                            opciones2[1].prefabs[2].prefab.SetActive(false);
+                            opciones2[1].prefabs[3].prefab.SetActive(false);
+                        }
+                        if (P2_cont1 == 2)
+                        {
+                            opciones2[1].prefabs[0].prefab.SetActive(false);
+                            opciones2[1].prefabs[1].prefab.SetActive(false);
+                            opciones2[1].prefabs[2].prefab.SetActive(true);
+                            opciones2[1].prefabs[3].prefab.SetActive(false);
+                        }
+                        if (P2_cont1 == 3)
+                        {
+                            opciones2[1].prefabs[0].prefab.SetActive(false);
+                            opciones2[1].prefabs[1].prefab.SetActive(false);
+                            opciones2[1].prefabs[2].prefab.SetActive(false);
+                            opciones2[1].prefabs[3].prefab.SetActive(true);
+                        }
                     }
-                    P2_selectModeloTxt.text = opciones2[1].prefabs[P2_cont1].nombre;
-                    if (P2_cont1 == 0)
+                    else
                     {
-                        opciones2[1].prefabs[0].prefab.SetActive(true);
-                        opciones2[1].prefabs[1].prefab.SetActive(false);
-                        opciones2[1].prefabs[2].prefab.SetActive(false);
-                        opciones2[1].prefabs[3].prefab.SetActive(false);
-                    }
-                    if (P2_cont1 == 1)
-                    {
-                        opciones2[1].prefabs[0].prefab.SetActive(false);
-                        opciones2[1].prefabs[1].prefab.SetActive(true);
-                        opciones2[1].prefabs[2].prefab.SetActive(false);
-                        opciones2[1].prefabs[3].prefab.SetActive(false);
-                    }
-                    if (P2_cont1 == 2)
-                    {
-                        opciones2[1].prefabs[0].prefab.SetActive(false);
-                        opciones2[1].prefabs[1].prefab.SetActive(false);
-                        opciones2[1].prefabs[2].prefab.SetActive(true);
-                        opciones2[1].prefabs[3].prefab.SetActive(false);
-                    }
-                    if (P2_cont1 == 3)
-                    {
-                        opciones2[1].prefabs[0].prefab.SetActive(false);
-                        opciones2[1].prefabs[1].prefab.SetActive(false);
-                        opciones2[1].prefabs[2].prefab.SetActive(false);
-                        opciones2[1].prefabs[3].prefab.SetActive(true);
+                        P2_delay = 0.5f;
+                        P2_cont2 += 1;
+                        if (P2_cont2 == opciones1.Length)
+                        {
+                            P2_cont2 = 0;
+                        }
+                        P2_selectColorTxt.text = opciones1[P2_cont2].nombre;
                     }
                 }
-                else
+                if (Input.GetAxisRaw("J" + controlesP2 + "_H") < -0.25f && P2_delay < 0.25f)
                 {
-                    P2_delay = 0.5f;
-                    P2_cont2 += 1;
-                    if (P2_cont2 == opciones1.Length)
+                    if (selecP2 == 1)
                     {
-                        P2_cont2 = 0;
+                        P2_delay = 0.5f;
+                        P2_cont1 -= 1;
+                        if (P2_cont1 == -1)
+                        {
+                            P2_cont1 = opciones2.Length - 1;
+                        }
+                        P2_selectModeloTxt.text = opciones2[1].prefabs[P2_cont1].nombre;
+                        if (P2_cont1 == 0)
+                        {
+                            opciones2[1].prefabs[0].prefab.SetActive(true);
+                            opciones2[1].prefabs[1].prefab.SetActive(false);
+                            opciones2[1].prefabs[2].prefab.SetActive(false);
+                            opciones2[1].prefabs[3].prefab.SetActive(false);
+                        }
+                        if (P2_cont1 == 1)
+                        {
+                            opciones2[1].prefabs[0].prefab.SetActive(false);
+                            opciones2[1].prefabs[1].prefab.SetActive(true);
+                            opciones2[1].prefabs[2].prefab.SetActive(false);
+                            opciones2[1].prefabs[3].prefab.SetActive(false);
+                        }
+                        if (P2_cont1 == 2)
+                        {
+                            opciones2[1].prefabs[0].prefab.SetActive(false);
+                            opciones2[1].prefabs[1].prefab.SetActive(false);
+                            opciones2[1].prefabs[2].prefab.SetActive(true);
+                            opciones2[1].prefabs[3].prefab.SetActive(false);
+                        }
+                        if (P2_cont1 == 3)
+                        {
+                            opciones2[1].prefabs[0].prefab.SetActive(false);
+                            opciones2[1].prefabs[1].prefab.SetActive(false);
+                            opciones2[1].prefabs[2].prefab.SetActive(false);
+                            opciones2[1].prefabs[3].prefab.SetActive(true);
+                        }
                     }
-                    P2_selectColorTxt.text = opciones1[P2_cont2].nombre;
+                    else
+                    {
+                        P2_delay = 0.5f;
+                        P2_cont2 -= 1;
+                        if (P2_cont2 == -1)
+                        {
+                            P2_cont2 = opciones1.Length - 1;
+                        }
+                        P2_selectColorTxt.text = opciones1[P2_cont2].nombre;
+                    }
+                }
+
+                if (Input.GetButtonDown("J" + controlesP2 + "_F") && P2_delay < 0.25f)
+                {
+                    readyP2 = true;
+                    Debug.Log("Player 2 Ready");
                 }
             }
-            if (Input.GetAxisRaw("J" + controlesP2 + "_H") < -0.25f && P2_delay < 0.25f)
+            else
             {
-                if (selecP2 == 1)
+                if (Input.GetButtonDown("J" + controlesP2 + "_P"))
                 {
-                    P2_delay = 0.5f;
-                    P2_cont1 -= 1;
-                    if (P2_cont1 == -1)
-                    {
-                        P2_cont1 = opciones2.Length - 1;
-                    }
-                    P2_selectModeloTxt.text = opciones2[1].prefabs[P2_cont1].nombre;
-                    if (P2_cont1 == 0)
-                    {
-                        opciones2[1].prefabs[0].prefab.SetActive(true);
-                        opciones2[1].prefabs[1].prefab.SetActive(false);
-                        opciones2[1].prefabs[2].prefab.SetActive(false);
-                        opciones2[1].prefabs[3].prefab.SetActive(false);
-                    }
-                    if (P2_cont1 == 1)
-                    {
-                        opciones2[1].prefabs[0].prefab.SetActive(false);
-                        opciones2[1].prefabs[1].prefab.SetActive(true);
-                        opciones2[1].prefabs[2].prefab.SetActive(false);
-                        opciones2[1].prefabs[3].prefab.SetActive(false);
-                    }
-                    if (P2_cont1 == 2)
-                    {
-                        opciones2[1].prefabs[0].prefab.SetActive(false);
-                        opciones2[1].prefabs[1].prefab.SetActive(false);
-                        opciones2[1].prefabs[2].prefab.SetActive(true);
-                        opciones2[1].prefabs[3].prefab.SetActive(false);
-                    }
-                    if (P2_cont1 == 3)
-                    {
-                        opciones2[1].prefabs[0].prefab.SetActive(false);
-                        opciones2[1].prefabs[1].prefab.SetActive(false);
-                        opciones2[1].prefabs[2].prefab.SetActive(false);
-                        opciones2[1].prefabs[3].prefab.SetActive(true);
-                    }
-                }
-                else
-                {
-                    P2_delay = 0.5f;
-                    P2_cont2 -= 1;
-                    if (P2_cont2 == -1)
-                    {
-                        P2_cont2 = opciones1.Length - 1;
-                    }
-                    P2_selectColorTxt.text = opciones1[P2_cont2].nombre;
+                    readyP2 = false;
+                    Debug.Log("Player 2 NO-Ready");
                 }
             }
         }
         if (encontradoP3)
         {
-            P3_delay -= (Time.unscaledDeltaTime * 2);
-            if (Input.GetAxisRaw("J" + controlesP3 + "_V") < -0.25f)
+            if (!readyP3)
             {
-                P3_selectModeloImg.SetActive(true);
-                P3_selectColorImg.SetActive(false);
-                selecP3 = 1;
-            }
-            if (Input.GetAxisRaw("J" + controlesP3 + "_V") > 0.25f)
-            {
-                P3_selectModeloImg.SetActive(false);
-                P3_selectColorImg.SetActive(true);
-                selecP3 = 2;
-            }
+                P3_delay -= (Time.unscaledDeltaTime * 2);
+                if (Input.GetAxisRaw("J" + controlesP3 + "_V") < -0.25f)
+                {
+                    P3_selectModeloImg.SetActive(true);
+                    P3_selectColorImg.SetActive(false);
+                    selecP3 = 1;
+                }
+                if (Input.GetAxisRaw("J" + controlesP3 + "_V") > 0.25f)
+                {
+                    P3_selectModeloImg.SetActive(false);
+                    P3_selectColorImg.SetActive(true);
+                    selecP3 = 2;
+                }
 
-            if (Input.GetAxisRaw("J" + controlesP3 + "_H") > 0.25f && P3_delay < 0.25f)
-            {
-                if (selecP3 == 1)
+                if (Input.GetAxisRaw("J" + controlesP3 + "_H") > 0.25f && P3_delay < 0.25f)
                 {
-                    P3_delay = 0.5f;
-                    P3_cont1 += 1;
-                    if (P3_cont1 == opciones2.Length)
+                    if (selecP3 == 1)
                     {
-                        P3_cont1 = 0;
+                        P3_delay = 0.5f;
+                        P3_cont1 += 1;
+                        if (P3_cont1 == opciones2.Length)
+                        {
+                            P3_cont1 = 0;
+                        }
+                        P3_selectModeloTxt.text = opciones2[2].prefabs[P3_cont1].nombre;
+                        if (P3_cont1 == 0)
+                        {
+                            opciones2[2].prefabs[0].prefab.SetActive(true);
+                            opciones2[2].prefabs[1].prefab.SetActive(false);
+                            opciones2[2].prefabs[2].prefab.SetActive(false);
+                            opciones2[2].prefabs[3].prefab.SetActive(false);
+                        }
+                        if (P3_cont1 == 1)
+                        {
+                            opciones2[2].prefabs[0].prefab.SetActive(false);
+                            opciones2[2].prefabs[1].prefab.SetActive(true);
+                            opciones2[2].prefabs[2].prefab.SetActive(false);
+                            opciones2[2].prefabs[3].prefab.SetActive(false);
+                        }
+                        if (P3_cont1 == 2)
+                        {
+                            opciones2[2].prefabs[0].prefab.SetActive(false);
+                            opciones2[2].prefabs[1].prefab.SetActive(false);
+                            opciones2[2].prefabs[2].prefab.SetActive(true);
+                            opciones2[2].prefabs[3].prefab.SetActive(false);
+                        }
+                        if (P3_cont1 == 3)
+                        {
+                            opciones2[2].prefabs[0].prefab.SetActive(false);
+                            opciones2[2].prefabs[1].prefab.SetActive(false);
+                            opciones2[2].prefabs[2].prefab.SetActive(false);
+                            opciones2[2].prefabs[3].prefab.SetActive(true);
+                        }
                     }
-                    P3_selectModeloTxt.text = opciones2[2].prefabs[P3_cont1].nombre;
-                    if (P3_cont1 == 0)
+                    else
                     {
-                        opciones2[2].prefabs[0].prefab.SetActive(true);
-                        opciones2[2].prefabs[1].prefab.SetActive(false);
-                        opciones2[2].prefabs[2].prefab.SetActive(false);
-                        opciones2[2].prefabs[3].prefab.SetActive(false);
-                    }
-                    if (P3_cont1 == 1)
-                    {
-                        opciones2[2].prefabs[0].prefab.SetActive(false);
-                        opciones2[2].prefabs[1].prefab.SetActive(true);
-                        opciones2[2].prefabs[2].prefab.SetActive(false);
-                        opciones2[2].prefabs[3].prefab.SetActive(false);
-                    }
-                    if (P3_cont1 == 2)
-                    {
-                        opciones2[2].prefabs[0].prefab.SetActive(false);
-                        opciones2[2].prefabs[1].prefab.SetActive(false);
-                        opciones2[2].prefabs[2].prefab.SetActive(true);
-                        opciones2[2].prefabs[3].prefab.SetActive(false);
-                    }
-                    if (P3_cont1 == 3)
-                    {
-                        opciones2[2].prefabs[0].prefab.SetActive(false);
-                        opciones2[2].prefabs[1].prefab.SetActive(false);
-                        opciones2[2].prefabs[2].prefab.SetActive(false);
-                        opciones2[2].prefabs[3].prefab.SetActive(true);
+                        P3_delay = 0.5f;
+                        P3_cont2 += 1;
+                        if (P3_cont2 == opciones1.Length)
+                        {
+                            P3_cont2 = 0;
+                        }
+                        P3_selectColorTxt.text = opciones1[P3_cont2].nombre;
                     }
                 }
-                else
+                if (Input.GetAxisRaw("J" + controlesP3 + "_H") < -0.25f && P3_delay < 0.25f)
                 {
-                    P3_delay = 0.5f;
-                    P3_cont2 += 1;
-                    if (P3_cont2 == opciones1.Length)
+                    if (selecP3 == 1)
                     {
-                        P3_cont2 = 0;
+                        P3_delay = 0.5f;
+                        P3_cont1 -= 1;
+                        if (P3_cont1 == -1)
+                        {
+                            P3_cont1 = opciones2.Length - 1;
+                        }
+                        P3_selectModeloTxt.text = opciones2[2].prefabs[P3_cont1].nombre;
+                        if (P3_cont1 == 0)
+                        {
+                            opciones2[2].prefabs[0].prefab.SetActive(true);
+                            opciones2[2].prefabs[1].prefab.SetActive(false);
+                            opciones2[2].prefabs[2].prefab.SetActive(false);
+                            opciones2[2].prefabs[3].prefab.SetActive(false);
+                        }
+                        if (P3_cont1 == 1)
+                        {
+                            opciones2[2].prefabs[0].prefab.SetActive(false);
+                            opciones2[2].prefabs[1].prefab.SetActive(true);
+                            opciones2[2].prefabs[2].prefab.SetActive(false);
+                            opciones2[2].prefabs[3].prefab.SetActive(false);
+                        }
+                        if (P3_cont1 == 2)
+                        {
+                            opciones2[2].prefabs[0].prefab.SetActive(false);
+                            opciones2[2].prefabs[1].prefab.SetActive(false);
+                            opciones2[2].prefabs[2].prefab.SetActive(true);
+                            opciones2[2].prefabs[3].prefab.SetActive(false);
+                        }
+                        if (P3_cont1 == 3)
+                        {
+                            opciones2[2].prefabs[0].prefab.SetActive(false);
+                            opciones2[2].prefabs[1].prefab.SetActive(false);
+                            opciones2[2].prefabs[2].prefab.SetActive(false);
+                            opciones2[2].prefabs[3].prefab.SetActive(true);
+                        }
                     }
-                    P3_selectColorTxt.text = opciones1[P3_cont2].nombre;
+                    else
+                    {
+                        P3_delay = 0.5f;
+                        P3_cont2 -= 1;
+                        if (P3_cont2 == -1)
+                        {
+                            P3_cont2 = opciones1.Length - 1;
+                        }
+                        P3_selectColorTxt.text = opciones1[P3_cont2].nombre;
+                    }
+                }
+
+                if (Input.GetButtonDown("J" + controlesP3 + "_F") && P3_delay < 0.25f)
+                {
+                    readyP3 = true;
+                    Debug.Log("Player 3 Ready");
                 }
             }
-            if (Input.GetAxisRaw("J" + controlesP3 + "_H") < -0.25f && P3_delay < 0.25f)
+            else
             {
-                if (selecP3 == 1)
+                if (Input.GetButtonDown("J" + controlesP3 + "_P"))
                 {
-                    P3_delay = 0.5f;
-                    P3_cont1 -= 1;
-                    if (P3_cont1 == -1)
-                    {
-                        P3_cont1 = opciones2.Length - 1;
-                    }
-                    P3_selectModeloTxt.text = opciones2[2].prefabs[P3_cont1].nombre;
-                    if (P3_cont1 == 0)
-                    {
-                        opciones2[2].prefabs[0].prefab.SetActive(true);
-                        opciones2[2].prefabs[1].prefab.SetActive(false);
-                        opciones2[2].prefabs[2].prefab.SetActive(false);
-                        opciones2[2].prefabs[3].prefab.SetActive(false);
-                    }
-                    if (P3_cont1 == 1)
-                    {
-                        opciones2[2].prefabs[0].prefab.SetActive(false);
-                        opciones2[2].prefabs[1].prefab.SetActive(true);
-                        opciones2[2].prefabs[2].prefab.SetActive(false);
-                        opciones2[2].prefabs[3].prefab.SetActive(false);
-                    }
-                    if (P3_cont1 == 2)
-                    {
-                        opciones2[2].prefabs[0].prefab.SetActive(false);
-                        opciones2[2].prefabs[1].prefab.SetActive(false);
-                        opciones2[2].prefabs[2].prefab.SetActive(true);
-                        opciones2[2].prefabs[3].prefab.SetActive(false);
-                    }
-                    if (P3_cont1 == 3)
-                    {
-                        opciones2[2].prefabs[0].prefab.SetActive(false);
-                        opciones2[2].prefabs[1].prefab.SetActive(false);
-                        opciones2[2].prefabs[2].prefab.SetActive(false);
-                        opciones2[2].prefabs[3].prefab.SetActive(true);
-                    }
-                }
-                else
-                {
-                    P3_delay = 0.5f;
-                    P3_cont2 -= 1;
-                    if (P3_cont2 == -1)
-                    {
-                        P3_cont2 = opciones1.Length - 1;
-                    }
-                    P3_selectColorTxt.text = opciones1[P3_cont2].nombre;
+                    readyP3 = false;
+                    Debug.Log("Player 3 NO-Ready");
                 }
             }
         }
         if (encontradoP4)
         {
-            P4_delay -= (Time.unscaledDeltaTime * 2);
-            if (Input.GetAxisRaw("J" + controlesP4 + "_V") < -0.25f)
+            if (!readyP4)
             {
-                P4_selectModeloImg.SetActive(true);
-                P4_selectColorImg.SetActive(false);
-                selecP4 = 1;
-            }
-            if (Input.GetAxisRaw("J" + controlesP4 + "_V") > 0.25f)
-            {
-                P4_selectModeloImg.SetActive(false);
-                P4_selectColorImg.SetActive(true);
-                selecP4 = 2;
-            }
+                P4_delay -= (Time.unscaledDeltaTime * 2);
+                if (Input.GetAxisRaw("J" + controlesP4 + "_V") < -0.25f)
+                {
+                    P4_selectModeloImg.SetActive(true);
+                    P4_selectColorImg.SetActive(false);
+                    selecP4 = 1;
+                }
+                if (Input.GetAxisRaw("J" + controlesP4 + "_V") > 0.25f)
+                {
+                    P4_selectModeloImg.SetActive(false);
+                    P4_selectColorImg.SetActive(true);
+                    selecP4 = 2;
+                }
 
-            if (Input.GetAxisRaw("J" + controlesP4 + "_H") > 0.25f && P4_delay < 0.25f)
-            {
-                if (selecP4 == 1)
+                if (Input.GetAxisRaw("J" + controlesP4 + "_H") > 0.25f && P4_delay < 0.25f)
                 {
-                    P4_delay = 0.5f;
-                    P4_cont1 += 1;
-                    if (P4_cont1 == opciones2.Length)
+                    if (selecP4 == 1)
                     {
-                        P4_cont1 = 0;
+                        P4_delay = 0.5f;
+                        P4_cont1 += 1;
+                        if (P4_cont1 == opciones2.Length)
+                        {
+                            P4_cont1 = 0;
+                        }
+                        P4_selectModeloTxt.text = opciones2[3].prefabs[P4_cont1].nombre;
+                        if (P4_cont1 == 0)
+                        {
+                            opciones2[3].prefabs[0].prefab.SetActive(true);
+                            opciones2[3].prefabs[1].prefab.SetActive(false);
+                            opciones2[3].prefabs[2].prefab.SetActive(false);
+                            opciones2[3].prefabs[3].prefab.SetActive(false);
+                        }
+                        if (P4_cont1 == 1)
+                        {
+                            opciones2[3].prefabs[0].prefab.SetActive(false);
+                            opciones2[3].prefabs[1].prefab.SetActive(true);
+                            opciones2[3].prefabs[2].prefab.SetActive(false);
+                            opciones2[3].prefabs[3].prefab.SetActive(false);
+                        }
+                        if (P4_cont1 == 2)
+                        {
+                            opciones2[3].prefabs[0].prefab.SetActive(false);
+                            opciones2[3].prefabs[1].prefab.SetActive(false);
+                            opciones2[3].prefabs[2].prefab.SetActive(true);
+                            opciones2[3].prefabs[3].prefab.SetActive(false);
+                        }
+                        if (P4_cont1 == 3)
+                        {
+                            opciones2[3].prefabs[0].prefab.SetActive(false);
+                            opciones2[3].prefabs[1].prefab.SetActive(false);
+                            opciones2[3].prefabs[2].prefab.SetActive(false);
+                            opciones2[3].prefabs[3].prefab.SetActive(true);
+                        }
                     }
-                    P4_selectModeloTxt.text = opciones2[3].prefabs[P4_cont1].nombre;
-                    if (P4_cont1 == 0)
+                    else
                     {
-                        opciones2[3].prefabs[0].prefab.SetActive(true);
-                        opciones2[3].prefabs[1].prefab.SetActive(false);
-                        opciones2[3].prefabs[2].prefab.SetActive(false);
-                        opciones2[3].prefabs[3].prefab.SetActive(false);
-                    }
-                    if (P4_cont1 == 1)
-                    {
-                        opciones2[3].prefabs[0].prefab.SetActive(false);
-                        opciones2[3].prefabs[1].prefab.SetActive(true);
-                        opciones2[3].prefabs[2].prefab.SetActive(false);
-                        opciones2[3].prefabs[3].prefab.SetActive(false);
-                    }
-                    if (P4_cont1 == 2)
-                    {
-                        opciones2[3].prefabs[0].prefab.SetActive(false);
-                        opciones2[3].prefabs[1].prefab.SetActive(false);
-                        opciones2[3].prefabs[2].prefab.SetActive(true);
-                        opciones2[3].prefabs[3].prefab.SetActive(false);
-                    }
-                    if (P4_cont1 == 3)
-                    {
-                        opciones2[3].prefabs[0].prefab.SetActive(false);
-                        opciones2[3].prefabs[1].prefab.SetActive(false);
-                        opciones2[3].prefabs[2].prefab.SetActive(false);
-                        opciones2[3].prefabs[3].prefab.SetActive(true);
+                        P4_delay = 0.5f;
+                        P4_cont2 += 1;
+                        if (P4_cont2 == opciones1.Length)
+                        {
+                            P4_cont2 = 0;
+                        }
+                        P4_selectColorTxt.text = opciones1[P4_cont2].nombre;
                     }
                 }
-                else
+                if (Input.GetAxisRaw("J" + controlesP4 + "_H") < -0.25f && P4_delay < 0.25f)
                 {
-                    P4_delay = 0.5f;
-                    P4_cont2 += 1;
-                    if (P4_cont2 == opciones1.Length)
+                    if (selecP4 == 1)
                     {
-                        P4_cont2 = 0;
+                        P4_delay = 0.5f;
+                        P4_cont1 -= 1;
+                        if (P4_cont1 == -1)
+                        {
+                            P4_cont1 = opciones2.Length - 1;
+                        }
+                        P4_selectModeloTxt.text = opciones2[3].prefabs[P4_cont1].nombre;
+                        if (P4_cont1 == 0)
+                        {
+                            opciones2[3].prefabs[0].prefab.SetActive(true);
+                            opciones2[3].prefabs[1].prefab.SetActive(false);
+                            opciones2[3].prefabs[2].prefab.SetActive(false);
+                            opciones2[3].prefabs[3].prefab.SetActive(false);
+                        }
+                        if (P4_cont1 == 1)
+                        {
+                            opciones2[3].prefabs[0].prefab.SetActive(false);
+                            opciones2[3].prefabs[1].prefab.SetActive(true);
+                            opciones2[3].prefabs[2].prefab.SetActive(false);
+                            opciones2[3].prefabs[3].prefab.SetActive(false);
+                        }
+                        if (P4_cont1 == 2)
+                        {
+                            opciones2[3].prefabs[0].prefab.SetActive(false);
+                            opciones2[3].prefabs[1].prefab.SetActive(false);
+                            opciones2[3].prefabs[2].prefab.SetActive(true);
+                            opciones2[3].prefabs[3].prefab.SetActive(false);
+                        }
+                        if (P4_cont1 == 3)
+                        {
+                            opciones2[3].prefabs[0].prefab.SetActive(false);
+                            opciones2[3].prefabs[1].prefab.SetActive(false);
+                            opciones2[3].prefabs[2].prefab.SetActive(false);
+                            opciones2[3].prefabs[3].prefab.SetActive(true);
+                        }
                     }
-                    P4_selectColorTxt.text = opciones1[P4_cont2].nombre;
+                    else
+                    {
+                        P4_delay = 0.5f;
+                        P4_cont2 -= 1;
+                        if (P4_cont2 == -1)
+                        {
+                            P4_cont2 = opciones1.Length - 1;
+                        }
+                        P4_selectColorTxt.text = opciones1[P4_cont2].nombre;
+                    }
+                }
+
+                if (Input.GetButtonDown("J" + controlesP4 + "_F") && P3_delay < 0.25f)
+                {
+                    readyP4 = true;
+                    Debug.Log("Player 4 Ready");
                 }
             }
-            if (Input.GetAxisRaw("J" + controlesP4 + "_H") < -0.25f && P4_delay < 0.25f)
+            else
             {
-                if (selecP4 == 1)
+                if (Input.GetButtonDown("J" + controlesP4 + "_P"))
                 {
-                    P4_delay = 0.5f;
-                    P4_cont1 -= 1;
-                    if (P4_cont1 == -1)
-                    {
-                        P4_cont1 = opciones2.Length - 1;
-                    }
-                    P4_selectModeloTxt.text = opciones2[3].prefabs[P4_cont1].nombre;
-                    if (P4_cont1 == 0)
-                    {
-                        opciones2[3].prefabs[0].prefab.SetActive(true);
-                        opciones2[3].prefabs[1].prefab.SetActive(false);
-                        opciones2[3].prefabs[2].prefab.SetActive(false);
-                        opciones2[3].prefabs[3].prefab.SetActive(false);
-                    }
-                    if (P4_cont1 == 1)
-                    {
-                        opciones2[3].prefabs[0].prefab.SetActive(false);
-                        opciones2[3].prefabs[1].prefab.SetActive(true);
-                        opciones2[3].prefabs[2].prefab.SetActive(false);
-                        opciones2[3].prefabs[3].prefab.SetActive(false);
-                    }
-                    if (P4_cont1 == 2)
-                    {
-                        opciones2[3].prefabs[0].prefab.SetActive(false);
-                        opciones2[3].prefabs[1].prefab.SetActive(false);
-                        opciones2[3].prefabs[2].prefab.SetActive(true);
-                        opciones2[3].prefabs[3].prefab.SetActive(false);
-                    }
-                    if (P4_cont1 == 3)
-                    {
-                        opciones2[3].prefabs[0].prefab.SetActive(false);
-                        opciones2[3].prefabs[1].prefab.SetActive(false);
-                        opciones2[3].prefabs[2].prefab.SetActive(false);
-                        opciones2[3].prefabs[3].prefab.SetActive(true);
-                    }
-                }
-                else
-                {
-                    P4_delay = 0.5f;
-                    P4_cont2 -= 1;
-                    if (P4_cont2 == -1)
-                    {
-                        P4_cont2 = opciones1.Length - 1;
-                    }
-                    P4_selectColorTxt.text = opciones1[P4_cont2].nombre;
+                    readyP4 = false;
+                    Debug.Log("Player 4 NO-Ready");
                 }
             }
         }
