@@ -208,12 +208,10 @@ public class InGameController : MonoBehaviour
         jugador4.GetComponent<JugadorController>().Fire = P4_F;
         jugador4.GetComponent<JugadorController>().Power = P4_P;
 
-        if (P1_H != null)
-        {
-            eventSystem.horizontalAxis = P1_H;
-            eventSystem.verticalAxis = P1_V;
-            eventSystem.submitButton = P1_F;
-        }
+        eventSystem.horizontalAxis = P1_H;
+        eventSystem.verticalAxis = P1_V;
+        eventSystem.submitButton = P1_F;
+        //eventSystem.cancelButton = P1_P;
 
         puntaje1.text = 0.ToString();
         puntaje2.text = 0.ToString();

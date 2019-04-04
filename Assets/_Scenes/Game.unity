@@ -3165,7 +3165,7 @@ MonoBehaviour:
   m_HorizontalAxis: Generic_H
   m_VerticalAxis: Generic_V
   m_SubmitButton: Generic_F
-  m_CancelButton: Generic_P
+  m_CancelButton: Pause
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
@@ -6075,7 +6075,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 22ff18a7c4d719e4b8c01a2feacbdd81, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -12196,7 +12196,7 @@ MonoBehaviour:
   jug: 2
   speed: 7
   gravity: -29.81
-  dashdistance: 0.5
+  dashdistance: 1
   Drag: {x: 8, y: 0, z: 8}
   esperaEntreDrag: 5
   source: {fileID: 1980840896668170037}
@@ -12989,7 +12989,7 @@ MonoBehaviour:
   jug: 0
   speed: 7
   gravity: -29.81
-  dashdistance: 0.5
+  dashdistance: 1
   Drag: {x: 8, y: 0, z: 8}
   esperaEntreDrag: 5
   source: {fileID: 8674623561925479536}
@@ -13637,7 +13637,7 @@ MonoBehaviour:
   jug: 1
   speed: 7
   gravity: -29.81
-  dashdistance: 0.5
+  dashdistance: 1
   Drag: {x: 8, y: 0, z: 8}
   esperaEntreDrag: 5
   source: {fileID: 6934415279640383947}
@@ -13967,7 +13967,7 @@ MonoBehaviour:
   jug: 3
   speed: 7
   gravity: -29.81
-  dashdistance: 0.5
+  dashdistance: 1
   Drag: {x: 8, y: 0, z: 8}
   esperaEntreDrag: 5
   source: {fileID: 7235270917945619229}

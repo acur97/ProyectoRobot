@@ -234,7 +234,7 @@ public class SelectionManager : MonoBehaviour
                 for (int i = 0; i <= 15; i++)
                 {
                     controlesList = Input.GetJoystickNames();
-                    Debug.Log("Buscando jugador 1");
+                    //Debug.Log("Buscando jugador 1");
                     if (Input.GetButtonDown("J" + (i + 1) + "_F"))
                     {
                         Debug.Log("jugador 1 encontrado");
@@ -271,7 +271,7 @@ public class SelectionManager : MonoBehaviour
                 for (int i = 0; i <= 15; i++)
                 {
                     controlesList = Input.GetJoystickNames();
-                    Debug.Log("Buscando jugador 2");
+                    //Debug.Log("Buscando jugador 2");
                     if (Input.GetButtonDown("J" + excepcion1 + "_F"))
                     {
                         Debug.Log("salto");
@@ -313,7 +313,7 @@ public class SelectionManager : MonoBehaviour
                 for (int i = 0; i <= 15; i++)
                 {
                     controlesList = Input.GetJoystickNames();
-                    Debug.Log("Buscando jugador 3");
+                    //Debug.Log("Buscando jugador 3");
                     if (Input.GetButtonDown("J" + excepcion1 + "_F"))
                     {
                         continue;
@@ -358,7 +358,7 @@ public class SelectionManager : MonoBehaviour
                 for (int i = 0; i <= 15; i++)
                 {
                     controlesList = Input.GetJoystickNames();
-                    Debug.Log("Buscando jugador 4");
+                    //Debug.Log("Buscando jugador 4");
                     if (Input.GetButtonDown("J" + excepcion1 + "_F"))
                     {
                         continue;
@@ -418,6 +418,7 @@ public class SelectionManager : MonoBehaviour
             if (!readyP1)
             {
                 P1_delay -= (Time.unscaledDeltaTime * 2);
+                Debug.Log(Input.GetAxisRaw("J" + controlesP1 + "_V"));
                 if (Input.GetAxisRaw("J" + controlesP1 + "_V") > 0.25f)
                 {
                     P1_selectModeloImg.SetActive(true);
