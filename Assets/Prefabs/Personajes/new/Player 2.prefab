@@ -147,7 +147,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4666675614356369879}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.35, y: 0, z: 12.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -603,8 +603,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4666675616433296907}
-  m_LocalRotation: {x: -0, y: 0.013495009, z: -0, w: 0.999909}
-  m_LocalPosition: {x: -0.69299996, y: 0.049999952, z: 0.48000002}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.6, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4666675615481726354}
@@ -612,7 +612,7 @@ Transform:
   - {fileID: 4666675614817710580}
   m_Father: {fileID: 4666675614356369874}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 1.5460001, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4666675616433296906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3323,6 +3323,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962592909920487360}
     m_Modifications:
+    - target: {fileID: 9500000, guid: 4b93fa5f05da01d4ebcac37117f404f1, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9ea480f124a1bee4992f9f98b0f8957d, type: 2}
     - target: {fileID: 100102, guid: 4b93fa5f05da01d4ebcac37117f404f1, type: 3}
       propertyPath: m_Name
       value: robot2_v2@StandingIdle
@@ -3383,10 +3387,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 12.548
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: 4b93fa5f05da01d4ebcac37117f404f1, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 9ea480f124a1bee4992f9f98b0f8957d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b93fa5f05da01d4ebcac37117f404f1, type: 3}
 --- !u!4 &7131942022687763084 stripped

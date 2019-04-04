@@ -3,33 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public class SelectionManager : MonoBehaviour
 {
+    public GameObject scena;
+
     [Serializable]
     public class ops1
     {
         public string nombre;
-        public Material colorEmision;
         public Color32 colorUI;
-    }
-    [Serializable]
-    public class rotColors
-    {
-        public SkinnedMeshRenderer rotMat;
-        public int posMat;
+        public Color colorAlbedo;
+        [ColorUsage(false, true)]
+        public Color colorEmission;
+        public Color Respaw;
+        public Color MiraPiso;
     }
     [Serializable]
     public class ops2_prefabs
     {
         public string nombre;
         public GameObject prefab;
-        public rotColors[] rotColors;
     }
     [Serializable]
     public class ops2
     {
         public string nombre;
+        public Material matModelos;
         public ops2_prefabs[] prefabs;
     }
     [Header("Seleccionables")]
@@ -110,11 +111,13 @@ public class SelectionManager : MonoBehaviour
     private int P4_cont2;
     private bool readyP4;
 
-    private string excepcion1;
-    private string excepcion2;
-    private string excepcion3;
+    private int excepcion1;
+    private int excepcion2;
+    private int excepcion3;
 
-    private float countWait;
+    public float countWait;
+
+    private AsyncOperation sceneAsync;
 
     private void Awake()
     {
@@ -153,14 +156,82 @@ public class SelectionManager : MonoBehaviour
         controlesList = Input.GetJoystickNames();
     }
 
+    IEnumerator LoadSceneMove(int sceneIndex)
+    {
+        opciones2[0].prefabs[P1_cont1].prefab.transform.SetParent(null);
+        opciones2[1].prefabs[P2_cont1].prefab.transform.SetParent(null);
+        opciones2[2].prefabs[P3_cont1].prefab.transform.SetParent(null);
+        opciones2[3].prefabs[P4_cont1].prefab.transform.SetParent(null);
+
+        opciones2[0].prefabs[P1_cont1].prefab.name = "Robot1";
+        opciones2[1].prefabs[P2_cont1].prefab.name = "Robot2";
+        opciones2[2].prefabs[P3_cont1].prefab.name = "Robot3";
+        opciones2[3].prefabs[P4_cont1].prefab.name = "Robot4";
+        //opciones2[0].prefabs[1].prefab.transform.SetParent(null);
+
+        AsyncOperation scene = SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
+        //AsyncOperation scene = SceneManager.LoadSceneAsync(sceneIndex);
+        scene.allowSceneActivation = false;
+        sceneAsync = scene;
+
+        while (scene.progress < 0.9f)
+        {
+            Debug.Log("Cargando: " + scene.progress);
+            yield return null;
+        }
+        //Scene sceneToLoad = SceneManager.GetSceneByBuildIndex(sceneIndex);
+        //SceneManager.MoveGameObjectToScene(opciones2[0].prefabs[0].prefab, sceneToLoad);
+        OnFinishedLoad();
+    }
+
+    private void enableScene(int sceneIndex)
+    {
+        //sceneAsync.allowSceneActivation = true;
+
+        Scene sceneToLoad = SceneManager.GetSceneByBuildIndex(sceneIndex);
+        if (sceneToLoad.IsValid())
+        {
+            Debug.Log("Valido");
+            SceneManager.MoveGameObjectToScene(opciones2[0].prefabs[P1_cont1].prefab, sceneToLoad);
+            SceneManager.MoveGameObjectToScene(opciones2[1].prefabs[P2_cont1].prefab, sceneToLoad);
+            SceneManager.MoveGameObjectToScene(opciones2[2].prefabs[P3_cont1].prefab, sceneToLoad);
+            SceneManager.MoveGameObjectToScene(opciones2[3].prefabs[P4_cont1].prefab, sceneToLoad);
+
+            sceneAsync.allowSceneActivation = true;
+        }
+    }
+
+    private void OnFinishedLoad()
+    {
+        Debug.Log("Escena cargada");
+        enableScene(1);
+        Debug.Log("Escena activada");
+        scena.SetActive(false);
+    }
+
     private void Update()
     {
+        Debug.LogWarning("Pasar color de material dependiendo del jugador al material de Respaw InGameController y en awake poner ese .setcolor del .material");
+        Debug.LogWarning("Pasar color de bala, Opcional, o que sea diferente prefab, aunque prefiero un solo color de bala");
+        Debug.LogWarning("Pasar color de Mira piso");
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            SceneManager.LoadScene(1);
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            StartCoroutine(LoadSceneMove(1));
+        }
+
+        #region Busqueda controles
+
         if (!lleno)
         {
-            countWait -= 0.1f;
+            countWait -= 0.05f;
             if (contadorNcontrol == 1)
             {
-                for (int i = 0; i <= 7; i++)
+                for (int i = 0; i <= 15; i++)
                 {
                     controlesList = Input.GetJoystickNames();
                     Debug.Log("Buscando jugador 1");
@@ -174,10 +245,14 @@ public class SelectionManager : MonoBehaviour
                         opciones2[0].prefabs[1].prefab.SetActive(false);
                         opciones2[0].prefabs[2].prefab.SetActive(false);
                         opciones2[0].prefabs[3].prefab.SetActive(false);
-                        P1_selectColorTxt.text = opciones1[P1_cont2].nombre;
-                        excepcion1 = controlesList[i];
 
-                        controlesP1 = (Array.IndexOf(controlesList, excepcion1) + 1);
+                        opciones2[0].matModelos.SetColor("_Color", opciones1[P1_cont2].colorAlbedo);
+                        opciones2[0].matModelos.SetColor("_EmissionColor", opciones1[P1_cont2].colorEmission);
+
+                        P1_selectColorTxt.text = opciones1[P1_cont2].nombre;
+                        excepcion1 = i + 1;
+
+                        controlesP1 = excepcion1;
                         InGameController.P1_H = "J" + controlesP1 + "_H";
                         InGameController.P1_V = "J" + controlesP1 + "_V";
                         InGameController.P1_F = "J" + controlesP1 + "_F";
@@ -193,11 +268,11 @@ public class SelectionManager : MonoBehaviour
             }
             if (contadorNcontrol == 2 && countWait < 0)
             {
-                for (int i = 0; i <= 7; i++)
+                for (int i = 0; i <= 15; i++)
                 {
                     controlesList = Input.GetJoystickNames();
                     Debug.Log("Buscando jugador 2");
-                    if (Input.GetButtonDown("J" + (Array.IndexOf(controlesList, excepcion1) + 1) + "_F"))
+                    if (Input.GetButtonDown("J" + excepcion1 + "_F"))
                     {
                         Debug.Log("salto");
                         continue;
@@ -212,10 +287,14 @@ public class SelectionManager : MonoBehaviour
                         opciones2[1].prefabs[1].prefab.SetActive(false);
                         opciones2[1].prefabs[2].prefab.SetActive(false);
                         opciones2[1].prefabs[3].prefab.SetActive(false);
-                        P2_selectColorTxt.text = opciones1[P2_cont2].nombre;
-                        excepcion2 = controlesList[i];
 
-                        controlesP2 = (Array.IndexOf(controlesList, excepcion2) + 1);
+                        opciones2[1].matModelos.SetColor("_Color", opciones1[P2_cont2].colorAlbedo);
+                        opciones2[1].matModelos.SetColor("_EmissionColor", opciones1[P2_cont2].colorEmission);
+
+                        P2_selectColorTxt.text = opciones1[P2_cont2].nombre;
+                        excepcion2 = i + 1;
+
+                        controlesP2 = excepcion2;
                         InGameController.P2_H = "J" + controlesP2 + "_H";
                         InGameController.P2_V = "J" + controlesP2 + "_V";
                         InGameController.P2_F = "J" + controlesP2 + "_F";
@@ -231,15 +310,15 @@ public class SelectionManager : MonoBehaviour
             }
             if (contadorNcontrol == 3 && countWait < 0)
             {
-                for (int i = 0; i <= 7; i++)
+                for (int i = 0; i <= 15; i++)
                 {
                     controlesList = Input.GetJoystickNames();
                     Debug.Log("Buscando jugador 3");
-                    if (Input.GetButtonDown("J" + (Array.IndexOf(controlesList, excepcion1) + 1) + "_F"))
+                    if (Input.GetButtonDown("J" + excepcion1 + "_F"))
                     {
                         continue;
                     }
-                    if (Input.GetButtonDown("J" + (Array.IndexOf(controlesList, excepcion2) + 1) + "_F"))
+                    if (Input.GetButtonDown("J" + excepcion2 + "_F"))
                     {
                         continue;
                     }
@@ -253,10 +332,14 @@ public class SelectionManager : MonoBehaviour
                         opciones2[2].prefabs[1].prefab.SetActive(false);
                         opciones2[2].prefabs[2].prefab.SetActive(false);
                         opciones2[2].prefabs[3].prefab.SetActive(false);
-                        P3_selectColorTxt.text = opciones1[P3_cont2].nombre;
-                        excepcion3 = controlesList[i];
 
-                        controlesP3 = (Array.IndexOf(controlesList, excepcion3) + 1);
+                        opciones2[2].matModelos.SetColor("_Color", opciones1[P3_cont2].colorAlbedo);
+                        opciones2[2].matModelos.SetColor("_EmissionColor", opciones1[P3_cont2].colorEmission);
+
+                        P3_selectColorTxt.text = opciones1[P3_cont2].nombre;
+                        excepcion3 = i + 1;
+
+                        controlesP3 = excepcion3;
                         InGameController.P3_H = "J" + controlesP3 + "_H";
                         InGameController.P3_V = "J" + controlesP3 + "_V";
                         InGameController.P3_F = "J" + controlesP3 + "_F";
@@ -272,19 +355,19 @@ public class SelectionManager : MonoBehaviour
             }
             if (contadorNcontrol == 4 && countWait < 0)
             {
-                for (int i = 0; i <= 7; i++)
+                for (int i = 0; i <= 15; i++)
                 {
                     controlesList = Input.GetJoystickNames();
                     Debug.Log("Buscando jugador 4");
-                    if (Input.GetButtonDown("J" + (Array.IndexOf(controlesList, excepcion1) + 1) + "_F"))
+                    if (Input.GetButtonDown("J" + excepcion1 + "_F"))
                     {
                         continue;
                     }
-                    if (Input.GetButtonDown("J" + (Array.IndexOf(controlesList, excepcion2) + 1) + "_F"))
+                    if (Input.GetButtonDown("J" + excepcion2 + "_F"))
                     {
                         continue;
                     }
-                    if (Input.GetButtonDown("J" + (Array.IndexOf(controlesList, excepcion3) + 1) + "_F"))
+                    if (Input.GetButtonDown("J" + excepcion3 + "_F"))
                     {
                         continue;
                     }
@@ -293,12 +376,16 @@ public class SelectionManager : MonoBehaviour
                         Debug.Log("jugador 4 encontrado");
                         P4_canvasSelect.SetActive(false);
                         P4_canvasIniciado.SetActive(true);
-                        P3_selectModeloTxt.text = opciones2[3].prefabs[P4_cont1].nombre;
+                        P4_selectModeloTxt.text = opciones2[3].prefabs[P4_cont1].nombre;
                         opciones2[3].prefabs[0].prefab.SetActive(true);
                         opciones2[3].prefabs[1].prefab.SetActive(false);
                         opciones2[3].prefabs[2].prefab.SetActive(false);
                         opciones2[3].prefabs[3].prefab.SetActive(false);
-                        P3_selectColorTxt.text = opciones1[P3_cont2].nombre;
+
+                        opciones2[3].matModelos.SetColor("_Color", opciones1[P4_cont2].colorAlbedo);
+                        opciones2[3].matModelos.SetColor("_EmissionColor", opciones1[P4_cont2].colorEmission);
+
+                        P4_selectColorTxt.text = opciones1[P4_cont2].nombre;
 
                         controlesP4 = (Array.IndexOf(controlesList, controlesList[i]) + 1);
                         InGameController.P4_H = "J" + controlesP4 + "_H";
@@ -315,6 +402,8 @@ public class SelectionManager : MonoBehaviour
             }
         }
 
+        #endregion
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         if (contadorNcontrol == 5)
@@ -322,18 +411,20 @@ public class SelectionManager : MonoBehaviour
             lleno = true;
         }
 
+        #region Seleccion modelo y color
+
         if (encontradoP1)
         {
             if (!readyP1)
             {
                 P1_delay -= (Time.unscaledDeltaTime * 2);
-                if (Input.GetAxisRaw("J" + controlesP1 + "_V") < -0.25f)
+                if (Input.GetAxisRaw("J" + controlesP1 + "_V") > 0.25f)
                 {
                     P1_selectModeloImg.SetActive(true);
                     P1_selectColorImg.SetActive(false);
                     selecP1 = 1;
                 }
-                if (Input.GetAxisRaw("J" + controlesP1 + "_V") > 0.25f)
+                if (Input.GetAxisRaw("J" + controlesP1 + "_V") < -0.25f)
                 {
                     P1_selectModeloImg.SetActive(false);
                     P1_selectColorImg.SetActive(true);
@@ -389,6 +480,9 @@ public class SelectionManager : MonoBehaviour
                             P1_cont2 = 0;
                         }
                         P1_selectColorTxt.text = opciones1[P1_cont2].nombre;
+
+                        opciones2[0].matModelos.SetColor("_Color", opciones1[P1_cont2].colorAlbedo);
+                        opciones2[0].matModelos.SetColor("_EmissionColor", opciones1[P1_cont2].colorEmission);
                     }
                 }
                 if (Input.GetAxisRaw("J" + controlesP1 + "_H") < -0.25f && P1_delay < 0.25f)
@@ -440,6 +534,9 @@ public class SelectionManager : MonoBehaviour
                             P1_cont2 = opciones1.Length - 1;
                         }
                         P1_selectColorTxt.text = opciones1[P1_cont2].nombre;
+
+                        opciones2[0].matModelos.SetColor("_Color", opciones1[P1_cont2].colorAlbedo);
+                        opciones2[0].matModelos.SetColor("_EmissionColor", opciones1[P1_cont2].colorEmission);
                     }
                 }
 
@@ -463,13 +560,13 @@ public class SelectionManager : MonoBehaviour
             if (!readyP2)
             {
                 P2_delay -= (Time.unscaledDeltaTime * 2);
-                if (Input.GetAxisRaw("J" + controlesP2 + "_V") < -0.25f)
+                if (Input.GetAxisRaw("J" + controlesP2 + "_V") > 0.25f)
                 {
                     P2_selectModeloImg.SetActive(true);
                     P2_selectColorImg.SetActive(false);
                     selecP2 = 1;
                 }
-                if (Input.GetAxisRaw("J" + controlesP2 + "_V") > 0.25f)
+                if (Input.GetAxisRaw("J" + controlesP2 + "_V") < -0.25f)
                 {
                     P2_selectModeloImg.SetActive(false);
                     P2_selectColorImg.SetActive(true);
@@ -525,6 +622,9 @@ public class SelectionManager : MonoBehaviour
                             P2_cont2 = 0;
                         }
                         P2_selectColorTxt.text = opciones1[P2_cont2].nombre;
+
+                        opciones2[1].matModelos.SetColor("_Color", opciones1[P2_cont2].colorAlbedo);
+                        opciones2[1].matModelos.SetColor("_EmissionColor", opciones1[P2_cont2].colorEmission);
                     }
                 }
                 if (Input.GetAxisRaw("J" + controlesP2 + "_H") < -0.25f && P2_delay < 0.25f)
@@ -576,6 +676,9 @@ public class SelectionManager : MonoBehaviour
                             P2_cont2 = opciones1.Length - 1;
                         }
                         P2_selectColorTxt.text = opciones1[P2_cont2].nombre;
+
+                        opciones2[1].matModelos.SetColor("_Color", opciones1[P2_cont2].colorAlbedo);
+                        opciones2[1].matModelos.SetColor("_EmissionColor", opciones1[P2_cont2].colorEmission);
                     }
                 }
 
@@ -599,13 +702,13 @@ public class SelectionManager : MonoBehaviour
             if (!readyP3)
             {
                 P3_delay -= (Time.unscaledDeltaTime * 2);
-                if (Input.GetAxisRaw("J" + controlesP3 + "_V") < -0.25f)
+                if (Input.GetAxisRaw("J" + controlesP3 + "_V") > 0.25f)
                 {
                     P3_selectModeloImg.SetActive(true);
                     P3_selectColorImg.SetActive(false);
                     selecP3 = 1;
                 }
-                if (Input.GetAxisRaw("J" + controlesP3 + "_V") > 0.25f)
+                if (Input.GetAxisRaw("J" + controlesP3 + "_V") < -0.25f)
                 {
                     P3_selectModeloImg.SetActive(false);
                     P3_selectColorImg.SetActive(true);
@@ -661,6 +764,9 @@ public class SelectionManager : MonoBehaviour
                             P3_cont2 = 0;
                         }
                         P3_selectColorTxt.text = opciones1[P3_cont2].nombre;
+
+                        opciones2[2].matModelos.SetColor("_Color", opciones1[P3_cont2].colorAlbedo);
+                        opciones2[2].matModelos.SetColor("_EmissionColor", opciones1[P3_cont2].colorEmission);
                     }
                 }
                 if (Input.GetAxisRaw("J" + controlesP3 + "_H") < -0.25f && P3_delay < 0.25f)
@@ -712,6 +818,9 @@ public class SelectionManager : MonoBehaviour
                             P3_cont2 = opciones1.Length - 1;
                         }
                         P3_selectColorTxt.text = opciones1[P3_cont2].nombre;
+
+                        opciones2[2].matModelos.SetColor("_Color", opciones1[P3_cont2].colorAlbedo);
+                        opciones2[2].matModelos.SetColor("_EmissionColor", opciones1[P3_cont2].colorEmission);
                     }
                 }
 
@@ -735,13 +844,13 @@ public class SelectionManager : MonoBehaviour
             if (!readyP4)
             {
                 P4_delay -= (Time.unscaledDeltaTime * 2);
-                if (Input.GetAxisRaw("J" + controlesP4 + "_V") < -0.25f)
+                if (Input.GetAxisRaw("J" + controlesP4 + "_V") > 0.25f)
                 {
                     P4_selectModeloImg.SetActive(true);
                     P4_selectColorImg.SetActive(false);
                     selecP4 = 1;
                 }
-                if (Input.GetAxisRaw("J" + controlesP4 + "_V") > 0.25f)
+                if (Input.GetAxisRaw("J" + controlesP4 + "_V") < -0.25f)
                 {
                     P4_selectModeloImg.SetActive(false);
                     P4_selectColorImg.SetActive(true);
@@ -797,6 +906,9 @@ public class SelectionManager : MonoBehaviour
                             P4_cont2 = 0;
                         }
                         P4_selectColorTxt.text = opciones1[P4_cont2].nombre;
+
+                        opciones2[3].matModelos.SetColor("_Color", opciones1[P4_cont2].colorAlbedo);
+                        opciones2[3].matModelos.SetColor("_EmissionColor", opciones1[P4_cont2].colorEmission);
                     }
                 }
                 if (Input.GetAxisRaw("J" + controlesP4 + "_H") < -0.25f && P4_delay < 0.25f)
@@ -848,6 +960,9 @@ public class SelectionManager : MonoBehaviour
                             P4_cont2 = opciones1.Length - 1;
                         }
                         P4_selectColorTxt.text = opciones1[P4_cont2].nombre;
+
+                        opciones2[3].matModelos.SetColor("_Color", opciones1[P4_cont2].colorAlbedo);
+                        opciones2[3].matModelos.SetColor("_EmissionColor", opciones1[P4_cont2].colorEmission);
                     }
                 }
 
@@ -866,5 +981,7 @@ public class SelectionManager : MonoBehaviour
                 }
             }
         }
+
+        #endregion
     }
 }

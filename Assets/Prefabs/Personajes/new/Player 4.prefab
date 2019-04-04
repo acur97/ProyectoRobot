@@ -2806,7 +2806,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7925964098473944664}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.7, y: 0, z: -13.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2987,8 +2987,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7925964099429033170}
-  m_LocalRotation: {x: -0, y: 0.013495009, z: -0, w: 0.999909}
-  m_LocalPosition: {x: -0.6960001, y: 0.049999952, z: 0.48000002}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.6, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7925964099934996140}
@@ -2996,7 +2996,7 @@ Transform:
   - {fileID: 7925964098303507064}
   m_Father: {fileID: 7925964098473944661}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 1.5460001, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7925964099429033164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3323,10 +3323,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6340298232324415970}
     m_Modifications:
-    - target: {fileID: 100108, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
-      propertyPath: m_Name
-      value: robot4@StandingIdle
-      objectReference: {fileID: 0}
     - target: {fileID: 400108, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3382,6 +3378,10 @@ PrefabInstance:
     - target: {fileID: 400108, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
       propertyPath: m_LocalScale.z
       value: 13.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 100108, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
+      propertyPath: m_Name
+      value: robot4@StandingIdle
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
       propertyPath: m_Controller

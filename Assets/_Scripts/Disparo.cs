@@ -14,6 +14,7 @@ public class Disparo : MonoBehaviour
     public Transform padre;
     public Transform puntoDisparo;
     public AudioSource source;
+    public Animator anim;
     [Space]
     public AudioClip AceroBalas;
     public AudioClip Arecarga;
@@ -39,6 +40,7 @@ public class Disparo : MonoBehaviour
             {
                 if (numeroBalas > 0)
                 {
+                    anim.SetTrigger("disparo");
                     numeroBalas -= 1;
                     count = 0;
                     GameObject balita = Instantiate(bala, puntoDisparo.position, puntoDisparo.rotation, padre);

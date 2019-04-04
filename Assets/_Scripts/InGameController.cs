@@ -6,9 +6,13 @@ using UnityEngine.Rendering.PostProcessing;
 using Cinemachine;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class InGameController : MonoBehaviour
 {
+    public GameObject[] objects;
+    public GameObject[] prefabs = new GameObject[4];
+
     [Range(0, 5)]
     public int minutosStart;
     public float tiempoBlurStart;
@@ -47,9 +51,21 @@ public class InGameController : MonoBehaviour
     [Space]
     public GameObject naveRobot;
     public GameObject jugador1;
+    public Transform jug1animRoot;
+    public MeshRenderer esferaRespaw1;
+    private Material esferaMatRespaw1;
     public GameObject jugador2;
+    public Transform jug2animRoot;
+    public MeshRenderer esferaRespaw2;
+    private Material esferaMatRespaw2;
     public GameObject jugador3;
+    public Transform jug3animRoot;
+    public MeshRenderer esferaRespaw3;
+    private Material esferaMatRespaw3;
     public GameObject jugador4;
+    public Transform jug4animRoot;
+    public MeshRenderer esferaRespaw4;
+    private Material esferaMatRespaw4;
     public CinemachineTargetGroup camGroup;
     [Space]
     public AudioClip[] SonidosVictoria;
@@ -104,6 +120,69 @@ public class InGameController : MonoBehaviour
 
     private void Awake()
     {
+        if (esferaMatRespaw1 != null)
+        {
+            esferaRespaw1.material = esferaMatRespaw1;
+        }
+        if (esferaMatRespaw2 != null)
+        {
+            esferaRespaw2.material = esferaMatRespaw2;
+        }
+        if (esferaMatRespaw3 != null)
+        {
+            esferaRespaw3.material = esferaMatRespaw3;
+        }
+        if (esferaMatRespaw4 != null)
+        {
+            esferaRespaw4.material = esferaMatRespaw4;
+        }
+
+        objects = SceneManager.GetSceneByBuildIndex(1).GetRootGameObjects();
+        for (int i = 0; i < objects.Length; i++)
+        {
+            if (objects[i].CompareTag("Jug1Seleccion"))
+            {
+                prefabs[0] = objects[i];
+                jug1animRoot.GetComponentsInChildren<Transform>()[1].gameObject.SetActive(false);
+                prefabs[0].transform.SetParent(jug1animRoot);
+                prefabs[0].transform.localPosition = new Vector3(0, 0, 0);
+                prefabs[0].transform.localEulerAngles = new Vector3(0, 0, 0);
+                prefabs[0].transform.localScale = new Vector3(10.876f, 10.876f, 10.876f);
+                jugador1.GetComponent<JugadorController>().anim = prefabs[0].GetComponent<Animator>();
+            }
+            if (objects[i].CompareTag("Jug2Seleccion"))
+            {
+                prefabs[1] = objects[i];
+                jug2animRoot.GetComponentsInChildren<Transform>()[1].gameObject.SetActive(false);
+                prefabs[1].transform.SetParent(jug2animRoot);
+                prefabs[1].transform.localPosition = new Vector3(0, 0, 0);
+                prefabs[1].transform.localEulerAngles = new Vector3(0, 0, 0);
+                prefabs[1].transform.localScale = new Vector3(10.876f, 10.876f, 10.876f);
+                jugador2.GetComponent<JugadorController>().anim = prefabs[1].GetComponent<Animator>();
+            }
+            if (objects[i].CompareTag("Jug3Seleccion"))
+            {
+                prefabs[2] = objects[i];
+                jug3animRoot.GetComponentsInChildren<Transform>()[1].gameObject.SetActive(false);
+                prefabs[2].transform.SetParent(jug3animRoot);
+                prefabs[2].transform.localPosition = new Vector3(0, 0, 0);
+                prefabs[2].transform.localEulerAngles = new Vector3(0, 0, 0);
+                prefabs[2].transform.localScale = new Vector3(10.876f, 10.876f, 10.876f);
+                jugador3.GetComponent<JugadorController>().anim = prefabs[2].GetComponent<Animator>();
+            }
+            if (objects[i].CompareTag("Jug4Seleccion"))
+            {
+                prefabs[3] = objects[i];
+                jug4animRoot.GetComponentsInChildren<Transform>()[1].gameObject.SetActive(false);
+                prefabs[3].transform.SetParent(jug4animRoot);
+                prefabs[3].transform.localPosition = new Vector3(0, 0, 0);
+                prefabs[3].transform.localEulerAngles = new Vector3(0, 0, 0);
+                prefabs[3].transform.localScale = new Vector3(10.876f, 10.876f, 10.876f);
+                jugador4.GetComponent<JugadorController>().anim = prefabs[3].GetComponent<Animator>();
+                continue;
+            }
+        }
+
         mixer.SetFloat("Volumen_master", 0);
         naveRobot.SetActive(false);
         comenzar = false;

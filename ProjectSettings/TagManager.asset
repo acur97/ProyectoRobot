@@ -9,6 +9,10 @@ TagManager:
   - CambiarTipoBala1
   - CambiarTipoBala2
   - CambiarTipoBala3
+  - Jug1Seleccion
+  - Jug2Seleccion
+  - Jug3Seleccion
+  - Jug4Seleccion
   layers:
   - Default
   - TransparentFX

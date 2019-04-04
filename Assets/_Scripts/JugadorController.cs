@@ -19,7 +19,6 @@ public class JugadorController : MonoBehaviour
     public AudioSource source;
     public Animator anim;
     public GameObject Rmat;
-    public Disparo disp;
     public float tiempoRespawnMat = 3;
 
     private readonly string correr = "corriendo";
@@ -39,23 +38,16 @@ public class JugadorController : MonoBehaviour
     private void Start()
     {
         _controller = GetComponent<CharacterController>();
+        disparo.shooter = Fire;
+        disparo.anim = anim;
         StartCoroutine(Respawn());
     }
 
     private void Awake()
     {
-        disparo.shooter = Fire;
         if (jugadores.Jugador1 == jug)
         {
             disparo.Njug = 1;
-            if (Horizontal == null)
-            {
-                Horizontal = "Generic_H";
-                Vertical = "Generic_V";
-                Fire = "Generic_F";
-                Power = "Generic_P";
-                disparo.shooter = Fire;
-            }
         }
         if (jugadores.Jugador2 == jug)
         {
@@ -190,15 +182,15 @@ public class JugadorController : MonoBehaviour
     {
         if (other.tag == "CambiarTipoBala1")
         {
-            disp.tipoBala = 1;
+            disparo.tipoBala = 1;
         }
         if (other.tag == "CambiarTipoBala2")
         {
-            disp.tipoBala = 2;
+            disparo.tipoBala = 2;
         }
         if (other.tag == "CambiarTipoBala3")
         {
-            disp.tipoBala = 3;
+            disparo.tipoBala = 3;
         }
 
         other.gameObject.GetComponent<RespawnMat>().Apagar();
