@@ -214,6 +214,7 @@ public class SelectionManager : MonoBehaviour
         Debug.LogWarning("Pasar color de material dependiendo del jugador al material de Respaw InGameController y en awake poner ese .setcolor del .material");
         Debug.LogWarning("Pasar color de bala, Opcional, o que sea diferente prefab, aunque prefiero un solo color de bala");
         Debug.LogWarning("Pasar color de Mira piso");
+        Debug.LogWarning("Bugazo con mascaras de animaciones y rotaciones de caminar");
 
         if (Input.GetKeyDown(KeyCode.L))
         {
@@ -418,7 +419,7 @@ public class SelectionManager : MonoBehaviour
             if (!readyP1)
             {
                 P1_delay -= (Time.unscaledDeltaTime * 2);
-                Debug.Log(Input.GetAxisRaw("J" + controlesP1 + "_V"));
+                //Debug.Log(Input.GetAxisRaw("J" + controlesP1 + "_V"));
                 if (Input.GetAxisRaw("J" + controlesP1 + "_V") > 0.25f)
                 {
                     P1_selectModeloImg.SetActive(true);
