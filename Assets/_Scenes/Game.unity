@@ -755,7 +755,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119468386}
-  m_LocalRotation: {x: 0.46207517, y: 0.014004839, z: -0.0072981706, w: 0.88670015}
+  m_LocalRotation: {x: 0.46207517, y: 0.014004853, z: -0.0072981766, w: 0.88670015}
   m_LocalPosition: {x: 0, y: 35, z: -25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2942,7 +2942,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 692431925}
-  m_LocalRotation: {x: 0.46207517, y: 0.014004839, z: -0.0072981706, w: 0.88670015}
+  m_LocalRotation: {x: 0.46207517, y: 0.014004853, z: -0.0072981766, w: 0.88670015}
   m_LocalPosition: {x: -0.29797122, y: 49.629982, z: -34.454105}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7812,6 +7812,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 898872108634921524}
     m_Modifications:
+    - target: {fileID: 9500000, guid: 4b93fa5f05da01d4ebcac37117f404f1, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9ea480f124a1bee4992f9f98b0f8957d, type: 2}
     - target: {fileID: 100102, guid: 4b93fa5f05da01d4ebcac37117f404f1, type: 3}
       propertyPath: m_Name
       value: robot2_v2@StandingIdle
@@ -7872,10 +7876,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 12.548
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: 4b93fa5f05da01d4ebcac37117f404f1, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 9ea480f124a1bee4992f9f98b0f8957d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b93fa5f05da01d4ebcac37117f404f1, type: 3}
 --- !u!4 &1737502111 stripped
@@ -8081,10 +8081,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1456192112610369355}
     m_Modifications:
-    - target: {fileID: 100108, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
-      propertyPath: m_Name
-      value: robot4@StandingIdle
-      objectReference: {fileID: 0}
     - target: {fileID: 400108, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -8140,6 +8136,10 @@ PrefabInstance:
     - target: {fileID: 400108, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
       propertyPath: m_LocalScale.z
       value: 13.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 100108, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
+      propertyPath: m_Name
+      value: robot4@StandingIdle
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
       propertyPath: m_Controller
@@ -12136,8 +12136,8 @@ CharacterController:
   serializedVersion: 2
   m_Height: 3
   m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_SlopeLimit: 0
+  m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.5, z: 0}
@@ -12967,8 +12967,8 @@ CharacterController:
   serializedVersion: 2
   m_Height: 3
   m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_SlopeLimit: 0
+  m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.5, z: 0}
@@ -13680,8 +13680,8 @@ CharacterController:
   serializedVersion: 2
   m_Height: 3
   m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_SlopeLimit: 0
+  m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.5, z: 0}
@@ -14010,8 +14010,8 @@ CharacterController:
   serializedVersion: 2
   m_Height: 3
   m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_SlopeLimit: 0
+  m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.5, z: 0}

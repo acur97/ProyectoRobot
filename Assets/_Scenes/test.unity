@@ -5580,54 +5580,72 @@ MonoBehaviour:
       rgba: 4279242816
     colorAlbedo: {r: 1, g: 0.5019608, b: 0.5019608, a: 1}
     colorEmission: {r: 1.6055588, g: 0, b: 0, a: 0}
+    Respaw: {r: 0, g: 0, b: 0, a: 0}
+    MiraPiso: {r: 0, g: 0, b: 0, a: 0}
   - nombre: Naranja
     colorUI:
       serializedVersion: 2
       rgba: 4279251008
     colorAlbedo: {r: 1, g: 0.6666667, b: 0.5019608, a: 1}
     colorEmission: {r: 1.4980392, g: 0.50980395, b: 0, a: 0}
+    Respaw: {r: 0, g: 0, b: 0, a: 0}
+    MiraPiso: {r: 0, g: 0, b: 0, a: 0}
   - nombre: Amarillo
     colorUI:
       serializedVersion: 2
       rgba: 4279255104
     colorAlbedo: {r: 1, g: 0.8745098, b: 0.5019608, a: 1}
     colorEmission: {r: 1.1753378, g: 0.88611853, b: 0, a: 0}
+    Respaw: {r: 0, g: 0, b: 0, a: 0}
+    MiraPiso: {r: 0, g: 0, b: 0, a: 0}
   - nombre: Verde
     colorUI:
       serializedVersion: 2
       rgba: 4279255320
     colorAlbedo: {r: 0.5019608, g: 1, b: 0.5019608, a: 1}
     colorEmission: {r: 0, g: 1.0592737, b: 0, a: 0}
+    Respaw: {r: 0, g: 0, b: 0, a: 0}
+    MiraPiso: {r: 0, g: 0, b: 0, a: 0}
   - nombre: Cian
     colorUI:
       serializedVersion: 2
       rgba: 4282398736
     colorAlbedo: {r: 0, g: 0.9358978, b: 1, a: 1}
     colorEmission: {r: 0, g: 1.0204521, b: 1.0592737, a: 1}
+    Respaw: {r: 0, g: 0, b: 0, a: 0}
+    MiraPiso: {r: 0, g: 0, b: 0, a: 0}
   - nombre: Blanco
     colorUI:
       serializedVersion: 2
       rgba: 4282400832
     colorAlbedo: {r: 1, g: 1, b: 1, a: 1}
     colorEmission: {r: 1, g: 1, b: 1, a: 0}
+    Respaw: {r: 0, g: 0, b: 0, a: 0}
+    MiraPiso: {r: 0, g: 0, b: 0, a: 0}
   - nombre: Azul
     colorUI:
       serializedVersion: 2
       rgba: 4282388496
     colorAlbedo: {r: 0.5019608, g: 0.6666667, b: 1, a: 1}
     colorEmission: {r: 0, g: 0.4756639, b: 1.39772, a: 0}
+    Respaw: {r: 0, g: 0, b: 0, a: 0}
+    MiraPiso: {r: 0, g: 0, b: 0, a: 0}
   - nombre: Rosado
     colorUI:
       serializedVersion: 2
       rgba: 4281602112
     colorAlbedo: {r: 1, g: 0.5019608, b: 0.91764706, a: 1}
     colorEmission: {r: 1.3041189, g: 0, b: 1.0924556, a: 0}
+    Respaw: {r: 0, g: 0, b: 0, a: 0}
+    MiraPiso: {r: 0, g: 0, b: 0, a: 0}
   - nombre: Morado
     colorUI:
       serializedVersion: 2
       rgba: 4282388528
     colorAlbedo: {r: 0.6666667, g: 0.5019608, b: 1, a: 1}
     colorEmission: {r: 0.4756639, g: 0, b: 1.39772, a: 0}
+    Respaw: {r: 0, g: 0, b: 0, a: 0}
+    MiraPiso: {r: 0, g: 0, b: 0, a: 0}
   opciones2:
   - nombre: Jugador1
     matModelos: {fileID: 2100000, guid: 4e056f40f758af04db3a3a52489be672, type: 2}

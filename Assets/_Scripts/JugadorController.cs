@@ -101,6 +101,8 @@ public class JugadorController : MonoBehaviour
             _velocity.z /= 1 + Drag.z * Time.deltaTime;
 
             _controller.Move(_velocity * Time.deltaTime);
+
+            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         }
     }
 

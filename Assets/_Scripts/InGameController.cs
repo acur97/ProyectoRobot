@@ -146,7 +146,7 @@ public class InGameController : MonoBehaviour
                 jug1animRoot.GetComponentsInChildren<Transform>()[1].gameObject.SetActive(false);
                 prefabs[0].transform.SetParent(jug1animRoot);
                 prefabs[0].transform.localPosition = new Vector3(0, 0, 0);
-                prefabs[0].transform.localEulerAngles = new Vector3(0, 0, 0);
+                prefabs[0].transform.eulerAngles = new Vector3(0, 0, 0);
                 prefabs[0].transform.localScale = new Vector3(10.876f, 10.876f, 10.876f);
                 jugador1.GetComponent<JugadorController>().anim = prefabs[0].GetComponent<Animator>();
             }
@@ -156,7 +156,7 @@ public class InGameController : MonoBehaviour
                 jug2animRoot.GetComponentsInChildren<Transform>()[1].gameObject.SetActive(false);
                 prefabs[1].transform.SetParent(jug2animRoot);
                 prefabs[1].transform.localPosition = new Vector3(0, 0, 0);
-                prefabs[1].transform.localEulerAngles = new Vector3(0, 0, 0);
+                prefabs[1].transform.eulerAngles = new Vector3(0, 0, 0);
                 prefabs[1].transform.localScale = new Vector3(10.876f, 10.876f, 10.876f);
                 jugador2.GetComponent<JugadorController>().anim = prefabs[1].GetComponent<Animator>();
             }
@@ -166,7 +166,7 @@ public class InGameController : MonoBehaviour
                 jug3animRoot.GetComponentsInChildren<Transform>()[1].gameObject.SetActive(false);
                 prefabs[2].transform.SetParent(jug3animRoot);
                 prefabs[2].transform.localPosition = new Vector3(0, 0, 0);
-                prefabs[2].transform.localEulerAngles = new Vector3(0, 0, 0);
+                prefabs[2].transform.eulerAngles = new Vector3(0, 0, 0);
                 prefabs[2].transform.localScale = new Vector3(10.876f, 10.876f, 10.876f);
                 jugador3.GetComponent<JugadorController>().anim = prefabs[2].GetComponent<Animator>();
             }
@@ -176,7 +176,7 @@ public class InGameController : MonoBehaviour
                 jug4animRoot.GetComponentsInChildren<Transform>()[1].gameObject.SetActive(false);
                 prefabs[3].transform.SetParent(jug4animRoot);
                 prefabs[3].transform.localPosition = new Vector3(0, 0, 0);
-                prefabs[3].transform.localEulerAngles = new Vector3(0, 0, 0);
+                prefabs[3].transform.eulerAngles = new Vector3(0, 0, 0);
                 prefabs[3].transform.localScale = new Vector3(10.876f, 10.876f, 10.876f);
                 jugador4.GetComponent<JugadorController>().anim = prefabs[3].GetComponent<Animator>();
                 continue;
