@@ -14,11 +14,16 @@ public class SelectionManager : MonoBehaviour
     {
         public string nombre;
         public Color32 colorUI;
+        [ColorUsage(false)]
         public Color colorAlbedo;
         [ColorUsage(false, true)]
         public Color colorEmission;
+        [ColorUsage(true)]
         public Color Respaw;
+        [ColorUsage(true)]
         public Color MiraPiso;
+        [ColorUsage(true, true)]
+        public Color Bala;
     }
     [Serializable]
     public class ops2_prefabs
@@ -44,6 +49,8 @@ public class SelectionManager : MonoBehaviour
     public Text P1_selectModeloTxt;
     public GameObject P1_selectColorImg;
     public Text P1_selectColorTxt;
+    public GameObject P1_select;
+    public GameObject P1_ready;
     [Space]
     public GameObject P2_canvasSelect;
     public GameObject P2_canvasIniciado;
@@ -52,6 +59,8 @@ public class SelectionManager : MonoBehaviour
     public Text P2_selectModeloTxt;
     public GameObject P2_selectColorImg;
     public Text P2_selectColorTxt;
+    public GameObject P2_select;
+    public GameObject P2_ready;
     [Space]
     public GameObject P3_canvasSelect;
     public GameObject P3_canvasIniciado;
@@ -60,6 +69,8 @@ public class SelectionManager : MonoBehaviour
     public Text P3_selectModeloTxt;
     public GameObject P3_selectColorImg;
     public Text P3_selectColorTxt;
+    public GameObject P3_select;
+    public GameObject P3_ready;
     [Space]
     public GameObject P4_canvasSelect;
     public GameObject P4_canvasIniciado;
@@ -68,6 +79,8 @@ public class SelectionManager : MonoBehaviour
     public Text P4_selectModeloTxt;
     public GameObject P4_selectColorImg;
     public Text P4_selectColorTxt;
+    public GameObject P4_select;
+    public GameObject P4_ready;
     [Space]
     public string[] controlesList;
     [Space]
@@ -137,21 +150,29 @@ public class SelectionManager : MonoBehaviour
         P1_canvasIniciado.SetActive(false);
         P1_selectModeloImg.SetActive(true);
         P1_selectColorImg.SetActive(false);
+        P1_select.SetActive(true);
+        P1_ready.SetActive(false);
 
         P2_canvasSelect.SetActive(true);
         P2_canvasIniciado.SetActive(false);
         P2_selectModeloImg.SetActive(true);
         P2_selectColorImg.SetActive(false);
+        P2_select.SetActive(true);
+        P2_ready.SetActive(false);
 
         P3_canvasSelect.SetActive(true);
         P3_canvasIniciado.SetActive(false);
         P3_selectModeloImg.SetActive(true);
         P3_selectColorImg.SetActive(false);
+        P3_select.SetActive(true);
+        P3_ready.SetActive(false);
 
         P4_canvasSelect.SetActive(true);
         P4_canvasIniciado.SetActive(false);
         P4_selectModeloImg.SetActive(true);
         P4_selectColorImg.SetActive(false);
+        P4_select.SetActive(true);
+        P4_ready.SetActive(false);
 
         controlesList = Input.GetJoystickNames();
     }
@@ -163,10 +184,10 @@ public class SelectionManager : MonoBehaviour
         opciones2[2].prefabs[P3_cont1].prefab.transform.SetParent(null);
         opciones2[3].prefabs[P4_cont1].prefab.transform.SetParent(null);
 
-        opciones2[0].prefabs[P1_cont1].prefab.name = "Robot1";
-        opciones2[1].prefabs[P2_cont1].prefab.name = "Robot2";
-        opciones2[2].prefabs[P3_cont1].prefab.name = "Robot3";
-        opciones2[3].prefabs[P4_cont1].prefab.name = "Robot4";
+        //opciones2[0].prefabs[P1_cont1].prefab.name = "Robot1";
+        //opciones2[1].prefabs[P2_cont1].prefab.name = "Robot2";
+        //opciones2[2].prefabs[P3_cont1].prefab.name = "Robot3";
+        //opciones2[3].prefabs[P4_cont1].prefab.name = "Robot4";
         //opciones2[0].prefabs[1].prefab.transform.SetParent(null);
 
         AsyncOperation scene = SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
@@ -192,10 +213,39 @@ public class SelectionManager : MonoBehaviour
         if (sceneToLoad.IsValid())
         {
             Debug.Log("Valido");
-            SceneManager.MoveGameObjectToScene(opciones2[0].prefabs[P1_cont1].prefab, sceneToLoad);
-            SceneManager.MoveGameObjectToScene(opciones2[1].prefabs[P2_cont1].prefab, sceneToLoad);
-            SceneManager.MoveGameObjectToScene(opciones2[2].prefabs[P3_cont1].prefab, sceneToLoad);
-            SceneManager.MoveGameObjectToScene(opciones2[3].prefabs[P4_cont1].prefab, sceneToLoad);
+
+            if (readyP1)
+            {
+                SceneManager.MoveGameObjectToScene(opciones2[0].prefabs[P1_cont1].prefab, sceneToLoad);
+                ColoresPass coloresPas = opciones2[0].prefabs[P1_cont1].prefab.GetComponent<ColoresPass>();
+                coloresPas.RespawColor = opciones1[P1_cont2].Respaw;
+                coloresPas.MiraPisoColor = opciones1[P1_cont2].MiraPiso;
+                coloresPas.BalaColor = opciones1[P1_cont2].Bala;
+            }
+            if (readyP2)
+            {
+                SceneManager.MoveGameObjectToScene(opciones2[1].prefabs[P2_cont1].prefab, sceneToLoad);
+                ColoresPass coloresPas = opciones2[1].prefabs[P2_cont1].prefab.GetComponent<ColoresPass>();
+                coloresPas.RespawColor = opciones1[P2_cont2].Respaw;
+                coloresPas.MiraPisoColor = opciones1[P2_cont2].MiraPiso;
+                coloresPas.BalaColor = opciones1[P2_cont2].Bala;
+            }
+            if (readyP3)
+            {
+                SceneManager.MoveGameObjectToScene(opciones2[2].prefabs[P3_cont1].prefab, sceneToLoad);
+                ColoresPass coloresPas = opciones2[2].prefabs[P3_cont1].prefab.GetComponent<ColoresPass>();
+                coloresPas.RespawColor = opciones1[P3_cont2].Respaw;
+                coloresPas.MiraPisoColor = opciones1[P3_cont2].MiraPiso;
+                coloresPas.BalaColor = opciones1[P3_cont2].Bala;
+            }
+            if (readyP4)
+            {
+                SceneManager.MoveGameObjectToScene(opciones2[3].prefabs[P4_cont1].prefab, sceneToLoad);
+                ColoresPass coloresPas = opciones2[3].prefabs[P4_cont1].prefab.GetComponent<ColoresPass>();
+                coloresPas.RespawColor = opciones1[P4_cont2].Respaw;
+                coloresPas.MiraPisoColor = opciones1[P4_cont2].MiraPiso;
+                coloresPas.BalaColor = opciones1[P4_cont2].Bala;
+            }
 
             sceneAsync.allowSceneActivation = true;
         }
@@ -211,10 +261,10 @@ public class SelectionManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.LogWarning("Pasar color de material dependiendo del jugador al material de Respaw InGameController y en awake poner ese .setcolor del .material");
-        Debug.LogWarning("Pasar color de bala, Opcional, o que sea diferente prefab, aunque prefiero un solo color de bala");
-        Debug.LogWarning("Pasar color de Mira piso");
-        Debug.LogWarning("Bugazo con mascaras de animaciones y rotaciones de caminar");
+        //Debug.LogWarning("Pasar color de material dependiendo del jugador al material de Respaw InGameController y en awake poner ese .setcolor del .material");
+        //Debug.LogWarning("Pasar color de bala, Opcional, o que sea diferente prefab, aunque prefiero un solo color de bala");
+        //Debug.LogWarning("Pasar color de Mira piso");
+        //Debug.LogWarning("Bugazo con mascaras de animaciones y rotaciones de caminar");
 
         if (Input.GetKeyDown(KeyCode.L))
         {
@@ -546,6 +596,8 @@ public class SelectionManager : MonoBehaviour
                 {
                     readyP1 = true;
                     Debug.Log("Player 1 Ready");
+                    P1_select.SetActive(false);
+                    P1_ready.SetActive(true);
                 }
             }
             else
@@ -554,6 +606,8 @@ public class SelectionManager : MonoBehaviour
                 {
                     readyP1 = false;
                     Debug.Log("Player 1 NO-Ready");
+                    P1_select.SetActive(true);
+                    P1_ready.SetActive(false);
                 }
             }
         }
@@ -688,6 +742,8 @@ public class SelectionManager : MonoBehaviour
                 {
                     readyP2 = true;
                     Debug.Log("Player 2 Ready");
+                    P2_select.SetActive(false);
+                    P2_ready.SetActive(true);
                 }
             }
             else
@@ -696,6 +752,8 @@ public class SelectionManager : MonoBehaviour
                 {
                     readyP2 = false;
                     Debug.Log("Player 2 NO-Ready");
+                    P2_select.SetActive(true);
+                    P2_ready.SetActive(false);
                 }
             }
         }
@@ -830,6 +888,8 @@ public class SelectionManager : MonoBehaviour
                 {
                     readyP3 = true;
                     Debug.Log("Player 3 Ready");
+                    P3_select.SetActive(false);
+                    P3_ready.SetActive(true);
                 }
             }
             else
@@ -838,6 +898,8 @@ public class SelectionManager : MonoBehaviour
                 {
                     readyP3 = false;
                     Debug.Log("Player 3 NO-Ready");
+                    P3_select.SetActive(true);
+                    P3_ready.SetActive(false);
                 }
             }
         }
@@ -972,6 +1034,8 @@ public class SelectionManager : MonoBehaviour
                 {
                     readyP4 = true;
                     Debug.Log("Player 4 Ready");
+                    P4_select.SetActive(false);
+                    P4_ready.SetActive(true);
                 }
             }
             else
@@ -980,6 +1044,8 @@ public class SelectionManager : MonoBehaviour
                 {
                     readyP4 = false;
                     Debug.Log("Player 4 NO-Ready");
+                    P4_select.SetActive(true);
+                    P4_ready.SetActive(false);
                 }
             }
         }

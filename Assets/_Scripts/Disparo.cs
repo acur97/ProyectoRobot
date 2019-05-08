@@ -5,6 +5,7 @@ using UnityEngine;
 public class Disparo : MonoBehaviour
 {
     public InGameController controller;
+    public BalasPool poolB;
     
     public int cantidadBalas;
     private int numeroBalas;
@@ -27,6 +28,9 @@ public class Disparo : MonoBehaviour
     public string shooter;
     public int Njug;
 
+    [ColorUsage(true, true)]
+    public Color colorBala;
+
     private void Awake()
     {
         numeroBalas = cantidadBalas;
@@ -43,37 +47,39 @@ public class Disparo : MonoBehaviour
                     anim.SetTrigger("disparo");
                     numeroBalas -= 1;
                     count = 0;
-                    GameObject balita = Instantiate(bala, puntoDisparo.position, puntoDisparo.rotation, padre);
-                    Bala bali = balita.GetComponent<Bala>();
-                    if (tipoBala == 1)
-                    {
-                        bali.tipoDeBala = Bala.balaT.Basica;
-                    }
-                    if (tipoBala == 2)
-                    {
-                        bali.tipoDeBala = Bala.balaT.BasicaRebota;
-                    }
-                    if (tipoBala == 3)
-                    {
-                        bali.tipoDeBala = Bala.balaT.VelVariable;
-                    }
+                    //GameObject balita = Instantiate(bala, puntoDisparo.position, puntoDisparo.rotation, padre);
+                    //Bala bali = balita.GetComponent<Bala>();
+                    //if (tipoBala == 1)
+                    //{
+                    //    bali.tipoDeBala = Bala.balaT.Basica;
+                    //}
+                    //if (tipoBala == 2)
+                    //{
+                    //    bali.tipoDeBala = Bala.balaT.BasicaRebota;
+                    //}
+                    //if (tipoBala == 3)
+                    //{
+                    //    bali.tipoDeBala = Bala.balaT.VelVariable;
+                    //}
 
-                    if (Njug == 1)
-                    {
-                        bali.dueno = 1;
-                    }
-                    if (Njug == 2)
-                    {
-                        bali.dueno = 2;
-                    }
-                    if (Njug == 3)
-                    {
-                        bali.dueno = 3;
-                    }
-                    if (Njug == 4)
-                    {
-                        bali.dueno = 4;
-                    }
+                    //if (Njug == 1)
+                    //{
+                    //    bali.dueno = 1;
+                    //}
+                    //if (Njug == 2)
+                    //{
+                    //    bali.dueno = 2;
+                    //}
+                    //if (Njug == 3)
+                    //{
+                    //    bali.dueno = 3;
+                    //}
+                    //if (Njug == 4)
+                    //{
+                    //    bali.dueno = 4;
+                    //}
+
+                    poolB.OrganizaBala(puntoDisparo.position, puntoDisparo.rotation, colorBala, tipoBala, Njug);
                 }
                 else
                 {

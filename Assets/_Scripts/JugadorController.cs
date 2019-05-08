@@ -75,11 +75,31 @@ public class JugadorController : MonoBehaviour
             if (move != Vector3.zero)
             {
                 transform.forward = move;
+                //if es jugador 2 o 4 que tienen el bug
+                //if (jugadores.Jugador2 == jug)
+                //{
+                //    float valor = -(Mathf.Clamp01(move.x + move.z) * 45);
+                //    anim.transform.localEulerAngles = new Vector3(0, valor, 0);
+                //}
+                //if (jugadores.Jugador4 == jug)
+                //{
+                //    float valor = -(Mathf.Clamp01(move.x + move.z) * 45);
+                //    anim.transform.localEulerAngles = new Vector3(0, valor, 0);
+                //}
                 anim.SetBool(correr, true);
             }
             else
             {
                 anim.SetBool(correr, false);
+                //if es jugador 2 o 4 que tienen el bug
+                //if (jugadores.Jugador1 == jug)
+                //{
+                //    anim.transform.localEulerAngles = new Vector3(0, 0, 0);
+                //}
+                //if (jugadores.Jugador2 == jug)
+                //{
+                //    anim.transform.localEulerAngles = new Vector3(0, 0, 0);
+                //}
             }
 
             if (Input.GetButtonDown(Power))

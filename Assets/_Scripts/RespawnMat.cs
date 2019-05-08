@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class RespawnMat : MonoBehaviour
 {
-    public Material mat;
+    private Material mat;
     public float velocidad;
     public float reaparecer;
     public SphereCollider coll;
     public MeshRenderer mesh;
 
+    private void Start()
+    {
+        mat = mesh.material;
+    }
+
     private void Update()
     {
-        mat.mainTextureOffset = new Vector2(velocidad * Time.unscaledTime * 2, velocidad * Time.unscaledTime / 2);
+        if (mesh.enabled)
+        {
+            mat.SetTextureOffset("_BaseMap", (new Vector2(velocidad * Time.unscaledTime * 2, velocidad * Time.unscaledTime / 2)));
+        }
     }
 
     public void Apagar()

@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Cinemachine;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Rendering.PostProcessing;
-using Cinemachine;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class InGameController : MonoBehaviour
 {
@@ -31,11 +30,12 @@ public class InGameController : MonoBehaviour
     public Transform[] respawns;
     [Space]
     public Image StartBlack;
-    public GameObject PlayCanvas;
-    public GameObject PausaCanvas;
-    public GameObject StartCanvas;
+    public Canvas PlayCanvas1;
+    public Canvas PlayCanvas2;
+    public Canvas PausaCanvas;
+    public Canvas StartCanvas;
     private Image[] StartImgs;
-    public GameObject FinalCanvas;
+    public Canvas FinalCanvas;
     public PostProcessVolume post;
     public CinemachineVirtualCamera Vcamera;
     public AudioMixer mixer;
@@ -50,22 +50,47 @@ public class InGameController : MonoBehaviour
     public AudioClip AalarmaFin;
     [Space]
     public GameObject naveRobot;
+    [Space]
     public GameObject jugador1;
     public Transform jug1animRoot;
     public MeshRenderer esferaRespaw1;
-    private Material esferaMatRespaw1;
+    public MeshRenderer arrow1;
+    public Image UI1img1;
+    public Image UI2img1;
+    public GameObject man1;
+    public GameObject man1Static;
+    //private Material esferaMatRespaw1;
+    [Space]
     public GameObject jugador2;
     public Transform jug2animRoot;
     public MeshRenderer esferaRespaw2;
-    private Material esferaMatRespaw2;
+    public MeshRenderer arrow2;
+    public Image UI1img2;
+    public Image UI2img2;
+    public GameObject man2;
+    public GameObject man2Static;
+    //private Material esferaMatRespaw2;
+    [Space]
     public GameObject jugador3;
     public Transform jug3animRoot;
     public MeshRenderer esferaRespaw3;
-    private Material esferaMatRespaw3;
+    public MeshRenderer arrow3;
+    public Image UI1img3;
+    public Image UI2img3;
+    public GameObject man3;
+    public GameObject man3Static;
+    //private Material esferaMatRespaw3;
+    [Space]
     public GameObject jugador4;
     public Transform jug4animRoot;
     public MeshRenderer esferaRespaw4;
-    private Material esferaMatRespaw4;
+    public MeshRenderer arrow4;
+    public Image UI1img4;
+    public Image UI2img4;
+    public GameObject man4;
+    public GameObject man4Static;
+    //private Material esferaMatRespaw4;
+    [Space]
     public CinemachineTargetGroup camGroup;
     [Space]
     public AudioClip[] SonidosVictoria;
@@ -89,6 +114,7 @@ public class InGameController : MonoBehaviour
     private float speed1;
     private float speed2;
     private float speed3;
+    private bool pausado = false;
 
     private int vaGanando;
     private int puntuacion1;
@@ -120,22 +146,27 @@ public class InGameController : MonoBehaviour
 
     private void Awake()
     {
-        if (esferaMatRespaw1 != null)
-        {
-            esferaRespaw1.material = esferaMatRespaw1;
-        }
-        if (esferaMatRespaw2 != null)
-        {
-            esferaRespaw2.material = esferaMatRespaw2;
-        }
-        if (esferaMatRespaw3 != null)
-        {
-            esferaRespaw3.material = esferaMatRespaw3;
-        }
-        if (esferaMatRespaw4 != null)
-        {
-            esferaRespaw4.material = esferaMatRespaw4;
-        }
+        //if (esferaMatRespaw1 != null)
+        //{
+        //    esferaRespaw1.material = esferaMatRespaw1;
+        //}
+        //if (esferaMatRespaw2 != null)
+        //{
+        //    esferaRespaw2.material = esferaMatRespaw2;
+        //}
+        //if (esferaMatRespaw3 != null)
+        //{
+        //    esferaRespaw3.material = esferaMatRespaw3;
+        //}
+        //if (esferaMatRespaw4 != null)
+        //{
+        //    esferaRespaw4.material = esferaMatRespaw4;
+        //}
+
+        jugador1.SetActive(false);
+        jugador2.SetActive(false);
+        jugador3.SetActive(false);
+        jugador4.SetActive(false);
 
         objects = SceneManager.GetSceneByBuildIndex(1).GetRootGameObjects();
         for (int i = 0; i < objects.Length; i++)
@@ -146,9 +177,22 @@ public class InGameController : MonoBehaviour
                 jug1animRoot.GetComponentsInChildren<Transform>()[1].gameObject.SetActive(false);
                 prefabs[0].transform.SetParent(jug1animRoot);
                 prefabs[0].transform.localPosition = new Vector3(0, 0, 0);
-                prefabs[0].transform.eulerAngles = new Vector3(0, 0, 0);
+                if (prefabs[0].name == "Robot2" || prefabs[0].name == "Robot4")
+                {
+                    prefabs[0].transform.eulerAngles = new Vector3(0, -45, 0);
+                }
+                else
+                {
+                    prefabs[0].transform.eulerAngles = new Vector3(0, 0, 0);
+                }
                 prefabs[0].transform.localScale = new Vector3(10.876f, 10.876f, 10.876f);
                 jugador1.GetComponent<JugadorController>().anim = prefabs[0].GetComponent<Animator>();
+                ColoresPass coloresPas = prefabs[0].GetComponent<ColoresPass>();
+                esferaRespaw1.material.SetColor("_BaseColor", coloresPas.RespawColor);
+                arrow1.material.SetColor("_BaseColor", coloresPas.MiraPisoColor);
+                jugador1.GetComponentInChildren<Disparo>().colorBala = coloresPas.BalaColor;
+                jugador1.SetActive(true);
+                Debug.Log("Jugador 1 ready");
             }
             if (objects[i].CompareTag("Jug2Seleccion"))
             {
@@ -156,9 +200,22 @@ public class InGameController : MonoBehaviour
                 jug2animRoot.GetComponentsInChildren<Transform>()[1].gameObject.SetActive(false);
                 prefabs[1].transform.SetParent(jug2animRoot);
                 prefabs[1].transform.localPosition = new Vector3(0, 0, 0);
-                prefabs[1].transform.eulerAngles = new Vector3(0, 0, 0);
+                if (prefabs[1].name == "Robot2" || prefabs[1].name == "Robot4")
+                {
+                    prefabs[1].transform.eulerAngles = new Vector3(0, -45, 0);
+                }
+                else
+                {
+                    prefabs[1].transform.eulerAngles = new Vector3(0, 0, 0);
+                }
                 prefabs[1].transform.localScale = new Vector3(10.876f, 10.876f, 10.876f);
                 jugador2.GetComponent<JugadorController>().anim = prefabs[1].GetComponent<Animator>();
+                ColoresPass coloresPas = prefabs[1].GetComponent<ColoresPass>();
+                esferaRespaw2.material.SetColor("_BaseColor", coloresPas.RespawColor);
+                arrow2.material.SetColor("_BaseColor", coloresPas.MiraPisoColor);
+                jugador2.GetComponentInChildren<Disparo>().colorBala = coloresPas.BalaColor;
+                jugador2.SetActive(true);
+                Debug.Log("Jugador 2 ready");
             }
             if (objects[i].CompareTag("Jug3Seleccion"))
             {
@@ -166,9 +223,22 @@ public class InGameController : MonoBehaviour
                 jug3animRoot.GetComponentsInChildren<Transform>()[1].gameObject.SetActive(false);
                 prefabs[2].transform.SetParent(jug3animRoot);
                 prefabs[2].transform.localPosition = new Vector3(0, 0, 0);
-                prefabs[2].transform.eulerAngles = new Vector3(0, 0, 0);
+                if (prefabs[2].name == "Robot2" || prefabs[2].name == "Robot4")
+                {
+                    prefabs[2].transform.eulerAngles = new Vector3(0, -45, 0);
+                }
+                else
+                {
+                    prefabs[2].transform.eulerAngles = new Vector3(0, 0, 0);
+                }
                 prefabs[2].transform.localScale = new Vector3(10.876f, 10.876f, 10.876f);
                 jugador3.GetComponent<JugadorController>().anim = prefabs[2].GetComponent<Animator>();
+                ColoresPass coloresPas = prefabs[2].GetComponent<ColoresPass>();
+                esferaRespaw3.material.SetColor("_BaseColor", coloresPas.RespawColor);
+                arrow3.material.SetColor("_BaseColor", coloresPas.MiraPisoColor);
+                jugador3.GetComponentInChildren<Disparo>().colorBala = coloresPas.BalaColor;
+                jugador3.SetActive(true);
+                Debug.Log("Jugador 3 ready");
             }
             if (objects[i].CompareTag("Jug4Seleccion"))
             {
@@ -176,10 +246,23 @@ public class InGameController : MonoBehaviour
                 jug4animRoot.GetComponentsInChildren<Transform>()[1].gameObject.SetActive(false);
                 prefabs[3].transform.SetParent(jug4animRoot);
                 prefabs[3].transform.localPosition = new Vector3(0, 0, 0);
-                prefabs[3].transform.eulerAngles = new Vector3(0, 0, 0);
+                if (prefabs[3].name == "Robot2" || prefabs[3].name == "Robot4")
+                {
+                    prefabs[3].transform.eulerAngles = new Vector3(0, -45, 0);
+                }
+                else
+                {
+                    prefabs[3].transform.eulerAngles = new Vector3(0, 0, 0);
+                }
                 prefabs[3].transform.localScale = new Vector3(10.876f, 10.876f, 10.876f);
                 jugador4.GetComponent<JugadorController>().anim = prefabs[3].GetComponent<Animator>();
-                continue;
+                ColoresPass coloresPas = prefabs[3].GetComponent<ColoresPass>();
+                esferaRespaw4.material.SetColor("_BaseColor", coloresPas.RespawColor);
+                arrow4.material.SetColor("_BaseColor", coloresPas.MiraPisoColor);
+                jugador4.GetComponentInChildren<Disparo>().colorBala = coloresPas.BalaColor;
+                jugador4.SetActive(true);
+                Debug.Log("Jugador 4 ready");
+                //continue;
             }
         }
 
@@ -208,9 +291,18 @@ public class InGameController : MonoBehaviour
         jugador4.GetComponent<JugadorController>().Fire = P4_F;
         jugador4.GetComponent<JugadorController>().Power = P4_P;
 
-        eventSystem.horizontalAxis = P1_H;
-        eventSystem.verticalAxis = P1_V;
-        eventSystem.submitButton = P1_F;
+        if (P1_H != null)
+        {
+            eventSystem.horizontalAxis = P1_H;
+            eventSystem.verticalAxis = P1_V;
+            eventSystem.submitButton = P1_F;
+        }
+        else
+        {
+            eventSystem.horizontalAxis = "J1_H";
+            eventSystem.verticalAxis = "J1_V";
+            eventSystem.submitButton = "J1_F";
+        }
         //eventSystem.cancelButton = P1_P;
 
         puntaje1.text = 0.ToString();
@@ -218,10 +310,13 @@ public class InGameController : MonoBehaviour
         puntaje3.text = 0.ToString();
         puntaje4.text = 0.ToString();
 
-        StartCanvas.SetActive(true);
-        PausaCanvas.SetActive(false);
-        PlayCanvas.SetActive(true);
-        FinalCanvas.SetActive(false);
+        StartCanvas.gameObject.SetActive(true);
+        PausaCanvas.gameObject.SetActive(true);
+        PausaCanvas.enabled = false;
+        PlayCanvas1.gameObject.SetActive(true);
+        PlayCanvas2.gameObject.SetActive(true);
+        FinalCanvas.gameObject.SetActive(true);
+        FinalCanvas.enabled = false;
 
         minutos = minutosStart;
         timer.text = minutos + ":00";
@@ -233,7 +328,18 @@ public class InGameController : MonoBehaviour
         groupc = Vcamera.GetCinemachineComponent<CinemachineGroupComposer>();
         groupc.m_ScreenY = 0.55f;
         depth.focusDistance.value = 0.1f;
-        StartBlack.color = new Color32(0, 0, 0, 128);
+        //StartBlack.color = new Color32(0, 0, 0, 128);
+    }
+
+    private void Start()
+    {
+        //if (jugador1.activeSelf)
+        //{
+        //    ColoresPass coloresPas = prefabs[0].GetComponent<ColoresPass>();
+        //    esferaRespaw1.material.SetColor("Color", coloresPas.RespawColor);
+        //    arrow1.material.SetColor("Color", coloresPas.MiraPisoColor);
+        //    jugador1.GetComponentInChildren<Disparo>().colorBala = coloresPas.BalaColor;
+        //}
     }
 
     #region Funciones
@@ -277,23 +383,27 @@ public class InGameController : MonoBehaviour
         {
             mixer.SetFloat("Volumen_master", -20);
             Time.timeScale = 0;
-            PlayCanvas.SetActive(false);
-            PausaCanvas.SetActive(true);
+            PlayCanvas1.enabled = false;
+            PlayCanvas2.enabled = false;
+            PausaCanvas.enabled = true;
             depth.focusDistance.value = 0.1f;
-            StartBlack.color = new Color32(0, 0, 0, 128);
+            //StartBlack.color = new Color32(0, 0, 0, 128);
             comenzar = false;
+            pausado = true;
         }
     }
 
     public void Reanudar()
     {
         mixer.SetFloat("Volumen_master", 0);
-        comenzar = true;
         Time.timeScale = 1;
-        PlayCanvas.SetActive(true);
-        PausaCanvas.SetActive(false);
+        PlayCanvas1.enabled = true;
+        PlayCanvas2.enabled = true;
+        PausaCanvas.enabled = false;
         depth.focusDistance.value = 200;
-        StartBlack.color = new Color32(0, 0, 0, 0);
+        //StartBlack.color = new Color32(0, 0, 0, 0);
+        comenzar = true;
+        pausado = false;
     }
 
     public void VolverMenu()
@@ -304,8 +414,9 @@ public class InGameController : MonoBehaviour
 
     public void FinalizarJuego()
     {
-        PlayCanvas.SetActive(false);
-        FinalCanvas.SetActive(true);
+        PlayCanvas1.enabled = false;
+        PlayCanvas2.enabled = false;
+        FinalCanvas.enabled = true;
         depth.active = false;
         StartBlack.color = new Color32(0, 0, 0, 128);
         groupc.m_ScreenY = 0.425f;
@@ -767,7 +878,7 @@ public class InGameController : MonoBehaviour
         }
         speed1 = v_end;
         depth.focusDistance.value = speed1;
-        StartCanvas.SetActive(false);
+        StartCanvas.gameObject.SetActive(false);
     }
     public IEnumerator ChangeSpeed2(float v_start, float v_end, float duration)
     {
@@ -793,14 +904,16 @@ public class InGameController : MonoBehaviour
 
             for (int i = 0; i < StartImgs.Length; i++)
             {
-                StartImgs[i].color = new Color32(255, 255, 255, (byte)speed3);
+                StartImgs[1].color = new Color32(255, 255, 255, (byte)speed3);
+                StartImgs[2].color = new Color32(255, 255, 255, (byte)speed3);
             }
         }
         speed3 = v_end;
 
         for (int i = 0; i < StartImgs.Length; i++)
         {
-            StartImgs[i].color = new Color32(255, 255, 255, (byte)speed3);
+            StartImgs[1].color = new Color32(255, 255, 255, (byte)speed3);
+            StartImgs[2].color = new Color32(255, 255, 255, (byte)speed3);
         }
     }
 
@@ -810,12 +923,26 @@ public class InGameController : MonoBehaviour
     {
         if (Input.GetButtonDown("Pause"))
         {
-            Pausar();
+            if (!pausado)
+            {
+                Pausar();
+            }
+            //else
+            //{
+            //    Reanudar();
+            //}
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Pausar();
+            if (!pausado)
+            {
+                Pausar();
+            }
+            //else
+            //{
+            //    Reanudar();
+            //}
         }
 
         if (comenzar)

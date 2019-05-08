@@ -38,12 +38,17 @@ public class Bala : MonoBehaviour
 
     private void OnEnable()
     {
-        StartCoroutine(EsperaArranque());
+        StopAllCoroutines();
         hit.SetActive(false);
         muzzle.SetActive(false);
         shoot.SetActive(true);
         source.clip = Adisparo;
         source.Play();
+        rb.isKinematic = false;
+        force.relativeForce = new Vector3(0, 0, 0);
+        coll.enabled = true;
+        arranque = false;
+        StartCoroutine(EsperaArranque());
     }
 
     private void Update()
@@ -131,6 +136,7 @@ public class Bala : MonoBehaviour
         }
         source.Play();
         rb.isKinematic = true;
+        force.relativeForce = new Vector3(0, 0, 0);
         coll.enabled = false;
         muzzle.SetActive(false);
         shoot.SetActive(false);
@@ -141,6 +147,7 @@ public class Bala : MonoBehaviour
     IEnumerator EsperaMorir()
     {
         yield return new WaitForSecondsRealtime(1);
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f6f3f7c722b4544b97e3c75840aa33, type: 3}
   m_Name: AutoExposure
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
@@ -108,7 +108,7 @@ MonoBehaviour:
     value: 1.1
   softKnee:
     overrideState: 0
-    value: 0.5
+    value: 0.4
   clamp:
     overrideState: 0
     value: 65472
@@ -126,7 +126,7 @@ MonoBehaviour:
     value: 0
   dirtTexture:
     overrideState: 1
-    value: {fileID: 2800000, guid: 69e847bbff1cf5449a4ee0bbd045dbc9, type: 3}
+    value: {fileID: 2800000, guid: 36597e74ff7c6f74ca95baf8ddb68b68, type: 3}
     defaultState: 1
   dirtIntensity:
     overrideState: 1
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb84e30e02715445aeb9959894e3b4d, type: 3}
   m_Name: ColorGrading
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
@@ -184,7 +184,7 @@ MonoBehaviour:
     value: 1
   temperature:
     overrideState: 1
-    value: 7.5
+    value: 6
   tint:
     overrideState: 0
     value: 0
@@ -1487,8 +1487,8 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   spectralLut:
-    overrideState: 0
-    value: {fileID: 0}
+    overrideState: 1
+    value: {fileID: 2800000, guid: 47e47089116fdac48a597fc500f8fa5e, type: 3}
     defaultState: 1
   intensity:
     overrideState: 1
