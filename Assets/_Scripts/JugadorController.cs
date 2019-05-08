@@ -71,7 +71,7 @@ public class JugadorController : MonoBehaviour
             dashLimit -= Time.unscaledDeltaTime;
 
             move = new Vector3(Input.GetAxis(Horizontal), 0, Input.GetAxis(Vertical));
-            _controller.Move(move * Time.deltaTime * speed);
+            _controller.Move(move * Time.unscaledDeltaTime * speed);
             if (move != Vector3.zero)
             {
                 transform.forward = move;
@@ -106,7 +106,7 @@ public class JugadorController : MonoBehaviour
             {
                 if (dashLimit <= 0)
                 {
-                    _velocity += (Vector3.Scale(transform.forward, dashdistance * new Vector3((Mathf.Log(1f / (Time.deltaTime * Drag.x + 2)) / -Time.deltaTime), 0, (Mathf.Log(1f / (Time.deltaTime * Drag.z + 2)) / -Time.deltaTime))) * 2);
+                    _velocity += (Vector3.Scale(transform.forward, dashdistance * new Vector3((Mathf.Log(1f / (Time.unscaledDeltaTime * Drag.x + 2)) / -Time.unscaledDeltaTime), 0, (Mathf.Log(1f / (Time.unscaledDeltaTime * Drag.z + 2)) / -Time.unscaledDeltaTime))) * 2);
                     source.Stop();
                     source.Play();
                     dashLimit = esperaEntreDrag;
@@ -115,12 +115,12 @@ public class JugadorController : MonoBehaviour
 
             //_velocity.y += gravity * Time.deltaTime;
 
-            _velocity.x /= 1 + Drag.x * Time.deltaTime;
+            _velocity.x /= 1 + Drag.x * Time.unscaledDeltaTime;
             //_velocity.y /= 1 + Drag.y * Time.deltaTime;
             _velocity.y = 0;
-            _velocity.z /= 1 + Drag.z * Time.deltaTime;
+            _velocity.z /= 1 + Drag.z * Time.unscaledDeltaTime;
 
-            _controller.Move(_velocity * Time.deltaTime);
+            _controller.Move(_velocity * Time.unscaledDeltaTime);
 
             transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         }

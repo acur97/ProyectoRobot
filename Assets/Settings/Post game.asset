@@ -68,10 +68,10 @@ MonoBehaviour:
     value: {x: 50, y: 95}
   minLuminance:
     overrideState: 1
-    value: -0.2
+    value: -0.25
   maxLuminance:
     overrideState: 1
-    value: 0.2
+    value: 0.25
   keyValue:
     overrideState: 0
     value: 1
@@ -102,7 +102,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 10
+    value: 9
   threshold:
     overrideState: 0
     value: 1.1
@@ -130,7 +130,7 @@ MonoBehaviour:
     defaultState: 1
   dirtIntensity:
     overrideState: 1
-    value: 10
+    value: 5
 --- !u!114 &114797507233654544
 MonoBehaviour:
   m_ObjectHideFlags: 3

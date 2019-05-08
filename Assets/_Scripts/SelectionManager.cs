@@ -129,6 +129,7 @@ public class SelectionManager : MonoBehaviour
     private int excepcion3;
 
     public float countWait;
+    public GameObject readyStatus;
 
     private AsyncOperation sceneAsync;
 
@@ -221,6 +222,7 @@ public class SelectionManager : MonoBehaviour
                 coloresPas.RespawColor = opciones1[P1_cont2].Respaw;
                 coloresPas.MiraPisoColor = opciones1[P1_cont2].MiraPiso;
                 coloresPas.BalaColor = opciones1[P1_cont2].Bala;
+                coloresPas.colorUI = opciones1[P1_cont2].colorUI;
             }
             if (readyP2)
             {
@@ -229,6 +231,7 @@ public class SelectionManager : MonoBehaviour
                 coloresPas.RespawColor = opciones1[P2_cont2].Respaw;
                 coloresPas.MiraPisoColor = opciones1[P2_cont2].MiraPiso;
                 coloresPas.BalaColor = opciones1[P2_cont2].Bala;
+                coloresPas.colorUI = opciones1[P2_cont2].colorUI;
             }
             if (readyP3)
             {
@@ -237,6 +240,7 @@ public class SelectionManager : MonoBehaviour
                 coloresPas.RespawColor = opciones1[P3_cont2].Respaw;
                 coloresPas.MiraPisoColor = opciones1[P3_cont2].MiraPiso;
                 coloresPas.BalaColor = opciones1[P3_cont2].Bala;
+                coloresPas.colorUI = opciones1[P3_cont2].colorUI;
             }
             if (readyP4)
             {
@@ -245,6 +249,7 @@ public class SelectionManager : MonoBehaviour
                 coloresPas.RespawColor = opciones1[P4_cont2].Respaw;
                 coloresPas.MiraPisoColor = opciones1[P4_cont2].MiraPiso;
                 coloresPas.BalaColor = opciones1[P4_cont2].Bala;
+                coloresPas.colorUI = opciones1[P4_cont2].colorUI;
             }
 
             sceneAsync.allowSceneActivation = true;
@@ -266,11 +271,11 @@ public class SelectionManager : MonoBehaviour
         //Debug.LogWarning("Pasar color de Mira piso");
         //Debug.LogWarning("Bugazo con mascaras de animaciones y rotaciones de caminar");
 
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            SceneManager.LoadScene(1);
-        }
-        if (Input.GetKeyDown(KeyCode.H))
+        //if (Input.GetKeyDown(KeyCode.L))
+        //{
+        //    SceneManager.LoadScene(1);
+        //}
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine(LoadSceneMove(1));
         }
@@ -533,7 +538,7 @@ public class SelectionManager : MonoBehaviour
                         }
                         P1_selectColorTxt.text = opciones1[P1_cont2].nombre;
 
-                        opciones2[0].matModelos.SetColor("_Color", opciones1[P1_cont2].colorAlbedo);
+                        opciones2[0].matModelos.SetColor("_BaseColor", opciones1[P1_cont2].colorAlbedo);
                         opciones2[0].matModelos.SetColor("_EmissionColor", opciones1[P1_cont2].colorEmission);
                     }
                 }
@@ -587,7 +592,7 @@ public class SelectionManager : MonoBehaviour
                         }
                         P1_selectColorTxt.text = opciones1[P1_cont2].nombre;
 
-                        opciones2[0].matModelos.SetColor("_Color", opciones1[P1_cont2].colorAlbedo);
+                        opciones2[0].matModelos.SetColor("_BaseColor", opciones1[P1_cont2].colorAlbedo);
                         opciones2[0].matModelos.SetColor("_EmissionColor", opciones1[P1_cont2].colorEmission);
                     }
                 }
@@ -679,7 +684,7 @@ public class SelectionManager : MonoBehaviour
                         }
                         P2_selectColorTxt.text = opciones1[P2_cont2].nombre;
 
-                        opciones2[1].matModelos.SetColor("_Color", opciones1[P2_cont2].colorAlbedo);
+                        opciones2[1].matModelos.SetColor("_BaseColor", opciones1[P2_cont2].colorAlbedo);
                         opciones2[1].matModelos.SetColor("_EmissionColor", opciones1[P2_cont2].colorEmission);
                     }
                 }
@@ -733,7 +738,7 @@ public class SelectionManager : MonoBehaviour
                         }
                         P2_selectColorTxt.text = opciones1[P2_cont2].nombre;
 
-                        opciones2[1].matModelos.SetColor("_Color", opciones1[P2_cont2].colorAlbedo);
+                        opciones2[1].matModelos.SetColor("_BaseColor", opciones1[P2_cont2].colorAlbedo);
                         opciones2[1].matModelos.SetColor("_EmissionColor", opciones1[P2_cont2].colorEmission);
                     }
                 }
@@ -825,7 +830,7 @@ public class SelectionManager : MonoBehaviour
                         }
                         P3_selectColorTxt.text = opciones1[P3_cont2].nombre;
 
-                        opciones2[2].matModelos.SetColor("_Color", opciones1[P3_cont2].colorAlbedo);
+                        opciones2[2].matModelos.SetColor("_BaseColor", opciones1[P3_cont2].colorAlbedo);
                         opciones2[2].matModelos.SetColor("_EmissionColor", opciones1[P3_cont2].colorEmission);
                     }
                 }
@@ -879,7 +884,7 @@ public class SelectionManager : MonoBehaviour
                         }
                         P3_selectColorTxt.text = opciones1[P3_cont2].nombre;
 
-                        opciones2[2].matModelos.SetColor("_Color", opciones1[P3_cont2].colorAlbedo);
+                        opciones2[2].matModelos.SetColor("_BaseColor", opciones1[P3_cont2].colorAlbedo);
                         opciones2[2].matModelos.SetColor("_EmissionColor", opciones1[P3_cont2].colorEmission);
                     }
                 }
@@ -971,7 +976,7 @@ public class SelectionManager : MonoBehaviour
                         }
                         P4_selectColorTxt.text = opciones1[P4_cont2].nombre;
 
-                        opciones2[3].matModelos.SetColor("_Color", opciones1[P4_cont2].colorAlbedo);
+                        opciones2[3].matModelos.SetColor("_BaseColor", opciones1[P4_cont2].colorAlbedo);
                         opciones2[3].matModelos.SetColor("_EmissionColor", opciones1[P4_cont2].colorEmission);
                     }
                 }
@@ -1025,7 +1030,7 @@ public class SelectionManager : MonoBehaviour
                         }
                         P4_selectColorTxt.text = opciones1[P4_cont2].nombre;
 
-                        opciones2[3].matModelos.SetColor("_Color", opciones1[P4_cont2].colorAlbedo);
+                        opciones2[3].matModelos.SetColor("_BaseColor", opciones1[P4_cont2].colorAlbedo);
                         opciones2[3].matModelos.SetColor("_EmissionColor", opciones1[P4_cont2].colorEmission);
                     }
                 }
@@ -1051,5 +1056,24 @@ public class SelectionManager : MonoBehaviour
         }
 
         #endregion
+
+        if (readyP1 && readyP2)
+        {
+            if (!readyStatus.activeSelf)
+            {
+                readyStatus.SetActive(true);
+            }
+            if (Input.GetButtonDown("Pause"))
+            {
+                StartCoroutine(LoadSceneMove(1));
+            }
+        }
+        else
+        {
+            if (readyStatus.activeSelf)
+            {
+                readyStatus.SetActive(false);
+            }
+        }
     }
 }

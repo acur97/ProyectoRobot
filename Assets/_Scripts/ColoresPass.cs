@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ColoresPass : MonoBehaviour
 {
-    [ColorUsage(false)]
+    public Color32 colorUI;
+    [ColorUsage(true)]
     public Color RespawColor;
-    [ColorUsage(false)]
+    [ColorUsage(true)]
     public Color MiraPisoColor;
-    [ColorUsage(false, true)]
+    [ColorUsage(true, true)]
     public Color BalaColor;
 }

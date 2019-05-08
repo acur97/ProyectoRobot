@@ -55,6 +55,7 @@ public class InGameController : MonoBehaviour
     public Transform jug1animRoot;
     public MeshRenderer esferaRespaw1;
     public MeshRenderer arrow1;
+    public Text UItext1;
     public Image UI1img1;
     public Image UI2img1;
     public GameObject man1;
@@ -65,6 +66,7 @@ public class InGameController : MonoBehaviour
     public Transform jug2animRoot;
     public MeshRenderer esferaRespaw2;
     public MeshRenderer arrow2;
+    public Text UItext2;
     public Image UI1img2;
     public Image UI2img2;
     public GameObject man2;
@@ -75,6 +77,7 @@ public class InGameController : MonoBehaviour
     public Transform jug3animRoot;
     public MeshRenderer esferaRespaw3;
     public MeshRenderer arrow3;
+    public Text UItext3;
     public Image UI1img3;
     public Image UI2img3;
     public GameObject man3;
@@ -85,6 +88,7 @@ public class InGameController : MonoBehaviour
     public Transform jug4animRoot;
     public MeshRenderer esferaRespaw4;
     public MeshRenderer arrow4;
+    public Text UItext4;
     public Image UI1img4;
     public Image UI2img4;
     public GameObject man4;
@@ -144,6 +148,8 @@ public class InGameController : MonoBehaviour
 
     public static int PN;
 
+    private float countPausa = 0;
+
     private void Awake()
     {
         //if (esferaMatRespaw1 != null)
@@ -164,9 +170,20 @@ public class InGameController : MonoBehaviour
         //}
 
         jugador1.SetActive(false);
+        man1.SetActive(false);
+        man1Static.SetActive(false);
+
         jugador2.SetActive(false);
+        man2.SetActive(false);
+        man2Static.SetActive(false);
+
         jugador3.SetActive(false);
+        man3.SetActive(false);
+        man3Static.SetActive(false);
+
         jugador4.SetActive(false);
+        man4.SetActive(false);
+        man4Static.SetActive(false);
 
         objects = SceneManager.GetSceneByBuildIndex(1).GetRootGameObjects();
         for (int i = 0; i < objects.Length; i++)
@@ -191,6 +208,12 @@ public class InGameController : MonoBehaviour
                 esferaRespaw1.material.SetColor("_BaseColor", coloresPas.RespawColor);
                 arrow1.material.SetColor("_BaseColor", coloresPas.MiraPisoColor);
                 jugador1.GetComponentInChildren<Disparo>().colorBala = coloresPas.BalaColor;
+                Color32 colorUI = coloresPas.MiraPisoColor;
+                UI1img1.color = colorUI;
+                UI2img1.color = colorUI;
+                UItext1.color = coloresPas.colorUI;
+                man1.SetActive(true);
+                man1Static.SetActive(true);
                 jugador1.SetActive(true);
                 Debug.Log("Jugador 1 ready");
             }
@@ -214,6 +237,12 @@ public class InGameController : MonoBehaviour
                 esferaRespaw2.material.SetColor("_BaseColor", coloresPas.RespawColor);
                 arrow2.material.SetColor("_BaseColor", coloresPas.MiraPisoColor);
                 jugador2.GetComponentInChildren<Disparo>().colorBala = coloresPas.BalaColor;
+                Color32 colorUI = coloresPas.MiraPisoColor;
+                UI1img2.color = colorUI;
+                UI2img2.color = colorUI;
+                UItext2.color = coloresPas.colorUI;
+                man2.SetActive(true);
+                man2Static.SetActive(true);
                 jugador2.SetActive(true);
                 Debug.Log("Jugador 2 ready");
             }
@@ -237,6 +266,12 @@ public class InGameController : MonoBehaviour
                 esferaRespaw3.material.SetColor("_BaseColor", coloresPas.RespawColor);
                 arrow3.material.SetColor("_BaseColor", coloresPas.MiraPisoColor);
                 jugador3.GetComponentInChildren<Disparo>().colorBala = coloresPas.BalaColor;
+                Color32 colorUI = coloresPas.MiraPisoColor;
+                UI1img3.color = colorUI;
+                UI2img3.color = colorUI;
+                UItext3.color = coloresPas.colorUI;
+                man3.SetActive(true);
+                man3Static.SetActive(true);
                 jugador3.SetActive(true);
                 Debug.Log("Jugador 3 ready");
             }
@@ -260,6 +295,12 @@ public class InGameController : MonoBehaviour
                 esferaRespaw4.material.SetColor("_BaseColor", coloresPas.RespawColor);
                 arrow4.material.SetColor("_BaseColor", coloresPas.MiraPisoColor);
                 jugador4.GetComponentInChildren<Disparo>().colorBala = coloresPas.BalaColor;
+                Color32 colorUI = coloresPas.MiraPisoColor;
+                UI1img4.color = colorUI;
+                UI2img4.color = colorUI;
+                UItext4.color = coloresPas.colorUI;
+                man4.SetActive(true);
+                man4Static.SetActive(true);
                 jugador4.SetActive(true);
                 Debug.Log("Jugador 4 ready");
                 //continue;
@@ -352,7 +393,7 @@ public class InGameController : MonoBehaviour
 
     public void IniciarJuego()
     {
-        StartCoroutine(ChangeSpeed1(0.1f, 10, tiempoBlurStart));
+        StartCoroutine(ChangeSpeed1(0.1f, 10, tiempoBlurStart * 1.6f));
         StartCoroutine(ChangeSpeed2(128, 0, tiempoBlurStart));
         StartCoroutine(ChangeSpeed3(255, 0, tiempoBlurStart));
 
@@ -369,9 +410,9 @@ public class InGameController : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.3f);
         source2.clip = A321;
         source2.Play();
-        yield return new WaitForSecondsRealtime(2.2f);
-        StartCoroutine(ChangeSpeed1(10, 35, 8));
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(2.6f);
+        StartCoroutine(ChangeSpeed1(10, 35, 4));
+        yield return new WaitForSecondsRealtime(0.8f);
         comenzar = true;
         yield return new WaitForSecondsRealtime(8);
         naveRobot.SetActive(false);
@@ -381,10 +422,11 @@ public class InGameController : MonoBehaviour
     {
         if (comenzar)
         {
+            //StopAllCoroutines();
             mixer.SetFloat("Volumen_master", -20);
             Time.timeScale = 0;
-            PlayCanvas1.enabled = false;
-            PlayCanvas2.enabled = false;
+            //PlayCanvas1.enabled = false;
+            //PlayCanvas2.enabled = false;
             PausaCanvas.enabled = true;
             depth.focusDistance.value = 0.1f;
             //StartBlack.color = new Color32(0, 0, 0, 128);
@@ -395,6 +437,7 @@ public class InGameController : MonoBehaviour
 
     public void Reanudar()
     {
+        countPausa = 0;
         mixer.SetFloat("Volumen_master", 0);
         Time.timeScale = 1;
         PlayCanvas1.enabled = true;
@@ -409,7 +452,7 @@ public class InGameController : MonoBehaviour
     public void VolverMenu()
     {
         Time.timeScale = 1;
-        Initiate.Fade("Game", Color.black, 1);
+        Initiate.Fade("Seleccion", Color.black, 1);
     }
 
     public void FinalizarJuego()
@@ -927,22 +970,15 @@ public class InGameController : MonoBehaviour
             {
                 Pausar();
             }
-            //else
-            //{
-            //    Reanudar();
-            //}
+            if (countPausa < -1 && pausado)
+            {
+                Reanudar();
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (pausado)
         {
-            if (!pausado)
-            {
-                Pausar();
-            }
-            //else
-            //{
-            //    Reanudar();
-            //}
+            countPausa -= 1;
         }
 
         if (comenzar)

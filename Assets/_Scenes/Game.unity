@@ -1122,34 +1122,38 @@ MonoBehaviour:
   jug1animRoot: {fileID: 6708802525343463}
   esferaRespaw1: {fileID: 4413275556103293572}
   arrow1: {fileID: 154884639480105513}
-  UI1img1: {fileID: 0}
-  UI2img1: {fileID: 0}
-  man1: {fileID: 0}
-  man1Static: {fileID: 0}
+  UItext1: {fileID: 1225702184}
+  UI1img1: {fileID: 1608464531}
+  UI2img1: {fileID: 864773789}
+  man1: {fileID: 922047882}
+  man1Static: {fileID: 1168610438}
   jugador2: {fileID: 2466534180127403043}
   jug2animRoot: {fileID: 898872108634921524}
   esferaRespaw2: {fileID: 7912725394064487869}
   arrow2: {fileID: 5545497214733497863}
-  UI1img2: {fileID: 0}
-  UI2img2: {fileID: 0}
-  man2: {fileID: 0}
-  man2Static: {fileID: 0}
+  UItext2: {fileID: 473626946}
+  UI1img2: {fileID: 811305849}
+  UI2img2: {fileID: 1598937637}
+  man2: {fileID: 538466331}
+  man2Static: {fileID: 1699825943}
   jugador3: {fileID: 291850583677737798}
   jug3animRoot: {fileID: 3305788641277561006}
   esferaRespaw3: {fileID: 532184818648097988}
   arrow3: {fileID: 1166854340455641685}
-  UI1img3: {fileID: 0}
-  UI2img3: {fileID: 0}
-  man3: {fileID: 0}
-  man3Static: {fileID: 0}
+  UItext3: {fileID: 1029730277}
+  UI1img3: {fileID: 1209087571}
+  UI2img3: {fileID: 1640544641}
+  man3: {fileID: 692678846}
+  man3Static: {fileID: 228737795}
   jugador4: {fileID: 3329993002447788273}
   jug4animRoot: {fileID: 1456192112610369355}
   esferaRespaw4: {fileID: 667285689554583362}
   arrow4: {fileID: 1306163847540732621}
-  UI1img4: {fileID: 0}
-  UI2img4: {fileID: 0}
-  man4: {fileID: 0}
-  man4Static: {fileID: 0}
+  UItext4: {fileID: 2135609256}
+  UI1img4: {fileID: 1245546295}
+  UI2img4: {fileID: 1557015765}
+  man4: {fileID: 1654030729}
+  man4Static: {fileID: 1400163911}
   camGroup: {fileID: 692431929}
   SonidosVictoria:
   - {fileID: 0}
@@ -2226,7 +2230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: b066d8a1a7b2dbb45b6e244c4a286d96, type: 2}
-  m_Color: {r: 0.26, g: 0.08524591, b: 0.07245902, a: 1}
+  m_Color: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3019,7 +3023,7 @@ MonoBehaviour:
   res: 1
   Bound: 0
   limiteBound: 0.0625
-  smoothDeltaTime: 0.05398986
+  smoothDeltaTime: 0.0345778
   porcentaje: 1
   velocidadSubida: 1
   velocidadBajada: 0.1
@@ -3326,7 +3330,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: fdbc45db4f9627c4fa667a751ff25b70, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9fa100e7269895b43aea585dc75baca0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -3477,7 +3481,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 3b9aed5bf453fe34a8c5ff762a7e11fb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9fa100e7269895b43aea585dc75baca0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -4177,7 +4181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: b066d8a1a7b2dbb45b6e244c4a286d96, type: 2}
-  m_Color: {r: 0.05923076, g: 0.22, b: 0.05923076, a: 1}
+  m_Color: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4898,7 +4902,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: e30198604c80a1942a26d4737dc8ad5c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9fa100e7269895b43aea585dc75baca0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -5042,7 +5046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: b066d8a1a7b2dbb45b6e244c4a286d96, type: 2}
-  m_Color: {r: 0.07934427, g: 0.20918028, b: 0.22, a: 1}
+  m_Color: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5128,7 +5132,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: f015f93dee2be4f4fb5f6da4bf5159c0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9fa100e7269895b43aea585dc75baca0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -6768,15 +6772,19 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 198107d991332054eb0e4aec0e02b09c, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100094, guid: 198107d991332054eb0e4aec0e02b09c, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 198107d991332054eb0e4aec0e02b09c, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 198107d991332054eb0e4aec0e02b09c, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 198107d991332054eb0e4aec0e02b09c, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
@@ -6949,10 +6957,6 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 100090, guid: 198107d991332054eb0e4aec0e02b09c, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 100094, guid: 198107d991332054eb0e4aec0e02b09c, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
@@ -7326,7 +7330,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: f015f93dee2be4f4fb5f6da4bf5159c0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9fa100e7269895b43aea585dc75baca0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -7807,7 +7811,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: fdbc45db4f9627c4fa667a751ff25b70, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9fa100e7269895b43aea585dc75baca0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -7955,7 +7959,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 3b9aed5bf453fe34a8c5ff762a7e11fb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9fa100e7269895b43aea585dc75baca0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -8029,7 +8033,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: e30198604c80a1942a26d4737dc8ad5c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9fa100e7269895b43aea585dc75baca0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -8506,15 +8510,19 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 4b93fa5f05da01d4ebcac37117f404f1, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100100, guid: 4b93fa5f05da01d4ebcac37117f404f1, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 4b93fa5f05da01d4ebcac37117f404f1, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 4b93fa5f05da01d4ebcac37117f404f1, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 4b93fa5f05da01d4ebcac37117f404f1, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
@@ -8703,10 +8711,6 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 100098, guid: 4b93fa5f05da01d4ebcac37117f404f1, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 100100, guid: 4b93fa5f05da01d4ebcac37117f404f1, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
@@ -8983,15 +8987,19 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100106, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
@@ -9192,10 +9200,6 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 100104, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 100106, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
@@ -10767,7 +10771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: b066d8a1a7b2dbb45b6e244c4a286d96, type: 2}
-  m_Color: {r: 0.122264184, g: 0.067924514, b: 0.24, a: 1}
+  m_Color: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
