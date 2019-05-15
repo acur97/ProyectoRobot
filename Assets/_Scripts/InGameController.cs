@@ -12,8 +12,11 @@ public class InGameController : MonoBehaviour
     public GameObject[] objects;
     public GameObject[] prefabs = new GameObject[4];
 
-    [Range(0, 5)]
+    [Header("Tiempo inicial"), Range(0, 5)]
     public int minutosStart;
+    [Range(0, 59)]
+    public int segundosStart;
+    [Space]
     public float tiempoBlurStart;
     [Space]
     public Text timer;
@@ -360,7 +363,8 @@ public class InGameController : MonoBehaviour
         FinalCanvas.enabled = false;
 
         minutos = minutosStart;
-        timer.text = minutos + ":00";
+        segundos = segundosStart;
+        timer.text = minutos + ":" + segundosStart;
 
         post.profile.TryGetSettings(out depth);
         post.profile.TryGetSettings(out chromatic);
@@ -964,6 +968,8 @@ public class InGameController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("-No creo que sea recomendable dejar a RIGS con los inputs duplicados solo por los controles de Nerdo :v, comprobar si pasa en todos los controles, y tambien agregar (por que entonces duplicado si funciona), tanto analogos como dpad. - hacer que el canvasPlay no se apague al finalizar, lo que se apague, dependiendo de los que ganan, sean la puntuacion de los que pierden y queden la puntuacion de los que ganan");
+
         if (Input.GetButtonDown("Pause"))
         {
             if (!pausado)

@@ -1741,6 +1741,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb2ff3ba30699b4aa2471795e11e40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorUI:
+    serializedVersion: 2
+    rgba: 0
   RespawColor: {r: 0, g: 0, b: 0, a: 0}
   MiraPisoColor: {r: 0, g: 0, b: 0, a: 0}
   BalaColor: {r: 0, g: 0, b: 0, a: 0}
@@ -2291,6 +2294,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb2ff3ba30699b4aa2471795e11e40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorUI:
+    serializedVersion: 2
+    rgba: 0
   RespawColor: {r: 0, g: 0, b: 0, a: 0}
   MiraPisoColor: {r: 0, g: 0, b: 0, a: 0}
   BalaColor: {r: 0, g: 0, b: 0, a: 0}
@@ -3584,6 +3590,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb2ff3ba30699b4aa2471795e11e40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorUI:
+    serializedVersion: 2
+    rgba: 0
   RespawColor: {r: 0, g: 0, b: 0, a: 0}
   MiraPisoColor: {r: 0, g: 0, b: 0, a: 0}
   BalaColor: {r: 0, g: 0, b: 0, a: 0}
@@ -3680,6 +3689,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb2ff3ba30699b4aa2471795e11e40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorUI:
+    serializedVersion: 2
+    rgba: 0
   RespawColor: {r: 0, g: 0, b: 0, a: 0}
   MiraPisoColor: {r: 0, g: 0, b: 0, a: 0}
   BalaColor: {r: 0, g: 0, b: 0, a: 0}
@@ -4348,6 +4360,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb2ff3ba30699b4aa2471795e11e40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorUI:
+    serializedVersion: 2
+    rgba: 0
   RespawColor: {r: 0, g: 0, b: 0, a: 0}
   MiraPisoColor: {r: 0, g: 0, b: 0, a: 0}
   BalaColor: {r: 0, g: 0, b: 0, a: 0}
@@ -4939,6 +4954,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb2ff3ba30699b4aa2471795e11e40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorUI:
+    serializedVersion: 2
+    rgba: 0
   RespawColor: {r: 0, g: 0, b: 0, a: 0}
   MiraPisoColor: {r: 0, g: 0, b: 0, a: 0}
   BalaColor: {r: 0, g: 0, b: 0, a: 0}
@@ -5634,6 +5652,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb2ff3ba30699b4aa2471795e11e40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorUI:
+    serializedVersion: 2
+    rgba: 0
   RespawColor: {r: 0, g: 0, b: 0, a: 0}
   MiraPisoColor: {r: 0, g: 0, b: 0, a: 0}
   BalaColor: {r: 0, g: 0, b: 0, a: 0}
@@ -6996,6 +7017,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb2ff3ba30699b4aa2471795e11e40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorUI:
+    serializedVersion: 2
+    rgba: 0
   RespawColor: {r: 0, g: 0, b: 0, a: 0}
   MiraPisoColor: {r: 0, g: 0, b: 0, a: 0}
   BalaColor: {r: 0, g: 0, b: 0, a: 0}
@@ -7292,6 +7316,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb2ff3ba30699b4aa2471795e11e40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorUI:
+    serializedVersion: 2
+    rgba: 0
   RespawColor: {r: 0, g: 0, b: 0, a: 0}
   MiraPisoColor: {r: 0, g: 0, b: 0, a: 0}
   BalaColor: {r: 0, g: 0, b: 0, a: 0}
@@ -8778,7 +8805,7 @@ MonoBehaviour:
     colorEmission: {r: 1.0717734, g: 1.0717734, b: 1.0717734, a: 0}
     Respaw: {r: 1, g: 1, b: 1, a: 1}
     MiraPiso: {r: 1, g: 1, b: 1, a: 1}
-    Bala: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    Bala: {r: 4.000001, g: 4.000001, b: 4.000001, a: 1}
   - nombre: Azul
     colorUI:
       serializedVersion: 2
@@ -11010,6 +11037,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb2ff3ba30699b4aa2471795e11e40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorUI:
+    serializedVersion: 2
+    rgba: 0
   RespawColor: {r: 0, g: 0, b: 0, a: 0}
   MiraPisoColor: {r: 0, g: 0, b: 0, a: 0}
   BalaColor: {r: 0, g: 0, b: 0, a: 0}
@@ -11031,6 +11061,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb2ff3ba30699b4aa2471795e11e40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorUI:
+    serializedVersion: 2
+    rgba: 0
   RespawColor: {r: 0, g: 0, b: 0, a: 0}
   MiraPisoColor: {r: 0, g: 0, b: 0, a: 0}
   BalaColor: {r: 0, g: 0, b: 0, a: 0}
@@ -11903,6 +11936,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb2ff3ba30699b4aa2471795e11e40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorUI:
+    serializedVersion: 2
+    rgba: 0
   RespawColor: {r: 0, g: 0, b: 0, a: 0}
   MiraPisoColor: {r: 0, g: 0, b: 0, a: 0}
   BalaColor: {r: 0, g: 0, b: 0, a: 0}
