@@ -194,6 +194,7 @@ public class InGameController : MonoBehaviour
             if (objects[i].CompareTag("Jug1Seleccion"))
             {
                 prefabs[0] = objects[i];
+                prefabs[0].layer = 10;
                 jug1animRoot.GetComponentsInChildren<Transform>()[1].gameObject.SetActive(false);
                 prefabs[0].transform.SetParent(jug1animRoot);
                 prefabs[0].transform.localPosition = new Vector3(0, 0, 0);
@@ -223,6 +224,7 @@ public class InGameController : MonoBehaviour
             if (objects[i].CompareTag("Jug2Seleccion"))
             {
                 prefabs[1] = objects[i];
+                prefabs[1].layer = 10;
                 jug2animRoot.GetComponentsInChildren<Transform>()[1].gameObject.SetActive(false);
                 prefabs[1].transform.SetParent(jug2animRoot);
                 prefabs[1].transform.localPosition = new Vector3(0, 0, 0);
@@ -252,6 +254,7 @@ public class InGameController : MonoBehaviour
             if (objects[i].CompareTag("Jug3Seleccion"))
             {
                 prefabs[2] = objects[i];
+                prefabs[2].layer = 10;
                 jug3animRoot.GetComponentsInChildren<Transform>()[1].gameObject.SetActive(false);
                 prefabs[2].transform.SetParent(jug3animRoot);
                 prefabs[2].transform.localPosition = new Vector3(0, 0, 0);
@@ -281,6 +284,7 @@ public class InGameController : MonoBehaviour
             if (objects[i].CompareTag("Jug4Seleccion"))
             {
                 prefabs[3] = objects[i];
+                prefabs[3].layer = 10;
                 jug4animRoot.GetComponentsInChildren<Transform>()[1].gameObject.SetActive(false);
                 prefabs[3].transform.SetParent(jug4animRoot);
                 prefabs[3].transform.localPosition = new Vector3(0, 0, 0);
@@ -968,7 +972,10 @@ public class InGameController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("-No creo que sea recomendable dejar a RIGS con los inputs duplicados solo por los controles de Nerdo :v, comprobar si pasa en todos los controles, y tambien agregar (por que entonces duplicado si funciona), tanto analogos como dpad. - hacer que el canvasPlay no se apague al finalizar, lo que se apague, dependiendo de los que ganan, sean la puntuacion de los que pierden y queden la puntuacion de los que ganan");
+        Debug.LogWarning("-No creo que sea recomendable dejar a RIGS con los inputs duplicados solo por los controles de Nerdo :v," +
+            "comprobar si pasa en todos los controles, y tambien agregar (por que entonces duplicado si funciona)," +
+            "tanto analogos como dpad. - hacer que el canvasPlay no se apague al finalizar, lo que se apague, dependiendo de los que ganan," +
+            "sean la puntuacion de los que pierden y queden la puntuacion de los que ganan");
 
         if (Input.GetButtonDown("Pause"))
         {
