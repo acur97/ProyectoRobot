@@ -264,6 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NoiseProfile: {fileID: 11400000, guid: 46965f9cbaf525742a6da4c2172a99cd, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
   m_AmplitudeGain: 0.5
   m_FrequencyGain: 0.5
   mNoiseOffsets: {x: 0, y: 0, z: 0}
@@ -463,42 +464,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8329909308914430956, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308383815921, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308714153089, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308218904705, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308644279432, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8329909306992610604, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909307870888728, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308517879122, guid: 60ab1922271244042bbbf80379e68533,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -509,6 +475,41 @@ PrefabInstance:
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8329909307370009855, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909307870888728, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308218904705, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308383815921, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308517879122, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308644279432, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308714153089, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308914430956, guid: 60ab1922271244042bbbf80379e68533,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -649,8 +650,6 @@ MonoBehaviour:
     m_OnCameraLive:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: Cinemachine.CinemachineBrain+VcamActivatedEvent, Cinemachine, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 65841286}
 --- !u!4 &119468388
@@ -660,7 +659,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119468386}
-  m_LocalRotation: {x: 0.4619345, y: 0.013971065, z: -0.0072777467, w: 0.8867741}
+  m_LocalRotation: {x: 0.4619345, y: 0.013971034, z: -0.00727773, w: 0.8867741}
   m_LocalPosition: {x: 0, y: 35, z: -25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -723,8 +722,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -1245,8 +1242,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 9555450f828d2a04496316067eeac43b, type: 3}
     m_FontSize: 14
@@ -1341,42 +1336,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8329909308914430956, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308383815921, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308714153089, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308218904705, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308644279432, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8329909306992610604, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909307870888728, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308517879122, guid: 60ab1922271244042bbbf80379e68533,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -1387,6 +1347,41 @@ PrefabInstance:
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8329909307370009855, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909307870888728, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308218904705, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308383815921, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308517879122, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308644279432, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308714153089, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308914430956, guid: 60ab1922271244042bbbf80379e68533,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -1688,8 +1683,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &335952821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1708,8 +1701,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 6dbb2d46a57996f4e91a36bd4faa70b6, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
@@ -1896,8 +1887,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 5e7ad7d0d6429954cb83efadbf4e4349, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
@@ -2066,8 +2055,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -2158,42 +2145,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8329909308914430956, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308383815921, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308714153089, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308218904705, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308644279432, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8329909306992610604, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909307870888728, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308517879122, guid: 60ab1922271244042bbbf80379e68533,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -2204,6 +2156,41 @@ PrefabInstance:
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8329909307370009855, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909307870888728, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308218904705, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308383815921, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308517879122, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308644279432, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308714153089, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308914430956, guid: 60ab1922271244042bbbf80379e68533,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -2271,8 +2258,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 9555450f828d2a04496316067eeac43b, type: 3}
     m_FontSize: 14
@@ -2541,8 +2526,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &567586663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2561,8 +2544,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 7dbb77ee9648dc34ab4002092ed7541c, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
@@ -2636,8 +2617,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -2891,7 +2870,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 692431925}
-  m_LocalRotation: {x: 0.4619345, y: 0.013971065, z: -0.0072777467, w: 0.8867741}
+  m_LocalRotation: {x: 0.4619345, y: 0.013971034, z: -0.00727773, w: 0.8867741}
   m_LocalPosition: {x: -0.29797122, y: 49.629982, z: -34.454105}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2944,6 +2923,7 @@ MonoBehaviour:
   m_IgnoreTimeScale: 1
   m_WorldUpOverride: {fileID: 0}
   m_UpdateMethod: 2
+  m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
     m_Time: 2
@@ -2957,13 +2937,9 @@ MonoBehaviour:
   m_CameraCutEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Cinemachine.CinemachineBrain+BrainEvent, Cinemachine, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Cinemachine.CinemachineBrain+VcamActivatedEvent, Cinemachine, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &692431931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3265,8 +3241,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -3340,8 +3314,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 9fa100e7269895b43aea585dc75baca0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
@@ -3493,8 +3465,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 9fa100e7269895b43aea585dc75baca0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
@@ -3621,42 +3591,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8329909308914430956, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308383815921, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308714153089, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308218904705, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308644279432, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8329909306992610604, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909307870888728, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308517879122, guid: 60ab1922271244042bbbf80379e68533,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -3667,6 +3602,41 @@ PrefabInstance:
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8329909307370009855, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909307870888728, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308218904705, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308383815921, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308517879122, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308644279432, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308714153089, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308914430956, guid: 60ab1922271244042bbbf80379e68533,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -4202,8 +4172,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 9555450f828d2a04496316067eeac43b, type: 3}
     m_FontSize: 14
@@ -4549,8 +4517,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 100b287b95c33a94fa1a383581136019, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
@@ -4919,8 +4885,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 9fa100e7269895b43aea585dc75baca0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
@@ -5072,8 +5036,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 9555450f828d2a04496316067eeac43b, type: 3}
     m_FontSize: 14
@@ -5151,8 +5113,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 9fa100e7269895b43aea585dc75baca0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
@@ -5419,8 +5379,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -5626,8 +5584,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &1310881354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5646,8 +5602,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 35ea99aaea57ed842a6151139aeca7ec, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
@@ -6049,42 +6003,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8329909308914430956, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308383815921, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308714153089, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308218904705, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308644279432, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8329909306992610604, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909307870888728, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308517879122, guid: 60ab1922271244042bbbf80379e68533,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -6095,6 +6014,41 @@ PrefabInstance:
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8329909307370009855, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909307870888728, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308218904705, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308383815921, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308517879122, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308644279432, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308714153089, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308914430956, guid: 60ab1922271244042bbbf80379e68533,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -6790,27 +6744,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3305788641277561006}
     m_Modifications:
-    - target: {fileID: 100092, guid: 198107d991332054eb0e4aec0e02b09c, type: 3}
-      propertyPath: m_Name
-      value: robot3@MutantBreathing Idle
-      objectReference: {fileID: 0}
-    - target: {fileID: 100092, guid: 198107d991332054eb0e4aec0e02b09c, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 198107d991332054eb0e4aec0e02b09c, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 100094, guid: 198107d991332054eb0e4aec0e02b09c, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 198107d991332054eb0e4aec0e02b09c, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 198107d991332054eb0e4aec0e02b09c, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 198107d991332054eb0e4aec0e02b09c, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
@@ -6983,6 +6925,18 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 100090, guid: 198107d991332054eb0e4aec0e02b09c, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100092, guid: 198107d991332054eb0e4aec0e02b09c, type: 3}
+      propertyPath: m_Name
+      value: robot3@MutantBreathing Idle
+      objectReference: {fileID: 0}
+    - target: {fileID: 100092, guid: 198107d991332054eb0e4aec0e02b09c, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100094, guid: 198107d991332054eb0e4aec0e02b09c, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
@@ -7355,8 +7309,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 9fa100e7269895b43aea585dc75baca0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
@@ -7650,8 +7602,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &1583097770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7670,8 +7620,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: c7351127194558d4a84d408e11673ce5, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
@@ -7764,8 +7712,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -7839,8 +7785,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 9fa100e7269895b43aea585dc75baca0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
@@ -7914,8 +7858,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -7989,8 +7931,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 9fa100e7269895b43aea585dc75baca0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
@@ -8064,8 +8004,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 9fa100e7269895b43aea585dc75baca0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
@@ -8537,27 +8475,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 898872108634921524}
     m_Modifications:
-    - target: {fileID: 100102, guid: 4b93fa5f05da01d4ebcac37117f404f1, type: 3}
-      propertyPath: m_Name
-      value: robot2_v2@StandingIdle
-      objectReference: {fileID: 0}
-    - target: {fileID: 100102, guid: 4b93fa5f05da01d4ebcac37117f404f1, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 4b93fa5f05da01d4ebcac37117f404f1, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 100100, guid: 4b93fa5f05da01d4ebcac37117f404f1, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 4b93fa5f05da01d4ebcac37117f404f1, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 4b93fa5f05da01d4ebcac37117f404f1, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 4b93fa5f05da01d4ebcac37117f404f1, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
@@ -8749,6 +8675,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 100100, guid: 4b93fa5f05da01d4ebcac37117f404f1, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100102, guid: 4b93fa5f05da01d4ebcac37117f404f1, type: 3}
+      propertyPath: m_Name
+      value: robot2_v2@StandingIdle
+      objectReference: {fileID: 0}
+    - target: {fileID: 100102, guid: 4b93fa5f05da01d4ebcac37117f404f1, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: 4b93fa5f05da01d4ebcac37117f404f1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -8911,8 +8849,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: abfdcd6801a297f49b3b789b25e34868, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
@@ -9016,27 +8952,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1456192112610369355}
     m_Modifications:
-    - target: {fileID: 100108, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
-      propertyPath: m_Name
-      value: robot4@StandingIdle
-      objectReference: {fileID: 0}
-    - target: {fileID: 100108, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 100106, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
@@ -9237,6 +9161,18 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 100104, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100106, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100108, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
+      propertyPath: m_Name
+      value: robot4@StandingIdle
+      objectReference: {fileID: 0}
+    - target: {fileID: 100108, guid: 9850227ee78c8254889b05cd53daf7d3, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
@@ -9474,8 +9410,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &1805148800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9494,8 +9428,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: c7351127194558d4a84d408e11673ce5, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
@@ -9655,7 +9587,7 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    - target: {fileID: 100016, guid: 4956cde97ba639a40a8c7b41c041b57a, type: 3}
+    - target: {fileID: 100004, guid: 4956cde97ba639a40a8c7b41c041b57a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
@@ -9679,23 +9611,7 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    - target: {fileID: 100034, guid: 4956cde97ba639a40a8c7b41c041b57a, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 100040, guid: 4956cde97ba639a40a8c7b41c041b57a, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 100048, guid: 4956cde97ba639a40a8c7b41c041b57a, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 100050, guid: 4956cde97ba639a40a8c7b41c041b57a, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 100052, guid: 4956cde97ba639a40a8c7b41c041b57a, type: 3}
+    - target: {fileID: 100016, guid: 4956cde97ba639a40a8c7b41c041b57a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
@@ -9731,11 +9647,19 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 100034, guid: 4956cde97ba639a40a8c7b41c041b57a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 100036, guid: 4956cde97ba639a40a8c7b41c041b57a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 100038, guid: 4956cde97ba639a40a8c7b41c041b57a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100040, guid: 4956cde97ba639a40a8c7b41c041b57a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
@@ -9751,6 +9675,18 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 100048, guid: 4956cde97ba639a40a8c7b41c041b57a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100050, guid: 4956cde97ba639a40a8c7b41c041b57a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100052, guid: 4956cde97ba639a40a8c7b41c041b57a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 100054, guid: 4956cde97ba639a40a8c7b41c041b57a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -9760,10 +9696,6 @@ PrefabInstance:
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 100058, guid: 4956cde97ba639a40a8c7b41c041b57a, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 4956cde97ba639a40a8c7b41c041b57a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
@@ -10259,8 +10191,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 354a9725ba5004c43a0514d67f60d0aa, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
@@ -10432,8 +10362,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &1955563132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10452,8 +10380,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 7dbb77ee9648dc34ab4002092ed7541c, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
@@ -10821,8 +10747,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 9555450f828d2a04496316067eeac43b, type: 3}
     m_FontSize: 14
@@ -19392,12 +19316,7 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3725998784339429765}
     m_Modifications:
-    - target: {fileID: 8137978532159405617, guid: b6da9f9cf7a6d1042b17a940b6f5ac26,
-        type: 3}
-      propertyPath: m_Name
-      value: caja_azul (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8137978532159405617, guid: b6da9f9cf7a6d1042b17a940b6f5ac26,
+    - target: {fileID: 7140618399176902158, guid: b6da9f9cf7a6d1042b17a940b6f5ac26,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -19457,7 +19376,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7140618399176902158, guid: b6da9f9cf7a6d1042b17a940b6f5ac26,
+    - target: {fileID: 8137978532159405617, guid: b6da9f9cf7a6d1042b17a940b6f5ac26,
+        type: 3}
+      propertyPath: m_Name
+      value: caja_azul (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8137978532159405617, guid: b6da9f9cf7a6d1042b17a940b6f5ac26,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -19600,42 +19524,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8329909308914430956, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308383815921, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308714153089, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308218904705, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308644279432, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8329909306992610604, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909307870888728, guid: 60ab1922271244042bbbf80379e68533,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329909308517879122, guid: 60ab1922271244042bbbf80379e68533,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -19646,6 +19535,41 @@ PrefabInstance:
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8329909307370009855, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909307870888728, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308218904705, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308383815921, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308517879122, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308644279432, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308714153089, guid: 60ab1922271244042bbbf80379e68533,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329909308914430956, guid: 60ab1922271244042bbbf80379e68533,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -20362,12 +20286,7 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3725998784339429765}
     m_Modifications:
-    - target: {fileID: 8137978532159405617, guid: b6da9f9cf7a6d1042b17a940b6f5ac26,
-        type: 3}
-      propertyPath: m_Name
-      value: caja_azul (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8137978532159405617, guid: b6da9f9cf7a6d1042b17a940b6f5ac26,
+    - target: {fileID: 7140618399176902158, guid: b6da9f9cf7a6d1042b17a940b6f5ac26,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -20427,7 +20346,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7140618399176902158, guid: b6da9f9cf7a6d1042b17a940b6f5ac26,
+    - target: {fileID: 8137978532159405617, guid: b6da9f9cf7a6d1042b17a940b6f5ac26,
+        type: 3}
+      propertyPath: m_Name
+      value: caja_azul (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8137978532159405617, guid: b6da9f9cf7a6d1042b17a940b6f5ac26,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
