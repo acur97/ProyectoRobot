@@ -24,4 +24,4 @@ EditorSettings:
   m_EnableTextureStreamingInEditMode: 1
   m_EnableTextureStreamingInPlayMode: 1
   m_AsyncShaderCompilation: 1
-  m_ShowLightmapResolutionOverlay: 0
+  m_ShowLightmapResolutionOverlay: 1
