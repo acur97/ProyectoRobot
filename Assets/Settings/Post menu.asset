@@ -74,7 +74,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 10
+    value: 5
   threshold:
     overrideState: 0
     value: 1.1
@@ -86,7 +86,7 @@ MonoBehaviour:
     value: 65472
   diffusion:
     overrideState: 1
-    value: 7
+    value: 8
   anamorphicRatio:
     overrideState: 1
     value: 1
@@ -94,7 +94,7 @@ MonoBehaviour:
     overrideState: 0
     value: {r: 1, g: 1, b: 1, a: 1}
   fastMode:
-    overrideState: 0
+    overrideState: 1
     value: 0
   dirtTexture:
     overrideState: 1
@@ -1486,13 +1486,13 @@ MonoBehaviour:
     value: 1
   focusDistance:
     overrideState: 1
-    value: 19
+    value: 15
   aperture:
     overrideState: 1
-    value: 5
+    value: 4
   focalLength:
     overrideState: 1
-    value: 300
+    value: 150
   kernelSize:
     overrideState: 1
     value: 0

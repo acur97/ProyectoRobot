@@ -23,7 +23,7 @@ public class Settings : MonoBehaviour
     private int settingFps;
 
     [Header("--- Anti-Aliasing ---")]
-    public LightweightRenderPipelineAsset renderAsset;
+    public UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset renderAsset;
     public enum antialiasing { Desactivado, x2, x4, x8 };
     [Space(-0.25f)]
     public antialiasing MSAA;
