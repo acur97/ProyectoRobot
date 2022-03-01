@@ -972,9 +972,7 @@ public class InGameController : MonoBehaviour
 
     void Update()
     {
-        Debug.LogWarning("-No creo que sea recomendable dejar a RIGS con los inputs duplicados solo por los controles de Nerdo :v," +
-            "comprobar si pasa en todos los controles, y tambien agregar (por que entonces duplicado si funciona)," +
-            "tanto analogos como dpad. - hacer que el canvasPlay no se apague al finalizar, lo que se apague, dependiendo de los que ganan," +
+        Debug.LogWarning("-Agregar tanto analogos como dpad. - hacer que el canvasPlay no se apague al finalizar, lo que se apague, dependiendo de los que ganan," +
             "sean la puntuacion de los que pierden y queden la puntuacion de los que ganan");
 
         if (Input.GetButtonDown("Pause"))

@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class SelectionManager : MonoBehaviour
 {
+    public string[] controlesList;
+
+    [Space]
     public GameObject scena;
 
     [Serializable]
@@ -82,15 +85,15 @@ public class SelectionManager : MonoBehaviour
     public GameObject P4_select;
     public GameObject P4_ready;
     [Space]
-    public string[] controlesList;
-    [Space]
     public RenderTexture rTexture1;
     public RenderTexture rTexture2;
     public RenderTexture rTexture3;
     public RenderTexture rTexture4;
 
     private int contadorNcontrol = 1;
-    private bool lleno;
+
+    [Header("test")]
+    public bool lleno;
 
     private int controlesP1;
     private bool encontradoP1;
@@ -174,8 +177,6 @@ public class SelectionManager : MonoBehaviour
         P4_selectColorImg.SetActive(false);
         P4_select.SetActive(true);
         P4_ready.SetActive(false);
-
-        controlesList = Input.GetJoystickNames();
     }
 
     IEnumerator LoadSceneMove(int sceneIndex)
@@ -266,6 +267,10 @@ public class SelectionManager : MonoBehaviour
 
     private void Update()
     {
+        controlesList = Input.GetJoystickNames();
+
+        //Input.GetButtonDown()
+
         //Debug.LogWarning("Pasar color de material dependiendo del jugador al material de Respaw InGameController y en awake poner ese .setcolor del .material");
         //Debug.LogWarning("Pasar color de bala, Opcional, o que sea diferente prefab, aunque prefiero un solo color de bala");
         //Debug.LogWarning("Pasar color de Mira piso");
@@ -275,7 +280,7 @@ public class SelectionManager : MonoBehaviour
         //{
         //    SceneManager.LoadScene(1);
         //}
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.RightControl))
         {
             StartCoroutine(LoadSceneMove(1));
         }
@@ -287,10 +292,10 @@ public class SelectionManager : MonoBehaviour
             countWait -= 0.05f;
             if (contadorNcontrol == 1)
             {
-                for (int i = 0; i <= 15; i++)
+                for (int i = 0; i < 16; i++)
                 {
-                    controlesList = Input.GetJoystickNames();
-                    //Debug.Log("Buscando jugador 1");
+                    //controlesList = Input.GetJoystickNames();
+                    Debug.Log("Buscando jugador 1");
                     if (Input.GetButtonDown("J" + (i + 1) + "_F"))
                     {
                         Debug.Log("jugador 1 encontrado");
@@ -327,7 +332,7 @@ public class SelectionManager : MonoBehaviour
                 for (int i = 0; i <= 15; i++)
                 {
                     controlesList = Input.GetJoystickNames();
-                    //Debug.Log("Buscando jugador 2");
+                    Debug.Log("Buscando jugador 2");
                     if (Input.GetButtonDown("J" + excepcion1 + "_F"))
                     {
                         Debug.Log("salto");
@@ -369,7 +374,7 @@ public class SelectionManager : MonoBehaviour
                 for (int i = 0; i <= 15; i++)
                 {
                     controlesList = Input.GetJoystickNames();
-                    //Debug.Log("Buscando jugador 3");
+                    Debug.Log("Buscando jugador 3");
                     if (Input.GetButtonDown("J" + excepcion1 + "_F"))
                     {
                         continue;
@@ -414,7 +419,7 @@ public class SelectionManager : MonoBehaviour
                 for (int i = 0; i <= 15; i++)
                 {
                     controlesList = Input.GetJoystickNames();
-                    //Debug.Log("Buscando jugador 4");
+                    Debug.Log("Buscando jugador 4");
                     if (Input.GetButtonDown("J" + excepcion1 + "_F"))
                     {
                         continue;
@@ -473,7 +478,7 @@ public class SelectionManager : MonoBehaviour
         {
             if (!readyP1)
             {
-                P1_delay -= (Time.unscaledDeltaTime * 2);
+                P1_delay -= (Time.deltaTime * 2);
                 //Debug.Log(Input.GetAxisRaw("J" + controlesP1 + "_V"));
                 if (Input.GetAxisRaw("J" + controlesP1 + "_V") > 0.25f)
                 {
@@ -620,7 +625,7 @@ public class SelectionManager : MonoBehaviour
         {
             if (!readyP2)
             {
-                P2_delay -= (Time.unscaledDeltaTime * 2);
+                P2_delay -= (Time.deltaTime * 2);
                 if (Input.GetAxisRaw("J" + controlesP2 + "_V") > 0.25f)
                 {
                     P2_selectModeloImg.SetActive(true);
@@ -766,7 +771,7 @@ public class SelectionManager : MonoBehaviour
         {
             if (!readyP3)
             {
-                P3_delay -= (Time.unscaledDeltaTime * 2);
+                P3_delay -= (Time.deltaTime * 2);
                 if (Input.GetAxisRaw("J" + controlesP3 + "_V") > 0.25f)
                 {
                     P3_selectModeloImg.SetActive(true);
@@ -912,7 +917,7 @@ public class SelectionManager : MonoBehaviour
         {
             if (!readyP4)
             {
-                P4_delay -= (Time.unscaledDeltaTime * 2);
+                P4_delay -= (Time.deltaTime * 2);
                 if (Input.GetAxisRaw("J" + controlesP4 + "_V") > 0.25f)
                 {
                     P4_selectModeloImg.SetActive(true);
