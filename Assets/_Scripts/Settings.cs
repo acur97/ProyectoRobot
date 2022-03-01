@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Rendering.LWRP;
 using UnityEngine.Audio;
 
@@ -24,9 +22,9 @@ public class Settings : MonoBehaviour
 
     [Header("--- Anti-Aliasing ---")]
     public UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset renderAsset;
-    public enum antialiasing { Desactivado, x2, x4, x8 };
+    public enum Antialiasing { Desactivado, x2, x4, x8 };
     [Space(-0.25f)]
-    public antialiasing MSAA;
+    public Antialiasing MSAA;
 
     [Header("--- Render Scale ---")]
     [Range(0.1f, 2)]
@@ -57,6 +55,11 @@ public class Settings : MonoBehaviour
     [Range(0, 1)]
     public float volVoces;
 
+    private const string _Volumen_master = "Volumen_master";
+    private const string _Volumen_Musica = "Volumen_Musica";
+    private const string _Volumen_VFX = "Volumen_VFX";
+    private const string _Volumen_Voces = "Volumen_Voces";
+
     private void Awake()
     {
         if (targetFps == 28)
@@ -84,19 +87,19 @@ public class Settings : MonoBehaviour
 
         switch (MSAA)
         {
-            case antialiasing.Desactivado:
+            case Antialiasing.Desactivado:
                 renderAsset.msaaSampleCount = 1;
                 break;
 
-            case antialiasing.x2:
+            case Antialiasing.x2:
                 renderAsset.msaaSampleCount = 2;
                 break;
 
-            case antialiasing.x4:
+            case Antialiasing.x4:
                 renderAsset.msaaSampleCount = 4;
                 break;
 
-            case antialiasing.x8:
+            case Antialiasing.x8:
                 renderAsset.msaaSampleCount = 8;
                 break;
         }
@@ -110,10 +113,10 @@ public class Settings : MonoBehaviour
         }
         // el ultimo sera la resolucion actual maxima
 
-        mixMaster.audioMixer.GetFloat("Volumen_master", out volMaster);
-        mixMusica.audioMixer.GetFloat("Volumen_Musica", out volMusica);
-        mixVfx.audioMixer.GetFloat("Volumen_VFX", out volVfx);
-        mixVoces.audioMixer.GetFloat("Volumen_Voces", out volVoces);
+        mixMaster.audioMixer.GetFloat(_Volumen_master, out volMaster);
+        mixMusica.audioMixer.GetFloat(_Volumen_Musica, out volMusica);
+        mixVfx.audioMixer.GetFloat(_Volumen_VFX, out volVfx);
+        mixVoces.audioMixer.GetFloat(_Volumen_Voces, out volVoces);
     }
 
     private void Start()

@@ -16,12 +16,15 @@ public class InGameController : MonoBehaviour
     public int minutosStart;
     [Range(0, 59)]
     public int segundosStart;
+
     [Space]
     public float tiempoBlurStart;
+
     [Space]
     public Text timer;
     public Color timerRojo;
     public bool comenzar;
+
     [Space]
     public int puntajePorPersona = 100;
     public int puntajeAutoGolpe = 50;
@@ -29,8 +32,10 @@ public class InGameController : MonoBehaviour
     public Text puntaje2;
     public Text puntaje3;
     public Text puntaje4;
+
     [Header("Respawn´s")]
     public Transform[] respawns;
+
     [Space]
     public Image StartBlack;
     public Canvas PlayCanvas1;
@@ -44,6 +49,7 @@ public class InGameController : MonoBehaviour
     public AudioMixer mixer;
     public AudioSource source1;
     public AudioSource source2;
+
     [Space]
     public AudioClip Aintroduccion;
     public AudioClip A321;
@@ -51,8 +57,10 @@ public class InGameController : MonoBehaviour
     public AudioClip Afaltan10;
     public AudioClip Afaltan5;
     public AudioClip AalarmaFin;
+
     [Space]
     public GameObject naveRobot;
+
     [Space]
     public GameObject jugador1;
     public Transform jug1animRoot;
@@ -64,6 +72,7 @@ public class InGameController : MonoBehaviour
     public GameObject man1;
     public GameObject man1Static;
     //private Material esferaMatRespaw1;
+
     [Space]
     public GameObject jugador2;
     public Transform jug2animRoot;
@@ -75,6 +84,7 @@ public class InGameController : MonoBehaviour
     public GameObject man2;
     public GameObject man2Static;
     //private Material esferaMatRespaw2;
+
     [Space]
     public GameObject jugador3;
     public Transform jug3animRoot;
@@ -86,6 +96,7 @@ public class InGameController : MonoBehaviour
     public GameObject man3;
     public GameObject man3Static;
     //private Material esferaMatRespaw3;
+
     [Space]
     public GameObject jugador4;
     public Transform jug4animRoot;
@@ -97,13 +108,16 @@ public class InGameController : MonoBehaviour
     public GameObject man4;
     public GameObject man4Static;
     //private Material esferaMatRespaw4;
+
     [Space]
     public CinemachineTargetGroup camGroup;
+
     [Space]
     public AudioClip[] SonidosVictoria;
     private CinemachineTargetGroup.Target finalizador1;
     private CinemachineTargetGroup.Target finalizador2;
     private CinemachineTargetGroup.Target finalizador3;
+
     [Space]
     public StandaloneInputModule eventSystem;
 
@@ -153,8 +167,28 @@ public class InGameController : MonoBehaviour
 
     private float countPausa = 0;
 
+    private const string _Jug1Seleccion = "Jug1Seleccion";
+    private const string _Jug2Seleccion = "Jug2Seleccion";
+    private const string _Jug3Seleccion = "Jug3Seleccion";
+    private const string _Jug4Seleccion = "Jug4Seleccion";
+    private const string _Robot2 = "Robot2";
+    private const string _Robot4 = "Robot4";
+    private const string _Volumen_master = "Volumen_master";
+    private const string _J1_H = "J1_H";
+    private const string _J1_V = "J1_V";
+    private const string _J1_F = "J1_F";
+    private const string _DosPuntos = ":";
+    private const string _Seleccion = "Seleccion";
+    private const string _Pause = "Pause";
+    private const string _Ceros = "0:00";
+    private const string _DosCeros = "00";
+    private readonly int _BaseColor = Shader.PropertyToID("_BaseColor");
+
     private void Awake()
     {
+        Debug.LogWarning("- hacer que el canvasPlay no se apague al finalizar, lo que se apague, dependiendo de los que ganan," +
+            " sean la puntuacion de los que pierden y queden la puntuacion de los que ganan");
+
         //if (esferaMatRespaw1 != null)
         //{
         //    esferaRespaw1.material = esferaMatRespaw1;
@@ -191,26 +225,26 @@ public class InGameController : MonoBehaviour
         objects = SceneManager.GetSceneByBuildIndex(1).GetRootGameObjects();
         for (int i = 0; i < objects.Length; i++)
         {
-            if (objects[i].CompareTag("Jug1Seleccion"))
+            if (objects[i].CompareTag(_Jug1Seleccion))
             {
                 prefabs[0] = objects[i];
                 prefabs[0].layer = 10;
                 jug1animRoot.GetComponentsInChildren<Transform>()[1].gameObject.SetActive(false);
                 prefabs[0].transform.SetParent(jug1animRoot);
-                prefabs[0].transform.localPosition = new Vector3(0, 0, 0);
-                if (prefabs[0].name == "Robot2" || prefabs[0].name == "Robot4")
+                prefabs[0].transform.localPosition = Vector3.zero;
+                if (prefabs[0].name == _Robot2 || prefabs[0].name == _Robot4)
                 {
                     prefabs[0].transform.eulerAngles = new Vector3(0, -45, 0);
                 }
                 else
                 {
-                    prefabs[0].transform.eulerAngles = new Vector3(0, 0, 0);
+                    prefabs[0].transform.eulerAngles = Vector3.zero;
                 }
                 prefabs[0].transform.localScale = new Vector3(10.876f, 10.876f, 10.876f);
                 jugador1.GetComponent<JugadorController>().anim = prefabs[0].GetComponent<Animator>();
                 ColoresPass coloresPas = prefabs[0].GetComponent<ColoresPass>();
-                esferaRespaw1.material.SetColor("_BaseColor", coloresPas.RespawColor);
-                arrow1.material.SetColor("_BaseColor", coloresPas.MiraPisoColor);
+                esferaRespaw1.material.SetColor(_BaseColor, coloresPas.RespawColor);
+                arrow1.material.SetColor(_BaseColor, coloresPas.MiraPisoColor);
                 jugador1.GetComponentInChildren<Disparo>().colorBala = coloresPas.BalaColor;
                 Color32 colorUI = coloresPas.MiraPisoColor;
                 UI1img1.color = colorUI;
@@ -221,26 +255,26 @@ public class InGameController : MonoBehaviour
                 jugador1.SetActive(true);
                 Debug.Log("Jugador 1 ready");
             }
-            if (objects[i].CompareTag("Jug2Seleccion"))
+            if (objects[i].CompareTag(_Jug2Seleccion))
             {
                 prefabs[1] = objects[i];
                 prefabs[1].layer = 10;
                 jug2animRoot.GetComponentsInChildren<Transform>()[1].gameObject.SetActive(false);
                 prefabs[1].transform.SetParent(jug2animRoot);
-                prefabs[1].transform.localPosition = new Vector3(0, 0, 0);
-                if (prefabs[1].name == "Robot2" || prefabs[1].name == "Robot4")
+                prefabs[1].transform.localPosition = Vector3.zero;
+                if (prefabs[1].name == _Robot2 || prefabs[1].name == _Robot4)
                 {
                     prefabs[1].transform.eulerAngles = new Vector3(0, -45, 0);
                 }
                 else
                 {
-                    prefabs[1].transform.eulerAngles = new Vector3(0, 0, 0);
+                    prefabs[1].transform.eulerAngles = Vector3.zero;
                 }
                 prefabs[1].transform.localScale = new Vector3(10.876f, 10.876f, 10.876f);
                 jugador2.GetComponent<JugadorController>().anim = prefabs[1].GetComponent<Animator>();
                 ColoresPass coloresPas = prefabs[1].GetComponent<ColoresPass>();
-                esferaRespaw2.material.SetColor("_BaseColor", coloresPas.RespawColor);
-                arrow2.material.SetColor("_BaseColor", coloresPas.MiraPisoColor);
+                esferaRespaw2.material.SetColor(_BaseColor, coloresPas.RespawColor);
+                arrow2.material.SetColor(_BaseColor, coloresPas.MiraPisoColor);
                 jugador2.GetComponentInChildren<Disparo>().colorBala = coloresPas.BalaColor;
                 Color32 colorUI = coloresPas.MiraPisoColor;
                 UI1img2.color = colorUI;
@@ -251,26 +285,26 @@ public class InGameController : MonoBehaviour
                 jugador2.SetActive(true);
                 Debug.Log("Jugador 2 ready");
             }
-            if (objects[i].CompareTag("Jug3Seleccion"))
+            if (objects[i].CompareTag(_Jug3Seleccion))
             {
                 prefabs[2] = objects[i];
                 prefabs[2].layer = 10;
                 jug3animRoot.GetComponentsInChildren<Transform>()[1].gameObject.SetActive(false);
                 prefabs[2].transform.SetParent(jug3animRoot);
-                prefabs[2].transform.localPosition = new Vector3(0, 0, 0);
-                if (prefabs[2].name == "Robot2" || prefabs[2].name == "Robot4")
+                prefabs[2].transform.localPosition = Vector3.zero;
+                if (prefabs[2].name == _Robot2 || prefabs[2].name == _Robot4)
                 {
                     prefabs[2].transform.eulerAngles = new Vector3(0, -45, 0);
                 }
                 else
                 {
-                    prefabs[2].transform.eulerAngles = new Vector3(0, 0, 0);
+                    prefabs[2].transform.eulerAngles = Vector3.zero;
                 }
                 prefabs[2].transform.localScale = new Vector3(10.876f, 10.876f, 10.876f);
                 jugador3.GetComponent<JugadorController>().anim = prefabs[2].GetComponent<Animator>();
                 ColoresPass coloresPas = prefabs[2].GetComponent<ColoresPass>();
-                esferaRespaw3.material.SetColor("_BaseColor", coloresPas.RespawColor);
-                arrow3.material.SetColor("_BaseColor", coloresPas.MiraPisoColor);
+                esferaRespaw3.material.SetColor(_BaseColor, coloresPas.RespawColor);
+                arrow3.material.SetColor(_BaseColor, coloresPas.MiraPisoColor);
                 jugador3.GetComponentInChildren<Disparo>().colorBala = coloresPas.BalaColor;
                 Color32 colorUI = coloresPas.MiraPisoColor;
                 UI1img3.color = colorUI;
@@ -281,26 +315,26 @@ public class InGameController : MonoBehaviour
                 jugador3.SetActive(true);
                 Debug.Log("Jugador 3 ready");
             }
-            if (objects[i].CompareTag("Jug4Seleccion"))
+            if (objects[i].CompareTag(_Jug4Seleccion))
             {
                 prefabs[3] = objects[i];
                 prefabs[3].layer = 10;
                 jug4animRoot.GetComponentsInChildren<Transform>()[1].gameObject.SetActive(false);
                 prefabs[3].transform.SetParent(jug4animRoot);
-                prefabs[3].transform.localPosition = new Vector3(0, 0, 0);
-                if (prefabs[3].name == "Robot2" || prefabs[3].name == "Robot4")
+                prefabs[3].transform.localPosition = Vector3.zero;
+                if (prefabs[3].name == _Robot2 || prefabs[3].name == _Robot4)
                 {
                     prefabs[3].transform.eulerAngles = new Vector3(0, -45, 0);
                 }
                 else
                 {
-                    prefabs[3].transform.eulerAngles = new Vector3(0, 0, 0);
+                    prefabs[3].transform.eulerAngles = Vector3.zero;
                 }
                 prefabs[3].transform.localScale = new Vector3(10.876f, 10.876f, 10.876f);
                 jugador4.GetComponent<JugadorController>().anim = prefabs[3].GetComponent<Animator>();
                 ColoresPass coloresPas = prefabs[3].GetComponent<ColoresPass>();
-                esferaRespaw4.material.SetColor("_BaseColor", coloresPas.RespawColor);
-                arrow4.material.SetColor("_BaseColor", coloresPas.MiraPisoColor);
+                esferaRespaw4.material.SetColor(_BaseColor, coloresPas.RespawColor);
+                arrow4.material.SetColor(_BaseColor, coloresPas.MiraPisoColor);
                 jugador4.GetComponentInChildren<Disparo>().colorBala = coloresPas.BalaColor;
                 Color32 colorUI = coloresPas.MiraPisoColor;
                 UI1img4.color = colorUI;
@@ -314,7 +348,7 @@ public class InGameController : MonoBehaviour
             }
         }
 
-        mixer.SetFloat("Volumen_master", 0);
+        mixer.SetFloat(_Volumen_master, 0);
         naveRobot.SetActive(false);
         comenzar = false;
         StartImgs = StartCanvas.GetComponentsInChildren<Image>();
@@ -347,9 +381,9 @@ public class InGameController : MonoBehaviour
         }
         else
         {
-            eventSystem.horizontalAxis = "J1_H";
-            eventSystem.verticalAxis = "J1_V";
-            eventSystem.submitButton = "J1_F";
+            eventSystem.horizontalAxis = _J1_H;
+            eventSystem.verticalAxis = _J1_V;
+            eventSystem.submitButton = _J1_F;
         }
         //eventSystem.cancelButton = P1_P;
 
@@ -368,7 +402,7 @@ public class InGameController : MonoBehaviour
 
         minutos = minutosStart;
         segundos = segundosStart;
-        timer.text = minutos + ":" + segundosStart;
+        timer.text = minutos + _DosPuntos + segundosStart;
 
         post.profile.TryGetSettings(out depth);
         post.profile.TryGetSettings(out chromatic);
@@ -410,19 +444,19 @@ public class InGameController : MonoBehaviour
 
     IEnumerator ComenzarAudios()
     {
-        yield return new WaitForSecondsRealtime(tiempoBlurStart);
+        yield return new WaitForSeconds(tiempoBlurStart);
         naveRobot.SetActive(true);
-        yield return new WaitForSecondsRealtime(tiempoBlurStart);
+        yield return new WaitForSeconds(tiempoBlurStart);
         source1.clip = Aintroduccion;
         source1.Play();
-        yield return new WaitForSecondsRealtime(0.3f);
+        yield return new WaitForSeconds(0.3f);
         source2.clip = A321;
         source2.Play();
-        yield return new WaitForSecondsRealtime(2.6f);
+        yield return new WaitForSeconds(2.6f);
         StartCoroutine(ChangeSpeed1(10, 35, 4));
-        yield return new WaitForSecondsRealtime(0.8f);
+        yield return new WaitForSeconds(0.8f);
         comenzar = true;
-        yield return new WaitForSecondsRealtime(8);
+        yield return new WaitForSeconds(8);
         naveRobot.SetActive(false);
     }
 
@@ -431,7 +465,7 @@ public class InGameController : MonoBehaviour
         if (comenzar)
         {
             //StopAllCoroutines();
-            mixer.SetFloat("Volumen_master", -20);
+            mixer.SetFloat(_Volumen_master, -20);
             Time.timeScale = 0;
             //PlayCanvas1.enabled = false;
             //PlayCanvas2.enabled = false;
@@ -446,7 +480,7 @@ public class InGameController : MonoBehaviour
     public void Reanudar()
     {
         countPausa = 0;
-        mixer.SetFloat("Volumen_master", 0);
+        mixer.SetFloat(_Volumen_master, 0);
         Time.timeScale = 1;
         PlayCanvas1.enabled = true;
         PlayCanvas2.enabled = true;
@@ -460,394 +494,7 @@ public class InGameController : MonoBehaviour
     public void VolverMenu()
     {
         Time.timeScale = 1;
-        Initiate.Fade("Seleccion", Color.black, 1);
-    }
-
-    public void FinalizarJuego()
-    {
-        PlayCanvas1.enabled = false;
-        PlayCanvas2.enabled = false;
-        FinalCanvas.enabled = true;
-        depth.active = false;
-        StartBlack.color = new Color32(0, 0, 0, 128);
-        groupc.m_ScreenY = 0.425f;
-
-        //camGroup.m_Targets = new CinemachineTargetGroup.Target[1];
-        if (vaGanando == 1)
-        {
-            finalizador1.target = jugador1.transform;
-            finalizador1.weight = 2;
-            finalizador1.radius = 2;
-
-            jugador1.GetComponent<JugadorController>().Bailar();
-            jugador2.SetActive(false);
-            jugador3.SetActive(false);
-            jugador4.SetActive(false);
-
-            camGroup.m_Targets.SetValue(finalizador1, 0);
-            camGroup.m_Targets.SetValue(finalizador1, 1);
-            camGroup.m_Targets.SetValue(finalizador1, 2);
-            camGroup.m_Targets.SetValue(finalizador1, 3);
-        }
-        if (vaGanando == 2)
-        {
-            finalizador1.target = jugador2.transform;
-            finalizador1.weight = 2;
-            finalizador1.radius = 2;
-
-            jugador2.GetComponent<JugadorController>().Bailar();
-            jugador1.SetActive(false);
-            jugador3.SetActive(false);
-            jugador4.SetActive(false);
-
-            camGroup.m_Targets.SetValue(finalizador1, 0);
-            camGroup.m_Targets.SetValue(finalizador1, 1);
-            camGroup.m_Targets.SetValue(finalizador1, 2);
-            camGroup.m_Targets.SetValue(finalizador1, 3);
-        }
-        if (vaGanando == 3)
-        {
-            finalizador1.target = jugador3.transform;
-            finalizador1.weight = 2;
-            finalizador1.radius = 2;
-
-            jugador3.GetComponent<JugadorController>().Bailar();
-            jugador1.SetActive(false);
-            jugador2.SetActive(false);
-            jugador4.SetActive(false);
-
-            camGroup.m_Targets.SetValue(finalizador1, 0);
-            camGroup.m_Targets.SetValue(finalizador1, 1);
-            camGroup.m_Targets.SetValue(finalizador1, 2);
-            camGroup.m_Targets.SetValue(finalizador1, 3);
-        }
-        if (vaGanando == 4)
-        {
-            finalizador1.target = jugador4.transform;
-            finalizador1.weight = 2;
-            finalizador1.radius = 2;
-
-            jugador4.GetComponent<JugadorController>().Bailar();
-            jugador1.SetActive(false);
-            jugador2.SetActive(false);
-            jugador3.SetActive(false);
-
-            camGroup.m_Targets.SetValue(finalizador1, 0);
-            camGroup.m_Targets.SetValue(finalizador1, 1);
-            camGroup.m_Targets.SetValue(finalizador1, 2);
-            camGroup.m_Targets.SetValue(finalizador1, 3);
-        }
-        if (vaGanando == 5)
-        {
-            finalizador1.target = jugador1.transform;
-            finalizador1.weight = 1.6f;
-            finalizador1.radius = 1.6f;
-            finalizador2.target = jugador2.transform;
-            finalizador2.weight = 1.6f;
-            finalizador2.radius = 1.6f;
-
-            jugador1.GetComponent<JugadorController>().Bailar();
-            jugador2.GetComponent<JugadorController>().Bailar();
-            jugador3.SetActive(false);
-            jugador4.SetActive(false);
-
-            camGroup.m_Targets.SetValue(finalizador1, 0);
-            camGroup.m_Targets.SetValue(finalizador1, 1);
-            camGroup.m_Targets.SetValue(finalizador2, 2);
-            camGroup.m_Targets.SetValue(finalizador2, 3);
-        }
-        if (vaGanando == 6)
-        {
-            finalizador1.target = jugador2.transform;
-            finalizador1.weight = 1.6f;
-            finalizador1.radius = 1.6f;
-            finalizador2.target = jugador3.transform;
-            finalizador2.weight = 1.6f;
-            finalizador2.radius = 1.6f;
-
-            jugador2.GetComponent<JugadorController>().Bailar();
-            jugador3.GetComponent<JugadorController>().Bailar();
-            jugador1.SetActive(false);
-            jugador4.SetActive(false);
-
-            camGroup.m_Targets.SetValue(finalizador1, 0);
-            camGroup.m_Targets.SetValue(finalizador1, 1);
-            camGroup.m_Targets.SetValue(finalizador2, 2);
-            camGroup.m_Targets.SetValue(finalizador2, 3);
-        }
-        if (vaGanando == 7)
-        {
-            finalizador1.target = jugador3.transform;
-            finalizador1.weight = 1.6f;
-            finalizador1.radius = 1.6f;
-            finalizador2.target = jugador4.transform;
-            finalizador2.weight = 1.6f;
-            finalizador2.radius = 1.6f;
-
-            jugador3.GetComponent<JugadorController>().Bailar();
-            jugador4.GetComponent<JugadorController>().Bailar();
-            jugador1.SetActive(false);
-            jugador2.SetActive(false);
-
-            camGroup.m_Targets.SetValue(finalizador1, 0);
-            camGroup.m_Targets.SetValue(finalizador1, 1);
-            camGroup.m_Targets.SetValue(finalizador2, 2);
-            camGroup.m_Targets.SetValue(finalizador2, 3);
-        }
-        if (vaGanando == 8)
-        {
-            finalizador1.target = jugador1.transform;
-            finalizador1.weight = 1.6f;
-            finalizador1.radius = 1.6f;
-            finalizador2.target = jugador4.transform;
-            finalizador2.weight = 1.6f;
-            finalizador2.radius = 1.6f;
-
-            jugador1.GetComponent<JugadorController>().Bailar();
-            jugador4.GetComponent<JugadorController>().Bailar();
-            jugador2.SetActive(false);
-            jugador3.SetActive(false);
-
-            camGroup.m_Targets.SetValue(finalizador1, 0);
-            camGroup.m_Targets.SetValue(finalizador1, 1);
-            camGroup.m_Targets.SetValue(finalizador2, 2);
-            camGroup.m_Targets.SetValue(finalizador2, 3);
-        }
-        if (vaGanando == 9)
-        {
-            finalizador1.target = jugador1.transform;
-            finalizador1.weight = 1.6f;
-            finalizador1.radius = 1.6f;
-            finalizador2.target = jugador3.transform;
-            finalizador2.weight = 1.6f;
-            finalizador2.radius = 1.6f;
-
-            jugador1.GetComponent<JugadorController>().Bailar();
-            jugador3.GetComponent<JugadorController>().Bailar();
-            jugador2.SetActive(false);
-            jugador4.SetActive(false);
-
-            camGroup.m_Targets.SetValue(finalizador1, 0);
-            camGroup.m_Targets.SetValue(finalizador1, 1);
-            camGroup.m_Targets.SetValue(finalizador2, 2);
-            camGroup.m_Targets.SetValue(finalizador2, 3);
-        }
-        if (vaGanando == 10)
-        {
-            finalizador1.target = jugador2.transform;
-            finalizador1.weight = 1.6f;
-            finalizador1.radius = 1.6f;
-            finalizador2.target = jugador4.transform;
-            finalizador2.weight = 1.6f;
-            finalizador2.radius = 1.6f;
-
-            jugador2.GetComponent<JugadorController>().Bailar();
-            jugador4.GetComponent<JugadorController>().Bailar();
-            jugador1.SetActive(false);
-            jugador3.SetActive(false);
-
-            camGroup.m_Targets.SetValue(finalizador1, 0);
-            camGroup.m_Targets.SetValue(finalizador1, 1);
-            camGroup.m_Targets.SetValue(finalizador2, 2);
-            camGroup.m_Targets.SetValue(finalizador2, 3);
-        }
-        if (vaGanando == 11)
-        {
-            finalizador1.target = jugador1.transform;
-            finalizador1.weight = 1.3f;
-            finalizador1.radius = 1.3f;
-            finalizador2.target = jugador2.transform;
-            finalizador2.weight = 1.3f;
-            finalizador2.radius = 1.3f;
-            finalizador3.target = jugador3.transform;
-            finalizador3.weight = 1.3f;
-            finalizador3.radius = 1.3f;
-
-            jugador1.GetComponent<JugadorController>().Bailar();
-            jugador2.GetComponent<JugadorController>().Bailar();
-            jugador3.GetComponent<JugadorController>().Bailar();
-            jugador4.SetActive(false);
-
-            camGroup.m_Targets.SetValue(finalizador1, 0);
-            camGroup.m_Targets.SetValue(finalizador1, 1);
-            camGroup.m_Targets.SetValue(finalizador2, 2);
-            camGroup.m_Targets.SetValue(finalizador3, 3);
-        }
-        if (vaGanando == 12)
-        {
-            finalizador1.target = jugador1.transform;
-            finalizador1.weight = 1.3f;
-            finalizador1.radius = 1.3f;
-            finalizador2.target = jugador2.transform;
-            finalizador2.weight = 1.3f;
-            finalizador2.radius = 1.3f;
-            finalizador3.target = jugador4.transform;
-            finalizador3.weight = 1.3f;
-            finalizador3.radius = 1.3f;
-
-            jugador1.GetComponent<JugadorController>().Bailar();
-            jugador2.GetComponent<JugadorController>().Bailar();
-            jugador4.GetComponent<JugadorController>().Bailar();
-            jugador3.SetActive(false);
-
-            camGroup.m_Targets.SetValue(finalizador1, 0);
-            camGroup.m_Targets.SetValue(finalizador1, 1);
-            camGroup.m_Targets.SetValue(finalizador2, 2);
-            camGroup.m_Targets.SetValue(finalizador3, 3);
-        }
-        if (vaGanando == 13)
-        {
-            finalizador1.target = jugador3.transform;
-            finalizador1.weight = 1.3f;
-            finalizador1.radius = 1.3f;
-            finalizador2.target = jugador4.transform;
-            finalizador2.weight = 1.3f;
-            finalizador2.radius = 1.3f;
-            finalizador3.target = jugador1.transform;
-            finalizador3.weight = 1.3f;
-            finalizador3.radius = 1.3f;
-
-            jugador3.GetComponent<JugadorController>().Bailar();
-            jugador4.GetComponent<JugadorController>().Bailar();
-            jugador1.GetComponent<JugadorController>().Bailar();
-            jugador2.SetActive(false);
-
-            camGroup.m_Targets.SetValue(finalizador1, 0);
-            camGroup.m_Targets.SetValue(finalizador1, 1);
-            camGroup.m_Targets.SetValue(finalizador2, 2);
-            camGroup.m_Targets.SetValue(finalizador3, 3);
-        }
-        if (vaGanando == 14)
-        {
-            finalizador1.target = jugador2.transform;
-            finalizador1.weight = 1.3f;
-            finalizador1.radius = 1.3f;
-            finalizador2.target = jugador3.transform;
-            finalizador2.weight = 1.3f;
-            finalizador2.radius = 1.3f;
-            finalizador3.target = jugador4.transform;
-            finalizador3.weight = 1.3f;
-            finalizador3.radius = 1.3f;
-
-            jugador2.GetComponent<JugadorController>().Bailar();
-            jugador3.GetComponent<JugadorController>().Bailar();
-            jugador4.GetComponent<JugadorController>().Bailar();
-            jugador1.SetActive(false);
-
-            camGroup.m_Targets.SetValue(finalizador1, 0);
-            camGroup.m_Targets.SetValue(finalizador1, 1);
-            camGroup.m_Targets.SetValue(finalizador2, 2);
-            camGroup.m_Targets.SetValue(finalizador3, 3);
-        }
-        if (vaGanando == 0)
-        {
-            /*finalizador1.target = jugador2.transform;
-            finalizador1.weight = 1;
-            finalizador1.radius = 1;
-            finalizador2.target = jugador3.transform;
-            finalizador2.weight = 1;
-            finalizador2.radius = 1;
-            finalizador3.target = jugador4.transform;
-            finalizador3.weight = 1;
-            finalizador3.radius = 1;*/
-
-            jugador1.GetComponent<JugadorController>().Bailar();
-            jugador2.GetComponent<JugadorController>().Bailar();
-            jugador3.GetComponent<JugadorController>().Bailar();
-            jugador4.GetComponent<JugadorController>().Bailar();
-
-            /*camGroup.m_Targets.SetValue(finalizador1, 0);
-            camGroup.m_Targets.SetValue(finalizador1, 1);
-            camGroup.m_Targets.SetValue(finalizador2, 2);
-            camGroup.m_Targets.SetValue(finalizador3, 3);*/
-        }
-    }
-
-    public void Salir()
-    {
-        Application.Quit();
-    }
-
-    public void ComprobarVaGanando()
-    {
-        if (puntuacion1 > puntuacion2 && puntuacion1 > puntuacion3 && puntuacion1 > puntuacion4)
-        {
-            //gana 1
-            vaGanando = 1;
-        }
-        else if (puntuacion2 > puntuacion1 && puntuacion2 > puntuacion3 && puntuacion2 > puntuacion4)
-        {
-            //gana 2
-            vaGanando = 2;
-        }
-        else if (puntuacion3 > puntuacion1 && puntuacion3 > puntuacion2 && puntuacion3 > puntuacion4)
-        {
-            //gana 3
-            vaGanando = 3;
-        }
-        else if (puntuacion4 > puntuacion1 && puntuacion4 > puntuacion2 && puntuacion4 > puntuacion3)
-        {
-            //gana 4
-            vaGanando = 4;
-        }
-
-        if (puntuacion1 > puntuacion3 && puntuacion1 > puntuacion4 && puntuacion1 == puntuacion2)
-        {
-            //gana 1 y 2
-            vaGanando = 5;
-        }
-        else if (puntuacion2 > puntuacion1 && puntuacion2 > puntuacion4 && puntuacion2 == puntuacion3)
-        {
-            //gana 2 y 3
-            vaGanando = 6;
-        }
-        else if (puntuacion3 > puntuacion1 && puntuacion3 > puntuacion2 && puntuacion3 == puntuacion4)
-        {
-            //gana 3 y 4
-            vaGanando = 7;
-        }
-        else if (puntuacion4 > puntuacion2 && puntuacion4 > puntuacion3 && puntuacion1 == puntuacion4)
-        {
-            //gana 1 y 4
-            vaGanando = 8;
-        }
-        else if (puntuacion1 > puntuacion2 && puntuacion1 > puntuacion4 && puntuacion1 == puntuacion3)
-        {
-            //gana 1 y 3
-            vaGanando = 9;
-        }
-        else if (puntuacion2 > puntuacion3 && puntuacion2 > puntuacion1 && puntuacion2 == puntuacion4)
-        {
-            //gana 2 y 4
-            vaGanando = 10;
-        }
-
-        if (puntuacion1 > puntuacion4 && puntuacion1 == puntuacion2 && puntuacion1 == puntuacion3)
-        {
-            //gana 1, 2 y 3
-            vaGanando = 11;
-        }
-        else if (puntuacion1 > 3 && puntuacion1 == puntuacion2 && puntuacion1 == puntuacion4)
-        {
-            //gana 1, 2 y 4
-            vaGanando = 12;
-        }
-        else if (puntuacion3 > puntuacion2 && puntuacion3 == puntuacion1 && puntuacion3 == puntuacion4)
-        {
-            //gana 3, 4 y 1
-            vaGanando = 13;
-        }
-        else if (puntuacion2 > puntuacion1 && puntuacion2 == puntuacion3 && puntuacion2 == puntuacion4)
-        {
-            //gana 2, 3 y 4
-            vaGanando = 14;
-        }
-
-        if (puntuacion1 == puntuacion2 && puntuacion1 == puntuacion3 && puntuacion1 == puntuacion4)
-        {
-            //empate
-            vaGanando = 0;
-        }
+        Initiate.Fade(_Seleccion, Color.black, 1);
     }
 
     public void SubirPuntos1(bool autogolpe)
@@ -968,14 +615,404 @@ public class InGameController : MonoBehaviour
         }
     }
 
+    public void ComprobarVaGanando()
+    {
+        if (puntuacion1 > puntuacion2 && puntuacion1 > puntuacion3 && puntuacion1 > puntuacion4)
+        {
+            //gana 1
+            vaGanando = 1;
+        }
+        else if (puntuacion2 > puntuacion1 && puntuacion2 > puntuacion3 && puntuacion2 > puntuacion4)
+        {
+            //gana 2
+            vaGanando = 2;
+        }
+        else if (puntuacion3 > puntuacion1 && puntuacion3 > puntuacion2 && puntuacion3 > puntuacion4)
+        {
+            //gana 3
+            vaGanando = 3;
+        }
+        else if (puntuacion4 > puntuacion1 && puntuacion4 > puntuacion2 && puntuacion4 > puntuacion3)
+        {
+            //gana 4
+            vaGanando = 4;
+        }
+
+        if (puntuacion1 > puntuacion3 && puntuacion1 > puntuacion4 && puntuacion1 == puntuacion2)
+        {
+            //gana 1 y 2
+            vaGanando = 5;
+        }
+        else if (puntuacion2 > puntuacion1 && puntuacion2 > puntuacion4 && puntuacion2 == puntuacion3)
+        {
+            //gana 2 y 3
+            vaGanando = 6;
+        }
+        else if (puntuacion3 > puntuacion1 && puntuacion3 > puntuacion2 && puntuacion3 == puntuacion4)
+        {
+            //gana 3 y 4
+            vaGanando = 7;
+        }
+        else if (puntuacion4 > puntuacion2 && puntuacion4 > puntuacion3 && puntuacion1 == puntuacion4)
+        {
+            //gana 1 y 4
+            vaGanando = 8;
+        }
+        else if (puntuacion1 > puntuacion2 && puntuacion1 > puntuacion4 && puntuacion1 == puntuacion3)
+        {
+            //gana 1 y 3
+            vaGanando = 9;
+        }
+        else if (puntuacion2 > puntuacion3 && puntuacion2 > puntuacion1 && puntuacion2 == puntuacion4)
+        {
+            //gana 2 y 4
+            vaGanando = 10;
+        }
+
+        if (puntuacion1 > puntuacion4 && puntuacion1 == puntuacion2 && puntuacion1 == puntuacion3)
+        {
+            //gana 1, 2 y 3
+            vaGanando = 11;
+        }
+        else if (puntuacion1 > 3 && puntuacion1 == puntuacion2 && puntuacion1 == puntuacion4)
+        {
+            //gana 1, 2 y 4
+            vaGanando = 12;
+        }
+        else if (puntuacion3 > puntuacion2 && puntuacion3 == puntuacion1 && puntuacion3 == puntuacion4)
+        {
+            //gana 3, 4 y 1
+            vaGanando = 13;
+        }
+        else if (puntuacion2 > puntuacion1 && puntuacion2 == puntuacion3 && puntuacion2 == puntuacion4)
+        {
+            //gana 2, 3 y 4
+            vaGanando = 14;
+        }
+
+        if (puntuacion1 == puntuacion2 && puntuacion1 == puntuacion3 && puntuacion1 == puntuacion4)
+        {
+            //empate
+            vaGanando = 0;
+        }
+    }
+
+    public void FinalizarJuego()
+    {
+        PlayCanvas1.enabled = false;
+        PlayCanvas2.enabled = false;
+        FinalCanvas.enabled = true;
+        depth.active = false;
+        StartBlack.color = new Color32(0, 0, 0, 128);
+        groupc.m_ScreenY = 0.425f;
+
+        //camGroup.m_Targets = new CinemachineTargetGroup.Target[1];
+
+        switch (vaGanando)
+        {
+            case 0:
+                /*finalizador1.target = jugador2.transform;
+                finalizador1.weight = 1;
+                finalizador1.radius = 1;
+                finalizador2.target = jugador3.transform;
+                finalizador2.weight = 1;
+                finalizador2.radius = 1;
+                finalizador3.target = jugador4.transform;
+                finalizador3.weight = 1;
+                finalizador3.radius = 1;*/
+
+                jugador1.GetComponent<JugadorController>().Bailar();
+                jugador2.GetComponent<JugadorController>().Bailar();
+                jugador3.GetComponent<JugadorController>().Bailar();
+                jugador4.GetComponent<JugadorController>().Bailar();
+
+                /*camGroup.m_Targets.SetValue(finalizador1, 0);
+                camGroup.m_Targets.SetValue(finalizador1, 1);
+                camGroup.m_Targets.SetValue(finalizador2, 2);
+                camGroup.m_Targets.SetValue(finalizador3, 3);*/
+                break;
+
+            case 1:
+                finalizador1.target = jugador1.transform;
+                finalizador1.weight = 2;
+                finalizador1.radius = 2;
+
+                jugador1.GetComponent<JugadorController>().Bailar();
+                jugador2.SetActive(false);
+                jugador3.SetActive(false);
+                jugador4.SetActive(false);
+
+                camGroup.m_Targets.SetValue(finalizador1, 0);
+                camGroup.m_Targets.SetValue(finalizador1, 1);
+                camGroup.m_Targets.SetValue(finalizador1, 2);
+                camGroup.m_Targets.SetValue(finalizador1, 3);
+                break;
+
+            case 2:
+                finalizador1.target = jugador2.transform;
+                finalizador1.weight = 2;
+                finalizador1.radius = 2;
+
+                jugador2.GetComponent<JugadorController>().Bailar();
+                jugador1.SetActive(false);
+                jugador3.SetActive(false);
+                jugador4.SetActive(false);
+
+                camGroup.m_Targets.SetValue(finalizador1, 0);
+                camGroup.m_Targets.SetValue(finalizador1, 1);
+                camGroup.m_Targets.SetValue(finalizador1, 2);
+                camGroup.m_Targets.SetValue(finalizador1, 3);
+                break;
+
+            case 3:
+                finalizador1.target = jugador3.transform;
+                finalizador1.weight = 2;
+                finalizador1.radius = 2;
+
+                jugador3.GetComponent<JugadorController>().Bailar();
+                jugador1.SetActive(false);
+                jugador2.SetActive(false);
+                jugador4.SetActive(false);
+
+                camGroup.m_Targets.SetValue(finalizador1, 0);
+                camGroup.m_Targets.SetValue(finalizador1, 1);
+                camGroup.m_Targets.SetValue(finalizador1, 2);
+                camGroup.m_Targets.SetValue(finalizador1, 3);
+                break;
+
+            case 4:
+                finalizador1.target = jugador4.transform;
+                finalizador1.weight = 2;
+                finalizador1.radius = 2;
+
+                jugador4.GetComponent<JugadorController>().Bailar();
+                jugador1.SetActive(false);
+                jugador2.SetActive(false);
+                jugador3.SetActive(false);
+
+                camGroup.m_Targets.SetValue(finalizador1, 0);
+                camGroup.m_Targets.SetValue(finalizador1, 1);
+                camGroup.m_Targets.SetValue(finalizador1, 2);
+                camGroup.m_Targets.SetValue(finalizador1, 3);
+                break;
+
+            case 5:
+                finalizador1.target = jugador1.transform;
+                finalizador1.weight = 1.6f;
+                finalizador1.radius = 1.6f;
+                finalizador2.target = jugador2.transform;
+                finalizador2.weight = 1.6f;
+                finalizador2.radius = 1.6f;
+
+                jugador1.GetComponent<JugadorController>().Bailar();
+                jugador2.GetComponent<JugadorController>().Bailar();
+                jugador3.SetActive(false);
+                jugador4.SetActive(false);
+
+                camGroup.m_Targets.SetValue(finalizador1, 0);
+                camGroup.m_Targets.SetValue(finalizador1, 1);
+                camGroup.m_Targets.SetValue(finalizador2, 2);
+                camGroup.m_Targets.SetValue(finalizador2, 3);
+                break;
+
+            case 6:
+                finalizador1.target = jugador2.transform;
+                finalizador1.weight = 1.6f;
+                finalizador1.radius = 1.6f;
+                finalizador2.target = jugador3.transform;
+                finalizador2.weight = 1.6f;
+                finalizador2.radius = 1.6f;
+
+                jugador2.GetComponent<JugadorController>().Bailar();
+                jugador3.GetComponent<JugadorController>().Bailar();
+                jugador1.SetActive(false);
+                jugador4.SetActive(false);
+
+                camGroup.m_Targets.SetValue(finalizador1, 0);
+                camGroup.m_Targets.SetValue(finalizador1, 1);
+                camGroup.m_Targets.SetValue(finalizador2, 2);
+                camGroup.m_Targets.SetValue(finalizador2, 3);
+                break;
+
+            case 7:
+                finalizador1.target = jugador3.transform;
+                finalizador1.weight = 1.6f;
+                finalizador1.radius = 1.6f;
+                finalizador2.target = jugador4.transform;
+                finalizador2.weight = 1.6f;
+                finalizador2.radius = 1.6f;
+
+                jugador3.GetComponent<JugadorController>().Bailar();
+                jugador4.GetComponent<JugadorController>().Bailar();
+                jugador1.SetActive(false);
+                jugador2.SetActive(false);
+
+                camGroup.m_Targets.SetValue(finalizador1, 0);
+                camGroup.m_Targets.SetValue(finalizador1, 1);
+                camGroup.m_Targets.SetValue(finalizador2, 2);
+                camGroup.m_Targets.SetValue(finalizador2, 3);
+                break;
+
+            case 8:
+                finalizador1.target = jugador1.transform;
+                finalizador1.weight = 1.6f;
+                finalizador1.radius = 1.6f;
+                finalizador2.target = jugador4.transform;
+                finalizador2.weight = 1.6f;
+                finalizador2.radius = 1.6f;
+
+                jugador1.GetComponent<JugadorController>().Bailar();
+                jugador4.GetComponent<JugadorController>().Bailar();
+                jugador2.SetActive(false);
+                jugador3.SetActive(false);
+
+                camGroup.m_Targets.SetValue(finalizador1, 0);
+                camGroup.m_Targets.SetValue(finalizador1, 1);
+                camGroup.m_Targets.SetValue(finalizador2, 2);
+                camGroup.m_Targets.SetValue(finalizador2, 3);
+                break;
+
+            case 9:
+                finalizador1.target = jugador1.transform;
+                finalizador1.weight = 1.6f;
+                finalizador1.radius = 1.6f;
+                finalizador2.target = jugador3.transform;
+                finalizador2.weight = 1.6f;
+                finalizador2.radius = 1.6f;
+
+                jugador1.GetComponent<JugadorController>().Bailar();
+                jugador3.GetComponent<JugadorController>().Bailar();
+                jugador2.SetActive(false);
+                jugador4.SetActive(false);
+
+                camGroup.m_Targets.SetValue(finalizador1, 0);
+                camGroup.m_Targets.SetValue(finalizador1, 1);
+                camGroup.m_Targets.SetValue(finalizador2, 2);
+                camGroup.m_Targets.SetValue(finalizador2, 3);
+                break;
+
+            case 10:
+                finalizador1.target = jugador2.transform;
+                finalizador1.weight = 1.6f;
+                finalizador1.radius = 1.6f;
+                finalizador2.target = jugador4.transform;
+                finalizador2.weight = 1.6f;
+                finalizador2.radius = 1.6f;
+
+                jugador2.GetComponent<JugadorController>().Bailar();
+                jugador4.GetComponent<JugadorController>().Bailar();
+                jugador1.SetActive(false);
+                jugador3.SetActive(false);
+
+                camGroup.m_Targets.SetValue(finalizador1, 0);
+                camGroup.m_Targets.SetValue(finalizador1, 1);
+                camGroup.m_Targets.SetValue(finalizador2, 2);
+                camGroup.m_Targets.SetValue(finalizador2, 3);
+                break;
+
+            case 11:
+                finalizador1.target = jugador1.transform;
+                finalizador1.weight = 1.3f;
+                finalizador1.radius = 1.3f;
+                finalizador2.target = jugador2.transform;
+                finalizador2.weight = 1.3f;
+                finalizador2.radius = 1.3f;
+                finalizador3.target = jugador3.transform;
+                finalizador3.weight = 1.3f;
+                finalizador3.radius = 1.3f;
+
+                jugador1.GetComponent<JugadorController>().Bailar();
+                jugador2.GetComponent<JugadorController>().Bailar();
+                jugador3.GetComponent<JugadorController>().Bailar();
+                jugador4.SetActive(false);
+
+                camGroup.m_Targets.SetValue(finalizador1, 0);
+                camGroup.m_Targets.SetValue(finalizador1, 1);
+                camGroup.m_Targets.SetValue(finalizador2, 2);
+                camGroup.m_Targets.SetValue(finalizador3, 3);
+                break;
+
+            case 12:
+                finalizador1.target = jugador1.transform;
+                finalizador1.weight = 1.3f;
+                finalizador1.radius = 1.3f;
+                finalizador2.target = jugador2.transform;
+                finalizador2.weight = 1.3f;
+                finalizador2.radius = 1.3f;
+                finalizador3.target = jugador4.transform;
+                finalizador3.weight = 1.3f;
+                finalizador3.radius = 1.3f;
+
+                jugador1.GetComponent<JugadorController>().Bailar();
+                jugador2.GetComponent<JugadorController>().Bailar();
+                jugador4.GetComponent<JugadorController>().Bailar();
+                jugador3.SetActive(false);
+
+                camGroup.m_Targets.SetValue(finalizador1, 0);
+                camGroup.m_Targets.SetValue(finalizador1, 1);
+                camGroup.m_Targets.SetValue(finalizador2, 2);
+                camGroup.m_Targets.SetValue(finalizador3, 3);
+                break;
+
+            case 13:
+                finalizador1.target = jugador3.transform;
+                finalizador1.weight = 1.3f;
+                finalizador1.radius = 1.3f;
+                finalizador2.target = jugador4.transform;
+                finalizador2.weight = 1.3f;
+                finalizador2.radius = 1.3f;
+                finalizador3.target = jugador1.transform;
+                finalizador3.weight = 1.3f;
+                finalizador3.radius = 1.3f;
+
+                jugador3.GetComponent<JugadorController>().Bailar();
+                jugador4.GetComponent<JugadorController>().Bailar();
+                jugador1.GetComponent<JugadorController>().Bailar();
+                jugador2.SetActive(false);
+
+                camGroup.m_Targets.SetValue(finalizador1, 0);
+                camGroup.m_Targets.SetValue(finalizador1, 1);
+                camGroup.m_Targets.SetValue(finalizador2, 2);
+                camGroup.m_Targets.SetValue(finalizador3, 3);
+                break;
+
+            case 14:
+                finalizador1.target = jugador2.transform;
+                finalizador1.weight = 1.3f;
+                finalizador1.radius = 1.3f;
+                finalizador2.target = jugador3.transform;
+                finalizador2.weight = 1.3f;
+                finalizador2.radius = 1.3f;
+                finalizador3.target = jugador4.transform;
+                finalizador3.weight = 1.3f;
+                finalizador3.radius = 1.3f;
+
+                jugador2.GetComponent<JugadorController>().Bailar();
+                jugador3.GetComponent<JugadorController>().Bailar();
+                jugador4.GetComponent<JugadorController>().Bailar();
+                jugador1.SetActive(false);
+
+                camGroup.m_Targets.SetValue(finalizador1, 0);
+                camGroup.m_Targets.SetValue(finalizador1, 1);
+                camGroup.m_Targets.SetValue(finalizador2, 2);
+                camGroup.m_Targets.SetValue(finalizador3, 3);
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    public void Salir()
+    {
+        Application.Quit();
+    }
+
     #endregion
 
     void Update()
     {
-        Debug.LogWarning("-Agregar tanto analogos como dpad. - hacer que el canvasPlay no se apague al finalizar, lo que se apague, dependiendo de los que ganan," +
-            "sean la puntuacion de los que pierden y queden la puntuacion de los que ganan");
-
-        if (Input.GetButtonDown("Pause"))
+        if (Input.GetButtonDown(_Pause))
         {
             if (!pausado)
             {
@@ -1005,7 +1042,7 @@ public class InGameController : MonoBehaviour
                 bloom.diffusion.value = impactBloomDif;
             }
 
-            mili += Time.unscaledDeltaTime;
+            mili += Time.deltaTime;
             if (mili >= 1)
             {
                 mili = 0;
@@ -1024,7 +1061,7 @@ public class InGameController : MonoBehaviour
 
             if (minutos < 0)
             {
-                timer.text = "0:00";
+                timer.text = _Ceros;
                 FinalizarJuego();
                 comenzar = false;
             }
@@ -1037,7 +1074,7 @@ public class InGameController : MonoBehaviour
             {
                 segundosS = segundos;
             }
-            timer.text = minutos + ":" + segundosS.ToString("00");
+            timer.text = minutos + _DosPuntos + segundosS.ToString(_DosCeros);
             if (segundos == 0)
             {
                 segundosS = 60;

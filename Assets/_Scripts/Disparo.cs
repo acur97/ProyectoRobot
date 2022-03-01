@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Disparo : MonoBehaviour
 {
@@ -10,12 +8,14 @@ public class Disparo : MonoBehaviour
     public int cantidadBalas;
     private int numeroBalas;
     public float tiempoRecarga;
+
     [Space]
     public GameObject bala;
     public Transform padre;
     public Transform puntoDisparo;
     public AudioSource source;
     public Animator anim;
+
     [Space]
     public AudioClip AceroBalas;
     public AudioClip Arecarga;
@@ -31,6 +31,8 @@ public class Disparo : MonoBehaviour
     [ColorUsage(true, true)]
     public Color colorBala;
 
+    private readonly int _disparo = Animator.StringToHash("disparo");
+
     private void Awake()
     {
         numeroBalas = cantidadBalas;
@@ -44,7 +46,7 @@ public class Disparo : MonoBehaviour
             {
                 if (numeroBalas > 0)
                 {
-                    anim.SetTrigger("disparo");
+                    anim.SetTrigger(_disparo);
                     numeroBalas -= 1;
                     count = 0;
                     //GameObject balita = Instantiate(bala, puntoDisparo.position, puntoDisparo.rotation, padre);
@@ -102,7 +104,7 @@ public class Disparo : MonoBehaviour
                 }
             }
 
-            count += Time.unscaledDeltaTime;
+            count += Time.deltaTime;
         }
     }
 }

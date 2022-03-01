@@ -1,17 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MaterialFlow : MonoBehaviour
 {
     public bool activado = true;
     public float velocidad;
     public Color col;
+
     private float m_Hue = 0;
     private float m_Saturation = 1;
     private float m_Value = 1;
 
     public Material matPiso;
+
+    private readonly int _BaseColor = Shader.PropertyToID("_BaseColor");
 
     private void Update()
     {
@@ -23,7 +24,7 @@ public class MaterialFlow : MonoBehaviour
                 m_Hue = 0;
             }
             col = Color.HSVToRGB(m_Hue, m_Saturation, m_Value, false);
-            matPiso.SetColor("_BaseColor", col);
+            matPiso.SetColor(_BaseColor, col);
         }
     }
 }

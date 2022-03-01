@@ -1,20 +1,23 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bala : MonoBehaviour
 {
-    public enum balaT {Basica, BasicaRebota, VelVariable};
-    public balaT tipoDeBala;
+    public enum BalaT {Basica, BasicaRebota, VelVariable};
+    public BalaT tipoDeBala;
+
     [Space]
     public float velocidad = 50;
     public float tiempoEspera = 2;
     public float tiempoMuerte = 5;
+
     [Header("Valores Basica rebota")]
     [Range(1, 10)]
     public int choques = 5;
+
     [Header("Valores Velocidad variable")]
     public float variacion = 1;
+
     [Space]
     public ConstantForce force;
     public Rigidbody rb;
@@ -23,18 +26,33 @@ public class Bala : MonoBehaviour
     public GameObject muzzle;
     public GameObject shoot;
     public AudioSource source;
+
     [Space]
     public AudioClip Adisparo;
     public AudioClip AdisparoLuego;
     public AudioClip AchocaPared;
     public AudioClip AchocaRobot;
+
     [Space]
-    public int dueno;
+    public int enemyID;
 
     private bool arranque;
     private int contadorChoques;
     private float variable;
     private bool variable1st;
+    private float vel = 0;
+    private WaitForSeconds wait1;
+    private WaitForSeconds wait2;
+    private WaitForSeconds wait3;
+
+    private const string _Objetos = "Objetos";
+
+    private void Awake()
+    {
+        wait1 = new WaitForSeconds(tiempoEspera);
+        wait2 = new WaitForSeconds(tiempoMuerte - tiempoEspera);
+        wait3 = new WaitForSeconds(1);
+    }
 
     private void OnEnable()
     {
@@ -45,7 +63,7 @@ public class Bala : MonoBehaviour
         source.clip = Adisparo;
         source.Play();
         rb.isKinematic = false;
-        force.relativeForce = new Vector3(0, 0, 0);
+        force.relativeForce = Vector3.zero;
         coll.enabled = true;
         arranque = false;
         StartCoroutine(EsperaArranque());
@@ -55,71 +73,89 @@ public class Bala : MonoBehaviour
     {
         if (arranque)
         {
-            if (balaT.Basica == tipoDeBala)
+            switch (tipoDeBala)
             {
-                force.relativeForce = new Vector3(0, 0, velocidad);
-            }
-            if (balaT.BasicaRebota == tipoDeBala)
-            {
-                force.relativeForce = new Vector3(0, 0, velocidad);
-            }
-            if (balaT.VelVariable == tipoDeBala)
-            {
-                variable += variacion;
+                case BalaT.Basica:
+                    force.relativeForce = new Vector3(0, 0, velocidad);
+                    break;
 
-                if (variable >= 10)
-                {
-                    variable = 0;
-                }
+                case BalaT.BasicaRebota:
+                    force.relativeForce = new Vector3(0, 0, velocidad);
+                    break;
 
-                if (variable >= 1)
-                {
-                    variable1st = true;
-                }
+                case BalaT.VelVariable:
+                    variable += variacion;
 
-                if (!variable1st)
-                {
-                    force.relativeForce = new Vector3(0, 0, (velocidad / 2));
-                }
-                else
-                {
-                    float vel = ((velocidad * variable) / 10) - (velocidad / 2.5f);
-                    force.relativeForce = new Vector3(0, 0, vel);
-                }
+                    if (variable >= 10)
+                    {
+                        variable = 0;
+                    }
+
+                    if (variable >= 1)
+                    {
+                        variable1st = true;
+                    }
+
+                    if (!variable1st)
+                    {
+                        force.relativeForce = new Vector3(0, 0, (velocidad / 2));
+                    }
+                    else
+                    {
+                        vel = ((velocidad * variable) / 10) - (velocidad / 2.5f);
+                        force.relativeForce = new Vector3(0, 0, vel);
+                    }
+                    break;
+
+                default:
+                    break;
             }
         }
     }
 
     IEnumerator EsperaArranque()
     {
-        yield return new WaitForSecondsRealtime(tiempoEspera);
+        yield return wait1;
         arranque = true;
         muzzle.SetActive(true);
         source.Stop();
         source.clip = AdisparoLuego;
         source.Play();
-        yield return new WaitForSecondsRealtime(tiempoMuerte - tiempoEspera);
+        yield return wait2;
         Morir(true);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (balaT.Basica == tipoDeBala || balaT.VelVariable == tipoDeBala)
+        switch (tipoDeBala)
         {
-            if (collision.gameObject.CompareTag("Objetos"))
-            {
-                //Destroy(gameObject);
-                Morir(true);
-            }
-        }
-        if (balaT.BasicaRebota == tipoDeBala)
-        {
-            contadorChoques += 1;
-            if (contadorChoques == choques && collision.gameObject.CompareTag("Objetos"))
-            {
-                //Destroy(gameObject);
-                Morir(true);
-            }
+            case BalaT.Basica:
+                if (collision.gameObject.CompareTag(_Objetos))
+                {
+                    //Destroy(gameObject);
+                    Morir(true);
+                }
+                break;
+
+            case BalaT.BasicaRebota:
+                contadorChoques += 1;
+                if (contadorChoques == choques && collision.gameObject.CompareTag(_Objetos))
+                {
+                    //Destroy(gameObject);
+                    Morir(true);
+                }
+                break;
+
+            case BalaT.VelVariable:
+                if (collision.gameObject.CompareTag(_Objetos))
+                {
+                    //Destroy(gameObject);
+                    Morir(true);
+                }
+                break;
+
+            default:
+                break;
         }
     }
 
@@ -136,7 +172,7 @@ public class Bala : MonoBehaviour
         }
         source.Play();
         rb.isKinematic = true;
-        force.relativeForce = new Vector3(0, 0, 0);
+        force.relativeForce = Vector3.zero;
         coll.enabled = false;
         muzzle.SetActive(false);
         shoot.SetActive(false);
@@ -146,7 +182,7 @@ public class Bala : MonoBehaviour
 
     IEnumerator EsperaMorir()
     {
-        yield return new WaitForSecondsRealtime(1);
+        yield return wait3;
         //Destroy(gameObject);
         gameObject.SetActive(false);
     }

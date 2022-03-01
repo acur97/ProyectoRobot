@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
@@ -13,7 +12,7 @@ public class SelectionManager : MonoBehaviour
     public GameObject scena;
 
     [Serializable]
-    public class ops1
+    public class Ops1
     {
         public string nombre;
         public Color32 colorUI;
@@ -28,22 +27,26 @@ public class SelectionManager : MonoBehaviour
         [ColorUsage(true, true)]
         public Color Bala;
     }
+
     [Serializable]
-    public class ops2_prefabs
+    public class Ops2_prefabs
     {
         public string nombre;
         public GameObject prefab;
     }
+
     [Serializable]
-    public class ops2
+    public class Ops2
     {
         public string nombre;
         public Material matModelos;
-        public ops2_prefabs[] prefabs;
+        public Ops2_prefabs[] prefabs;
     }
+
     [Header("Seleccionables")]
-    public ops1[] opciones1;
-    public ops2[] opciones2;
+    public Ops1[] opciones1;
+    public Ops2[] opciones2;
+
     [Space]
     public GameObject P1_canvasSelect;
     public GameObject P1_canvasIniciado;
@@ -54,6 +57,7 @@ public class SelectionManager : MonoBehaviour
     public Text P1_selectColorTxt;
     public GameObject P1_select;
     public GameObject P1_ready;
+
     [Space]
     public GameObject P2_canvasSelect;
     public GameObject P2_canvasIniciado;
@@ -64,6 +68,7 @@ public class SelectionManager : MonoBehaviour
     public Text P2_selectColorTxt;
     public GameObject P2_select;
     public GameObject P2_ready;
+
     [Space]
     public GameObject P3_canvasSelect;
     public GameObject P3_canvasIniciado;
@@ -74,6 +79,7 @@ public class SelectionManager : MonoBehaviour
     public Text P3_selectColorTxt;
     public GameObject P3_select;
     public GameObject P3_ready;
+
     [Space]
     public GameObject P4_canvasSelect;
     public GameObject P4_canvasIniciado;
@@ -84,11 +90,12 @@ public class SelectionManager : MonoBehaviour
     public Text P4_selectColorTxt;
     public GameObject P4_select;
     public GameObject P4_ready;
-    [Space]
-    public RenderTexture rTexture1;
-    public RenderTexture rTexture2;
-    public RenderTexture rTexture3;
-    public RenderTexture rTexture4;
+
+    //[Space]
+    //public RenderTexture rTexture1;
+    //public RenderTexture rTexture2;
+    //public RenderTexture rTexture3;
+    //public RenderTexture rTexture4;
 
     private int contadorNcontrol = 1;
 
@@ -136,19 +143,29 @@ public class SelectionManager : MonoBehaviour
 
     private AsyncOperation sceneAsync;
 
+    private const string _J = "J";
+    private const string _F = "_F";
+    private const string _H = "_H";
+    private const string _V = "_V";
+    private const string _P = "_P";
+    private const string _Pause = "Pause";
+    private readonly int _BaseColor = Shader.PropertyToID("_BaseColor");
+    private readonly int _Color = Shader.PropertyToID("_Color");
+    private readonly int _EmissionColor = Shader.PropertyToID("_EmissionColor");
+
     private void Awake()
     {
-        int valor = Screen.height;
-        int valor2 = (int)(valor * 0.89f);
+        //int valor = Screen.height;
+        //int valor2 = (int)(valor * 0.89f);
 
-        rTexture1.width = valor2;
-        rTexture1.height = valor;
-        rTexture2.width = valor2;
-        rTexture2.height = valor;
-        rTexture3.width = valor2;
-        rTexture3.height = valor;
-        rTexture4.width = valor2;
-        rTexture4.height = valor;
+        //rTexture1.width = valor2;
+        //rTexture1.height = valor;
+        //rTexture2.width = valor2;
+        //rTexture2.height = valor;
+        //rTexture3.width = valor2;
+        //rTexture3.height = valor;
+        //rTexture4.width = valor2;
+        //rTexture4.height = valor;
 
         P1_canvasSelect.SetActive(true);
         P1_canvasIniciado.SetActive(false);
@@ -207,7 +224,7 @@ public class SelectionManager : MonoBehaviour
         OnFinishedLoad();
     }
 
-    private void enableScene(int sceneIndex)
+    private void EnableScene(int sceneIndex)
     {
         //sceneAsync.allowSceneActivation = true;
 
@@ -260,7 +277,7 @@ public class SelectionManager : MonoBehaviour
     private void OnFinishedLoad()
     {
         Debug.Log("Escena cargada");
-        enableScene(1);
+        EnableScene(1);
         Debug.Log("Escena activada");
         scena.SetActive(false);
     }
@@ -296,7 +313,7 @@ public class SelectionManager : MonoBehaviour
                 {
                     //controlesList = Input.GetJoystickNames();
                     Debug.Log("Buscando jugador 1");
-                    if (Input.GetButtonDown("J" + (i + 1) + "_F"))
+                    if (Input.GetButtonDown(_J + (i + 1) + _F))
                     {
                         Debug.Log("jugador 1 encontrado");
                         P1_canvasSelect.SetActive(false);
@@ -307,17 +324,17 @@ public class SelectionManager : MonoBehaviour
                         opciones2[0].prefabs[2].prefab.SetActive(false);
                         opciones2[0].prefabs[3].prefab.SetActive(false);
 
-                        opciones2[0].matModelos.SetColor("_Color", opciones1[P1_cont2].colorAlbedo);
-                        opciones2[0].matModelos.SetColor("_EmissionColor", opciones1[P1_cont2].colorEmission);
+                        opciones2[0].matModelos.SetColor(_Color, opciones1[P1_cont2].colorAlbedo);
+                        opciones2[0].matModelos.SetColor(_EmissionColor, opciones1[P1_cont2].colorEmission);
 
                         P1_selectColorTxt.text = opciones1[P1_cont2].nombre;
                         excepcion1 = i + 1;
 
                         controlesP1 = excepcion1;
-                        InGameController.P1_H = "J" + controlesP1 + "_H";
-                        InGameController.P1_V = "J" + controlesP1 + "_V";
-                        InGameController.P1_F = "J" + controlesP1 + "_F";
-                        InGameController.P1_P = "J" + controlesP1 + "_P";
+                        InGameController.P1_H = _J + controlesP1 + _H;
+                        InGameController.P1_V = _J + controlesP1 + _V;
+                        InGameController.P1_F = _J + controlesP1 + _F;
+                        InGameController.P1_P = _J + controlesP1 + _P;
 
                         P1_nombreControl.text = controlesList[i].ToString();
                         encontradoP1 = true;
@@ -333,12 +350,12 @@ public class SelectionManager : MonoBehaviour
                 {
                     controlesList = Input.GetJoystickNames();
                     Debug.Log("Buscando jugador 2");
-                    if (Input.GetButtonDown("J" + excepcion1 + "_F"))
+                    if (Input.GetButtonDown(_J + excepcion1 + _F))
                     {
                         Debug.Log("salto");
                         continue;
                     }
-                    if (Input.GetButtonDown("J" + (i + 1) + "_F"))
+                    if (Input.GetButtonDown(_J + (i + 1) + _F))
                     {
                         Debug.Log("jugador 2 encontrado");
                         P2_canvasSelect.SetActive(false);
@@ -349,17 +366,17 @@ public class SelectionManager : MonoBehaviour
                         opciones2[1].prefabs[2].prefab.SetActive(false);
                         opciones2[1].prefabs[3].prefab.SetActive(false);
 
-                        opciones2[1].matModelos.SetColor("_Color", opciones1[P2_cont2].colorAlbedo);
-                        opciones2[1].matModelos.SetColor("_EmissionColor", opciones1[P2_cont2].colorEmission);
+                        opciones2[1].matModelos.SetColor(_Color, opciones1[P2_cont2].colorAlbedo);
+                        opciones2[1].matModelos.SetColor(_EmissionColor, opciones1[P2_cont2].colorEmission);
 
                         P2_selectColorTxt.text = opciones1[P2_cont2].nombre;
                         excepcion2 = i + 1;
 
                         controlesP2 = excepcion2;
-                        InGameController.P2_H = "J" + controlesP2 + "_H";
-                        InGameController.P2_V = "J" + controlesP2 + "_V";
-                        InGameController.P2_F = "J" + controlesP2 + "_F";
-                        InGameController.P2_P = "J" + controlesP2 + "_P";
+                        InGameController.P2_H = _J + controlesP2 + _H;
+                        InGameController.P2_V = _J + controlesP2 + _V;
+                        InGameController.P2_F = _J + controlesP2 + _F;
+                        InGameController.P2_P = _J + controlesP2 + _P;
 
                         P2_nombreControl.text = controlesList[i].ToString();
                         encontradoP2 = true;
@@ -375,15 +392,15 @@ public class SelectionManager : MonoBehaviour
                 {
                     controlesList = Input.GetJoystickNames();
                     Debug.Log("Buscando jugador 3");
-                    if (Input.GetButtonDown("J" + excepcion1 + "_F"))
+                    if (Input.GetButtonDown(_J + excepcion1 + _F))
                     {
                         continue;
                     }
-                    if (Input.GetButtonDown("J" + excepcion2 + "_F"))
+                    if (Input.GetButtonDown(_J + excepcion2 + _F))
                     {
                         continue;
                     }
-                    if (Input.GetButtonDown("J" + (i + 1) + "_F"))
+                    if (Input.GetButtonDown(_J + (i + 1) + _F))
                     {
                         Debug.Log("jugador 3 encontrado");
                         P3_canvasSelect.SetActive(false);
@@ -394,17 +411,17 @@ public class SelectionManager : MonoBehaviour
                         opciones2[2].prefabs[2].prefab.SetActive(false);
                         opciones2[2].prefabs[3].prefab.SetActive(false);
 
-                        opciones2[2].matModelos.SetColor("_Color", opciones1[P3_cont2].colorAlbedo);
-                        opciones2[2].matModelos.SetColor("_EmissionColor", opciones1[P3_cont2].colorEmission);
+                        opciones2[2].matModelos.SetColor(_Color, opciones1[P3_cont2].colorAlbedo);
+                        opciones2[2].matModelos.SetColor(_EmissionColor, opciones1[P3_cont2].colorEmission);
 
                         P3_selectColorTxt.text = opciones1[P3_cont2].nombre;
                         excepcion3 = i + 1;
 
                         controlesP3 = excepcion3;
-                        InGameController.P3_H = "J" + controlesP3 + "_H";
-                        InGameController.P3_V = "J" + controlesP3 + "_V";
-                        InGameController.P3_F = "J" + controlesP3 + "_F";
-                        InGameController.P3_P = "J" + controlesP3 + "_P";
+                        InGameController.P3_H = _J + controlesP3 + _H;
+                        InGameController.P3_V = _J + controlesP3 + _V;
+                        InGameController.P3_F = _J + controlesP3 + _F;
+                        InGameController.P3_P = _J + controlesP3 + _P;
 
                         P3_nombreControl.text = controlesList[i].ToString();
                         encontradoP3 = true;
@@ -420,19 +437,19 @@ public class SelectionManager : MonoBehaviour
                 {
                     controlesList = Input.GetJoystickNames();
                     Debug.Log("Buscando jugador 4");
-                    if (Input.GetButtonDown("J" + excepcion1 + "_F"))
+                    if (Input.GetButtonDown(_J + excepcion1 + _F))
                     {
                         continue;
                     }
-                    if (Input.GetButtonDown("J" + excepcion2 + "_F"))
+                    if (Input.GetButtonDown(_J + excepcion2 + _F))
                     {
                         continue;
                     }
-                    if (Input.GetButtonDown("J" + excepcion3 + "_F"))
+                    if (Input.GetButtonDown(_J + excepcion3 + _F))
                     {
                         continue;
                     }
-                    if (Input.GetButtonDown("J" + (i + 1) + "_F"))
+                    if (Input.GetButtonDown(_J + (i + 1) + _F))
                     {
                         Debug.Log("jugador 4 encontrado");
                         P4_canvasSelect.SetActive(false);
@@ -443,16 +460,16 @@ public class SelectionManager : MonoBehaviour
                         opciones2[3].prefabs[2].prefab.SetActive(false);
                         opciones2[3].prefabs[3].prefab.SetActive(false);
 
-                        opciones2[3].matModelos.SetColor("_Color", opciones1[P4_cont2].colorAlbedo);
-                        opciones2[3].matModelos.SetColor("_EmissionColor", opciones1[P4_cont2].colorEmission);
+                        opciones2[3].matModelos.SetColor(_Color, opciones1[P4_cont2].colorAlbedo);
+                        opciones2[3].matModelos.SetColor(_EmissionColor, opciones1[P4_cont2].colorEmission);
 
                         P4_selectColorTxt.text = opciones1[P4_cont2].nombre;
 
                         controlesP4 = (Array.IndexOf(controlesList, controlesList[i]) + 1);
-                        InGameController.P4_H = "J" + controlesP4 + "_H";
-                        InGameController.P4_V = "J" + controlesP4 + "_V";
-                        InGameController.P4_F = "J" + controlesP4 + "_F";
-                        InGameController.P4_P = "J" + controlesP4 + "_P";
+                        InGameController.P4_H = _J + controlesP4 + _H;
+                        InGameController.P4_V = _J + controlesP4 + _V;
+                        InGameController.P4_F = _J + controlesP4 + _F;
+                        InGameController.P4_P = _J + controlesP4 + _P;
 
                         P4_nombreControl.text = controlesList[i].ToString();
                         encontradoP4 = true;
@@ -480,20 +497,20 @@ public class SelectionManager : MonoBehaviour
             {
                 P1_delay -= (Time.deltaTime * 2);
                 //Debug.Log(Input.GetAxisRaw("J" + controlesP1 + "_V"));
-                if (Input.GetAxisRaw("J" + controlesP1 + "_V") > 0.25f)
+                if (Input.GetAxisRaw(_J + controlesP1 + _V) > 0.25f)
                 {
                     P1_selectModeloImg.SetActive(true);
                     P1_selectColorImg.SetActive(false);
                     selecP1 = 1;
                 }
-                if (Input.GetAxisRaw("J" + controlesP1 + "_V") < -0.25f)
+                if (Input.GetAxisRaw(_J + controlesP1 + _V) < -0.25f)
                 {
                     P1_selectModeloImg.SetActive(false);
                     P1_selectColorImg.SetActive(true);
                     selecP1 = 2;
                 }
 
-                if (Input.GetAxisRaw("J" + controlesP1 + "_H") > 0.25f && P1_delay < 0.25f)
+                if (Input.GetAxisRaw(_J + controlesP1 + _H) > 0.25f && P1_delay < 0.25f)
                 {
                     if (selecP1 == 1)
                     {
@@ -543,11 +560,11 @@ public class SelectionManager : MonoBehaviour
                         }
                         P1_selectColorTxt.text = opciones1[P1_cont2].nombre;
 
-                        opciones2[0].matModelos.SetColor("_BaseColor", opciones1[P1_cont2].colorAlbedo);
-                        opciones2[0].matModelos.SetColor("_EmissionColor", opciones1[P1_cont2].colorEmission);
+                        opciones2[0].matModelos.SetColor(_BaseColor, opciones1[P1_cont2].colorAlbedo);
+                        opciones2[0].matModelos.SetColor(_EmissionColor, opciones1[P1_cont2].colorEmission);
                     }
                 }
-                if (Input.GetAxisRaw("J" + controlesP1 + "_H") < -0.25f && P1_delay < 0.25f)
+                if (Input.GetAxisRaw(_J + controlesP1 + _H) < -0.25f && P1_delay < 0.25f)
                 {
                     if (selecP1 == 1)
                     {
@@ -597,12 +614,12 @@ public class SelectionManager : MonoBehaviour
                         }
                         P1_selectColorTxt.text = opciones1[P1_cont2].nombre;
 
-                        opciones2[0].matModelos.SetColor("_BaseColor", opciones1[P1_cont2].colorAlbedo);
-                        opciones2[0].matModelos.SetColor("_EmissionColor", opciones1[P1_cont2].colorEmission);
+                        opciones2[0].matModelos.SetColor(_BaseColor, opciones1[P1_cont2].colorAlbedo);
+                        opciones2[0].matModelos.SetColor(_EmissionColor, opciones1[P1_cont2].colorEmission);
                     }
                 }
 
-                if (Input.GetButtonDown("J" + controlesP1 + "_F") && P1_delay < 0.25f)
+                if (Input.GetButtonDown(_J + controlesP1 + _F) && P1_delay < 0.25f)
                 {
                     readyP1 = true;
                     Debug.Log("Player 1 Ready");
@@ -612,7 +629,7 @@ public class SelectionManager : MonoBehaviour
             }
             else
             {
-                if (Input.GetButtonDown("J" + controlesP1 + "_P"))
+                if (Input.GetButtonDown(_J + controlesP1 + _P))
                 {
                     readyP1 = false;
                     Debug.Log("Player 1 NO-Ready");
@@ -626,20 +643,20 @@ public class SelectionManager : MonoBehaviour
             if (!readyP2)
             {
                 P2_delay -= (Time.deltaTime * 2);
-                if (Input.GetAxisRaw("J" + controlesP2 + "_V") > 0.25f)
+                if (Input.GetAxisRaw(_J + controlesP2 + _V) > 0.25f)
                 {
                     P2_selectModeloImg.SetActive(true);
                     P2_selectColorImg.SetActive(false);
                     selecP2 = 1;
                 }
-                if (Input.GetAxisRaw("J" + controlesP2 + "_V") < -0.25f)
+                if (Input.GetAxisRaw(_J + controlesP2 + _V) < -0.25f)
                 {
                     P2_selectModeloImg.SetActive(false);
                     P2_selectColorImg.SetActive(true);
                     selecP2 = 2;
                 }
 
-                if (Input.GetAxisRaw("J" + controlesP2 + "_H") > 0.25f && P2_delay < 0.25f)
+                if (Input.GetAxisRaw(_J + controlesP2 + _H) > 0.25f && P2_delay < 0.25f)
                 {
                     if (selecP2 == 1)
                     {
@@ -689,11 +706,11 @@ public class SelectionManager : MonoBehaviour
                         }
                         P2_selectColorTxt.text = opciones1[P2_cont2].nombre;
 
-                        opciones2[1].matModelos.SetColor("_BaseColor", opciones1[P2_cont2].colorAlbedo);
-                        opciones2[1].matModelos.SetColor("_EmissionColor", opciones1[P2_cont2].colorEmission);
+                        opciones2[1].matModelos.SetColor(_BaseColor, opciones1[P2_cont2].colorAlbedo);
+                        opciones2[1].matModelos.SetColor(_EmissionColor, opciones1[P2_cont2].colorEmission);
                     }
                 }
-                if (Input.GetAxisRaw("J" + controlesP2 + "_H") < -0.25f && P2_delay < 0.25f)
+                if (Input.GetAxisRaw(_J + controlesP2 + _H) < -0.25f && P2_delay < 0.25f)
                 {
                     if (selecP2 == 1)
                     {
@@ -743,12 +760,12 @@ public class SelectionManager : MonoBehaviour
                         }
                         P2_selectColorTxt.text = opciones1[P2_cont2].nombre;
 
-                        opciones2[1].matModelos.SetColor("_BaseColor", opciones1[P2_cont2].colorAlbedo);
-                        opciones2[1].matModelos.SetColor("_EmissionColor", opciones1[P2_cont2].colorEmission);
+                        opciones2[1].matModelos.SetColor(_BaseColor, opciones1[P2_cont2].colorAlbedo);
+                        opciones2[1].matModelos.SetColor(_EmissionColor, opciones1[P2_cont2].colorEmission);
                     }
                 }
 
-                if (Input.GetButtonDown("J" + controlesP2 + "_F") && P2_delay < 0.25f)
+                if (Input.GetButtonDown(_J + controlesP2 + _F) && P2_delay < 0.25f)
                 {
                     readyP2 = true;
                     Debug.Log("Player 2 Ready");
@@ -758,7 +775,7 @@ public class SelectionManager : MonoBehaviour
             }
             else
             {
-                if (Input.GetButtonDown("J" + controlesP2 + "_P"))
+                if (Input.GetButtonDown(_J + controlesP2 + _P))
                 {
                     readyP2 = false;
                     Debug.Log("Player 2 NO-Ready");
@@ -772,20 +789,20 @@ public class SelectionManager : MonoBehaviour
             if (!readyP3)
             {
                 P3_delay -= (Time.deltaTime * 2);
-                if (Input.GetAxisRaw("J" + controlesP3 + "_V") > 0.25f)
+                if (Input.GetAxisRaw(_J + controlesP3 + _V) > 0.25f)
                 {
                     P3_selectModeloImg.SetActive(true);
                     P3_selectColorImg.SetActive(false);
                     selecP3 = 1;
                 }
-                if (Input.GetAxisRaw("J" + controlesP3 + "_V") < -0.25f)
+                if (Input.GetAxisRaw(_J + controlesP3 + _V) < -0.25f)
                 {
                     P3_selectModeloImg.SetActive(false);
                     P3_selectColorImg.SetActive(true);
                     selecP3 = 2;
                 }
 
-                if (Input.GetAxisRaw("J" + controlesP3 + "_H") > 0.25f && P3_delay < 0.25f)
+                if (Input.GetAxisRaw(_J + controlesP3 + _H) > 0.25f && P3_delay < 0.25f)
                 {
                     if (selecP3 == 1)
                     {
@@ -835,11 +852,11 @@ public class SelectionManager : MonoBehaviour
                         }
                         P3_selectColorTxt.text = opciones1[P3_cont2].nombre;
 
-                        opciones2[2].matModelos.SetColor("_BaseColor", opciones1[P3_cont2].colorAlbedo);
-                        opciones2[2].matModelos.SetColor("_EmissionColor", opciones1[P3_cont2].colorEmission);
+                        opciones2[2].matModelos.SetColor(_BaseColor, opciones1[P3_cont2].colorAlbedo);
+                        opciones2[2].matModelos.SetColor(_EmissionColor, opciones1[P3_cont2].colorEmission);
                     }
                 }
-                if (Input.GetAxisRaw("J" + controlesP3 + "_H") < -0.25f && P3_delay < 0.25f)
+                if (Input.GetAxisRaw(_J + controlesP3 + _H) < -0.25f && P3_delay < 0.25f)
                 {
                     if (selecP3 == 1)
                     {
@@ -889,12 +906,12 @@ public class SelectionManager : MonoBehaviour
                         }
                         P3_selectColorTxt.text = opciones1[P3_cont2].nombre;
 
-                        opciones2[2].matModelos.SetColor("_BaseColor", opciones1[P3_cont2].colorAlbedo);
-                        opciones2[2].matModelos.SetColor("_EmissionColor", opciones1[P3_cont2].colorEmission);
+                        opciones2[2].matModelos.SetColor(_BaseColor, opciones1[P3_cont2].colorAlbedo);
+                        opciones2[2].matModelos.SetColor(_EmissionColor, opciones1[P3_cont2].colorEmission);
                     }
                 }
 
-                if (Input.GetButtonDown("J" + controlesP3 + "_F") && P3_delay < 0.25f)
+                if (Input.GetButtonDown(_J + controlesP3 + _F) && P3_delay < 0.25f)
                 {
                     readyP3 = true;
                     Debug.Log("Player 3 Ready");
@@ -904,7 +921,7 @@ public class SelectionManager : MonoBehaviour
             }
             else
             {
-                if (Input.GetButtonDown("J" + controlesP3 + "_P"))
+                if (Input.GetButtonDown(_J + controlesP3 + _P))
                 {
                     readyP3 = false;
                     Debug.Log("Player 3 NO-Ready");
@@ -918,20 +935,20 @@ public class SelectionManager : MonoBehaviour
             if (!readyP4)
             {
                 P4_delay -= (Time.deltaTime * 2);
-                if (Input.GetAxisRaw("J" + controlesP4 + "_V") > 0.25f)
+                if (Input.GetAxisRaw(_J + controlesP4 + _V) > 0.25f)
                 {
                     P4_selectModeloImg.SetActive(true);
                     P4_selectColorImg.SetActive(false);
                     selecP4 = 1;
                 }
-                if (Input.GetAxisRaw("J" + controlesP4 + "_V") < -0.25f)
+                if (Input.GetAxisRaw(_J + controlesP4 + _V) < -0.25f)
                 {
                     P4_selectModeloImg.SetActive(false);
                     P4_selectColorImg.SetActive(true);
                     selecP4 = 2;
                 }
 
-                if (Input.GetAxisRaw("J" + controlesP4 + "_H") > 0.25f && P4_delay < 0.25f)
+                if (Input.GetAxisRaw(_J + controlesP4 + _H) > 0.25f && P4_delay < 0.25f)
                 {
                     if (selecP4 == 1)
                     {
@@ -981,11 +998,11 @@ public class SelectionManager : MonoBehaviour
                         }
                         P4_selectColorTxt.text = opciones1[P4_cont2].nombre;
 
-                        opciones2[3].matModelos.SetColor("_BaseColor", opciones1[P4_cont2].colorAlbedo);
-                        opciones2[3].matModelos.SetColor("_EmissionColor", opciones1[P4_cont2].colorEmission);
+                        opciones2[3].matModelos.SetColor(_BaseColor, opciones1[P4_cont2].colorAlbedo);
+                        opciones2[3].matModelos.SetColor(_EmissionColor, opciones1[P4_cont2].colorEmission);
                     }
                 }
-                if (Input.GetAxisRaw("J" + controlesP4 + "_H") < -0.25f && P4_delay < 0.25f)
+                if (Input.GetAxisRaw(_J + controlesP4 + _H) < -0.25f && P4_delay < 0.25f)
                 {
                     if (selecP4 == 1)
                     {
@@ -1035,12 +1052,12 @@ public class SelectionManager : MonoBehaviour
                         }
                         P4_selectColorTxt.text = opciones1[P4_cont2].nombre;
 
-                        opciones2[3].matModelos.SetColor("_BaseColor", opciones1[P4_cont2].colorAlbedo);
-                        opciones2[3].matModelos.SetColor("_EmissionColor", opciones1[P4_cont2].colorEmission);
+                        opciones2[3].matModelos.SetColor(_BaseColor, opciones1[P4_cont2].colorAlbedo);
+                        opciones2[3].matModelos.SetColor(_EmissionColor, opciones1[P4_cont2].colorEmission);
                     }
                 }
 
-                if (Input.GetButtonDown("J" + controlesP4 + "_F") && P3_delay < 0.25f)
+                if (Input.GetButtonDown(_J + controlesP4 + _F) && P3_delay < 0.25f)
                 {
                     readyP4 = true;
                     Debug.Log("Player 4 Ready");
@@ -1050,7 +1067,7 @@ public class SelectionManager : MonoBehaviour
             }
             else
             {
-                if (Input.GetButtonDown("J" + controlesP4 + "_P"))
+                if (Input.GetButtonDown(_J + controlesP4 + _P))
                 {
                     readyP4 = false;
                     Debug.Log("Player 4 NO-Ready");
@@ -1068,7 +1085,7 @@ public class SelectionManager : MonoBehaviour
             {
                 readyStatus.SetActive(true);
             }
-            if (Input.GetButtonDown("Pause"))
+            if (Input.GetButtonDown(_Pause))
             {
                 StartCoroutine(LoadSceneMove(1));
             }

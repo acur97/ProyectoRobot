@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class testControles : MonoBehaviour
+public class TestControles : MonoBehaviour
 {
+    private const string _joy = "es el joystick #";
     public string[] controles;
 
     void Update()
@@ -14,7 +13,7 @@ public class testControles : MonoBehaviour
         {
             if (Input.GetJoystickNames()[i] != "")
             {
-                Debug.Log(Input.GetJoystickNames()[i] + "es el joystick #" + (i + 1));
+                Debug.Log(Input.GetJoystickNames()[i] + _joy + (i + 1));
             }
         }
         // requires you to set up axes "Joy0X" - "Joy3X" and "Joy0Y" - "Joy3Y" in the Input Manger

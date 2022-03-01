@@ -1,17 +1,22 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RespawnMat : MonoBehaviour
 {
     private Material mat;
+
     public float velocidad;
     public float reaparecer;
     public SphereCollider coll;
     public MeshRenderer mesh;
 
-    private void Start()
+    private WaitForSeconds wait;
+
+    private readonly int _BaseMap = Shader.PropertyToID("_BaseMap");
+
+    private void Awake()
     {
+        wait = new WaitForSeconds(reaparecer);
         mat = mesh.material;
     }
 
@@ -19,7 +24,7 @@ public class RespawnMat : MonoBehaviour
     {
         if (mesh.enabled)
         {
-            mat.SetTextureOffset("_BaseMap", (new Vector2(velocidad * Time.unscaledTime * 2, velocidad * Time.unscaledTime / 2)));
+            mat.SetTextureOffset(_BaseMap, (new Vector2(velocidad * Time.time * 2, velocidad * Time.time / 2)));
         }
     }
 
@@ -32,7 +37,7 @@ public class RespawnMat : MonoBehaviour
 
     IEnumerator DelayPrender()
     {
-        yield return new WaitForSecondsRealtime(reaparecer);
+        yield return wait;
         coll.enabled = true;
         mesh.enabled = true;
     }
