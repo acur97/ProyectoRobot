@@ -2,23 +2,23 @@
 
 public class Disparo : MonoBehaviour
 {
-    public InGameController controller;
-    public BalasPool poolB;
-    
-    public int cantidadBalas;
+    private InGameController controller;
+    private BalasPool poolB;
+
+    [SerializeField] private int cantidadBalas;
     private int numeroBalas;
-    public float tiempoRecarga;
+    [SerializeField] private float tiempoRecarga;
 
     [Space]
-    public GameObject bala;
-    public Transform padre;
-    public Transform puntoDisparo;
-    public AudioSource source;
+    [SerializeField] private GameObject bala;
+    [SerializeField] private Transform padre;
+    [SerializeField] private Transform puntoDisparo;
+    [SerializeField] private AudioSource source;
     public Animator anim;
 
     [Space]
-    public AudioClip AceroBalas;
-    public AudioClip Arecarga;
+    [SerializeField] private AudioClip AceroBalas;
+    [SerializeField] private AudioClip Arecarga;
     
     /*Private Variables*/
     private float count;
@@ -35,14 +35,20 @@ public class Disparo : MonoBehaviour
 
     private void Awake()
     {
+        controller = InGameController.Instance;
         numeroBalas = cantidadBalas;
+    }
+
+    private void Start()
+    {
+        poolB = BalasPool.Instance;
     }
 
     private void Update()
     {
         if (controller.comenzar)
         {
-            if (Input.GetButtonDown(shooter))
+            if (Input.GetKeyDown(shooter))
             {
                 if (numeroBalas > 0)
                 {

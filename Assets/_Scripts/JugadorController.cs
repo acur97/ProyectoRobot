@@ -1,25 +1,29 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
 public class JugadorController : MonoBehaviour
 {
-    public InGameController controller;
-    public Disparo disparo;
+    private InGameController gameController;
+
+    [SerializeField] private Disparo disparo;
     public enum Jugadores {Jugador1, Jugador2, Jugador3, Jugador4}
-    public Jugadores jug;
-    public float speed = 5f;
-    public float gravity = 9.81f;
-    public float dashdistance = 5f;
-    public Vector3 Drag;
-    public float esperaEntreDrag = 5;
+    [SerializeField] private Jugadores jug;
+    [SerializeField] private float speed = 5f;
+    //[SerializeField] private float gravity = -29.81f; //9.81f
+    [SerializeField] private float dashdistance = 5f;
+    [SerializeField] private Vector3 Drag;
+    [SerializeField] private float esperaEntreDrag = 5;
 
     [Space]
-    public AudioSource source;
+    [SerializeField] private AudioSource source;
     public Animator anim;
-    public GameObject Rmat;
-    public float tiempoRespawnMat = 3;
+    [SerializeField] private GameObject Rmat;
+    [SerializeField] private float tiempoRespawnMat = 3;
 
-    private CharacterController _controller;
+    [Space]
+    [SerializeField] private GameObject flecha;
+
+    private CharacterController charControl;
     private Vector3 _velocity;
     private Vector3 move;
     private float dashLimit = 1;
@@ -42,6 +46,7 @@ public class JugadorController : MonoBehaviour
 
     private void Awake()
     {
+        gameController = InGameController.Instance;
         wait = new WaitForSeconds(tiempoRespawnMat);
 
         switch (jug)
@@ -65,7 +70,7 @@ public class JugadorController : MonoBehaviour
 
     private void Start()
     {
-        _controller = GetComponent<CharacterController>();
+        charControl = GetComponent<CharacterController>();
         disparo.shooter = Fire;
         disparo.anim = anim;
         StartCoroutine(Respawn());
@@ -74,12 +79,12 @@ public class JugadorController : MonoBehaviour
 /*Move and Power Dash of player */
     private void Update()
     {
-        if (controller.comenzar)
+        if (gameController.comenzar)
         {
             dashLimit -= Time.deltaTime;
 
             move = new Vector3(Input.GetAxis(Horizontal), 0, Input.GetAxis(Vertical));
-            _controller.Move(speed * Time.deltaTime * move);
+            charControl.Move(speed * Time.deltaTime * move);
             if (move != Vector3.zero)
             {
                 transform.forward = move;
@@ -110,7 +115,7 @@ public class JugadorController : MonoBehaviour
                 //}
             }
 
-            if (Input.GetButtonDown(Power))
+            if (Input.GetKeyDown(Power))
             {
                 if (dashLimit <= 0)
                 {
@@ -128,7 +133,7 @@ public class JugadorController : MonoBehaviour
             _velocity.y = 0;
             _velocity.z /= 1 + Drag.z * Time.deltaTime;
 
-            _controller.Move(_velocity * Time.deltaTime);
+            charControl.Move(_velocity * Time.deltaTime);
 
             transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         }
@@ -148,44 +153,44 @@ public class JugadorController : MonoBehaviour
                 case 1:
                     if (jug == Jugadores.Jugador1)
                     {
-                        controller.SubirPuntos1(true);
+                        gameController.SubirPuntos1(true);
                     }
                     else
                     {
-                        controller.SubirPuntos1(false);
+                        gameController.SubirPuntos1(false);
                     }
                     break;
 
                 case 2:
                     if (jug == Jugadores.Jugador2)
                     {
-                        controller.SubirPuntos2(true);
+                        gameController.SubirPuntos2(true);
                     }
                     else
                     {
-                        controller.SubirPuntos2(false);
+                        gameController.SubirPuntos2(false);
                     }
                     break;
 
                 case 3:
                     if (jug == Jugadores.Jugador3)
                     {
-                        controller.SubirPuntos3(true);
+                        gameController.SubirPuntos3(true);
                     }
                     else
                     {
-                        controller.SubirPuntos3(false);
+                        gameController.SubirPuntos3(false);
                     }
                     break;
 
                 case 4:
                     if (jug == Jugadores.Jugador4)
                     {
-                        controller.SubirPuntos4(true);
+                        gameController.SubirPuntos4(true);
                     }
                     else
                     {
-                        controller.SubirPuntos4(false);
+                        gameController.SubirPuntos4(false);
                     }
                     break;
 
@@ -193,11 +198,11 @@ public class JugadorController : MonoBehaviour
                     break;
             }
 
-            _controller.enabled = false;
-            respawnPos = controller.DameRespawn();
+            charControl.enabled = false;
+            respawnPos = gameController.DameRespawn();
             respawnPos = new Vector3(respawnPos.x, transform.position.y, respawnPos.z);
             transform.position = respawnPos;
-            _controller.enabled = true;
+            charControl.enabled = true;
             StartCoroutine(Respawn());
         }
     }
@@ -211,6 +216,7 @@ public class JugadorController : MonoBehaviour
 
     public void Bailar()
     {
+        flecha.SetActive(false);
         anim.SetTrigger(_baile);
     }
 

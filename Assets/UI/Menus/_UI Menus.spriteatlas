@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: _UI Menus
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 2
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 1
+    - serializedVersion: 3
+      m_BuildTarget: Standalone
+      m_MaxTextureSize: 8192
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 29
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 2
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 6537e30eb6691814487b8991ee81fe1d, type: 3}
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 5f4f87803876d244996f987c52571e65, type: 3}
+  - {fileID: 21300000, guid: 5e7ad7d0d6429954cb83efadbf4e4349, type: 3}
+  - {fileID: 21300000, guid: 7d508ea18647e6b4782347e802f8364f, type: 3}
+  - {fileID: 21300000, guid: 354a9725ba5004c43a0514d67f60d0aa, type: 3}
+  - {fileID: 21300000, guid: f65f4545487476c4583ac184059e7b06, type: 3}
+  - {fileID: 21300000, guid: 0306e8d6d39b3d943829a4090a276413, type: 3}
+  - {fileID: 21300000, guid: abfdcd6801a297f49b3b789b25e34868, type: 3}
+  - {fileID: 21300000, guid: c5c207ccb573afa4a90207afbe9b2b39, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - rigs_banner
+  - victoria_ui
+  - rigs_logo_ui 2
+  - pause_ui
+  - rigs_logo_ui 1
+  - rigs_logo
+  - rigs_logo_ui
+  - highscore_ui
+  m_Tag: _UI Menus
+  m_IsVariant: 0

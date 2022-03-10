@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1054d2b42fb2ccd49a684535702e63f9, type: 3}
+  m_Name: PlayerCustomColors
+  m_EditorClassIdentifier: 
+  Colores:
+  - nombre: Rojo
+    colorUI:
+      serializedVersion: 2
+      rgba: 4279242816
+    colorAlbedo: {r: 1, g: 0.5019608, b: 0.5019608, a: 1}
+    colorEmission: {r: 1.4980392, g: 0, b: 0, a: 0}
+    colorRespaw: {r: 1, g: 0, b: 0, a: 1}
+    colorMiraPiso: {r: 1, g: 0, b: 0, a: 1}
+    colorBala: {r: 2.9960785, g: 0, b: 0, a: 1}
+  - nombre: Naranja
+    colorUI:
+      serializedVersion: 2
+      rgba: 4279251008
+    colorAlbedo: {r: 1, g: 0.6666667, b: 0.5019608, a: 1}
+    colorEmission: {r: 1.4980392, g: 0.50980395, b: 0, a: 0}
+    colorRespaw: {r: 1, g: 0.5019608, b: 0, a: 1}
+    colorMiraPiso: {r: 1, g: 0.5019608, b: 0, a: 1}
+    colorBala: {r: 2.9960785, g: 1.1921569, b: 0, a: 1}
+  - nombre: Amarillo
+    colorUI:
+      serializedVersion: 2
+      rgba: 4279255104
+    colorAlbedo: {r: 1, g: 0.8745098, b: 0.5019608, a: 1}
+    colorEmission: {r: 1.216786, g: 0.91736746, b: 0, a: 0}
+    colorRespaw: {r: 1, g: 0.84313726, b: 0, a: 1}
+    colorMiraPiso: {r: 1, g: 0.84313726, b: 0, a: 1}
+    colorBala: {r: 2.9960785, g: 2.619608, b: 0, a: 1}
+  - nombre: Verde
+    colorUI:
+      serializedVersion: 2
+      rgba: 4279255320
+    colorAlbedo: {r: 0.5019608, g: 1, b: 0.5019608, a: 1}
+    colorEmission: {r: 0, g: 1.2596959, b: 0, a: 0}
+    colorRespaw: {r: 0, g: 1, b: 0, a: 1}
+    colorMiraPiso: {r: 0, g: 1, b: 0, a: 1}
+    colorBala: {r: 1.0352942, g: 2.9960785, b: 0, a: 1}
+  - nombre: Cian
+    colorUI:
+      serializedVersion: 2
+      rgba: 4282398736
+    colorAlbedo: {r: 0, g: 0.9358978, b: 1, a: 1}
+    colorEmission: {r: 0, g: 1.213529, b: 1.2596959, a: 1}
+    colorRespaw: {r: 0, g: 1, b: 1, a: 1}
+    colorMiraPiso: {r: 0, g: 1, b: 1, a: 1}
+    colorBala: {r: 0, g: 2.9960785, b: 2.9803922, a: 1}
+  - nombre: Blanco
+    colorUI:
+      serializedVersion: 2
+      rgba: 4282400832
+    colorAlbedo: {r: 1, g: 1, b: 1, a: 1}
+    colorEmission: {r: 1.0717734, g: 1.0717734, b: 1.0717734, a: 0}
+    colorRespaw: {r: 1, g: 1, b: 1, a: 1}
+    colorMiraPiso: {r: 1, g: 1, b: 1, a: 1}
+    colorBala: {r: 4.000001, g: 4.000001, b: 4.000001, a: 1}
+  - nombre: Azul
+    colorUI:
+      serializedVersion: 2
+      rgba: 4282388496
+    colorAlbedo: {r: 0.5019608, g: 0.6666667, b: 1, a: 1}
+    colorEmission: {r: 0, g: 0.4756639, b: 1.39772, a: 0}
+    colorRespaw: {r: 0, g: 0, b: 1, a: 1}
+    colorMiraPiso: {r: 0, g: 0, b: 1, a: 1}
+    colorBala: {r: 0, g: 0.6901961, b: 2.9960785, a: 1}
+  - nombre: Rosado
+    colorUI:
+      serializedVersion: 2
+      rgba: 4281602112
+    colorAlbedo: {r: 1, g: 0.5019608, b: 0.91764706, a: 1}
+    colorEmission: {r: 1.3041189, g: 0.17069618, b: 1.0924556, a: 0}
+    colorRespaw: {r: 1, g: 0.09803922, b: 1, a: 1}
+    colorMiraPiso: {r: 1, g: 0.09803922, b: 1, a: 1}
+    colorBala: {r: 2.9960785, g: 0, b: 1.4588236, a: 1}
+  - nombre: Morado
+    colorUI:
+      serializedVersion: 2
+      rgba: 4282388528
+    colorAlbedo: {r: 0.6666667, g: 0.5019608, b: 1, a: 1}
+    colorEmission: {r: 0.4756639, g: 0, b: 1.39772, a: 0}
+    colorRespaw: {r: 0.50980395, g: 0, b: 1, a: 1}
+    colorMiraPiso: {r: 0.50980395, g: 0, b: 1, a: 1}
+    colorBala: {r: 0.4392157, g: 0, b: 2.9960785, a: 1}

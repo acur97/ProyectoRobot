@@ -1,14 +1,14 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
 public class RespawnMat : MonoBehaviour
 {
     private Material mat;
 
-    public float velocidad;
-    public float reaparecer;
-    public SphereCollider coll;
-    public MeshRenderer mesh;
+    [SerializeField] private float velocidad;
+    [SerializeField] private float reaparecer;
+    [SerializeField] private SphereCollider coll;
+    [SerializeField] private MeshRenderer mesh;
 
     private WaitForSeconds wait;
 
@@ -35,7 +35,7 @@ public class RespawnMat : MonoBehaviour
         StartCoroutine(DelayPrender());
     }
 
-    IEnumerator DelayPrender()
+    private IEnumerator DelayPrender()
     {
         yield return wait;
         coll.enabled = true;

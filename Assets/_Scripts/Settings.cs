@@ -4,21 +4,17 @@ using UnityEngine.Audio;
 
 public class Settings : MonoBehaviour
 {
+    public enum Vsync { Desactivado, Activado, Doble }
     [Space(-10, order = -3)]
     [Header("   GRAFICOS", order = -2)]
     [Space(order = -1)]
 
     [Space(-10, order = 0)]
     [Header("--- FPS ---", order = 1)]
-    [Space(-10, order = 2)]
-    [Header("vSync x2 = 28", order = 3)]
-    [Space(-10, order = 4)]
-    [Header("vSync x1 = 29", order = 5)]
-    [Space(-10, order = 6)]
-    [Header("fps infinitos = 251", order = 7)]
-    [Range(28, 251)]
-    public int targetFps = 29;
-    private int settingFps;
+    public Vsync SyncVertical;
+    [Header("-1 systema", order = 1)]
+    [Range(-1, 300)]
+    public int targetFps = -1;
 
     [Header("--- Anti-Aliasing ---")]
     public UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset renderAsset;
@@ -41,19 +37,19 @@ public class Settings : MonoBehaviour
     [Space]
     public AudioMixerGroup mixMaster;
     [Range(0, 1)]
-    public float volMaster;
+    public float volMaster = 1;
     [Space]
     public AudioMixerGroup mixMusica;
     [Range(0, 1)]
-    public float volMusica;
+    public float volMusica = 1;
     [Space]
     public AudioMixerGroup mixVfx;
     [Range(0, 1)]
-    public float volVfx;
+    public float volVfx = 1;
     [Space]
     public AudioMixerGroup mixVoces;
     [Range(0, 1)]
-    public float volVoces;
+    public float volVoces = 1;
 
     private const string _Volumen_master = "Volumen_master";
     private const string _Volumen_Musica = "Volumen_Musica";
@@ -62,28 +58,25 @@ public class Settings : MonoBehaviour
 
     private void Awake()
     {
-        if (targetFps == 28)
+        switch (SyncVertical)
         {
-            QualitySettings.vSyncCount = 2;
-            settingFps = 1;
+            case Vsync.Desactivado:
+                QualitySettings.vSyncCount = 0;
+                break;
+
+            case Vsync.Activado:
+                QualitySettings.vSyncCount = 1;
+                break;
+
+            case Vsync.Doble:
+                QualitySettings.vSyncCount = 2;
+                break;
+
+            default:
+                break;
         }
-        else if (targetFps == 29)
-        {
-            QualitySettings.vSyncCount = 1;
-            settingFps = 2;
-        }
-        else if (targetFps == 251)
-        {
-            QualitySettings.vSyncCount = 0;
-            Application.targetFrameRate = -1;
-            settingFps = 3;
-        }
-        else
-        {
-            QualitySettings.vSyncCount = 0;
-            Application.targetFrameRate = targetFps;
-            settingFps = 4;
-        }
+
+        Application.targetFrameRate = targetFps;
 
         switch (MSAA)
         {
@@ -102,7 +95,10 @@ public class Settings : MonoBehaviour
             case Antialiasing.x8:
                 renderAsset.msaaSampleCount = 8;
                 break;
+            default:
+                break;
         }
+
         renderAsset.renderScale = renderScale;
 
         resolutions = Screen.resolutions;
@@ -117,27 +113,5 @@ public class Settings : MonoBehaviour
         mixMusica.audioMixer.GetFloat(_Volumen_Musica, out volMusica);
         mixVfx.audioMixer.GetFloat(_Volumen_VFX, out volVfx);
         mixVoces.audioMixer.GetFloat(_Volumen_Voces, out volVoces);
-    }
-
-    private void Start()
-    {
-        switch (settingFps)
-        {
-            case 1:
-                Debug.Log("vSync: x2 on, fps: " + (Screen.currentResolution.refreshRate / 2));
-                break;
-
-            case 2:
-                Debug.Log("vSync: x1 on, fps: " + Screen.currentResolution.refreshRate);
-                break;
-
-            case 3:
-                Debug.Log("vSync: off, fps: infinitos");
-                break;
-
-            case 4:
-                Debug.Log("vSync: off, fps: " + Application.targetFrameRate);
-                break;
-        }
     }
 }

@@ -9,117 +9,129 @@ using UnityEngine.UI;
 
 public class InGameController : MonoBehaviour
 {
-    public GameObject[] objects;
-    public GameObject[] prefabs = new GameObject[4];
+    public static InGameController Instance { get; private set; }
+
+    [Header("Config Inicial")]
+    [SerializeField] private GameObject[] objects;
+    [SerializeField] private GameObject[] prefabs = new GameObject[4];
 
     [Header("Tiempo inicial"), Range(0, 5)]
-    public int minutosStart;
+    [SerializeField] private int minutosStart;
     [Range(0, 59)]
-    public int segundosStart;
+    [SerializeField] private int segundosStart;
 
     [Space]
-    public float tiempoBlurStart;
+    [SerializeField] private float tiempoBlurStart;
 
     [Space]
-    public Text timer;
-    public Color timerRojo;
+    [SerializeField] private Text timer;
+    [SerializeField] private Color timerRojo;
     public bool comenzar;
 
-    [Space]
-    public int puntajePorPersona = 100;
-    public int puntajeAutoGolpe = 50;
-    public Text puntaje1;
-    public Text puntaje2;
-    public Text puntaje3;
-    public Text puntaje4;
+    [Header("Puntuaciones")]
+    [SerializeField] private int puntajePorPersona = 100;
+    [SerializeField] private int puntajeAutoGolpe = 50;
+    [SerializeField] private Text puntaje1;
+    [SerializeField] private Text puntaje2;
+    [SerializeField] private Text puntaje3;
+    [SerializeField] private Text puntaje4;
 
     [Header("Respawn´s")]
-    public Transform[] respawns;
+    [SerializeField] private Transform[] respawns;
+
+    [Header("Configs UI")]
+    [SerializeField] private Canvas PlayCanvas;
+    [SerializeField] private GameObject man1_1;
+    [SerializeField] private GameObject man1_2;
+    [SerializeField] private GameObject man2_1;
+    [SerializeField] private GameObject man2_2;
+    [SerializeField] private GameObject man3_1;
+    [SerializeField] private GameObject man3_2;
+    [SerializeField] private GameObject man4_1;
+    [SerializeField] private GameObject man4_2;
+    [SerializeField] private GameObject time_1;
+    [SerializeField] private GameObject time_2;
 
     [Space]
-    public Image StartBlack;
-    public Canvas PlayCanvas1;
-    public Canvas PlayCanvas2;
-    public Canvas PausaCanvas;
-    public Canvas StartCanvas;
-    private Image[] StartImgs;
-    public Canvas FinalCanvas;
-    public PostProcessVolume post;
-    public CinemachineVirtualCamera Vcamera;
-    public AudioMixer mixer;
-    public AudioSource source1;
-    public AudioSource source2;
+    [SerializeField] private Canvas PausaCanvas;
+    [SerializeField] private Canvas StartCanvas;
+    private CanvasGroup StartCanvasGroup;
+    [SerializeField] private Canvas FinalCanvas;
+    [SerializeField] private PostProcessVolume post;
+    [SerializeField] private CinemachineVirtualCamera Vcamera;
+    [SerializeField] private AudioMixer mixer;
+    [SerializeField] private AudioSource source1;
+    [SerializeField] private AudioSource source2;
+
+    [Header("Animacion Inicial")]
+    [SerializeField] private AudioClip Aintroduccion;
+    [SerializeField] private AudioClip A321;
+    [SerializeField] private AudioClip Afaltan30;
+    [SerializeField] private AudioClip Afaltan10;
+    [SerializeField] private AudioClip Afaltan5;
+    [SerializeField] private AudioClip AalarmaFin;
 
     [Space]
-    public AudioClip Aintroduccion;
-    public AudioClip A321;
-    public AudioClip Afaltan30;
-    public AudioClip Afaltan10;
-    public AudioClip Afaltan5;
-    public AudioClip AalarmaFin;
+    [SerializeField] private GameObject naveRobot;
 
-    [Space]
-    public GameObject naveRobot;
-
-    [Space]
-    public GameObject jugador1;
-    public Transform jug1animRoot;
-    public MeshRenderer esferaRespaw1;
-    public MeshRenderer arrow1;
-    public Text UItext1;
-    public Image UI1img1;
-    public Image UI2img1;
-    public GameObject man1;
-    public GameObject man1Static;
+    [Header("Configs Jugadores")]
+    [SerializeField] private GameObject jugador1;
+    [SerializeField] private Transform jug1animRoot;
+    [SerializeField] private MeshRenderer esferaRespaw1;
+    [SerializeField] private MeshRenderer arrow1;
+    [SerializeField] private Text UItext1;
+    [SerializeField] private Image UI1img1;
+    [SerializeField] private Image UI2img1;
+    [SerializeField] private GameObject man1;
+    [SerializeField] private GameObject man1Static;
     //private Material esferaMatRespaw1;
 
     [Space]
-    public GameObject jugador2;
-    public Transform jug2animRoot;
-    public MeshRenderer esferaRespaw2;
-    public MeshRenderer arrow2;
-    public Text UItext2;
-    public Image UI1img2;
-    public Image UI2img2;
-    public GameObject man2;
-    public GameObject man2Static;
+    [SerializeField] private GameObject jugador2;
+    [SerializeField] private Transform jug2animRoot;
+    [SerializeField] private MeshRenderer esferaRespaw2;
+    [SerializeField] private MeshRenderer arrow2;
+    [SerializeField] private Text UItext2;
+    [SerializeField] private Image UI1img2;
+    [SerializeField] private Image UI2img2;
+    [SerializeField] private GameObject man2;
+    [SerializeField] private GameObject man2Static;
     //private Material esferaMatRespaw2;
 
     [Space]
-    public GameObject jugador3;
-    public Transform jug3animRoot;
-    public MeshRenderer esferaRespaw3;
-    public MeshRenderer arrow3;
-    public Text UItext3;
-    public Image UI1img3;
-    public Image UI2img3;
-    public GameObject man3;
-    public GameObject man3Static;
+    [SerializeField] private GameObject jugador3;
+    [SerializeField] private Transform jug3animRoot;
+    [SerializeField] private MeshRenderer esferaRespaw3;
+    [SerializeField] private MeshRenderer arrow3;
+    [SerializeField] private Text UItext3;
+    [SerializeField] private Image UI1img3;
+    [SerializeField] private Image UI2img3;
+    [SerializeField] private GameObject man3;
+    [SerializeField] private GameObject man3Static;
     //private Material esferaMatRespaw3;
 
     [Space]
-    public GameObject jugador4;
-    public Transform jug4animRoot;
-    public MeshRenderer esferaRespaw4;
-    public MeshRenderer arrow4;
-    public Text UItext4;
-    public Image UI1img4;
-    public Image UI2img4;
-    public GameObject man4;
-    public GameObject man4Static;
+    [SerializeField] private GameObject jugador4;
+    [SerializeField] private Transform jug4animRoot;
+    [SerializeField] private MeshRenderer esferaRespaw4;
+    [SerializeField] private MeshRenderer arrow4;
+    [SerializeField] private Text UItext4;
+    [SerializeField] private Image UI1img4;
+    [SerializeField] private Image UI2img4;
+    [SerializeField] private GameObject man4;
+    [SerializeField] private GameObject man4Static;
     //private Material esferaMatRespaw4;
 
-    [Space]
-    public CinemachineTargetGroup camGroup;
+    [Header("Vcam")]
+    [SerializeField] private CinemachineTargetGroup camGroup;
 
     [Space]
-    public AudioClip[] SonidosVictoria;
+    [SerializeField] private AudioClip[] SonidosVictoria;
     private CinemachineTargetGroup.Target finalizador1;
     private CinemachineTargetGroup.Target finalizador2;
     private CinemachineTargetGroup.Target finalizador3;
 
-    [Space]
-    public StandaloneInputModule eventSystem;
+    private StandaloneInputModule standaloneInput;
 
     private float mili;
     private int segundos;
@@ -134,8 +146,7 @@ public class InGameController : MonoBehaviour
     private CinemachineGroupComposer groupc;
     private float speed1;
     private float speed2;
-    private float speed3;
-    private bool pausado = false;
+    [SerializeField] private bool pausado = false;
 
     private int vaGanando;
     private int puntuacion1;
@@ -143,27 +154,38 @@ public class InGameController : MonoBehaviour
     private int puntuacion3;
     private int puntuacion4;
 
+    public static int P1_index = -1;
     public static string P1_H;
     public static string P1_V;
     public static string P1_F;
     public static string P1_P;
 
+    public static int P2_index = -1;
     public static string P2_H;
     public static string P2_V;
     public static string P2_F;
     public static string P2_P;
 
+    public static int P3_index = -1;
     public static string P3_H;
     public static string P3_V;
     public static string P3_F;
     public static string P3_P;
 
+    public static int P4_index = -1;
     public static string P4_H;
     public static string P4_V;
     public static string P4_F;
     public static string P4_P;
 
+    private bool P1desconeccion;
+    private bool P2desconeccion;
+    private bool P3desconeccion;
+    private bool P4desconeccion;
+
     public static int PN;
+
+    public static Scene sceneToUnload;
 
     private float countPausa = 0;
 
@@ -174,20 +196,26 @@ public class InGameController : MonoBehaviour
     private const string _Robot2 = "Robot2";
     private const string _Robot4 = "Robot4";
     private const string _Volumen_master = "Volumen_master";
-    private const string _J1_H = "J1_H";
-    private const string _J1_V = "J1_V";
-    private const string _J1_F = "J1_F";
+    //private const string _J1_H = "J1_H";
+    //private const string _J1_V = "J1_V";
+    //private const string _J1_F = "J1_F";
+    private const string _J1_H = "Generic_H";
+    private const string _J1_V = "Generic_V";
+    private const string _J1_F = "Generic_F";
     private const string _DosPuntos = ":";
     private const string _Seleccion = "Seleccion";
     private const string _Pause = "Pause";
     private const string _Ceros = "0:00";
     private const string _DosCeros = "00";
+
     private readonly int _BaseColor = Shader.PropertyToID("_BaseColor");
 
     private void Awake()
     {
-        Debug.LogWarning("- hacer que el canvasPlay no se apague al finalizar, lo que se apague, dependiendo de los que ganan," +
-            " sean la puntuacion de los que pierden y queden la puntuacion de los que ganan");
+        Instance = this;
+
+        //Debug.LogWarning("- hacer que el canvasPlay no se apague al finalizar, lo que se apague, dependiendo de los que ganan," +
+        //    " sean la puntuacion de los que pierden y queden la puntuacion de los que ganan");
 
         //if (esferaMatRespaw1 != null)
         //{
@@ -206,6 +234,8 @@ public class InGameController : MonoBehaviour
         //    esferaRespaw4.material = esferaMatRespaw4;
         //}
 
+        standaloneInput = EventSystem.current.GetComponent<StandaloneInputModule>();
+
         jugador1.SetActive(false);
         man1.SetActive(false);
         man1Static.SetActive(false);
@@ -222,6 +252,7 @@ public class InGameController : MonoBehaviour
         man4.SetActive(false);
         man4Static.SetActive(false);
 
+        #region Start Players Setters
         objects = SceneManager.GetSceneByBuildIndex(1).GetRootGameObjects();
         for (int i = 0; i < objects.Length; i++)
         {
@@ -347,56 +378,76 @@ public class InGameController : MonoBehaviour
                 //continue;
             }
         }
+        if (!jugador1.activeSelf && !jugador2.activeSelf && !jugador3.activeSelf && !jugador4.activeSelf)
+        {
+            //Test jug 1
+            //prefabs[0] = objects[i];
+            //prefabs[0].layer = 10;
+            //jug1animRoot.GetComponentsInChildren<Transform>()[1].gameObject.SetActive(false);
+            //prefabs[0].transform.SetParent(jug1animRoot);
+            //prefabs[0].transform.localPosition = Vector3.zero;
+            //if (prefabs[0].name == _Robot2 || prefabs[0].name == _Robot4)
+            //{
+            //    prefabs[0].transform.eulerAngles = new Vector3(0, -45, 0);
+            //}
+            //else
+            //{
+            //    prefabs[0].transform.eulerAngles = Vector3.zero;
+            //}
+            //prefabs[0].transform.localScale = new Vector3(10.876f, 10.876f, 10.876f);
+            //jugador1.GetComponent<JugadorController>().anim = prefabs[0].GetComponent<Animator>();
+            //ColoresPass coloresPas = prefabs[0].GetComponent<ColoresPass>();
+            //esferaRespaw1.material.SetColor(_BaseColor, coloresPas.RespawColor);
+            //arrow1.material.SetColor(_BaseColor, coloresPas.MiraPisoColor);
+            //jugador1.GetComponentInChildren<Disparo>().colorBala = coloresPas.BalaColor;
+            //Color32 colorUI = coloresPas.MiraPisoColor;
+            //UI1img1.color = colorUI;
+            //UI2img1.color = colorUI;
+            //UItext1.color = coloresPas.colorUI;
+            P1_H = "Generic_H";
+            P1_V = "Generic_V";
+            P1_F = "Generic_F";
+            P1_P = "Generic_P";
+            man1.SetActive(true);
+            man1Static.SetActive(true);
+            jugador1.SetActive(true);
+            Debug.Log("Jugador 1 test ready");
+        }
+        #endregion
 
         mixer.SetFloat(_Volumen_master, 0);
         naveRobot.SetActive(false);
         comenzar = false;
-        StartImgs = StartCanvas.GetComponentsInChildren<Image>();
-
-        jugador1.GetComponent<JugadorController>().Horizontal = P1_H;
-        jugador1.GetComponent<JugadorController>().Vertical = P1_V;
-        jugador1.GetComponent<JugadorController>().Fire = P1_F;
-        jugador1.GetComponent<JugadorController>().Power = P1_P;
-
-        jugador2.GetComponent<JugadorController>().Horizontal = P2_H;
-        jugador2.GetComponent<JugadorController>().Vertical = P2_V;
-        jugador2.GetComponent<JugadorController>().Fire = P2_F;
-        jugador2.GetComponent<JugadorController>().Power = P2_P;
-
-        jugador3.GetComponent<JugadorController>().Horizontal = P3_H;
-        jugador3.GetComponent<JugadorController>().Vertical = P3_V;
-        jugador3.GetComponent<JugadorController>().Fire = P3_F;
-        jugador3.GetComponent<JugadorController>().Power = P3_P;
-
-        jugador4.GetComponent<JugadorController>().Horizontal = P4_H;
-        jugador4.GetComponent<JugadorController>().Vertical = P4_V;
-        jugador4.GetComponent<JugadorController>().Fire = P4_F;
-        jugador4.GetComponent<JugadorController>().Power = P4_P;
+        StartCanvasGroup = StartCanvas.GetComponent<CanvasGroup>();
 
         if (P1_H != null)
         {
-            eventSystem.horizontalAxis = P1_H;
-            eventSystem.verticalAxis = P1_V;
-            eventSystem.submitButton = P1_F;
+            standaloneInput.horizontalAxis = P1_H;
+            standaloneInput.verticalAxis = P1_V;
+            //standaloneInput.submitButton = P1_F;
         }
         else
         {
-            eventSystem.horizontalAxis = _J1_H;
-            eventSystem.verticalAxis = _J1_V;
-            eventSystem.submitButton = _J1_F;
+            standaloneInput.horizontalAxis = _J1_H;
+            standaloneInput.verticalAxis = _J1_V;
+            //standaloneInput.submitButton = _J1_F;
         }
         //eventSystem.cancelButton = P1_P;
-
-        puntaje1.text = 0.ToString();
-        puntaje2.text = 0.ToString();
-        puntaje3.text = 0.ToString();
-        puntaje4.text = 0.ToString();
 
         StartCanvas.gameObject.SetActive(true);
         PausaCanvas.gameObject.SetActive(true);
         PausaCanvas.enabled = false;
-        PlayCanvas1.gameObject.SetActive(true);
-        PlayCanvas2.gameObject.SetActive(true);
+        PlayCanvas.gameObject.SetActive(true);
+        man1_1.SetActive(false);
+        man1_2.SetActive(false);
+        man2_1.SetActive(false);
+        man2_2.SetActive(false);
+        man3_1.SetActive(false);
+        man3_2.SetActive(false);
+        man4_1.SetActive(false);
+        man4_2.SetActive(false);
+        time_1.SetActive(true);
+        time_2.SetActive(true);
         FinalCanvas.gameObject.SetActive(true);
         FinalCanvas.enabled = false;
 
@@ -411,7 +462,54 @@ public class InGameController : MonoBehaviour
         groupc = Vcamera.GetCinemachineComponent<CinemachineGroupComposer>();
         groupc.m_ScreenY = 0.55f;
         depth.focusDistance.value = 0.1f;
-        //StartBlack.color = new Color32(0, 0, 0, 128);
+
+        if (jugador1.activeSelf)
+        {
+            jugador1.GetComponent<JugadorController>().Horizontal = P1_H;
+            jugador1.GetComponent<JugadorController>().Vertical = P1_V;
+            jugador1.GetComponent<JugadorController>().Fire = P1_F;
+            jugador1.GetComponent<JugadorController>().Power = P1_P;
+
+            puntaje1.text = 0.ToString();
+            man1_1.SetActive(true);
+            man1_2.SetActive(true);
+        }
+
+        if (jugador2.activeSelf)
+        {
+            jugador2.GetComponent<JugadorController>().Horizontal = P2_H;
+            jugador2.GetComponent<JugadorController>().Vertical = P2_V;
+            jugador2.GetComponent<JugadorController>().Fire = P2_F;
+            jugador2.GetComponent<JugadorController>().Power = P2_P;
+
+            puntaje2.text = 0.ToString();
+            man2_1.SetActive(true);
+            man2_2.SetActive(true);
+        }
+
+        if (jugador3.activeSelf)
+        {
+            jugador3.GetComponent<JugadorController>().Horizontal = P3_H;
+            jugador3.GetComponent<JugadorController>().Vertical = P3_V;
+            jugador3.GetComponent<JugadorController>().Fire = P3_F;
+            jugador3.GetComponent<JugadorController>().Power = P3_P;
+
+            puntaje3.text = 0.ToString();
+            man3_1.SetActive(true);
+            man3_2.SetActive(true);
+        }
+
+        if (jugador4.activeSelf)
+        {
+            jugador4.GetComponent<JugadorController>().Horizontal = P4_H;
+            jugador4.GetComponent<JugadorController>().Vertical = P4_V;
+            jugador4.GetComponent<JugadorController>().Fire = P4_F;
+            jugador4.GetComponent<JugadorController>().Power = P4_P;
+
+            puntaje4.text = 0.ToString();
+            man4_1.SetActive(true);
+            man4_2.SetActive(true);
+        }
     }
 
     private void Start()
@@ -423,6 +521,90 @@ public class InGameController : MonoBehaviour
         //    arrow1.material.SetColor("Color", coloresPas.MiraPisoColor);
         //    jugador1.GetComponentInChildren<Disparo>().colorBala = coloresPas.BalaColor;
         //}
+
+        if (sceneToUnload.isLoaded)
+        {
+            SceneManager.UnloadSceneAsync(0);
+        }
+    }
+
+    private void OnEnable()
+    {
+        ControlsUpdate.OnDisconnect += OnDisConect;
+        //ControlsUpdate.OnConnect += OnConect;
+        ControlsUpdate.OnReconnect += OnReconect;
+    }
+
+    void Update()
+    {
+        if (Input.GetButtonDown(_Pause))
+        {
+            if (!pausado)
+            {
+                Pausar();
+            }
+            if (countPausa < -1 && pausado)
+            {
+                Reanudar();
+            }
+        }
+
+        if (pausado)
+        {
+            countPausa -= 1;
+        }
+
+        if (comenzar)
+        {
+            if (impactChromatic >= 0.05f)
+            {
+                impactChromatic -= 0.01f;
+                chromatic.intensity.value = impactChromatic;
+            }
+            if (impactBloomDif >= 7)
+            {
+                impactBloomDif -= 0.1f;
+                bloom.diffusion.value = impactBloomDif;
+            }
+
+            mili += Time.deltaTime;
+            if (mili >= 1)
+            {
+                mili = 0;
+                segundos -= 1;
+                if (segundos <= -1)
+                {
+                    segundos = 59;
+                    minutos -= 1;
+                }
+            }
+
+            if (minutos == 0)
+            {
+                timer.color = timerRojo;
+            }
+
+            if (minutos < 0)
+            {
+                timer.text = _Ceros;
+                FinalizarJuego();
+                comenzar = false;
+            }
+
+            if (segundos == -1)
+            {
+                segundosS = 0;
+            }
+            else
+            {
+                segundosS = segundos;
+            }
+            timer.text = minutos + _DosPuntos + segundosS.ToString(_DosCeros);
+            if (segundos == 0)
+            {
+                segundosS = 60;
+            }
+        }
     }
 
     #region Funciones
@@ -436,8 +618,7 @@ public class InGameController : MonoBehaviour
     public void IniciarJuego()
     {
         StartCoroutine(ChangeSpeed1(0.1f, 10, tiempoBlurStart * 1.6f));
-        StartCoroutine(ChangeSpeed2(128, 0, tiempoBlurStart));
-        StartCoroutine(ChangeSpeed3(255, 0, tiempoBlurStart));
+        StartCoroutine(ChangeSpeed2(1, 0, tiempoBlurStart));
 
         StartCoroutine(ComenzarAudios());
     }
@@ -458,6 +639,65 @@ public class InGameController : MonoBehaviour
         comenzar = true;
         yield return new WaitForSeconds(8);
         naveRobot.SetActive(false);
+    }
+
+    private void OnDisConect(string controlName, bool conectado, int joystickNum)
+    {
+        Debug.LogWarning("bai " + controlName);
+
+        if (P1_index == joystickNum)
+        {
+            Debug.LogError("Crack " + 1 + ", se te desconecto el control " + controlName);
+            P1desconeccion = true;
+            Pausar();
+        }
+        if (P1_index == joystickNum)
+        {
+            Debug.LogError("Crack " + 2 + ", se te desconecto el control " + controlName);
+            P2desconeccion = true;
+            Pausar();
+        }
+        if (P1_index == joystickNum)
+        {
+            Debug.LogError("Crack " + 3 + ", se te desconecto el control " + controlName);
+            P3desconeccion = true;
+            Pausar();
+        }
+        if (P1_index == joystickNum)
+        {
+            Debug.LogError("Crack " + 4 + ", se te desconecto el control " + controlName);
+            P4desconeccion = true;
+            Pausar();
+        }
+    }
+    private void OnReconect(string controlName, int joystickNum)
+    {
+        Debug.LogWarning("REhi " + controlName);
+
+        if (P1desconeccion && P1_index == joystickNum)
+        {
+            P1desconeccion = false;
+            Debug.LogError("Crack " + 1 + ", volvio");
+            Reanudar();
+        }
+        if (P2desconeccion && P1_index == joystickNum)
+        {
+            P2desconeccion = false;
+            Debug.LogError("Crack " + 2 + ", volvio");
+            Reanudar();
+        }
+        if (P3desconeccion && P1_index == joystickNum)
+        {
+            P3desconeccion = false;
+            Debug.LogError("Crack " + 3 + ", volvio");
+            Reanudar();
+        }
+        if (P4desconeccion && P1_index == joystickNum)
+        {
+            P4desconeccion = false;
+            Debug.LogError("Crack " + 4 + ", volvio");
+            Reanudar();
+        }
     }
 
     public void Pausar()
@@ -482,8 +722,8 @@ public class InGameController : MonoBehaviour
         countPausa = 0;
         mixer.SetFloat(_Volumen_master, 0);
         Time.timeScale = 1;
-        PlayCanvas1.enabled = true;
-        PlayCanvas2.enabled = true;
+        PlayCanvas.enabled = true;
+        //PlayCanvas2.enabled = true;
         PausaCanvas.enabled = false;
         depth.focusDistance.value = 200;
         //StartBlack.color = new Color32(0, 0, 0, 0);
@@ -586,33 +826,10 @@ public class InGameController : MonoBehaviour
             speed2 = Mathf.Lerp(v_start, v_end, elapsed / duration);
             elapsed += Time.deltaTime;
             yield return null;
-            StartBlack.color = new Color32(0, 0, 0, (byte)speed2);
+            StartCanvasGroup.alpha = speed2;
         }
         speed2 = v_end;
-        StartBlack.color = new Color32(0, 0, 0, (byte)speed2);
-    }
-    public IEnumerator ChangeSpeed3(float v_start, float v_end, float duration)
-    {
-        float elapsed = 0.0f;
-        while (elapsed < duration)
-        {
-            speed3 = Mathf.Lerp(v_start, v_end, elapsed / duration);
-            elapsed += Time.deltaTime;
-            yield return null;
-
-            for (int i = 0; i < StartImgs.Length; i++)
-            {
-                StartImgs[1].color = new Color32(255, 255, 255, (byte)speed3);
-                StartImgs[2].color = new Color32(255, 255, 255, (byte)speed3);
-            }
-        }
-        speed3 = v_end;
-
-        for (int i = 0; i < StartImgs.Length; i++)
-        {
-            StartImgs[1].color = new Color32(255, 255, 255, (byte)speed3);
-            StartImgs[2].color = new Color32(255, 255, 255, (byte)speed3);
-        }
+        StartCanvasGroup.alpha = speed2;
     }
 
     public void ComprobarVaGanando()
@@ -699,11 +916,11 @@ public class InGameController : MonoBehaviour
 
     public void FinalizarJuego()
     {
-        PlayCanvas1.enabled = false;
-        PlayCanvas2.enabled = false;
+        //PlayCanvas.enabled = false;
+        time_1.SetActive(false);
+        time_2.SetActive(false);
         FinalCanvas.enabled = true;
         depth.active = false;
-        StartBlack.color = new Color32(0, 0, 0, 128);
         groupc.m_ScreenY = 0.425f;
 
         //camGroup.m_Targets = new CinemachineTargetGroup.Target[1];
@@ -711,6 +928,15 @@ public class InGameController : MonoBehaviour
         switch (vaGanando)
         {
             case 0:
+                man1_1.SetActive(false);
+                man1_2.SetActive(false);
+                man2_1.SetActive(false);
+                man2_2.SetActive(false);
+                man3_1.SetActive(false);
+                man3_2.SetActive(false);
+                man4_1.SetActive(false);
+                man4_2.SetActive(false);
+
                 /*finalizador1.target = jugador2.transform;
                 finalizador1.weight = 1;
                 finalizador1.radius = 1;
@@ -733,6 +959,15 @@ public class InGameController : MonoBehaviour
                 break;
 
             case 1:
+                //man1_1.SetActive(false);
+                //man1_2.SetActive(false);
+                man2_1.SetActive(false);
+                man2_2.SetActive(false);
+                man3_1.SetActive(false);
+                man3_2.SetActive(false);
+                man4_1.SetActive(false);
+                man4_2.SetActive(false);
+
                 finalizador1.target = jugador1.transform;
                 finalizador1.weight = 2;
                 finalizador1.radius = 2;
@@ -749,6 +984,15 @@ public class InGameController : MonoBehaviour
                 break;
 
             case 2:
+                man1_1.SetActive(false);
+                man1_2.SetActive(false);
+                //man2_1.SetActive(false);
+                //man2_2.SetActive(false);
+                man3_1.SetActive(false);
+                man3_2.SetActive(false);
+                man4_1.SetActive(false);
+                man4_2.SetActive(false);
+
                 finalizador1.target = jugador2.transform;
                 finalizador1.weight = 2;
                 finalizador1.radius = 2;
@@ -765,6 +1009,15 @@ public class InGameController : MonoBehaviour
                 break;
 
             case 3:
+                man1_1.SetActive(false);
+                man1_2.SetActive(false);
+                man2_1.SetActive(false);
+                man2_2.SetActive(false);
+                //man3_1.SetActive(false);
+                //man3_2.SetActive(false);
+                man4_1.SetActive(false);
+                man4_2.SetActive(false);
+
                 finalizador1.target = jugador3.transform;
                 finalizador1.weight = 2;
                 finalizador1.radius = 2;
@@ -781,6 +1034,15 @@ public class InGameController : MonoBehaviour
                 break;
 
             case 4:
+                man1_1.SetActive(false);
+                man1_2.SetActive(false);
+                man2_1.SetActive(false);
+                man2_2.SetActive(false);
+                man3_1.SetActive(false);
+                man3_2.SetActive(false);
+                //man4_1.SetActive(false);
+                //man4_2.SetActive(false);
+
                 finalizador1.target = jugador4.transform;
                 finalizador1.weight = 2;
                 finalizador1.radius = 2;
@@ -797,6 +1059,15 @@ public class InGameController : MonoBehaviour
                 break;
 
             case 5:
+                //man1_1.SetActive(false);
+                //man1_2.SetActive(false);
+                //man2_1.SetActive(false);
+                //man2_2.SetActive(false);
+                man3_1.SetActive(false);
+                man3_2.SetActive(false);
+                man4_1.SetActive(false);
+                man4_2.SetActive(false);
+
                 finalizador1.target = jugador1.transform;
                 finalizador1.weight = 1.6f;
                 finalizador1.radius = 1.6f;
@@ -816,6 +1087,15 @@ public class InGameController : MonoBehaviour
                 break;
 
             case 6:
+                man1_1.SetActive(false);
+                man1_2.SetActive(false);
+                //man2_1.SetActive(false);
+                //man2_2.SetActive(false);
+                //man3_1.SetActive(false);
+                //man3_2.SetActive(false);
+                man4_1.SetActive(false);
+                man4_2.SetActive(false);
+
                 finalizador1.target = jugador2.transform;
                 finalizador1.weight = 1.6f;
                 finalizador1.radius = 1.6f;
@@ -835,6 +1115,15 @@ public class InGameController : MonoBehaviour
                 break;
 
             case 7:
+                man1_1.SetActive(false);
+                man1_2.SetActive(false);
+                man2_1.SetActive(false);
+                man2_2.SetActive(false);
+                //man3_1.SetActive(false);
+                //man3_2.SetActive(false);
+                //man4_1.SetActive(false);
+                //man4_2.SetActive(false);
+
                 finalizador1.target = jugador3.transform;
                 finalizador1.weight = 1.6f;
                 finalizador1.radius = 1.6f;
@@ -854,6 +1143,15 @@ public class InGameController : MonoBehaviour
                 break;
 
             case 8:
+                //man1_1.SetActive(false);
+                //man1_2.SetActive(false);
+                man2_1.SetActive(false);
+                man2_2.SetActive(false);
+                man3_1.SetActive(false);
+                man3_2.SetActive(false);
+                //man4_1.SetActive(false);
+                //man4_2.SetActive(false);
+
                 finalizador1.target = jugador1.transform;
                 finalizador1.weight = 1.6f;
                 finalizador1.radius = 1.6f;
@@ -873,6 +1171,15 @@ public class InGameController : MonoBehaviour
                 break;
 
             case 9:
+                //man1_1.SetActive(false);
+                //man1_2.SetActive(false);
+                man2_1.SetActive(false);
+                man2_2.SetActive(false);
+                //man3_1.SetActive(false);
+                //man3_2.SetActive(false);
+                man4_1.SetActive(false);
+                man4_2.SetActive(false);
+
                 finalizador1.target = jugador1.transform;
                 finalizador1.weight = 1.6f;
                 finalizador1.radius = 1.6f;
@@ -892,6 +1199,15 @@ public class InGameController : MonoBehaviour
                 break;
 
             case 10:
+                man1_1.SetActive(false);
+                man1_2.SetActive(false);
+                //man2_1.SetActive(false);
+                //man2_2.SetActive(false);
+                man3_1.SetActive(false);
+                man3_2.SetActive(false);
+                //man4_1.SetActive(false);
+                //man4_2.SetActive(false);
+
                 finalizador1.target = jugador2.transform;
                 finalizador1.weight = 1.6f;
                 finalizador1.radius = 1.6f;
@@ -911,6 +1227,15 @@ public class InGameController : MonoBehaviour
                 break;
 
             case 11:
+                //man1_1.SetActive(false);
+                //man1_2.SetActive(false);
+                //man2_1.SetActive(false);
+                //man2_2.SetActive(false);
+                //man3_1.SetActive(false);
+                //man3_2.SetActive(false);
+                man4_1.SetActive(false);
+                man4_2.SetActive(false);
+
                 finalizador1.target = jugador1.transform;
                 finalizador1.weight = 1.3f;
                 finalizador1.radius = 1.3f;
@@ -933,6 +1258,15 @@ public class InGameController : MonoBehaviour
                 break;
 
             case 12:
+                //man1_1.SetActive(false);
+                //man1_2.SetActive(false);
+                //man2_1.SetActive(false);
+                //man2_2.SetActive(false);
+                man3_1.SetActive(false);
+                man3_2.SetActive(false);
+                //man4_1.SetActive(false);
+                //man4_2.SetActive(false);
+
                 finalizador1.target = jugador1.transform;
                 finalizador1.weight = 1.3f;
                 finalizador1.radius = 1.3f;
@@ -955,6 +1289,15 @@ public class InGameController : MonoBehaviour
                 break;
 
             case 13:
+                //man1_1.SetActive(false);
+                //man1_2.SetActive(false);
+                man2_1.SetActive(false);
+                man2_2.SetActive(false);
+                //man3_1.SetActive(false);
+                //man3_2.SetActive(false);
+                //man4_1.SetActive(false);
+                //man4_2.SetActive(false);
+
                 finalizador1.target = jugador3.transform;
                 finalizador1.weight = 1.3f;
                 finalizador1.radius = 1.3f;
@@ -977,6 +1320,15 @@ public class InGameController : MonoBehaviour
                 break;
 
             case 14:
+                man1_1.SetActive(false);
+                man1_2.SetActive(false);
+                //man2_1.SetActive(false);
+                //man2_2.SetActive(false);
+                //man3_1.SetActive(false);
+                //man3_2.SetActive(false);
+                //man4_1.SetActive(false);
+                //man4_2.SetActive(false);
+
                 finalizador1.target = jugador2.transform;
                 finalizador1.weight = 1.3f;
                 finalizador1.radius = 1.3f;
@@ -1009,76 +1361,4 @@ public class InGameController : MonoBehaviour
     }
 
     #endregion
-
-    void Update()
-    {
-        if (Input.GetButtonDown(_Pause))
-        {
-            if (!pausado)
-            {
-                Pausar();
-            }
-            if (countPausa < -1 && pausado)
-            {
-                Reanudar();
-            }
-        }
-
-        if (pausado)
-        {
-            countPausa -= 1;
-        }
-
-        if (comenzar)
-        {
-            if (impactChromatic >= 0.05f)
-            {
-                impactChromatic -= 0.01f;
-                chromatic.intensity.value = impactChromatic;
-            }
-            if (impactBloomDif >= 7)
-            {
-                impactBloomDif -= 0.1f;
-                bloom.diffusion.value = impactBloomDif;
-            }
-
-            mili += Time.deltaTime;
-            if (mili >= 1)
-            {
-                mili = 0;
-                segundos -= 1;
-                if (segundos <= -1)
-                {
-                    segundos = 59;
-                    minutos -= 1;
-                }
-            }
-
-            if (minutos == 0)
-            {
-                timer.color = timerRojo;
-            }
-
-            if (minutos < 0)
-            {
-                timer.text = _Ceros;
-                FinalizarJuego();
-                comenzar = false;
-            }
-
-            if (segundos == -1)
-            {
-                segundosS = 0;
-            }
-            else
-            {
-                segundosS = segundos;
-            }
-            timer.text = minutos + _DosPuntos + segundosS.ToString(_DosCeros);
-            if (segundos == 0)
-            {
-                segundosS = 60;
-            }
-        }
-    }
 }

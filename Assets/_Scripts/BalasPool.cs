@@ -2,11 +2,12 @@
 
 public class BalasPool : MonoBehaviour
 {
-    public int poolSize = 25;
+    public static BalasPool Instance { get; private set; }
+
+    [SerializeField] private int poolSize = 25;
 
     [Space]
-    public GameObject balaPrefab;
-    public Material test;
+    [SerializeField] private GameObject balaPrefab;
 
     private GameObject[] Balas;
     private ParticleSystemRenderer[] BalasColor;
@@ -16,6 +17,8 @@ public class BalasPool : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
+
         Balas = new GameObject[poolSize];
         BalasColor = new ParticleSystemRenderer[poolSize];
         BalasComponent = new Bala[poolSize];
