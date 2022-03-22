@@ -12,6 +12,8 @@ public class InGameController : MonoBehaviour
     public static InGameController Instance { get; private set; }
 
     [Header("Config Inicial")]
+    [SerializeField] private StandaloneInputModule standaloneInput;
+    private CustomInputModule customInput;
     [SerializeField] private GameObject[] objects;
     [SerializeField] private GameObject[] prefabs = new GameObject[4];
 
@@ -131,8 +133,6 @@ public class InGameController : MonoBehaviour
     private CinemachineTargetGroup.Target finalizador2;
     private CinemachineTargetGroup.Target finalizador3;
 
-    private StandaloneInputModule standaloneInput;
-
     private float mili;
     private int segundos;
     private int segundosS;
@@ -155,10 +155,12 @@ public class InGameController : MonoBehaviour
     private int puntuacion4;
 
     public static int P1_index = -1;
-    public static string P1_H;
-    public static string P1_V;
-    public static string P1_F;
-    public static string P1_P;
+    public static string P1_H = "Generic_H";
+    public static string P1_V = "Generic_V";
+    //public static string P1_F = "Generic_F";
+    //public static string P1_P = "Generic_P";
+    public static string P1_F = "mouse 0";
+    public static string P1_P = "mouse 1";
 
     public static int P2_index = -1;
     public static string P2_H;
@@ -201,7 +203,6 @@ public class InGameController : MonoBehaviour
     //private const string _J1_F = "J1_F";
     private const string _J1_H = "Generic_H";
     private const string _J1_V = "Generic_V";
-    private const string _J1_F = "Generic_F";
     private const string _DosPuntos = ":";
     private const string _Seleccion = "Seleccion";
     private const string _Pause = "Pause";
@@ -234,7 +235,8 @@ public class InGameController : MonoBehaviour
         //    esferaRespaw4.material = esferaMatRespaw4;
         //}
 
-        standaloneInput = EventSystem.current.GetComponent<StandaloneInputModule>();
+        //standaloneInput = EventSystem.current.GetComponent<StandaloneInputModule>();
+        customInput = CustomInputModule.Instance;
 
         jugador1.SetActive(false);
         man1.SetActive(false);
@@ -375,7 +377,6 @@ public class InGameController : MonoBehaviour
                 man4Static.SetActive(true);
                 jugador4.SetActive(true);
                 Debug.Log("Jugador 4 ready");
-                //continue;
             }
         }
         if (!jugador1.activeSelf && !jugador2.activeSelf && !jugador3.activeSelf && !jugador4.activeSelf)
@@ -404,10 +405,12 @@ public class InGameController : MonoBehaviour
             //UI1img1.color = colorUI;
             //UI2img1.color = colorUI;
             //UItext1.color = coloresPas.colorUI;
-            P1_H = "Generic_H";
-            P1_V = "Generic_V";
-            P1_F = "Generic_F";
-            P1_P = "Generic_P";
+
+            //P1_H = "Generic_H";
+            //P1_V = "Generic_V";
+            //P1_F = "Generic_F";
+            //P1_P = "Generic_P";
+
             man1.SetActive(true);
             man1Static.SetActive(true);
             jugador1.SetActive(true);
@@ -425,12 +428,20 @@ public class InGameController : MonoBehaviour
             standaloneInput.horizontalAxis = P1_H;
             standaloneInput.verticalAxis = P1_V;
             //standaloneInput.submitButton = P1_F;
+
+            customInput.horizontalAxis = P1_H;
+            customInput.verticalAxis = P1_V;
+            customInput.submitButton = P1_F;
         }
         else
         {
             standaloneInput.horizontalAxis = _J1_H;
             standaloneInput.verticalAxis = _J1_V;
             //standaloneInput.submitButton = _J1_F;
+
+            customInput.horizontalAxis = _J1_H;
+            customInput.verticalAxis = _J1_V;
+            customInput.submitButton = P1_F;
         }
         //eventSystem.cancelButton = P1_P;
 

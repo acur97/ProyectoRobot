@@ -1,5 +1,19 @@
 {
   "dependencies": {
+    "com.autodesk.fbx": {
+      "version": "4.1.1",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.febucci.custom-hierarchy": {
+      "version": "https://github.com/febucci/unitypackage-custom-hierarchy.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "093baf4e09c2cd21c284303a977ec112a43041a7"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
@@ -19,11 +33,28 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.editorcoroutines": {
+      "version": "1.0.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
     "com.unity.ext.nunit": {
       "version": "1.0.6",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.formats.fbx": {
+      "version": "4.1.2",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.timeline": "1.5.2",
+        "com.autodesk.fbx": "4.1.1"
+      },
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.visualstudio": {
@@ -33,6 +64,22 @@
       "dependencies": {
         "com.unity.test-framework": "1.1.9"
       },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.memoryprofiler": {
+      "version": "0.6.0-preview.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.editorcoroutines": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.nuget.newtonsoft-json": {
+      "version": "2.0.2",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.postprocessing": {
@@ -90,6 +137,18 @@
       "source": "registry",
       "dependencies": {
         "com.unity.ugui": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.timeline": {
+      "version": "1.7.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.director": "1.0.0",
+        "com.unity.modules.animation": "1.0.0",
+        "com.unity.modules.audio": "1.0.0",
+        "com.unity.modules.particlesystem": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },

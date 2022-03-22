@@ -163,6 +163,7 @@ public class SelectionManager : MonoBehaviour
     private const string _TyM = "Teclado y Mouse";
     private const string _Pattern = @"([a-zA-Z]+)(\d+)|(?<!^)(?=[A-Z])";
     private const string _J0_F = "J0_F";
+    private readonly string StringNull = string.Empty;
     private readonly int _BaseColor = Shader.PropertyToID("_BaseColor");
     private readonly int _Color = Shader.PropertyToID("_Color");
     private readonly int _EmissionColor = Shader.PropertyToID("_EmissionColor");
@@ -401,23 +402,7 @@ public class SelectionManager : MonoBehaviour
                     {
                         if (Input.GetKeyDown((KeyCode)i))
                         {
-                            string szs = ((KeyCode)i).ToString();
-                            string[] split = Regex.Split(szs, _Pattern);
-                            szs = string.Empty;
-                            for (int j = 0; j < split.Length; j++)
-                            {
-                                if (split[j] != string.Empty)
-                                {
-                                    szs += split[j];
-                                    if (j != split.Length - 1)
-                                    {
-                                        szs += _WhiteSpace;
-                                    }
-                                }
-
-                            }
-                            szs = szs.Trim().ToLower();
-                            JugadorSetDisparo(1, szs);
+                            JugadorSetDisparo(1, KeyCodeRegex(((KeyCode)i).ToString()));
                             break;
                         }
                     }
@@ -462,23 +447,7 @@ public class SelectionManager : MonoBehaviour
                         }
                         if (Input.GetKeyDown((KeyCode)i))
                         {
-                            string szs = ((KeyCode)i).ToString();
-                            string[] split = Regex.Split(szs, _Pattern);
-                            szs = string.Empty;
-                            for (int j = 0; j < split.Length; j++)
-                            {
-                                if (split[j] != string.Empty)
-                                {
-                                    szs += split[j];
-                                    if (j != split.Length - 1)
-                                    {
-                                        szs += _WhiteSpace;
-                                    }
-                                }
-
-                            }
-                            szs = szs.Trim().ToLower();
-                            JugadorSetPoder(1, szs);
+                            JugadorSetPoder(1, KeyCodeRegex(((KeyCode)i).ToString()));
                             break;
                         }
                     }
@@ -524,23 +493,7 @@ public class SelectionManager : MonoBehaviour
                     {
                         if (Input.GetKeyDown((KeyCode)i))
                         {
-                            string szs = ((KeyCode)i).ToString();
-                            string[] split = Regex.Split(szs, _Pattern);
-                            szs = string.Empty;
-                            for (int j = 0; j < split.Length; j++)
-                            {
-                                if (split[j] != string.Empty)
-                                {
-                                    szs += split[j];
-                                    if (j != split.Length - 1)
-                                    {
-                                        szs += _WhiteSpace;
-                                    }
-                                }
-
-                            }
-                            szs = szs.Trim().ToLower();
-                            JugadorSetDisparo(2, szs);
+                            JugadorSetDisparo(2, KeyCodeRegex(((KeyCode)i).ToString()));
                             break;
                         }
                     }
@@ -585,23 +538,7 @@ public class SelectionManager : MonoBehaviour
                         }
                         if (Input.GetKeyDown((KeyCode)i))
                         {
-                            string szs = ((KeyCode)i).ToString();
-                            string[] split = Regex.Split(szs, _Pattern);
-                            szs = string.Empty;
-                            for (int j = 0; j < split.Length; j++)
-                            {
-                                if (split[j] != string.Empty)
-                                {
-                                    szs += split[j];
-                                    if (j != split.Length - 1)
-                                    {
-                                        szs += _WhiteSpace;
-                                    }
-                                }
-
-                            }
-                            szs = szs.Trim().ToLower();
-                            JugadorSetPoder(2, szs);
+                            JugadorSetPoder(2, KeyCodeRegex(((KeyCode)i).ToString()));
                             break;
                         }
                     }
@@ -647,23 +584,7 @@ public class SelectionManager : MonoBehaviour
                     {
                         if (Input.GetKeyDown((KeyCode)i))
                         {
-                            string szs = ((KeyCode)i).ToString();
-                            string[] split = Regex.Split(szs, _Pattern);
-                            szs = string.Empty;
-                            for (int j = 0; j < split.Length; j++)
-                            {
-                                if (split[j] != string.Empty)
-                                {
-                                    szs += split[j];
-                                    if (j != split.Length - 1)
-                                    {
-                                        szs += _WhiteSpace;
-                                    }
-                                }
-
-                            }
-                            szs = szs.Trim().ToLower();
-                            JugadorSetDisparo(3, szs);
+                            JugadorSetDisparo(3, KeyCodeRegex(((KeyCode)i).ToString()));
                             break;
                         }
                     }
@@ -708,23 +629,7 @@ public class SelectionManager : MonoBehaviour
                         }
                         if (Input.GetKeyDown((KeyCode)i))
                         {
-                            string szs = ((KeyCode)i).ToString();
-                            string[] split = Regex.Split(szs, _Pattern);
-                            szs = string.Empty;
-                            for (int j = 0; j < split.Length; j++)
-                            {
-                                if (split[j] != string.Empty)
-                                {
-                                    szs += split[j];
-                                    if (j != split.Length - 1)
-                                    {
-                                        szs += _WhiteSpace;
-                                    }
-                                }
-
-                            }
-                            szs = szs.Trim().ToLower();
-                            JugadorSetPoder(3, szs);
+                            JugadorSetPoder(3, KeyCodeRegex(((KeyCode)i).ToString()));
                             break;
                         }
                     }
@@ -770,23 +675,7 @@ public class SelectionManager : MonoBehaviour
                     {
                         if (Input.GetKeyDown((KeyCode)i))
                         {
-                            string szs = ((KeyCode)i).ToString();
-                            string[] split = Regex.Split(szs, _Pattern);
-                            szs = string.Empty;
-                            for (int j = 0; j < split.Length; j++)
-                            {
-                                if (split[j] != string.Empty)
-                                {
-                                    szs += split[j];
-                                    if (j != split.Length - 1)
-                                    {
-                                        szs += _WhiteSpace;
-                                    }
-                                }
-
-                            }
-                            szs = szs.Trim().ToLower();
-                            JugadorSetDisparo(4, szs);
+                            JugadorSetDisparo(4, KeyCodeRegex(((KeyCode)i).ToString()));
                             break;
                         }
                     }
@@ -831,23 +720,7 @@ public class SelectionManager : MonoBehaviour
                         }
                         if (Input.GetKeyDown((KeyCode)i))
                         {
-                            string szs = ((KeyCode)i).ToString();
-                            string[] split = Regex.Split(szs, _Pattern);
-                            szs = string.Empty;
-                            for (int j = 0; j < split.Length; j++)
-                            {
-                                if (split[j] != string.Empty)
-                                {
-                                    szs += split[j];
-                                    if (j != split.Length - 1)
-                                    {
-                                        szs += _WhiteSpace;
-                                    }
-                                }
-
-                            }
-                            szs = szs.Trim().ToLower();
-                            JugadorSetPoder(4, szs);
+                            JugadorSetPoder(4, KeyCodeRegex(((KeyCode)i).ToString()));
                             break;
                         }
                     }
@@ -892,7 +765,7 @@ public class SelectionManager : MonoBehaviour
                     P1_selectColorImg.SetActive(false);
                     selecP1 = 1;
                 }
-                if (Input.GetAxisRaw(_J + controlesP1 + _V) < -0.25f)
+                else if (Input.GetAxisRaw(_J + controlesP1 + _V) < -0.25f)
                 {
                     P1_selectModeloImg.SetActive(false);
                     P1_selectColorImg.SetActive(true);
@@ -953,7 +826,7 @@ public class SelectionManager : MonoBehaviour
                         playerOps[0].matModelos.SetColor(_EmissionColor, playerColors.Colores[P1_cont2].colorEmission);
                     }
                 }
-                if (Input.GetAxisRaw(_J + controlesP1 + _H) < -0.25f && P1_delay < 0.25f)
+                else if (Input.GetAxisRaw(_J + controlesP1 + _H) < -0.25f && P1_delay < 0.25f)
                 {
                     if (selecP1 == 1)
                     {
@@ -1038,7 +911,7 @@ public class SelectionManager : MonoBehaviour
                     P2_selectColorImg.SetActive(false);
                     selecP2 = 1;
                 }
-                if (Input.GetAxisRaw(_J + controlesP2 + _V) < -0.25f)
+                else if (Input.GetAxisRaw(_J + controlesP2 + _V) < -0.25f)
                 {
                     P2_selectModeloImg.SetActive(false);
                     P2_selectColorImg.SetActive(true);
@@ -1099,7 +972,7 @@ public class SelectionManager : MonoBehaviour
                         playerOps[1].matModelos.SetColor(_EmissionColor, playerColors.Colores[P2_cont2].colorEmission);
                     }
                 }
-                if (Input.GetAxisRaw(_J + controlesP2 + _H) < -0.25f && P2_delay < 0.25f)
+                else if (Input.GetAxisRaw(_J + controlesP2 + _H) < -0.25f && P2_delay < 0.25f)
                 {
                     if (selecP2 == 1)
                     {
@@ -1184,7 +1057,7 @@ public class SelectionManager : MonoBehaviour
                     P3_selectColorImg.SetActive(false);
                     selecP3 = 1;
                 }
-                if (Input.GetAxisRaw(_J + controlesP3 + _V) < -0.25f)
+                else if (Input.GetAxisRaw(_J + controlesP3 + _V) < -0.25f)
                 {
                     P3_selectModeloImg.SetActive(false);
                     P3_selectColorImg.SetActive(true);
@@ -1245,7 +1118,7 @@ public class SelectionManager : MonoBehaviour
                         playerOps[2].matModelos.SetColor(_EmissionColor, playerColors.Colores[P3_cont2].colorEmission);
                     }
                 }
-                if (Input.GetAxisRaw(_J + controlesP3 + _H) < -0.25f && P3_delay < 0.25f)
+                else if (Input.GetAxisRaw(_J + controlesP3 + _H) < -0.25f && P3_delay < 0.25f)
                 {
                     if (selecP3 == 1)
                     {
@@ -1330,7 +1203,7 @@ public class SelectionManager : MonoBehaviour
                     P4_selectColorImg.SetActive(false);
                     selecP4 = 1;
                 }
-                if (Input.GetAxisRaw(_J + controlesP4 + _V) < -0.25f)
+                else if (Input.GetAxisRaw(_J + controlesP4 + _V) < -0.25f)
                 {
                     P4_selectModeloImg.SetActive(false);
                     P4_selectColorImg.SetActive(true);
@@ -1391,7 +1264,7 @@ public class SelectionManager : MonoBehaviour
                         playerOps[3].matModelos.SetColor(_EmissionColor, playerColors.Colores[P4_cont2].colorEmission);
                     }
                 }
-                if (Input.GetAxisRaw(_J + controlesP4 + _H) < -0.25f && P4_delay < 0.25f)
+                else if (Input.GetAxisRaw(_J + controlesP4 + _H) < -0.25f && P4_delay < 0.25f)
                 {
                     if (selecP4 == 1)
                     {
@@ -1487,6 +1360,27 @@ public class SelectionManager : MonoBehaviour
                 readyStatus.SetActive(false);
             }
         }
+    }
+
+    private string KeyCodeRegex(string kcode)
+    {
+        string[] split = Regex.Split(kcode, _Pattern);
+        kcode = StringNull;
+
+        for (int j = 0; j < split.Length; j++)
+        {
+            if (split[j] != StringNull)
+            {
+                kcode += split[j];
+                if (j != split.Length - 1)
+                {
+                    kcode += _WhiteSpace;
+                }
+            }
+
+        }
+
+        return kcode.Trim().ToLower();
     }
 
     private void JugadorFind(int player, int joystick, string keyCode)
